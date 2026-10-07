@@ -1,0 +1,58 @@
+{
+  "version": "independent-web-check.v1",
+  "case_id": "search_component-1",
+  "passed": true,
+  "source_sha256": "1017c226915654bc3f5c663ee901f5361a36d69fce781e0ec3c5aaedd18bd207",
+  "checks": [
+    {
+      "values": "2,7,11,14,18,27,33,54,61,95",
+      "target": "27",
+      "expected": "找到，下标 5",
+      "actual": "找到，下标 5",
+      "passed": true
+    },
+    {
+      "reset": true,
+      "actual": "等待开始",
+      "passed": true
+    },
+    {
+      "values": "1,3,5",
+      "target": "4",
+      "expected": "未找到",
+      "actual": "未找到",
+      "passed": true
+    },
+    {
+      "reset": true,
+      "actual": "等待开始",
+      "passed": true
+    },
+    {
+      "values": "",
+      "target": "2",
+      "expected": "未找到",
+      "actual": "未找到",
+      "passed": true
+    },
+    {
+      "reset": true,
+      "actual": "等待开始",
+      "passed": true
+    }
+  ],
+  "page_errors": [],
+  "blocked_requests": [],
+  "runtime": {
+    "origin": "null",
+    "viewport": {
+      "width": 800,
+      "height": 540
+    },
+    "browser_sandbox": true,
+    "model_key_in_driver": false,
+    "network_policy": "deny-proxy-and-routing.v1"
+  },
+  "seconds": 0.64,
+  "knowledge_correctness": "limited behavioural checks only"
+}

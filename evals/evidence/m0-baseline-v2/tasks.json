@@ -1,0 +1,139 @@
+[
+  {
+    "depth": 2,
+    "error": "deep scenario stopped before target observation depth",
+    "latency_seconds": 21.865238667000085,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 1,
+    "scenario_id": "backend-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline",
+      "expansion"
+    ],
+    "success": false,
+    "task_id": "backend-1-r1"
+  },
+  {
+    "depth": 3,
+    "latency_seconds": 24.660758208017796,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 2,
+    "scenario_id": "backend-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline",
+      "expansion",
+      "expansion"
+    ],
+    "success": true,
+    "task_id": "backend-1-r2"
+  },
+  {
+    "depth": 3,
+    "latency_seconds": 19.980640958994627,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 3,
+    "scenario_id": "backend-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline",
+      "expansion",
+      "expansion"
+    ],
+    "success": true,
+    "task_id": "backend-1-r3"
+  },
+  {
+    "depth": 1,
+    "error": "narrow scenario unnecessarily split at root",
+    "latency_seconds": 6.436403416970279,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 1,
+    "scenario_id": "midpoint-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline"
+    ],
+    "success": false,
+    "task_id": "midpoint-1-r1"
+  },
+  {
+    "depth": 0,
+    "latency_seconds": 5.254867875017226,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 2,
+    "scenario_id": "midpoint-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline"
+    ],
+    "success": true,
+    "task_id": "midpoint-1-r2"
+  },
+  {
+    "depth": 0,
+    "latency_seconds": 5.864015292027034,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 3,
+    "scenario_id": "midpoint-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline"
+    ],
+    "success": true,
+    "task_id": "midpoint-1-r3"
+  },
+  {
+    "latency_seconds": 3.345987583976239,
+    "success": true,
+    "task_id": "probe-questionnaire"
+  },
+  {
+    "latency_seconds": 1.0394081249833107,
+    "success": true,
+    "task_id": "probe-profile"
+  },
+  {
+    "latency_seconds": 1.4854782500187866,
+    "success": true,
+    "task_id": "probe-outline"
+  },
+  {
+    "latency_seconds": 2.402169374981895,
+    "success": true,
+    "task_id": "probe-expansion"
+  },
+  {
+    "latency_seconds": 1.8109893329674378,
+    "success": true,
+    "task_id": "probe-reassessment"
+  },
+  {
+    "latency_seconds": 4.994083292025607,
+    "success": true,
+    "task_id": "probe-explanation"
+  },
+  {
+    "latency_seconds": 1.2293232079828158,
+    "success": true,
+    "task_id": "probe-exercises"
+  },
+  {
+    "latency_seconds": 0.8964649999979883,
+    "success": true,
+    "task_id": "probe-resource"
+  }
+]

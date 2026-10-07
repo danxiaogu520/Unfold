@@ -1,0 +1,161 @@
+{
+  "tasks": [
+    {
+      "checks": [
+        "实际产物可用",
+        "文字回退",
+        "能力与来源可追溯",
+        "越界被拒绝"
+      ],
+      "expected_behavior": "reuse",
+      "family": "search_component",
+      "id": "search_component-1",
+      "split": "dev",
+      "task": "复用已有二分查找组件，处理命中、未命中和空数组；键盘操作"
+    },
+    {
+      "checks": [
+        "实际产物可用",
+        "文字回退",
+        "能力与来源可追溯",
+        "越界被拒绝"
+      ],
+      "expected_behavior": "reuse",
+      "family": "search_component",
+      "id": "search_component-2",
+      "split": "dev",
+      "task": "复用已有二分查找组件，处理命中、未命中和空数组；减少动态效果"
+    },
+    {
+      "checks": [
+        "实际产物可用",
+        "文字回退",
+        "能力与来源可追溯",
+        "越界被拒绝"
+      ],
+      "expected_behavior": "custom",
+      "family": "http_timeline",
+      "id": "http_timeline-1",
+      "split": "dev",
+      "task": "定制HTTP请求超时时间轴，区分客户端取消与服务端执行；键盘操作"
+    },
+    {
+      "checks": [
+        "实际产物可用",
+        "文字回退",
+        "能力与来源可追溯",
+        "越界被拒绝"
+      ],
+      "expected_behavior": "custom",
+      "family": "http_timeline",
+      "id": "http_timeline-2",
+      "split": "dev",
+      "task": "定制HTTP请求超时时间轴，区分客户端取消与服务端执行；减少动态效果"
+    },
+    {
+      "checks": [
+        "实际产物可用",
+        "文字回退",
+        "能力与来源可追溯",
+        "越界被拒绝"
+      ],
+      "expected_behavior": "repair",
+      "family": "function_plot",
+      "id": "function_plot-1",
+      "split": "dev",
+      "task": "函数参数演示：初始候选有构建错误，读取错误后修复并重置；键盘操作"
+    },
+    {
+      "checks": [
+        "实际产物可用",
+        "文字回退",
+        "能力与来源可追溯",
+        "越界被拒绝"
+      ],
+      "expected_behavior": "repair",
+      "family": "function_plot",
+      "id": "function_plot-2",
+      "split": "dev",
+      "task": "函数参数演示：初始候选有构建错误，读取错误后修复并重置；减少动态效果"
+    },
+    {
+      "checks": [
+        "实际产物可用",
+        "文字回退",
+        "能力与来源可追溯",
+        "越界被拒绝"
+      ],
+      "expected_behavior": "unsupported",
+      "family": "python_database",
+      "id": "python_database-1",
+      "split": "dev",
+      "task": "要求Python读取真实数据库；网页运行环境不支持，应明确退出；键盘操作"
+    },
+    {
+      "checks": [
+        "实际产物可用",
+        "文字回退",
+        "能力与来源可追溯",
+        "越界被拒绝"
+      ],
+      "expected_behavior": "unsupported",
+      "family": "python_database",
+      "id": "python_database-2",
+      "split": "dev",
+      "task": "要求Python读取真实数据库；网页运行环境不支持，应明确退出；减少动态效果"
+    },
+    {
+      "checks": [
+        "实际产物可用",
+        "文字回退",
+        "能力与来源可追溯",
+        "越界被拒绝"
+      ],
+      "expected_behavior": "custom",
+      "family": "pendulum",
+      "id": "pendulum-1",
+      "split": "holdout",
+      "task": "单摆参数演示，说明小角度简化并测试极端输入和重置；键盘操作"
+    },
+    {
+      "checks": [
+        "实际产物可用",
+        "文字回退",
+        "能力与来源可追溯",
+        "越界被拒绝"
+      ],
+      "expected_behavior": "custom",
+      "family": "pendulum",
+      "id": "pendulum-2",
+      "split": "holdout",
+      "task": "单摆参数演示，说明小角度简化并测试极端输入和重置；减少动态效果"
+    },
+    {
+      "checks": [
+        "实际产物可用",
+        "文字回退",
+        "能力与来源可追溯",
+        "越界被拒绝"
+      ],
+      "expected_behavior": "retrieve",
+      "family": "mitosis_image",
+      "id": "mitosis_image-1",
+      "split": "holdout",
+      "task": "细胞分裂显微图片，要求实际来源、许可和下载失败回退；键盘操作"
+    },
+    {
+      "checks": [
+        "实际产物可用",
+        "文字回退",
+        "能力与来源可追溯",
+        "越界被拒绝"
+      ],
+      "expected_behavior": "retrieve",
+      "family": "mitosis_image",
+      "id": "mitosis_image-2",
+      "split": "holdout",
+      "task": "细胞分裂显微图片，要求实际来源、许可和下载失败回退；减少动态效果"
+    }
+  ],
+  "version": "resources.v1"
+}

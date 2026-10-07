@@ -1,0 +1,56 @@
+{
+  "$defs": {
+    "Decision": {
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "expandable",
+            "leaf"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "state",
+        "reason"
+      ],
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "decision": {
+      "$ref": "#/$defs/Decision"
+    },
+    "restructuring_note": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "schema_version": {
+      "enum": [
+        "reassessment.v1"
+      ],
+      "type": "string"
+    },
+    "target_key": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "target_key",
+    "decision",
+    "restructuring_note"
+  ],
+  "type": "object"
+}

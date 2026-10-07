@@ -1,0 +1,26 @@
+{
+  "accounted_peak_cost_with_unknown_reserves": "0.145598",
+  "actual_billed_cost": null,
+  "all_call_schema_total": 25,
+  "all_call_schema_valid": 24,
+  "calls": 25,
+  "cost_per_success": null,
+  "currency": "CNY",
+  "errors": {
+    "validation": 7
+  },
+  "evidence_kind": "real_provider",
+  "failed_tasks": 6,
+  "first_schema_total": 21,
+  "first_schema_valid": 20,
+  "input_tokens_known": 22479,
+  "output_tokens_known": 12580,
+  "p50_seconds": 3.517371915979311,
+  "p95_seconds": 12.54543079197174,
+  "repairs": 4,
+  "semantic_quality": "review required; structural success is not factual accuracy",
+  "successful_tasks": 8,
+  "tasks": 14,
+  "unknown_usage_calls": 0,
+  "valid_proposals": 18
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "code": {
+      "enum": [
+        "configuration",
+        "invalid_input",
+        "invalid_json",
+        "schema_validation",
+        "domain_validation",
+        "refusal",
+        "truncated",
+        "content_filter",
+        "schema_unsupported",
+        "authentication",
+        "rate_limit",
+        "provider_error",
+        "timeout",
+        "outcome_unknown",
+        "capability_limit",
+        "budget_exceeded",
+        "cancelled",
+        "version_conflict"
+      ],
+      "title": "Code",
+      "type": "string"
+    },
+    "message": {
+      "maxLength": 6000,
+      "minLength": 1,
+      "title": "Message",
+      "type": "string"
+    },
+    "outcome_unknown": {
+      "title": "Outcome Unknown",
+      "type": "boolean"
+    },
+    "retryable": {
+      "title": "Retryable",
+      "type": "boolean"
+    },
+    "run_id": {
+      "anyOf": [
+        {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Run Id"
+    },
+    "schema_version": {
+      "const": "error.v1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "code",
+    "message",
+    "retryable",
+    "outcome_unknown",
+    "run_id"
+  ],
+  "title": "ApiError",
+  "type": "object"
+}

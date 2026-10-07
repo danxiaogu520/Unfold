@@ -1,0 +1,383 @@
+{
+  "case": {
+    "answers_by_target": {
+      "constraints": null,
+      "scope": "按原始目标限定，必要前置可补充"
+    },
+    "domain": "绘画透视",
+    "expected_behavior": "flexible",
+    "family": "perspective",
+    "id": "perspective-2",
+    "known_targets": [
+      "purpose",
+      "background",
+      "goal"
+    ],
+    "max_exploration_depth": 3,
+    "review_targets": [
+      "用途改变组织与例子",
+      "不误称官方或已核验",
+      "分支职责与概述明确",
+      "增量有用且不重复",
+      "停止位置与当前目标相符"
+    ],
+    "split": "holdout",
+    "user_brief": "有素描经验，希望理解两点透视并绘制建筑街角，不学复杂投影几何。"
+  },
+  "space_id": "space_8b48e6466d594a108ac05de89dbeda98",
+  "request": {
+    "path": [
+      {
+        "key": "node_28aa292c7c9e45ee87d622ddac82ae8d",
+        "scope": "绘画透视",
+        "title": "绘画透视",
+        "decision": {
+          "state": "expandable",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      }
+    ],
+    "target": {
+      "key": "node_28aa292c7c9e45ee87d622ddac82ae8d",
+      "scope": "绘画透视",
+      "title": "绘画透视",
+      "decision": {
+        "state": "expandable",
+        "reason": "固定开发判定，仅用于流程验证。"
+      },
+      "overview": "固定开发概述，不是实际模型生成。",
+      "content_revision": 1,
+      "profile_revision": 1
+    },
+    "profile": {
+      "profile": {
+        "topic": {
+          "value": "绘画透视",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "background": {
+          "value": "尚未确定当前基础",
+          "source": "unknown",
+          "evidence_keys": []
+        },
+        "constraints": [],
+        "excluded_scope": [],
+        "included_scope": [
+          {
+            "value": "绘画透视",
+            "source": "assumption",
+            "evidence_keys": []
+          }
+        ],
+        "schema_version": "profile.v1",
+        "primary_purpose": {
+          "value": "有素描经验，希望理解两点透视并绘制建筑街角，不学复杂投影几何。",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "target_abilities": [
+          {
+            "value": "先理解核心概念，再结合用途练习",
+            "source": "assumption",
+            "evidence_keys": []
+          }
+        ],
+        "secondary_purposes": []
+      },
+      "revision": 1
+    },
+    "instruction": "有素描经验，希望理解两点透视并绘制建筑街角，不学复杂投影几何。；只用文字讲解，不制作资源。",
+    "schema_version": "explanation-input.v1",
+    "sibling_scopes": [],
+    "existing_children": [
+      {
+        "key": "node_f410e335824245ab903c836a1f0d00c0",
+        "scope": "核心概念",
+        "title": "核心概念",
+        "decision": {
+          "state": "expandable",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      },
+      {
+        "key": "node_fe5329bba91d4a4f93cb87704a971b94",
+        "scope": "应用与边界",
+        "title": "应用与边界",
+        "decision": {
+          "state": "leaf",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      }
+    ],
+    "reusable_concept_refs": [
+      "concept_292bef8fc78d4396964807aaa6761e16",
+      "concept_533a203ee3724bdf87fd9b41b5423cac",
+      "concept_5ee5e2f38b28470c8fe3f5181b21f04d"
+    ],
+    "allowed_resource_kinds": [
+      "image",
+      "interactive",
+      "playground"
+    ],
+    "available_exercise_refs": []
+  },
+  "base": {
+    "concepts": [
+      {
+        "id": "concept_5ee5e2f38b28470c8fe3f5181b21f04d",
+        "scope": "绘画透视",
+        "title": "绘画透视",
+        "aliases": []
+      },
+      {
+        "id": "concept_292bef8fc78d4396964807aaa6761e16",
+        "scope": "核心概念",
+        "title": "核心概念",
+        "aliases": []
+      },
+      {
+        "id": "concept_533a203ee3724bdf87fd9b41b5423cac",
+        "scope": "应用与边界",
+        "title": "应用与边界",
+        "aliases": []
+      }
+    ],
+    "feedback": [],
+    "content_origins": [
+      {
+        "node_id": "node_28aa292c7c9e45ee87d622ddac82ae8d",
+        "content_ref": "content_7066453a26a34554be06bd75a8eb6fd0",
+        "carried_from": null,
+        "profile_revision": 1
+      },
+      {
+        "node_id": "node_f410e335824245ab903c836a1f0d00c0",
+        "content_ref": "content_718e0378b7314adf986ae577502194a9",
+        "carried_from": null,
+        "profile_revision": 1
+      },
+      {
+        "node_id": "node_fe5329bba91d4a4f93cb87704a971b94",
+        "content_ref": "content_7e3415fb2ea246388bd80b2cf1af4ae8",
+        "carried_from": null,
+        "profile_revision": 1
+      }
+    ]
+  },
+  "snapshot": {
+    "version": "context-evaluation-snapshot.v1",
+    "data_classification": "public_synthetic_evaluation.v1",
+    "nodes": 10,
+    "content_versions": 10,
+    "body_characters": 1838,
+    "pages": [
+      {
+        "id": "content_node_28aa292c7c9e45ee87d622ddac82ae8d",
+        "node_id": "node_28aa292c7c9e45ee87d622ddac82ae8d",
+        "parent_id": null,
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "绘画透视",
+        "scope": "绘画透视",
+        "text": "公开合成上下文记录。当前用途：有素描经验，希望理解两点透视并绘制建筑街角，不学复杂投影几何。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_node_f410e335824245ab903c836a1f0d00c0",
+        "node_id": "node_f410e335824245ab903c836a1f0d00c0",
+        "parent_id": "node_28aa292c7c9e45ee87d622ddac82ae8d",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "核心概念",
+        "scope": "核心概念",
+        "text": "公开合成上下文记录。当前用途：有素描经验，希望理解两点透视并绘制建筑街角，不学复杂投影几何。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_node_fe5329bba91d4a4f93cb87704a971b94",
+        "node_id": "node_fe5329bba91d4a4f93cb87704a971b94",
+        "parent_id": "node_28aa292c7c9e45ee87d622ddac82ae8d",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "应用与边界",
+        "scope": "应用与边界",
+        "text": "公开合成上下文记录。当前用途：有素描经验，希望理解两点透视并绘制建筑街角，不学复杂投影几何。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_branch",
+        "node_id": "synthetic_branch",
+        "parent_id": "node_28aa292c7c9e45ee87d622ddac82ae8d",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支资料",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_related",
+        "node_id": "synthetic_related",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "绘画透视",
+        "scope": "另一分支：用途提示",
+        "text": "公开合成上下文记录。当前用途：有素描经验，希望理解两点透视并绘制建筑街角，不学复杂投影几何。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0005",
+        "node_id": "synthetic_0005",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 5",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0006",
+        "node_id": "synthetic_0006",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 6",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0007",
+        "node_id": "synthetic_0007",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 7",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0008",
+        "node_id": "synthetic_0008",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 8",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0009",
+        "node_id": "synthetic_0009",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 9",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      }
+    ],
+    "relations": [
+      {
+        "id": "synthetic_relation",
+        "source_id": "node_28aa292c7c9e45ee87d622ddac82ae8d",
+        "target_id": "synthetic_related",
+        "kind": "related",
+        "explanation": "公开合成关系：同主题的另一用途；保留节点范围，不合并。"
+      }
+    ],
+    "profile_history": [
+      {
+        "profile": {
+          "topic": {
+            "value": "绘画透视",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "background": {
+            "value": "尚未确定当前基础",
+            "source": "unknown",
+            "evidence_keys": []
+          },
+          "constraints": [],
+          "excluded_scope": [],
+          "included_scope": [
+            {
+              "value": "绘画透视",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "schema_version": "profile.v1",
+          "primary_purpose": {
+            "value": "有素描经验，希望理解两点透视并绘制建筑街角，不学复杂投影几何。",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "target_abilities": [
+            {
+              "value": "先理解核心概念，再结合用途练习",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "secondary_purposes": []
+        },
+        "revision": 1
+      }
+    ]
+  }
+}

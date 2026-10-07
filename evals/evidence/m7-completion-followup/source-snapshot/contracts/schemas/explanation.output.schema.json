@@ -1,0 +1,271 @@
+{
+  "$defs": {
+    "DiagramBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "caption": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Caption",
+          "type": "string"
+        },
+        "fallback_text": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Fallback Text",
+          "type": "string"
+        },
+        "language": {
+          "const": "mermaid",
+          "title": "Language",
+          "type": "string"
+        },
+        "source": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "type": {
+          "const": "diagram",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "language",
+        "source",
+        "caption",
+        "fallback_text"
+      ],
+      "title": "DiagramBlock",
+      "type": "object"
+    },
+    "ExerciseBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "exercise_revision_ref": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Exercise Revision Ref",
+          "type": "string"
+        },
+        "fallback_text": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Fallback Text",
+          "type": "string"
+        },
+        "type": {
+          "const": "exercise",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "exercise_revision_ref",
+        "fallback_text"
+      ],
+      "title": "ExerciseBlock",
+      "type": "object"
+    },
+    "MarkdownBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "type": {
+          "const": "markdown",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "text"
+      ],
+      "title": "MarkdownBlock",
+      "type": "object"
+    },
+    "ResourceBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "caption": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Caption",
+          "type": "string"
+        },
+        "fallback_text": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Fallback Text",
+          "type": "string"
+        },
+        "resource_key": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Resource Key",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "image",
+            "playground",
+            "interactive"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "resource_key",
+        "caption",
+        "fallback_text"
+      ],
+      "title": "ResourceBlock",
+      "type": "object"
+    },
+    "ResourceRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "controls": {
+          "items": {
+            "enum": [
+              "play",
+              "pause",
+              "step",
+              "reset",
+              "parameters",
+              "run",
+              "stop"
+            ],
+            "type": "string"
+          },
+          "title": "Controls",
+          "type": "array"
+        },
+        "fallback_text": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Fallback Text",
+          "type": "string"
+        },
+        "key": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Key",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "image",
+            "diagram",
+            "playground",
+            "interactive"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "purpose": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Purpose",
+          "type": "string"
+        },
+        "runtime": {
+          "anyOf": [
+            {
+              "const": "web",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Runtime"
+        },
+        "specification": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Specification",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "kind",
+        "purpose",
+        "specification",
+        "runtime",
+        "controls",
+        "fallback_text"
+      ],
+      "title": "ResourceRequest",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blocks": {
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/MarkdownBlock"
+          },
+          {
+            "$ref": "#/$defs/DiagramBlock"
+          },
+          {
+            "$ref": "#/$defs/ResourceBlock"
+          },
+          {
+            "$ref": "#/$defs/ExerciseBlock"
+          }
+        ]
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "Blocks",
+      "type": "array"
+    },
+    "overview": {
+      "maxLength": 6000,
+      "minLength": 1,
+      "title": "Overview",
+      "type": "string"
+    },
+    "resource_requests": {
+      "items": {
+        "$ref": "#/$defs/ResourceRequest"
+      },
+      "maxItems": 6,
+      "title": "Resource Requests",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "explanation.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "target_key": {
+      "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+      "title": "Target Key",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "target_key",
+    "overview",
+    "blocks",
+    "resource_requests"
+  ],
+  "title": "ExplanationProposal",
+  "type": "object"
+}

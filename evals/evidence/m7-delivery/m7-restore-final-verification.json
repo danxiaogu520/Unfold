@@ -1,0 +1,121 @@
+{
+  "version": "restore-verification.v1",
+  "target_database": "unfold_restore_m7_20261007_v3",
+  "all_public_rows_equal": true,
+  "tables": {
+    "agent_steps": {
+      "rows": 62,
+      "sha256": "e19ed11dbcbc3e843aacb2801acdcdccfeebddb7733c755c1b0405f0c6e57c36"
+    },
+    "alembic_version": {
+      "rows": 1,
+      "sha256": "727b94fb68a02d525c9fc94ab0d8b221a6987eed8fcbe8c73cea5bf83c407c3a"
+    },
+    "budget_ledgers": {
+      "rows": 1,
+      "sha256": "08f1ba93b978e649a90308f72fd1056f4089b944cf17065f5cb0710382d9a0f4"
+    },
+    "concepts": {
+      "rows": 132,
+      "sha256": "dde1bc7425b399739eba3173325d9e530c10b54b905f6b0528143a0738377913"
+    },
+    "content_revisions": {
+      "rows": 161,
+      "sha256": "9922099a77beb83d054f54c1da11f5a577af6d90687de31451e54546b2df1a99"
+    },
+    "content_summaries": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exercise_answers": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exercise_issues": {
+      "rows": 1,
+      "sha256": "5c78d949265d92a0a69470da386b14db41e3663db15133da25990264a868cf42"
+    },
+    "exercise_questions": {
+      "rows": 9,
+      "sha256": "b07f7a1facee3b80aa3cbda56498d6aab125a092251c73a14bbd2e9cf681a2f3"
+    },
+    "exercise_sets": {
+      "rows": 3,
+      "sha256": "5e042c2adeaabfe0cf9d6439bd94a9df4a4ed90ec70df86450657eb5c39ceef3"
+    },
+    "generation_runs": {
+      "rows": 311,
+      "sha256": "8a8e88703183a591f5fffcce9a8632f16f9b0246ec0dafdabc0876edeb53d3bb"
+    },
+    "intake_sessions": {
+      "rows": 42,
+      "sha256": "4076e6ae704c1cfbf80b314425648fe35f4bc022cdfd5fbd12983f003f03564c"
+    },
+    "learning_feedback": {
+      "rows": 3,
+      "sha256": "a19326b27243a9f917425ff32f09ab83c6129755f63a6e18b2535cc22f131581"
+    },
+    "model_calls": {
+      "rows": 322,
+      "sha256": "8f00c26b3db9771f2da3a86063af3fa190178d68e6b6ce6f0028a63b314a4763"
+    },
+    "node_decisions": {
+      "rows": 161,
+      "sha256": "1da30f01ca639747d5074b6fe4182cb1d09ec81036e021269ca064132824c765"
+    },
+    "outline_items": {
+      "rows": 134,
+      "sha256": "9a0eee41d87bb9956c839d35bbd54a29dab8536d8a75d13a359b3d6a9c245daf"
+    },
+    "profile_revisions": {
+      "rows": 43,
+      "sha256": "0c2ed8a79cca954867e02d2dcb60a97af3ec0765eb1cb2a41bce994619f2d4c8"
+    },
+    "relations": {
+      "rows": 21,
+      "sha256": "d9124c5ad3c0f5aced9c1921739e0cffdbada51f4bc50c4483c7d80b839410c2"
+    },
+    "request_identities": {
+      "rows": 311,
+      "sha256": "ac5dcfb643e6f15d88af557c1b7cd56de642c8bd81359da72a7208c302c25c70"
+    },
+    "resource_candidates": {
+      "rows": 24,
+      "sha256": "985844abe1fe6cc8e708c3914a7e16ab4bcee91f1fe5e22be6321f9258f3d491"
+    },
+    "resource_revisions": {
+      "rows": 14,
+      "sha256": "c476adf3f1ee80de4d65bcb51a4831894b70be3cdce8b80cc419b98dbd8fce26"
+    },
+    "resource_tasks": {
+      "rows": 22,
+      "sha256": "8c780df946a2aab360e9fb0f4a5c525bd5701e02ae8b0d8c40c8368d0230c61e"
+    },
+    "run_attempts": {
+      "rows": 296,
+      "sha256": "42fd64b7d2fd95a074aa969bda676df78e75dcfaadadb68d13d76e1680396869"
+    },
+    "run_events": {
+      "rows": 919,
+      "sha256": "79c3f4eb946fa00721fca316d88e8e7cbceabd36d21b4a0d946eb539ea4b75b4"
+    },
+    "spaces": {
+      "rows": 42,
+      "sha256": "95f907105a884abe86650753e71dce2dd243ebfb92c4fe6051c8d60c131df75c"
+    },
+    "structure_suggestions": {
+      "rows": 1,
+      "sha256": "b49de38271081b92cb00f2e3624459f89cfa1297d18728e29336a80aa1f7ff3a"
+    },
+    "tool_invocations": {
+      "rows": 57,
+      "sha256": "1b768de7054bd7314e50bc14a474332915b1ffe5bfc8e750b6d15512e1f4af12"
+    }
+  },
+  "formal_files_verified": 14,
+  "restored_http_read": true,
+  "new_model_calls": 0,
+  "ledger_accounted_cny": "1.98536200",
+  "ledger_limit_cny": "9.11970000",
+  "credentials_in_report": false
+}

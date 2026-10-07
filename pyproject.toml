@@ -1,0 +1,49 @@
+[project]
+name = "unfold"
+version = "0.0.1"
+description = "知脉：由 LLM 驱动的本地学习应用、持久任务与资源 Agent"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+authors = [{ name = "danxiaogu520" }]
+requires-python = ">=3.12,<3.13"
+dependencies = ["pydantic==2.12.5", "httpx==0.28.1", "jsonschema==4.25.1"]
+
+[project.urls]
+Repository = "https://github.com/danxiaogu520/Unfold"
+Issues = "https://github.com/danxiaogu520/Unfold/issues"
+
+[project.optional-dependencies]
+app = [
+    "fastapi==0.142.2",
+    "sqlalchemy==2.0.54",
+    "alembic==1.20.0",
+    "psycopg[binary]==3.3.6",
+    "uvicorn==0.54.0",
+    "pillow==12.3.0",
+]
+
+[project.scripts]
+unfold = "unfold.cli:main"
+
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pytest==8.4.2", "ruff==0.13.2", "mypy==1.18.2", "types-jsonschema==4.25.1.20251009"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]

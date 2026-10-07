@@ -1,0 +1,56 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "candidate_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "limitation": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "request_key": {
+      "type": "string"
+    },
+    "schema_version": {
+      "enum": [
+        "resource.v1"
+      ],
+      "type": "string"
+    },
+    "specification": {
+      "type": "string"
+    },
+    "strategy": {
+      "enum": [
+        "reuse",
+        "retrieve",
+        "draw",
+        "build",
+        "unsupported"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_key",
+    "strategy",
+    "candidate_ref",
+    "specification",
+    "limitation"
+  ],
+  "type": "object"
+}

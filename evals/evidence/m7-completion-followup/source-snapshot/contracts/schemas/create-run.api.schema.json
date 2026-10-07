@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "base_revision": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Base Revision"
+    },
+    "input": {
+      "additionalProperties": true,
+      "title": "Input",
+      "type": "object"
+    },
+    "operation": {
+      "enum": [
+        "questionnaire",
+        "profile",
+        "outline",
+        "expansion",
+        "reassessment",
+        "explanation",
+        "exercises",
+        "resource"
+      ],
+      "title": "Operation",
+      "type": "string"
+    },
+    "profile_revision": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Profile Revision"
+    },
+    "schema_version": {
+      "const": "api.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "space_id": {
+      "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+      "title": "Space Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "space_id",
+    "operation",
+    "profile_revision",
+    "base_revision",
+    "input"
+  ],
+  "title": "CreateRun",
+  "type": "object"
+}

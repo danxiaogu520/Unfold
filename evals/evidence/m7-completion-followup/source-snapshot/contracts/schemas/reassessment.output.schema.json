@@ -1,0 +1,67 @@
+{
+  "$defs": {
+    "Decision": {
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "expandable",
+            "leaf"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "state",
+        "reason"
+      ],
+      "title": "Decision",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "decision": {
+      "$ref": "#/$defs/Decision"
+    },
+    "restructuring_note": {
+      "anyOf": [
+        {
+          "maxLength": 6000,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Restructuring Note"
+    },
+    "schema_version": {
+      "const": "reassessment.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "target_key": {
+      "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+      "title": "Target Key",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "target_key",
+    "decision",
+    "restructuring_note"
+  ],
+  "title": "ReassessmentProposal",
+  "type": "object"
+}

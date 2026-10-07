@@ -1,0 +1,92 @@
+{
+  "$defs": {
+    "Fact": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_keys": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "source": {
+          "enum": [
+            "user",
+            "assumption",
+            "unknown"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "source",
+        "evidence_keys"
+      ],
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "background": {
+      "$ref": "#/$defs/Fact"
+    },
+    "constraints": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "type": "array"
+    },
+    "excluded_scope": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "type": "array"
+    },
+    "included_scope": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "type": "array"
+    },
+    "primary_purpose": {
+      "$ref": "#/$defs/Fact"
+    },
+    "schema_version": {
+      "enum": [
+        "profile.v1"
+      ],
+      "type": "string"
+    },
+    "secondary_purposes": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "type": "array"
+    },
+    "target_abilities": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "type": "array"
+    },
+    "topic": {
+      "$ref": "#/$defs/Fact"
+    }
+  },
+  "required": [
+    "schema_version",
+    "topic",
+    "primary_purpose",
+    "secondary_purposes",
+    "background",
+    "target_abilities",
+    "included_scope",
+    "excluded_scope",
+    "constraints"
+  ],
+  "type": "object"
+}

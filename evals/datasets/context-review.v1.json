@@ -1,0 +1,37 @@
+{
+  "version": "context-review.v1",
+  "evidence_kind": "hand_authored_regression_examples",
+  "independent_human_review": null,
+  "cases": [
+    {
+      "id": "same-title-different-scope",
+      "input": "同名节点用于协议网络边界与社会网络关系；concept_ref=null",
+      "expected": "保存不同概念身份，不从标题相同自动合并",
+      "evidence": "tests/test_learning.py::test_same_title_different_scope_does_not_automatically_merge"
+    },
+    {
+      "id": "same-scope-different-path-title",
+      "input": "明确提供已有 concept_ref，scope 完全一致，展示标题改变",
+      "expected": "复用规范身份而保留各路径展示标题",
+      "evidence": "tests/test_learning.py::test_shared_concept_can_use_another_path_title_without_changing_identity"
+    },
+    {
+      "id": "narrow-child-incorrect-parent-reference",
+      "input": "子项更窄的范围却声明复用较宽父概念",
+      "expected": "拒绝错误范围复用；有限修复后才可发布",
+      "evidence": "tests/test_learning.py::test_wrong_parent_concept_reuse_is_repaired_before_publication"
+    },
+    {
+      "id": "cross-branch-omission",
+      "input": "目标有一条明确 related 边，另有不相关正文",
+      "expected": "结构策略选取关系端点；当前路径明确记录旁支省略；不相关内容不由标题猜合并",
+      "evidence": "tests/test_context_selection.py::test_three_strategies_record_selection_and_preserve_required_goal"
+    },
+    {
+      "id": "wrong-prerequisite-cycle",
+      "input": "严格前置边组成循环，普通 related 边也形成循环",
+      "expected": "拒绝严格前置循环，允许普通关系循环；不能将拓扑合法当作语义已核验",
+      "evidence": "tests/test_contracts.py::test_relation_cycles_allowed_except_strict_prerequisites"
+    }
+  ]
+}

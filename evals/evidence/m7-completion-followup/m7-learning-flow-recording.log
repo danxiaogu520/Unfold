@@ -1,0 +1,14 @@
+npm notice run unfold-web@0.1.0 test
+npm notice run playwright test --config playwright.recording.config.ts
+[WebServer] npm notice run unfold-web@0.1.0 dev
+[WebServer] npm notice run vite --host 127.0.0.1
+[WebServer] (node:63021) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:63022) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/knowledge.spec.ts:3:1 › one layer, leaf, explanation history and changed profile survive refresh (7.5s)
+
+  1 passed (9.9s)

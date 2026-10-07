@@ -1,0 +1,31 @@
+{
+  "version": "m7-recordings.v1",
+  "viewer_sha256": "f48ee2cd7c714aafa62e5c5abf3780a5334e6cc4a08f07db6b43ddccd7def789",
+  "browser": "Chromium with browser sandbox",
+  "records": [
+    {
+      "name": "jobs",
+      "steps": 4,
+      "video": "jobs.webm",
+      "bytes": 532308,
+      "new_model_calls": 0,
+      "execution": "recorded_evidence_replay"
+    },
+    {
+      "name": "agent",
+      "steps": 5,
+      "video": "agent.webm",
+      "bytes": 967975,
+      "new_model_calls": 0,
+      "execution": "recorded_evidence_replay"
+    },
+    {
+      "name": "context",
+      "steps": 3,
+      "video": "context.webm",
+      "bytes": 359158,
+      "new_model_calls": 0,
+      "execution": "recorded_evidence_replay"
+    }
+  ]
+}

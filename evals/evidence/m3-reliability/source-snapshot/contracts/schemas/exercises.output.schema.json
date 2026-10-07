@@ -1,0 +1,131 @@
+{
+  "$defs": {
+    "Exercise": {
+      "additionalProperties": false,
+      "properties": {
+        "content_refs": {
+          "items": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Content Refs",
+          "type": "array"
+        },
+        "correct_keys": {
+          "items": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Correct Keys",
+          "type": "array"
+        },
+        "explanation": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "key": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Key",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "single",
+            "multiple"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/$defs/Option"
+          },
+          "maxItems": 6,
+          "minItems": 2,
+          "title": "Options",
+          "type": "array"
+        },
+        "stem": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Stem",
+          "type": "string"
+        },
+        "testing_point": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Testing Point",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "mode",
+        "stem",
+        "testing_point",
+        "content_refs",
+        "options",
+        "correct_keys",
+        "explanation"
+      ],
+      "title": "Exercise",
+      "type": "object"
+    },
+    "Option": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Key",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "text"
+      ],
+      "title": "Option",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "exercises": {
+      "items": {
+        "$ref": "#/$defs/Exercise"
+      },
+      "maxItems": 5,
+      "minItems": 1,
+      "title": "Exercises",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "exercises.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "target_key": {
+      "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+      "title": "Target Key",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "target_key",
+    "exercises"
+  ],
+  "title": "ExerciseSetProposal",
+  "type": "object"
+}

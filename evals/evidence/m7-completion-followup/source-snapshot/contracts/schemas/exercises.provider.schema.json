@@ -1,0 +1,97 @@
+{
+  "$defs": {
+    "Exercise": {
+      "additionalProperties": false,
+      "properties": {
+        "content_refs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "correct_keys": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "explanation": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "single",
+            "multiple"
+          ],
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/$defs/Option"
+          },
+          "type": "array"
+        },
+        "stem": {
+          "type": "string"
+        },
+        "testing_point": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "mode",
+        "stem",
+        "testing_point",
+        "content_refs",
+        "options",
+        "correct_keys",
+        "explanation"
+      ],
+      "type": "object"
+    },
+    "Option": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "text"
+      ],
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "exercises": {
+      "items": {
+        "$ref": "#/$defs/Exercise"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "enum": [
+        "exercises.v1"
+      ],
+      "type": "string"
+    },
+    "target_key": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "target_key",
+    "exercises"
+  ],
+  "type": "object"
+}

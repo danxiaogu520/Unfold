@@ -1,0 +1,120 @@
+{
+  "version": "human-math-answers.v1",
+  "user_date": "2026-10-07",
+  "user_message": "我已经给出了答案",
+  "source_sha256": "f2eacbeba44262c6bc86da35443f94389d2f4b2fe75ad8ae9ed6137b21183f4f",
+  "source_questions_unchanged": true,
+  "answers": [
+    {
+      "label": "函数-1",
+      "raw_user_answer": "___a_",
+      "selected_letters": [
+        "A"
+      ],
+      "selected_keys": [
+        "opt_all_real"
+      ],
+      "matches_saved_answer": true,
+      "question_key": "ex_quadratic_domain_single",
+      "content_refs": [
+        "content_9f1eef9fea6c46dea661c765499eb2fe"
+      ],
+      "explicit_quality_conclusion": null
+    },
+    {
+      "label": "函数-2",
+      "raw_user_answer": "_a___",
+      "selected_letters": [
+        "A"
+      ],
+      "selected_keys": [
+        "opt_form_a"
+      ],
+      "matches_saved_answer": true,
+      "question_key": "ex_quadratic_vertex_form_single",
+      "content_refs": [
+        "content_9f1eef9fea6c46dea661c765499eb2fe"
+      ],
+      "explicit_quality_conclusion": null
+    },
+    {
+      "label": "函数-3",
+      "raw_user_answer": "___abcd_",
+      "selected_letters": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "selected_keys": [
+        "opt_axis",
+        "opt_vertex",
+        "opt_zeros",
+        "opt_min"
+      ],
+      "matches_saved_answer": true,
+      "question_key": "ex_quadratic_features_multiple",
+      "content_refs": [
+        "content_9f1eef9fea6c46dea661c765499eb2fe"
+      ],
+      "explicit_quality_conclusion": null
+    },
+    {
+      "label": "概率-1",
+      "raw_user_answer": "___c_",
+      "selected_letters": [
+        "C"
+      ],
+      "selected_keys": [
+        "opt_one_half"
+      ],
+      "matches_saved_answer": true,
+      "question_key": "ex_simple_prob_dice_even",
+      "content_refs": [
+        "content_3d74b03b47714fdc874e56531d0f8145"
+      ],
+      "explicit_quality_conclusion": null
+    },
+    {
+      "label": "概率-2",
+      "raw_user_answer": "__c__",
+      "selected_letters": [
+        "C"
+      ],
+      "selected_keys": [
+        "opt_three_quarters"
+      ],
+      "matches_saved_answer": true,
+      "question_key": "ex_simple_prob_coin_at_least_one_head",
+      "content_refs": [
+        "content_3d74b03b47714fdc874e56531d0f8145"
+      ],
+      "explicit_quality_conclusion": null
+    },
+    {
+      "label": "概率-3",
+      "raw_user_answer": "___abd_",
+      "selected_letters": [
+        "A",
+        "B",
+        "D"
+      ],
+      "selected_keys": [
+        "opt_finite",
+        "opt_equal_likely",
+        "opt_subset"
+      ],
+      "matches_saved_answer": true,
+      "question_key": "ex_simple_prob_conditions",
+      "content_refs": [
+        "content_3d74b03b47714fdc874e56531d0f8145"
+      ],
+      "explicit_quality_conclusion": null
+    }
+  ],
+  "matched": 6,
+  "total": 6,
+  "human_participation": "user_entered_answers",
+  "ambiguity_explanation_scope_conclusion": null,
+  "new_model_calls": 0
+}

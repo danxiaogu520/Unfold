@@ -1,0 +1,146 @@
+{
+  "started_at": "2026-10-07T13:09:54.507337+00:00",
+  "real_model_calls": false,
+  "checks": [
+    {
+      "command": [
+        "ruff",
+        "check",
+        "src",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0,
+      "seconds": 0.019
+    },
+    {
+      "command": [
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0,
+      "seconds": 0.008
+    },
+    {
+      "command": [
+        "mypy",
+        "src"
+      ],
+      "exit_code": 0,
+      "seconds": 0.463
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unfold.cli",
+        "check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.175
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unfold.cli",
+        "verify-evidence"
+      ],
+      "exit_code": 0,
+      "seconds": 0.151
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "--require-postgres",
+        "-q",
+        "--junitxml=.data/qa/python.xml"
+      ],
+      "exit_code": 0,
+      "seconds": 50.636
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build",
+        "--prefix",
+        "web"
+      ],
+      "exit_code": 0,
+      "seconds": 1.397
+    },
+    {
+      "command": [
+        "npm",
+        "test",
+        "--prefix",
+        "web"
+      ],
+      "exit_code": 0,
+      "seconds": 52.56
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_foundation_evidence.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.066
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_learning_evidence.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.234
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_reliability_evidence.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.154
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_practice_evidence.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.214
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_agent_evidence.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.38
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_context_evidence.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.619
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_delivery_evidence.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.083
+    }
+  ]
+}

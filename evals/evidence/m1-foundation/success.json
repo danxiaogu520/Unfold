@@ -1,0 +1,254 @@
+{
+  "evidence_kind": "deterministic_fake_real_postgres_http",
+  "request": {
+    "schema_version": "api.v1",
+    "space_id": "space_7c523fd471c847a0ba3c2b89afc89dc8",
+    "operation": "questionnaire",
+    "profile_revision": null,
+    "base_revision": null,
+    "input": {
+      "domain": "二分查找",
+      "known_targets": [
+        "goal"
+      ],
+      "previous_question_keys": [],
+      "questions_asked": 0,
+      "round": 1,
+      "schema_version": "questionnaire-input.v1",
+      "user_brief": "只想理解一次中点比较"
+    }
+  },
+  "queued": {
+    "schema_version": "run.v1",
+    "run_id": "run_8129aa25c00c408799310ab6acaed6be",
+    "operation": "questionnaire",
+    "status": "queued",
+    "attempt": 0,
+    "last_event_seq": 1,
+    "result_ref": null,
+    "error": null
+  },
+  "final": {
+    "schema_version": "run.v1",
+    "run_id": "run_8129aa25c00c408799310ab6acaed6be",
+    "operation": "questionnaire",
+    "status": "succeeded",
+    "attempt": 1,
+    "last_event_seq": 3,
+    "result_ref": "intake_7a38f09ca30141d3a1e1cc4dadf80464",
+    "error": null
+  },
+  "trace": {
+    "snapshot": {
+      "schema_version": "run.v1",
+      "run_id": "run_8129aa25c00c408799310ab6acaed6be",
+      "operation": "questionnaire",
+      "status": "succeeded",
+      "attempt": 1,
+      "last_event_seq": 3,
+      "result_ref": "intake_7a38f09ca30141d3a1e1cc4dadf80464",
+      "error": null
+    },
+    "input": {
+      "round": 1,
+      "domain": "二分查找",
+      "user_brief": "只想理解一次中点比较",
+      "known_targets": [
+        "goal"
+      ],
+      "schema_version": "questionnaire-input.v1",
+      "questions_asked": 0,
+      "previous_question_keys": []
+    },
+    "request": {
+      "schema_version": "api.v1",
+      "space_id": "space_7c523fd471c847a0ba3c2b89afc89dc8",
+      "operation": "questionnaire",
+      "profile_revision": null,
+      "base_revision": null,
+      "input": {
+        "round": 1,
+        "domain": "二分查找",
+        "user_brief": "只想理解一次中点比较",
+        "known_targets": [
+          "goal"
+        ],
+        "schema_version": "questionnaire-input.v1",
+        "questions_asked": 0,
+        "previous_question_keys": []
+      }
+    },
+    "dependencies": {
+      "outline_revision": 0,
+      "profile_revision": 0
+    },
+    "proposal": {
+      "questions": [
+        {
+          "key": "background",
+          "mode": "single",
+          "prompt": "你了解有序数组吗？",
+          "target": "background",
+          "options": [
+            {
+              "key": "yes",
+              "text": "了解"
+            },
+            {
+              "key": "no",
+              "text": "不了解"
+            }
+          ],
+          "allow_unknown": true,
+          "allow_free_text": true
+        }
+      ],
+      "rationale": "固定开发替身，尚未进行真实模型生成。",
+      "schema_version": "questionnaire.v1"
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": "succeeded",
+        "outcome_unknown": false
+      }
+    ],
+    "calls": [
+      {
+        "id": "call_7ace4029abfd4a7ca3018e30e0929113",
+        "attempt": 1,
+        "step": 1,
+        "provider": "deterministic_fake",
+        "model": "fixture.v1",
+        "prompt_version": "fixture.v1",
+        "schema_version": "questionnaire.v1",
+        "status": "completed",
+        "request": {
+          "round": 1,
+          "domain": "二分查找",
+          "user_brief": "只想理解一次中点比较",
+          "known_targets": [
+            "goal"
+          ],
+          "schema_version": "questionnaire-input.v1",
+          "questions_asked": 0,
+          "previous_question_keys": []
+        },
+        "response": {
+          "questions": [
+            {
+              "key": "background",
+              "mode": "single",
+              "prompt": "你了解有序数组吗？",
+              "target": "background",
+              "options": [
+                {
+                  "key": "yes",
+                  "text": "了解"
+                },
+                {
+                  "key": "no",
+                  "text": "不了解"
+                }
+              ],
+              "allow_unknown": true,
+              "allow_free_text": true
+            }
+          ],
+          "rationale": "固定开发替身，尚未进行真实模型生成。",
+          "schema_version": "questionnaire.v1"
+        },
+        "error_code": null,
+        "outcome_unknown": false,
+        "reserved_cost": "0E-8",
+        "currency": "CNY",
+        "latency_seconds": "0.0000",
+        "input_tokens": null,
+        "output_tokens": null,
+        "accounted_cost": "0E-8"
+      }
+    ]
+  },
+  "events": [
+    {
+      "kind": "queued",
+      "run_id": "run_8129aa25c00c408799310ab6acaed6be",
+      "sequence": 1,
+      "snapshot": {
+        "error": null,
+        "run_id": "run_8129aa25c00c408799310ab6acaed6be",
+        "status": "queued",
+        "attempt": 0,
+        "operation": "questionnaire",
+        "result_ref": null,
+        "last_event_seq": 1,
+        "schema_version": "run.v1"
+      },
+      "schema_version": "event.v1"
+    },
+    {
+      "kind": "started",
+      "run_id": "run_8129aa25c00c408799310ab6acaed6be",
+      "sequence": 2,
+      "snapshot": {
+        "error": null,
+        "run_id": "run_8129aa25c00c408799310ab6acaed6be",
+        "status": "running",
+        "attempt": 1,
+        "operation": "questionnaire",
+        "result_ref": null,
+        "last_event_seq": 2,
+        "schema_version": "run.v1"
+      },
+      "schema_version": "event.v1"
+    },
+    {
+      "kind": "completed",
+      "run_id": "run_8129aa25c00c408799310ab6acaed6be",
+      "sequence": 3,
+      "snapshot": {
+        "error": null,
+        "run_id": "run_8129aa25c00c408799310ab6acaed6be",
+        "status": "succeeded",
+        "attempt": 1,
+        "operation": "questionnaire",
+        "result_ref": "intake_7a38f09ca30141d3a1e1cc4dadf80464",
+        "last_event_seq": 3,
+        "schema_version": "run.v1"
+      },
+      "schema_version": "event.v1"
+    }
+  ],
+  "official_intakes": [
+    {
+      "id": "intake_7a38f09ca30141d3a1e1cc4dadf80464",
+      "questionnaire": {
+        "questions": [
+          {
+            "key": "background",
+            "mode": "single",
+            "prompt": "你了解有序数组吗？",
+            "target": "background",
+            "options": [
+              {
+                "key": "yes",
+                "text": "了解"
+              },
+              {
+                "key": "no",
+                "text": "不了解"
+              }
+            ],
+            "allow_unknown": true,
+            "allow_free_text": true
+          }
+        ],
+        "rationale": "固定开发替身，尚未进行真实模型生成。",
+        "schema_version": "questionnaire.v1"
+      },
+      "answers": null,
+      "questions_asked": 1,
+      "round": 1
+    }
+  ]
+}

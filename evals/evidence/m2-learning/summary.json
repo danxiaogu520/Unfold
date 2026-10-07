@@ -1,0 +1,20 @@
+{
+  "version": "m2-evidence.v1",
+  "batches": [
+    "m2-persistent-v1",
+    "m2-persistent-v2",
+    "m2-review-v1",
+    "m2-review-v2",
+    "m2-purpose-replay-v1"
+  ],
+  "real_calls": 23,
+  "replay_calls": 1,
+  "replay_is_new_inference": false,
+  "conservative_cost_cny": "0.32463000",
+  "unknown_usage_calls": 0,
+  "accepted_learning_batch": "m2-persistent-v2",
+  "known_content_issue_correction": "m2-review-v2",
+  "purpose_change_preview": "m2-purpose-replay-v1",
+  "human_review": null,
+  "fact_verification": "targeted agent RFC checks only"
+}

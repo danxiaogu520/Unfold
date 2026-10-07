@@ -1,0 +1,39 @@
+{
+  "version": "m3-load.v1",
+  "timestamp": "2026-10-07T07:46:04.624861+00:00",
+  "workload": {
+    "requests": 64,
+    "clients": 8,
+    "queue_capacity": 32,
+    "global_execution_limit": 2,
+    "worker_processes": 0,
+    "worker_instances": 2,
+    "cancel_before_execution": 8,
+    "fake_delay_seconds": 0.05
+  },
+  "real_model_calls": 0,
+  "final_statuses": {
+    "cancelled": 8,
+    "succeeded": 24
+  },
+  "accepted": 32,
+  "capacity_rejections": 32,
+  "duplicate_aliases_reused": 32,
+  "terminal_request_replays_reused": 32,
+  "generations": 24,
+  "peak_fake_generations": 2,
+  "post_run_latency": {
+    "p50_ms": 22.904,
+    "p95_ms": 30.224
+  },
+  "get_snapshot_latency": {
+    "p50_ms": 1.376,
+    "p95_ms": 2.687
+  },
+  "snapshot_reads": 416,
+  "processing_seconds": 0.92,
+  "total_seconds": 1.456,
+  "assertions_passed": true,
+  "database_version": "18.6",
+  "limits": "64 synthetic spaces, one host; fake delay is not model latency; no throughput claim"
+}

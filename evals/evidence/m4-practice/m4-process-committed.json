@@ -1,0 +1,331 @@
+{
+  "checkpoint": "committed",
+  "sigkill": true,
+  "before_recovery_candidates": 1,
+  "before_recovery_published": 1,
+  "identified_orphans": [],
+  "resource": {
+    "id": "resource_task_d5d7ac08d4214153880d4b997300b4f5",
+    "request_key": "photo",
+    "request": {
+      "key": "photo",
+      "kind": "image",
+      "purpose": "说明流程",
+      "runtime": null,
+      "controls": [],
+      "fallback_text": "按正文理解流程",
+      "specification": "binary search"
+    },
+    "status": "ready",
+    "run_id": "run_0d1c8abc6f0f4cdd88a2cff1412a2216",
+    "error": null,
+    "versions": [
+      {
+        "id": "resource_7264d30d25eb409696e4f70e4a28f23b",
+        "revision": 1,
+        "status": "ready",
+        "mime": "image/png",
+        "size": 106799,
+        "width": 960,
+        "height": 540,
+        "digest": "582637c6c34fbe7d68378c869beeee8fc89c38db906324f8aada44dbab91dbe0",
+        "file_url": "/api/v1/resources/resource_7264d30d25eb409696e4f70e4a28f23b/file",
+        "source": {
+          "title": "File:Binary Search Example.png",
+          "artist": "Kurt Kaiser",
+          "credit": "Own work",
+          "license": "CC0",
+          "provider": "wikimedia_commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Binary_Search_Example.png",
+          "description": "Graphic demonstrating a binary search",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "usage_terms": "Creative Commons Zero, Public Domain Dedication",
+          "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Binary_Search_Example.png/960px-Binary_Search_Example.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "modification": "provider thumbnail; bytes stored unchanged",
+          "search_query": "binary search",
+          "retrieval_mode": "recorded_fixture_replay",
+          "requested_query": "binary search",
+          "teaching_suitability": "development_fixture"
+        }
+      }
+    ],
+    "can_retry": true,
+    "content_origin_id": "content_a67c9cbe1ceb4713922e22f8aa5cf767"
+  },
+  "trace": {
+    "snapshot": {
+      "schema_version": "run.v3",
+      "run_id": "run_0d1c8abc6f0f4cdd88a2cff1412a2216",
+      "operation": "resource",
+      "status": "succeeded",
+      "attempt": 1,
+      "last_event_seq": 3,
+      "result_ref": "resource_7264d30d25eb409696e4f70e4a28f23b",
+      "error": null,
+      "result_kind": "resource"
+    },
+    "input": {
+      "content": {
+        "text": "## 二分查找\n\n固定开发讲解，不是实际模型生成。\n\n当前范围：二分查找\n\n图片失败时正文仍可阅读",
+        "revision_ref": "content_a67c9cbe1ceb4713922e22f8aa5cf767"
+      },
+      "profile": {
+        "profile": {
+          "topic": {
+            "value": "二分查找",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "background": {
+            "value": "尚未确定当前基础",
+            "source": "unknown",
+            "evidence_keys": []
+          },
+          "constraints": [],
+          "excluded_scope": [],
+          "included_scope": [
+            {
+              "value": "二分查找",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "schema_version": "profile.v1",
+          "primary_purpose": {
+            "value": "只想理解一次中点比较",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "target_abilities": [
+            {
+              "value": "先理解核心概念，再结合用途练习",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "secondary_purposes": []
+        },
+        "revision": 1
+      },
+      "request": {
+        "key": "photo",
+        "kind": "image",
+        "purpose": "说明流程",
+        "runtime": null,
+        "controls": [],
+        "fallback_text": "按正文理解流程",
+        "specification": "binary search"
+      },
+      "schema_version": "resource-input.v1",
+      "supported_kinds": [
+        "image"
+      ],
+      "offered_candidate_refs": []
+    },
+    "request": {
+      "schema_version": "api.v1",
+      "space_id": "space_a2e13e96339e4bb18b6c45095f80ca01",
+      "operation": "resource",
+      "profile_revision": 1,
+      "base_revision": 2,
+      "input": {
+        "content": {
+          "text": "## 二分查找\n\n固定开发讲解，不是实际模型生成。\n\n当前范围：二分查找\n\n图片失败时正文仍可阅读",
+          "revision_ref": "content_a67c9cbe1ceb4713922e22f8aa5cf767"
+        },
+        "profile": {
+          "profile": {
+            "topic": {
+              "value": "二分查找",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            "background": {
+              "value": "尚未确定当前基础",
+              "source": "unknown",
+              "evidence_keys": []
+            },
+            "constraints": [],
+            "excluded_scope": [],
+            "included_scope": [
+              {
+                "value": "二分查找",
+                "source": "assumption",
+                "evidence_keys": []
+              }
+            ],
+            "schema_version": "profile.v1",
+            "primary_purpose": {
+              "value": "只想理解一次中点比较",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            "target_abilities": [
+              {
+                "value": "先理解核心概念，再结合用途练习",
+                "source": "assumption",
+                "evidence_keys": []
+              }
+            ],
+            "secondary_purposes": []
+          },
+          "revision": 1
+        },
+        "request": {
+          "key": "photo",
+          "kind": "image",
+          "purpose": "说明流程",
+          "runtime": null,
+          "controls": [],
+          "fallback_text": "按正文理解流程",
+          "specification": "binary search"
+        },
+        "schema_version": "resource-input.v1",
+        "supported_kinds": [
+          "image"
+        ],
+        "offered_candidate_refs": []
+      }
+    },
+    "dependencies": {
+      "node_revisions": {
+        "node_d091fd6bf6d5460da2eac13c4f2c701c": 2
+      },
+      "context_strategy": "resource-content.v1",
+      "outline_revision": 1,
+      "profile_revision": 1,
+      "resource_task_id": "resource_task_d5d7ac08d4214153880d4b997300b4f5",
+      "selected_context": {},
+      "resource_dispatch_revision": 1
+    },
+    "proposal": {
+      "strategy": "retrieve",
+      "limitation": null,
+      "request_key": "photo",
+      "candidate_ref": null,
+      "specification": "已获取具备来源记录的图片；教学适配尚待核对。",
+      "schema_version": "resource.v1"
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": "succeeded",
+        "outcome_unknown": false
+      }
+    ],
+    "tools": [
+      {
+        "id": "tool_04c85b585bdd4065beaa19dd4a69e024",
+        "attempt": 1,
+        "step": 1,
+        "tool": "commons_raster_pipeline.v1",
+        "status": "completed",
+        "input": {
+          "content": {
+            "text": "## 二分查找\n\n固定开发讲解，不是实际模型生成。\n\n当前范围：二分查找\n\n图片失败时正文仍可阅读",
+            "revision_ref": "content_a67c9cbe1ceb4713922e22f8aa5cf767"
+          },
+          "profile": {
+            "profile": {
+              "topic": {
+                "value": "二分查找",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "background": {
+                "value": "尚未确定当前基础",
+                "source": "unknown",
+                "evidence_keys": []
+              },
+              "constraints": [],
+              "excluded_scope": [],
+              "included_scope": [
+                {
+                  "value": "二分查找",
+                  "source": "assumption",
+                  "evidence_keys": []
+                }
+              ],
+              "schema_version": "profile.v1",
+              "primary_purpose": {
+                "value": "只想理解一次中点比较",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "target_abilities": [
+                {
+                  "value": "先理解核心概念，再结合用途练习",
+                  "source": "assumption",
+                  "evidence_keys": []
+                }
+              ],
+              "secondary_purposes": []
+            },
+            "revision": 1
+          },
+          "request": {
+            "key": "photo",
+            "kind": "image",
+            "purpose": "说明流程",
+            "runtime": null,
+            "controls": [],
+            "fallback_text": "按正文理解流程",
+            "specification": "binary search"
+          },
+          "schema_version": "resource-input.v1",
+          "supported_kinds": [
+            "image"
+          ],
+          "offered_candidate_refs": []
+        },
+        "output": {
+          "file": {
+            "mime": "image/png",
+            "size": 106799,
+            "width": 960,
+            "digest": "582637c6c34fbe7d68378c869beeee8fc89c38db906324f8aada44dbab91dbe0",
+            "height": 540,
+            "relative_path": "files/582637c6c34fbe7d68378c869beeee8fc89c38db906324f8aada44dbab91dbe0.png"
+          },
+          "source": {
+            "title": "File:Binary Search Example.png",
+            "artist": "Kurt Kaiser",
+            "credit": "Own work",
+            "license": "CC0",
+            "provider": "wikimedia_commons",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Binary_Search_Example.png",
+            "description": "Graphic demonstrating a binary search",
+            "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+            "usage_terms": "Creative Commons Zero, Public Domain Dedication",
+            "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Binary_Search_Example.png/960px-Binary_Search_Example.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "modification": "provider thumbnail; bytes stored unchanged",
+            "search_query": "binary search",
+            "retrieval_mode": "recorded_fixture_replay",
+            "requested_query": "binary search",
+            "teaching_suitability": "development_fixture"
+          },
+          "source_mode": "recorded_fixture_replay",
+          "candidate_id": "candidate_51600cbd09a4487b89419c22bedafb43"
+        },
+        "outcome_unknown": false,
+        "latency_seconds": "0.0098"
+      }
+    ],
+    "calls": []
+  },
+  "real_model_calls": 0,
+  "live_image_retrieval": false,
+  "assertions_passed": true
+}

@@ -1,0 +1,111 @@
+{
+  "$defs": {
+    "Fact": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_keys": {
+          "items": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "type": "string"
+          },
+          "title": "Evidence Keys",
+          "type": "array"
+        },
+        "source": {
+          "enum": [
+            "user",
+            "assumption",
+            "unknown"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "source",
+        "evidence_keys"
+      ],
+      "title": "Fact",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "background": {
+      "$ref": "#/$defs/Fact"
+    },
+    "constraints": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "maxItems": 8,
+      "title": "Constraints",
+      "type": "array"
+    },
+    "excluded_scope": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "maxItems": 12,
+      "title": "Excluded Scope",
+      "type": "array"
+    },
+    "included_scope": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "maxItems": 12,
+      "minItems": 1,
+      "title": "Included Scope",
+      "type": "array"
+    },
+    "primary_purpose": {
+      "$ref": "#/$defs/Fact"
+    },
+    "schema_version": {
+      "const": "profile.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "secondary_purposes": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "title": "Secondary Purposes",
+      "type": "array"
+    },
+    "target_abilities": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "maxItems": 8,
+      "minItems": 1,
+      "title": "Target Abilities",
+      "type": "array"
+    },
+    "topic": {
+      "$ref": "#/$defs/Fact"
+    }
+  },
+  "required": [
+    "schema_version",
+    "topic",
+    "primary_purpose",
+    "secondary_purposes",
+    "background",
+    "target_abilities",
+    "included_scope",
+    "excluded_scope",
+    "constraints"
+  ],
+  "title": "LearningProfileProposal",
+  "type": "object"
+}

@@ -1,0 +1,44 @@
+{
+  "contract_version": "v1",
+  "development_evidence": [
+    "m0-baseline-v3",
+    "m0-cross-domain-v3"
+  ],
+  "frozen_at": "2026-10-07T02:52:43.311385+08:00",
+  "future_semantic_review": {
+    "calibration": "provisional threshold informed by development agent review; independent human calibration pending",
+    "confirmed_critical_error_allowed": false,
+    "dimensions": [
+      "purpose_fit",
+      "incremental_depth",
+      "structure_scope",
+      "stopping",
+      "content_exercise_alignment"
+    ],
+    "fact_verification": "separate, unknown permitted and disclosed",
+    "independent_human_scores": null,
+    "minimum_each_applicable_dimension": 1,
+    "minimum_mean": 1.6,
+    "purpose_fit_and_stopping_required": 2,
+    "scale": [
+      0,
+      1,
+      2
+    ]
+  },
+  "holdout_evaluated": false,
+  "holdout_rule": "no prompt tuning or threshold changes based on holdout; new problems go into a new dataset version",
+  "learning_dataset_sha256": "073cf86f7155b024195c6fb375d8760af0c3e205c77a7da579f03b8ff4f9bbf7",
+  "m0_acceptance": {
+    "core_learning_chains": "6/6; three broad and three narrow repeats",
+    "cross_domain_smoke": "3/3 after at most one repair; this is not a generalization estimate",
+    "deterministic_checks": "all pass",
+    "facts": "unverified facts remain unverified; no accuracy claims",
+    "failure_evidence": "preserve all failed calls, task failures, truncation and schema mismatch",
+    "fee_ceiling_cny": "5",
+    "stage_probes": "8/8 after at most one repair"
+  },
+  "prompt_version": "prompt.v3",
+  "resource_dataset_sha256": "6cf10320e985be6e0e5ce7f8dfbf8c39c0a13f8f8f8e23481dc06dd75902dab7",
+  "version": "evaluation.v1"
+}

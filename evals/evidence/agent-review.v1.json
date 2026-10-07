@@ -1,0 +1,41 @@
+{
+  "review_kind": "agent_review",
+  "reviewer": "Codex",
+  "independent_human_review": false,
+  "facts_verified": false,
+  "reviewed_batches": ["m0-baseline-v3", "m0-cross-domain-v3"],
+  "observations": [
+    {
+      "scenario": "backend-1",
+      "basis": "校招目标对应 HTTP、数据库、并发原理和故障分析；实际存在前置→网络基础→分层、端点与传输区别的第三层。每层增添具体范围，未以同义标题充层数。",
+      "limitations": "不同重复试验的大纲数量与分组有差异；端口与进程、HTTP 传输等简化陈述需后续讲解与事实检查。"
+    },
+    {
+      "scenario": "midpoint-1",
+      "basis": "三次最终试验均在根停止，说明一次比较由讲解承担；没有继续创建索引、取值和比较的重复子树。",
+      "limitations": "只验证这一窄情境，不能推出所有学科的停止判断正确。"
+    },
+    {
+      "scenario": "backend-2",
+      "basis": "维护订单服务的目标对应写入失败模型、幂等、事务一致性与超时处理，和校招用途的原理综述有实质结构差异。",
+      "limitations": "不同用途各自试验次数不等，未形成成对质量或统计效果比较。"
+    },
+    {
+      "scenario": "triads-1",
+      "basis": "按会识谱、不了解和声的基础引入音程与音阶，再组织三和弦构建与听辨；在固定展开预算内实际探索到两层。",
+      "limitations": "问卷第一次给出8个选项，超过本地6个上限，修复后通过；听觉资源并未制作，不能声称已深入三层或验证听辨效果。"
+    },
+    {
+      "scenario": "cell-1",
+      "basis": "按细胞结构、能量转换、合成运输与协作组织，未声称符合官方考纲；子项有职责与叶子理由。",
+      "limitations": "各分支偏早停止，需要 M2 对更深入目标与高中实际课程要求继续核验；当前只属于课堂概览冒烟，未进行独立生物事实审查。"
+    },
+    {
+      "scenario": "probe-exercises",
+      "basis": "考查点是中点值等于目标时返回命中，答案与提供的 content-1 一致，无需未展开的算法复杂度知识。",
+      "limitations": "只有一份真实题目探针，不是题目准确率评测；独立人工题目评分仍未知。"
+    }
+  ],
+  "scores": null,
+  "conclusion": "M0 可进入工程初始化；事实正确性、广泛语义质量与学习效果仍待后续评测，不以这次审阅代替人工验收。"
+}

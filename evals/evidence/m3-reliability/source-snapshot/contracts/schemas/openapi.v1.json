@@ -1,0 +1,2410 @@
+{
+  "components": {
+    "schemas": {
+      "Answer": {
+        "additionalProperties": false,
+        "properties": {
+          "free_text": {
+            "anyOf": [
+              {
+                "maxLength": 6000,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Free Text"
+          },
+          "question_key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Question Key",
+            "type": "string"
+          },
+          "selected_keys": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "title": "Selected Keys",
+            "type": "array"
+          },
+          "unknown": {
+            "title": "Unknown",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "question_key",
+          "selected_keys",
+          "free_text",
+          "unknown"
+        ],
+        "title": "Answer",
+        "type": "object"
+      },
+      "ApiError": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "enum": [
+              "configuration",
+              "invalid_input",
+              "invalid_json",
+              "schema_validation",
+              "domain_validation",
+              "refusal",
+              "truncated",
+              "content_filter",
+              "schema_unsupported",
+              "authentication",
+              "rate_limit",
+              "provider_error",
+              "timeout",
+              "outcome_unknown",
+              "capability_limit",
+              "budget_exceeded",
+              "cancelled",
+              "version_conflict"
+            ],
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Message",
+            "type": "string"
+          },
+          "outcome_unknown": {
+            "title": "Outcome Unknown",
+            "type": "boolean"
+          },
+          "retryable": {
+            "title": "Retryable",
+            "type": "boolean"
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Run Id"
+          },
+          "schema_version": {
+            "const": "error.v1",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "code",
+          "message",
+          "retryable",
+          "outcome_unknown",
+          "run_id"
+        ],
+        "title": "ApiError",
+        "type": "object"
+      },
+      "ContentSnapshot": {
+        "additionalProperties": false,
+        "properties": {
+          "revision_ref": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Revision Ref",
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "revision_ref",
+          "text"
+        ],
+        "title": "ContentSnapshot",
+        "type": "object"
+      },
+      "CreateRun": {
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "properties": {
+              "input": {
+                "$ref": "#/components/schemas/QuestionnaireInput"
+              },
+              "operation": {
+                "const": "questionnaire"
+              }
+            }
+          },
+          {
+            "properties": {
+              "input": {
+                "$ref": "#/components/schemas/ProfileInput"
+              },
+              "operation": {
+                "const": "profile"
+              }
+            }
+          },
+          {
+            "properties": {
+              "input": {
+                "$ref": "#/components/schemas/OutlineInput"
+              },
+              "operation": {
+                "const": "outline"
+              }
+            }
+          },
+          {
+            "properties": {
+              "input": {
+                "$ref": "#/components/schemas/ExpansionInput"
+              },
+              "operation": {
+                "const": "expansion"
+              }
+            }
+          },
+          {
+            "properties": {
+              "input": {
+                "$ref": "#/components/schemas/ReassessmentInput"
+              },
+              "operation": {
+                "const": "reassessment"
+              }
+            }
+          },
+          {
+            "properties": {
+              "input": {
+                "$ref": "#/components/schemas/ExplanationInput"
+              },
+              "operation": {
+                "const": "explanation"
+              }
+            }
+          },
+          {
+            "properties": {
+              "input": {
+                "$ref": "#/components/schemas/ExerciseInput"
+              },
+              "operation": {
+                "const": "exercises"
+              }
+            }
+          },
+          {
+            "properties": {
+              "input": {
+                "$ref": "#/components/schemas/ResourceInput"
+              },
+              "operation": {
+                "const": "resource"
+              }
+            }
+          },
+          {
+            "properties": {
+              "input": {
+                "$ref": "#/components/schemas/ProfileHistoryInput"
+              },
+              "operation": {
+                "const": "profile"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "base_revision": {
+            "anyOf": [
+              {
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Base Revision"
+          },
+          "input": {
+            "additionalProperties": true,
+            "title": "Input",
+            "type": "object"
+          },
+          "operation": {
+            "enum": [
+              "questionnaire",
+              "profile",
+              "outline",
+              "expansion",
+              "reassessment",
+              "explanation",
+              "exercises",
+              "resource"
+            ],
+            "title": "Operation",
+            "type": "string"
+          },
+          "profile_revision": {
+            "anyOf": [
+              {
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Profile Revision"
+          },
+          "schema_version": {
+            "const": "api.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "space_id": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Space Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "space_id",
+          "operation",
+          "profile_revision",
+          "base_revision",
+          "input"
+        ],
+        "title": "CreateRun",
+        "type": "object"
+      },
+      "Decision": {
+        "additionalProperties": false,
+        "properties": {
+          "reason": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "expandable",
+              "leaf"
+            ],
+            "title": "State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "state",
+          "reason"
+        ],
+        "title": "Decision",
+        "type": "object"
+      },
+      "DiagramBlock": {
+        "additionalProperties": false,
+        "properties": {
+          "caption": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Caption",
+            "type": "string"
+          },
+          "fallback_text": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Fallback Text",
+            "type": "string"
+          },
+          "language": {
+            "const": "mermaid",
+            "title": "Language",
+            "type": "string"
+          },
+          "source": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Source",
+            "type": "string"
+          },
+          "type": {
+            "const": "diagram",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "language",
+          "source",
+          "caption",
+          "fallback_text"
+        ],
+        "title": "DiagramBlock",
+        "type": "object"
+      },
+      "Exercise": {
+        "additionalProperties": false,
+        "properties": {
+          "content_refs": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "minItems": 1,
+            "title": "Content Refs",
+            "type": "array"
+          },
+          "correct_keys": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "minItems": 1,
+            "title": "Correct Keys",
+            "type": "array"
+          },
+          "explanation": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Explanation",
+            "type": "string"
+          },
+          "key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Key",
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "single",
+              "multiple"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "options": {
+            "items": {
+              "$ref": "#/components/schemas/Option"
+            },
+            "maxItems": 6,
+            "minItems": 2,
+            "title": "Options",
+            "type": "array"
+          },
+          "stem": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Stem",
+            "type": "string"
+          },
+          "testing_point": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Testing Point",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "mode",
+          "stem",
+          "testing_point",
+          "content_refs",
+          "options",
+          "correct_keys",
+          "explanation"
+        ],
+        "title": "Exercise",
+        "type": "object"
+      },
+      "ExerciseBlock": {
+        "additionalProperties": false,
+        "properties": {
+          "exercise_revision_ref": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Exercise Revision Ref",
+            "type": "string"
+          },
+          "fallback_text": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Fallback Text",
+            "type": "string"
+          },
+          "type": {
+            "const": "exercise",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "exercise_revision_ref",
+          "fallback_text"
+        ],
+        "title": "ExerciseBlock",
+        "type": "object"
+      },
+      "ExerciseInput": {
+        "additionalProperties": false,
+        "properties": {
+          "allowed_modes": {
+            "items": {
+              "enum": [
+                "single",
+                "multiple"
+              ],
+              "type": "string"
+            },
+            "minItems": 1,
+            "title": "Allowed Modes",
+            "type": "array"
+          },
+          "count": {
+            "maximum": 5,
+            "minimum": 1,
+            "title": "Count",
+            "type": "integer"
+          },
+          "existing_children": {
+            "items": {
+              "$ref": "#/components/schemas/NodeSnapshot"
+            },
+            "title": "Existing Children",
+            "type": "array"
+          },
+          "path": {
+            "items": {
+              "$ref": "#/components/schemas/NodeSnapshot"
+            },
+            "minItems": 1,
+            "title": "Path",
+            "type": "array"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProfileSnapshot"
+          },
+          "provided_content": {
+            "items": {
+              "$ref": "#/components/schemas/ContentSnapshot"
+            },
+            "minItems": 1,
+            "title": "Provided Content",
+            "type": "array"
+          },
+          "reusable_concept_refs": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "title": "Reusable Concept Refs",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "exercises-input.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "sibling_scopes": {
+            "items": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "type": "string"
+            },
+            "title": "Sibling Scopes",
+            "type": "array"
+          },
+          "target": {
+            "$ref": "#/components/schemas/NodeSnapshot"
+          }
+        },
+        "required": [
+          "profile",
+          "target",
+          "path",
+          "existing_children",
+          "sibling_scopes",
+          "reusable_concept_refs",
+          "schema_version",
+          "provided_content",
+          "allowed_modes",
+          "count"
+        ],
+        "title": "ExerciseInput",
+        "type": "object"
+      },
+      "ExerciseSetProposal": {
+        "additionalProperties": false,
+        "properties": {
+          "exercises": {
+            "items": {
+              "$ref": "#/components/schemas/Exercise"
+            },
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Exercises",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "exercises.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "target_key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Target Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "target_key",
+          "exercises"
+        ],
+        "title": "ExerciseSetProposal",
+        "type": "object"
+      },
+      "ExerciseView": {
+        "additionalProperties": false,
+        "description": "Public question projection, deliberately excluding answer and explanation.",
+        "properties": {
+          "content_refs": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "title": "Content Refs",
+            "type": "array"
+          },
+          "exercise_revision_ref": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Exercise Revision Ref",
+            "type": "string"
+          },
+          "key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Key",
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "single",
+              "multiple"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "options": {
+            "items": {
+              "$ref": "#/components/schemas/Option"
+            },
+            "title": "Options",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "exercise-view.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "stem": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Stem",
+            "type": "string"
+          },
+          "testing_point": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Testing Point",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "exercise_revision_ref",
+          "key",
+          "mode",
+          "stem",
+          "testing_point",
+          "content_refs",
+          "options"
+        ],
+        "title": "ExerciseView",
+        "type": "object"
+      },
+      "ExpansionInput": {
+        "additionalProperties": false,
+        "properties": {
+          "existing_children": {
+            "items": {
+              "$ref": "#/components/schemas/NodeSnapshot"
+            },
+            "title": "Existing Children",
+            "type": "array"
+          },
+          "operation": {
+            "enum": [
+              "expand",
+              "regenerate_expansion"
+            ],
+            "title": "Operation",
+            "type": "string"
+          },
+          "path": {
+            "items": {
+              "$ref": "#/components/schemas/NodeSnapshot"
+            },
+            "minItems": 1,
+            "title": "Path",
+            "type": "array"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProfileSnapshot"
+          },
+          "reusable_concept_refs": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "title": "Reusable Concept Refs",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "expansion-input.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "sibling_scopes": {
+            "items": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "type": "string"
+            },
+            "title": "Sibling Scopes",
+            "type": "array"
+          },
+          "target": {
+            "$ref": "#/components/schemas/NodeSnapshot"
+          }
+        },
+        "required": [
+          "profile",
+          "target",
+          "path",
+          "existing_children",
+          "sibling_scopes",
+          "reusable_concept_refs",
+          "schema_version",
+          "operation"
+        ],
+        "title": "ExpansionInput",
+        "type": "object"
+      },
+      "ExpansionProposal": {
+        "additionalProperties": false,
+        "properties": {
+          "children": {
+            "items": {
+              "$ref": "#/components/schemas/NodeCandidate"
+            },
+            "maxItems": 8,
+            "title": "Children",
+            "type": "array"
+          },
+          "decision": {
+            "$ref": "#/components/schemas/Decision"
+          },
+          "division_basis": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Division Basis",
+            "type": "string"
+          },
+          "relations": {
+            "items": {
+              "$ref": "#/components/schemas/Relation"
+            },
+            "maxItems": 24,
+            "title": "Relations",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "expansion.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "target_key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Target Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "target_key",
+          "decision",
+          "division_basis",
+          "children",
+          "relations"
+        ],
+        "title": "ExpansionProposal",
+        "type": "object"
+      },
+      "ExplanationInput": {
+        "additionalProperties": false,
+        "properties": {
+          "allowed_resource_kinds": {
+            "items": {
+              "enum": [
+                "image",
+                "diagram",
+                "playground",
+                "interactive"
+              ],
+              "type": "string"
+            },
+            "title": "Allowed Resource Kinds",
+            "type": "array"
+          },
+          "available_exercise_refs": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "title": "Available Exercise Refs",
+            "type": "array"
+          },
+          "existing_children": {
+            "items": {
+              "$ref": "#/components/schemas/NodeSnapshot"
+            },
+            "title": "Existing Children",
+            "type": "array"
+          },
+          "instruction": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Instruction",
+            "type": "string"
+          },
+          "path": {
+            "items": {
+              "$ref": "#/components/schemas/NodeSnapshot"
+            },
+            "minItems": 1,
+            "title": "Path",
+            "type": "array"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProfileSnapshot"
+          },
+          "reusable_concept_refs": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "title": "Reusable Concept Refs",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "explanation-input.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "sibling_scopes": {
+            "items": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "type": "string"
+            },
+            "title": "Sibling Scopes",
+            "type": "array"
+          },
+          "target": {
+            "$ref": "#/components/schemas/NodeSnapshot"
+          }
+        },
+        "required": [
+          "profile",
+          "target",
+          "path",
+          "existing_children",
+          "sibling_scopes",
+          "reusable_concept_refs",
+          "schema_version",
+          "instruction",
+          "allowed_resource_kinds",
+          "available_exercise_refs"
+        ],
+        "title": "ExplanationInput",
+        "type": "object"
+      },
+      "ExplanationProposal": {
+        "additionalProperties": false,
+        "properties": {
+          "blocks": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/MarkdownBlock"
+                },
+                {
+                  "$ref": "#/components/schemas/DiagramBlock"
+                },
+                {
+                  "$ref": "#/components/schemas/ResourceBlock"
+                },
+                {
+                  "$ref": "#/components/schemas/ExerciseBlock"
+                }
+              ]
+            },
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Blocks",
+            "type": "array"
+          },
+          "overview": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Overview",
+            "type": "string"
+          },
+          "resource_requests": {
+            "items": {
+              "$ref": "#/components/schemas/ResourceRequest"
+            },
+            "maxItems": 6,
+            "title": "Resource Requests",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "explanation.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "target_key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Target Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "target_key",
+          "overview",
+          "blocks",
+          "resource_requests"
+        ],
+        "title": "ExplanationProposal",
+        "type": "object"
+      },
+      "Fact": {
+        "additionalProperties": false,
+        "properties": {
+          "evidence_keys": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "title": "Evidence Keys",
+            "type": "array"
+          },
+          "source": {
+            "enum": [
+              "user",
+              "assumption",
+              "unknown"
+            ],
+            "title": "Source",
+            "type": "string"
+          },
+          "value": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Value",
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "source",
+          "evidence_keys"
+        ],
+        "title": "Fact",
+        "type": "object"
+      },
+      "IntakeRound": {
+        "additionalProperties": false,
+        "properties": {
+          "answers": {
+            "items": {
+              "$ref": "#/components/schemas/Answer"
+            },
+            "title": "Answers",
+            "type": "array"
+          },
+          "questionnaire": {
+            "$ref": "#/components/schemas/QuestionnaireProposal"
+          }
+        },
+        "required": [
+          "questionnaire",
+          "answers"
+        ],
+        "title": "IntakeRound",
+        "type": "object"
+      },
+      "LearningProfileProposal": {
+        "additionalProperties": false,
+        "properties": {
+          "background": {
+            "$ref": "#/components/schemas/Fact"
+          },
+          "constraints": {
+            "items": {
+              "$ref": "#/components/schemas/Fact"
+            },
+            "maxItems": 8,
+            "title": "Constraints",
+            "type": "array"
+          },
+          "excluded_scope": {
+            "items": {
+              "$ref": "#/components/schemas/Fact"
+            },
+            "maxItems": 12,
+            "title": "Excluded Scope",
+            "type": "array"
+          },
+          "included_scope": {
+            "items": {
+              "$ref": "#/components/schemas/Fact"
+            },
+            "maxItems": 12,
+            "minItems": 1,
+            "title": "Included Scope",
+            "type": "array"
+          },
+          "primary_purpose": {
+            "$ref": "#/components/schemas/Fact"
+          },
+          "schema_version": {
+            "const": "profile.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "secondary_purposes": {
+            "items": {
+              "$ref": "#/components/schemas/Fact"
+            },
+            "title": "Secondary Purposes",
+            "type": "array"
+          },
+          "target_abilities": {
+            "items": {
+              "$ref": "#/components/schemas/Fact"
+            },
+            "maxItems": 8,
+            "minItems": 1,
+            "title": "Target Abilities",
+            "type": "array"
+          },
+          "topic": {
+            "$ref": "#/components/schemas/Fact"
+          }
+        },
+        "required": [
+          "schema_version",
+          "topic",
+          "primary_purpose",
+          "secondary_purposes",
+          "background",
+          "target_abilities",
+          "included_scope",
+          "excluded_scope",
+          "constraints"
+        ],
+        "title": "LearningProfileProposal",
+        "type": "object"
+      },
+      "MarkdownBlock": {
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          },
+          "type": {
+            "const": "markdown",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "text"
+        ],
+        "title": "MarkdownBlock",
+        "type": "object"
+      },
+      "NodeCandidate": {
+        "additionalProperties": false,
+        "properties": {
+          "concept_ref": {
+            "anyOf": [
+              {
+                "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Concept Ref"
+          },
+          "decision": {
+            "$ref": "#/components/schemas/Decision"
+          },
+          "key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Key",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "concept",
+              "group"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "overview": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Overview",
+            "type": "string"
+          },
+          "scope": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Scope",
+            "type": "string"
+          },
+          "title": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "title",
+          "kind",
+          "concept_ref",
+          "scope",
+          "overview",
+          "decision"
+        ],
+        "title": "NodeCandidate",
+        "type": "object"
+      },
+      "NodeSnapshot": {
+        "additionalProperties": false,
+        "properties": {
+          "content_revision": {
+            "minimum": 1,
+            "title": "Content Revision",
+            "type": "integer"
+          },
+          "decision": {
+            "$ref": "#/components/schemas/Decision"
+          },
+          "key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Key",
+            "type": "string"
+          },
+          "overview": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Overview",
+            "type": "string"
+          },
+          "profile_revision": {
+            "minimum": 1,
+            "title": "Profile Revision",
+            "type": "integer"
+          },
+          "scope": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Scope",
+            "type": "string"
+          },
+          "title": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "title",
+          "scope",
+          "overview",
+          "decision",
+          "profile_revision",
+          "content_revision"
+        ],
+        "title": "NodeSnapshot",
+        "type": "object"
+      },
+      "Option": {
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Key",
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "text"
+        ],
+        "title": "Option",
+        "type": "object"
+      },
+      "OutlineInput": {
+        "additionalProperties": false,
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/ProfileSnapshot"
+          },
+          "reusable_concept_refs": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "title": "Reusable Concept Refs",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "outline-input.v1",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "profile",
+          "reusable_concept_refs"
+        ],
+        "title": "OutlineInput",
+        "type": "object"
+      },
+      "OutlineProposal": {
+        "additionalProperties": false,
+        "properties": {
+          "children": {
+            "items": {
+              "$ref": "#/components/schemas/NodeCandidate"
+            },
+            "maxItems": 8,
+            "title": "Children",
+            "type": "array"
+          },
+          "division_basis": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Division Basis",
+            "type": "string"
+          },
+          "relations": {
+            "items": {
+              "$ref": "#/components/schemas/Relation"
+            },
+            "maxItems": 24,
+            "title": "Relations",
+            "type": "array"
+          },
+          "root": {
+            "$ref": "#/components/schemas/NodeCandidate"
+          },
+          "schema_version": {
+            "const": "outline.v1",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "root",
+          "division_basis",
+          "children",
+          "relations"
+        ],
+        "title": "OutlineProposal",
+        "type": "object"
+      },
+      "ProfileHistoryInput": {
+        "additionalProperties": false,
+        "description": "v2 retains distinct rounds; v1 continues to mean one questionnaire.",
+        "properties": {
+          "domain": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Domain",
+            "type": "string"
+          },
+          "rounds": {
+            "items": {
+              "$ref": "#/components/schemas/IntakeRound"
+            },
+            "maxItems": 2,
+            "minItems": 1,
+            "title": "Rounds",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "profile-input.v2",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "user_brief": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "User Brief",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "domain",
+          "user_brief",
+          "rounds"
+        ],
+        "title": "ProfileHistoryInput",
+        "type": "object"
+      },
+      "ProfileInput": {
+        "additionalProperties": false,
+        "properties": {
+          "answers": {
+            "items": {
+              "$ref": "#/components/schemas/Answer"
+            },
+            "title": "Answers",
+            "type": "array"
+          },
+          "domain": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Domain",
+            "type": "string"
+          },
+          "questionnaire": {
+            "$ref": "#/components/schemas/QuestionnaireProposal"
+          },
+          "schema_version": {
+            "const": "profile-input.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "user_brief": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "User Brief",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "domain",
+          "user_brief",
+          "questionnaire",
+          "answers"
+        ],
+        "title": "ProfileInput",
+        "type": "object"
+      },
+      "ProfileSnapshot": {
+        "additionalProperties": false,
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/LearningProfileProposal"
+          },
+          "revision": {
+            "minimum": 1,
+            "title": "Revision",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "revision",
+          "profile"
+        ],
+        "title": "ProfileSnapshot",
+        "type": "object"
+      },
+      "Question": {
+        "additionalProperties": false,
+        "properties": {
+          "allow_free_text": {
+            "const": true,
+            "title": "Allow Free Text",
+            "type": "boolean"
+          },
+          "allow_unknown": {
+            "const": true,
+            "title": "Allow Unknown",
+            "type": "boolean"
+          },
+          "key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Key",
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "single",
+              "multiple"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "options": {
+            "items": {
+              "$ref": "#/components/schemas/Option"
+            },
+            "maxItems": 6,
+            "minItems": 2,
+            "title": "Options",
+            "type": "array"
+          },
+          "prompt": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Prompt",
+            "type": "string"
+          },
+          "target": {
+            "enum": [
+              "purpose",
+              "background",
+              "goal",
+              "scope",
+              "constraints"
+            ],
+            "title": "Target",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "target",
+          "prompt",
+          "mode",
+          "options",
+          "allow_free_text",
+          "allow_unknown"
+        ],
+        "title": "Question",
+        "type": "object"
+      },
+      "QuestionnaireInput": {
+        "additionalProperties": false,
+        "properties": {
+          "domain": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Domain",
+            "type": "string"
+          },
+          "known_targets": {
+            "items": {
+              "enum": [
+                "purpose",
+                "background",
+                "goal",
+                "scope",
+                "constraints"
+              ],
+              "type": "string"
+            },
+            "title": "Known Targets",
+            "type": "array"
+          },
+          "previous_question_keys": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "title": "Previous Question Keys",
+            "type": "array"
+          },
+          "questions_asked": {
+            "maximum": 5,
+            "minimum": 0,
+            "title": "Questions Asked",
+            "type": "integer"
+          },
+          "round": {
+            "maximum": 2,
+            "minimum": 1,
+            "title": "Round",
+            "type": "integer"
+          },
+          "schema_version": {
+            "const": "questionnaire-input.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "user_brief": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "User Brief",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "domain",
+          "user_brief",
+          "known_targets",
+          "previous_question_keys",
+          "questions_asked",
+          "round"
+        ],
+        "title": "QuestionnaireInput",
+        "type": "object"
+      },
+      "QuestionnaireProposal": {
+        "additionalProperties": false,
+        "properties": {
+          "questions": {
+            "items": {
+              "$ref": "#/components/schemas/Question"
+            },
+            "maxItems": 5,
+            "title": "Questions",
+            "type": "array"
+          },
+          "rationale": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Rationale",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "questionnaire.v1",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "questions",
+          "rationale"
+        ],
+        "title": "QuestionnaireProposal",
+        "type": "object"
+      },
+      "ReassessmentInput": {
+        "additionalProperties": false,
+        "properties": {
+          "existing_children": {
+            "items": {
+              "$ref": "#/components/schemas/NodeSnapshot"
+            },
+            "title": "Existing Children",
+            "type": "array"
+          },
+          "feedback": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Feedback",
+            "type": "string"
+          },
+          "path": {
+            "items": {
+              "$ref": "#/components/schemas/NodeSnapshot"
+            },
+            "minItems": 1,
+            "title": "Path",
+            "type": "array"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProfileSnapshot"
+          },
+          "reusable_concept_refs": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "title": "Reusable Concept Refs",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "reassessment-input.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "sibling_scopes": {
+            "items": {
+              "maxLength": 6000,
+              "minLength": 1,
+              "type": "string"
+            },
+            "title": "Sibling Scopes",
+            "type": "array"
+          },
+          "target": {
+            "$ref": "#/components/schemas/NodeSnapshot"
+          }
+        },
+        "required": [
+          "profile",
+          "target",
+          "path",
+          "existing_children",
+          "sibling_scopes",
+          "reusable_concept_refs",
+          "schema_version",
+          "feedback"
+        ],
+        "title": "ReassessmentInput",
+        "type": "object"
+      },
+      "ReassessmentProposal": {
+        "additionalProperties": false,
+        "properties": {
+          "decision": {
+            "$ref": "#/components/schemas/Decision"
+          },
+          "restructuring_note": {
+            "anyOf": [
+              {
+                "maxLength": 6000,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Restructuring Note"
+          },
+          "schema_version": {
+            "const": "reassessment.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "target_key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Target Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "target_key",
+          "decision",
+          "restructuring_note"
+        ],
+        "title": "ReassessmentProposal",
+        "type": "object"
+      },
+      "Relation": {
+        "additionalProperties": false,
+        "properties": {
+          "explanation": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Explanation",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "related_to",
+              "prerequisite_of",
+              "contrasted_with"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "source_key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Source Key",
+            "type": "string"
+          },
+          "target_key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Target Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_key",
+          "target_key",
+          "kind",
+          "explanation"
+        ],
+        "title": "Relation",
+        "type": "object"
+      },
+      "ResourceBlock": {
+        "additionalProperties": false,
+        "properties": {
+          "caption": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Caption",
+            "type": "string"
+          },
+          "fallback_text": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Fallback Text",
+            "type": "string"
+          },
+          "resource_key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Resource Key",
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "image",
+              "playground",
+              "interactive"
+            ],
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "resource_key",
+          "caption",
+          "fallback_text"
+        ],
+        "title": "ResourceBlock",
+        "type": "object"
+      },
+      "ResourceInput": {
+        "additionalProperties": false,
+        "properties": {
+          "content": {
+            "$ref": "#/components/schemas/ContentSnapshot"
+          },
+          "offered_candidate_refs": {
+            "items": {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            "title": "Offered Candidate Refs",
+            "type": "array"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProfileSnapshot"
+          },
+          "request": {
+            "$ref": "#/components/schemas/ResourceRequest"
+          },
+          "schema_version": {
+            "const": "resource-input.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "supported_kinds": {
+            "items": {
+              "enum": [
+                "image",
+                "diagram",
+                "playground",
+                "interactive"
+              ],
+              "type": "string"
+            },
+            "title": "Supported Kinds",
+            "type": "array"
+          }
+        },
+        "required": [
+          "schema_version",
+          "profile",
+          "content",
+          "request",
+          "supported_kinds",
+          "offered_candidate_refs"
+        ],
+        "title": "ResourceInput",
+        "type": "object"
+      },
+      "ResourceProposal": {
+        "additionalProperties": false,
+        "properties": {
+          "candidate_ref": {
+            "anyOf": [
+              {
+                "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Candidate Ref"
+          },
+          "limitation": {
+            "anyOf": [
+              {
+                "maxLength": 6000,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Limitation"
+          },
+          "request_key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Request Key",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "resource.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "specification": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Specification",
+            "type": "string"
+          },
+          "strategy": {
+            "enum": [
+              "reuse",
+              "retrieve",
+              "draw",
+              "build",
+              "unsupported"
+            ],
+            "title": "Strategy",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "request_key",
+          "strategy",
+          "candidate_ref",
+          "specification",
+          "limitation"
+        ],
+        "title": "ResourceProposal",
+        "type": "object"
+      },
+      "ResourceRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "controls": {
+            "items": {
+              "enum": [
+                "play",
+                "pause",
+                "step",
+                "reset",
+                "parameters",
+                "run",
+                "stop"
+              ],
+              "type": "string"
+            },
+            "title": "Controls",
+            "type": "array"
+          },
+          "fallback_text": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Fallback Text",
+            "type": "string"
+          },
+          "key": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Key",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "image",
+              "diagram",
+              "playground",
+              "interactive"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "purpose": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Purpose",
+            "type": "string"
+          },
+          "runtime": {
+            "anyOf": [
+              {
+                "const": "web",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Runtime"
+          },
+          "specification": {
+            "maxLength": 6000,
+            "minLength": 1,
+            "title": "Specification",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "kind",
+          "purpose",
+          "specification",
+          "runtime",
+          "controls",
+          "fallback_text"
+        ],
+        "title": "ResourceRequest",
+        "type": "object"
+      },
+      "RunEvent": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "queued",
+              "started",
+              "progress",
+              "completed",
+              "failed",
+              "cancelled",
+              "conflicted"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "run_id": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "event.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "sequence": {
+            "minimum": 1,
+            "title": "Sequence",
+            "type": "integer"
+          },
+          "snapshot": {
+            "$ref": "#/components/schemas/RunSnapshot"
+          }
+        },
+        "required": [
+          "schema_version",
+          "run_id",
+          "sequence",
+          "kind",
+          "snapshot"
+        ],
+        "title": "RunEvent",
+        "type": "object"
+      },
+      "RunSnapshot": {
+        "additionalProperties": false,
+        "properties": {
+          "attempt": {
+            "minimum": 0,
+            "title": "Attempt",
+            "type": "integer"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ApiError"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "last_event_seq": {
+            "minimum": 0,
+            "title": "Last Event Seq",
+            "type": "integer"
+          },
+          "operation": {
+            "enum": [
+              "questionnaire",
+              "profile",
+              "outline",
+              "expansion",
+              "reassessment",
+              "explanation",
+              "exercises",
+              "resource"
+            ],
+            "title": "Operation",
+            "type": "string"
+          },
+          "result_ref": {
+            "anyOf": [
+              {
+                "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Result Ref"
+          },
+          "run_id": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "run.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "queued",
+              "running",
+              "succeeded",
+              "failed",
+              "cancelled",
+              "conflicted"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "run_id",
+          "operation",
+          "status",
+          "attempt",
+          "last_event_seq",
+          "result_ref",
+          "error"
+        ],
+        "title": "RunSnapshot",
+        "type": "object"
+      },
+      "RuntimeRunEvent": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "queued",
+              "started",
+              "progress",
+              "completed",
+              "failed",
+              "cancelled",
+              "conflicted"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "run_id": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "event.v2",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "sequence": {
+            "minimum": 1,
+            "title": "Sequence",
+            "type": "integer"
+          },
+          "snapshot": {
+            "$ref": "#/components/schemas/RuntimeRunSnapshot"
+          }
+        },
+        "required": [
+          "schema_version",
+          "run_id",
+          "sequence",
+          "kind",
+          "snapshot"
+        ],
+        "title": "RuntimeRunEvent",
+        "type": "object"
+      },
+      "RuntimeRunSnapshot": {
+        "additionalProperties": false,
+        "properties": {
+          "attempt": {
+            "minimum": 0,
+            "title": "Attempt",
+            "type": "integer"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ApiError"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "last_event_seq": {
+            "minimum": 0,
+            "title": "Last Event Seq",
+            "type": "integer"
+          },
+          "operation": {
+            "enum": [
+              "questionnaire",
+              "profile",
+              "outline",
+              "expansion",
+              "reassessment",
+              "explanation",
+              "exercises",
+              "resource"
+            ],
+            "title": "Operation",
+            "type": "string"
+          },
+          "result_kind": {
+            "anyOf": [
+              {
+                "enum": [
+                  "knowledge",
+                  "structure_preview"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Result Kind"
+          },
+          "result_ref": {
+            "anyOf": [
+              {
+                "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Result Ref"
+          },
+          "run_id": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "run.v2",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "queued",
+              "running",
+              "succeeded",
+              "failed",
+              "cancelled",
+              "conflicted"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "run_id",
+          "operation",
+          "status",
+          "attempt",
+          "last_event_seq",
+          "result_ref",
+          "error",
+          "result_kind"
+        ],
+        "title": "RuntimeRunSnapshot",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "Unfold planned M1 API",
+    "version": "api.v1"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/v1/runs": {
+      "post": {
+        "operationId": "createRun",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRun"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunSnapshot"
+                }
+              }
+            },
+            "description": "New or reused run"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Identity/version conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Invalid request"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Queue or budget limit"
+          }
+        }
+      }
+    },
+    "/api/v1/runs/{run_id}": {
+      "get": {
+        "operationId": "getRun",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunSnapshot"
+                }
+              }
+            },
+            "description": "Durable snapshot"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unknown run"
+          }
+        }
+      }
+    },
+    "/api/v1/runs/{run_id}/cancel": {
+      "post": {
+        "operationId": "cancelRun",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunSnapshot"
+                }
+              }
+            },
+            "description": "Current terminal/cancelled state"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unknown run"
+          }
+        }
+      }
+    },
+    "/api/v1/runs/{run_id}/events": {
+      "get": {
+        "operationId": "subscribeRun",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Last-Event-ID",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "SSE id=sequence; data=RunEvent JSON"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unknown run"
+          },
+          "410": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Replay expired: get snapshot"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000"
+    }
+  ]
+}

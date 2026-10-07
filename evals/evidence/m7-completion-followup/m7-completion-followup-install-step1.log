@@ -1,0 +1,47 @@
+Using CPython 3.12.14 interpreter at: <workspace>/.venv/bin/python
+Creating virtual environment at: .venv
+Resolved 43 packages in 27ms
+   Building unfold @ file:///private/var/folders/yj/ycjfb5452rb5kj6dt5qp4ydc0000gn/T/unfold-clean-qw4k90nt
+      Built unfold @ file:///private/var/folders/yj/ycjfb5452rb5kj6dt5qp4ydc0000gn/T/unfold-clean-qw4k90nt
+Prepared 1 package in 222ms
+Installed 40 packages in 80ms
+ + alembic==1.20.0
+ + annotated-doc==0.0.5
+ + annotated-types==0.8.0
+ + anyio==4.15.1
+ + attrs==26.1.0
+ + certifi==2026.7.22
+ + click==8.5.0
+ + fastapi==0.142.2
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + idna==3.20
+ + iniconfig==2.3.0
+ + jsonschema==4.25.1
+ + jsonschema-specifications==2025.9.1
+ + mako==1.4.3
+ + markupsafe==3.0.4
+ + mypy==1.18.2
+ + mypy-extensions==1.1.0
+ + opentelemetry-api==1.45.1
+ + packaging==26.3
+ + pathspec==1.1.1
+ + pillow==12.3.0
+ + pluggy==1.6.0
+ + psycopg==3.3.6
+ + psycopg-binary==3.3.6
+ + pydantic==2.12.5
+ + pydantic-core==2.41.5
+ + pygments==2.21.0
+ + pytest==8.4.2
+ + referencing==0.37.0
+ + rpds-py==2026.9.1
+ + ruff==0.13.2
+ + sqlalchemy==2.0.54
+ + starlette==1.7.0
+ + types-jsonschema==4.25.1.20251009
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + unfold==0.0.1 (from file:///private/var/folders/yj/ycjfb5452rb5kj6dt5qp4ydc0000gn/T/unfold-clean-qw4k90nt)
+ + uvicorn==0.54.0

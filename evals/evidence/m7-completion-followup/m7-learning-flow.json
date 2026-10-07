@@ -1,0 +1,8 @@
+{
+  "version": "learning-flow-recording.v1",
+  "source_test": "web/tests/knowledge.spec.ts",
+  "execution": "actual_http_ui_fake_model",
+  "new_model_calls": 0,
+  "sha256": "aa681f094fa9f61ed616885bdfd002cdfbdb217ab50e076ebe323ddca6eb74d0",
+  "bytes": 722613
+}

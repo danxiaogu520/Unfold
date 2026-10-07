@@ -1,0 +1,12 @@
+{
+  "success_examples": 8,
+  "rejected_failure_examples": 31,
+  "learning_scenarios": 24,
+  "resource_tasks": 12,
+  "learning_dev": 16,
+  "learning_holdout": 8,
+  "resource_dev": 8,
+  "resource_holdout": 4,
+  "near_duplicate_warnings": [],
+  "schemas": 38
+}

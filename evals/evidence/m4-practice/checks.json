@@ -1,0 +1,114 @@
+{
+  "started_at": "2026-10-07T08:46:02.123751+00:00",
+  "real_model_calls": false,
+  "checks": [
+    {
+      "command": [
+        "ruff",
+        "check",
+        "src",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0,
+      "seconds": 0.061
+    },
+    {
+      "command": [
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "command": [
+        "mypy",
+        "src"
+      ],
+      "exit_code": 0,
+      "seconds": 0.536
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unfold.cli",
+        "check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.2
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unfold.cli",
+        "verify-evidence"
+      ],
+      "exit_code": 0,
+      "seconds": 0.147
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "--require-postgres",
+        "-q",
+        "--junitxml=.data/qa/python.xml"
+      ],
+      "exit_code": 0,
+      "seconds": 14.716
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build",
+        "--prefix",
+        "web"
+      ],
+      "exit_code": 0,
+      "seconds": 1.602
+    },
+    {
+      "command": [
+        "npm",
+        "test",
+        "--prefix",
+        "web"
+      ],
+      "exit_code": 0,
+      "seconds": 30.23
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_foundation_evidence.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.043
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_learning_evidence.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.211
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_reliability_evidence.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.148
+    }
+  ]
+}

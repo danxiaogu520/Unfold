@@ -1,0 +1,31 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>知脉 · 工程证据回放</title><style>
+body{margin:0;background:#f4f6f5;color:#17382d;font:17px system-ui,sans-serif}
+main{max-width:1050px;margin:36px auto;padding:0 30px}h1{font-size:38px;margin:12px 0}
+.tag{color:#39745c;letter-spacing:2px}nav{display:flex;gap:12px;margin:25px 0}
+button{font:inherit;padding:12px 20px;border:1px solid #bdd0c6;border-radius:9px;background:white;cursor:pointer}
+button:disabled{opacity:.4}button[aria-current=true]{background:#235e46;color:white}
+article{background:white;border:1px solid #dce5e0;border-radius:15px;padding:25px}
+pre{white-space:pre-wrap;font:15px ui-monospace,monospace;color:#344c42;line-height:1.65;max-height:340px;overflow:auto}
+.hint{font-size:14px;color:#5b7268;line-height:1.65}.actions{display:flex;gap:12px;margin-top:16px}
+</style><main><span class="tag">UNFOLD / 知脉</span><h1>三条工程主线，有迹可循。</h1>
+<p class="hint">冻结证据回放 · 没有实时模型调用。画面展示实际保存记录，不重新执行故障或模型推理。</p>
+<nav><button data-tab="jobs">持久任务</button><button data-tab="agent">资源 Agent</button><button data-tab="context">上下文策略</button></nav>
+<article><p id="label" class="tag"></p><h2 id="title"></h2><h3 id="step"></h3><pre id="detail"></pre>
+<div class="actions"><button id="previous">上一步</button><button id="next">下一步</button></div>
+<p id="limit" class="hint"></p><p id="source" class="hint"></p></article></main>
+<script type="application/json" id="data">__EVIDENCE_JSON__</script><script>
+const evidence=JSON.parse(document.getElementById('data').textContent);
+let selected='jobs', index=0;
+function render(){
+ const item=evidence[selected], step=item.steps[index];
+ for(const [id,value] of Object.entries({label:item.label,title:item.title,step:step.title,detail:step.detail,limit:item.limit,source:item.source+' · '+item.run_id}))document.getElementById(id).textContent=value;
+ document.getElementById('previous').disabled=index===0;
+ document.getElementById('next').disabled=index===item.steps.length-1;
+ document.querySelectorAll('[data-tab]').forEach(button=>button.setAttribute('aria-current',button.dataset.tab===selected));
+}
+document.querySelectorAll('[data-tab]').forEach(button=>button.onclick=()=>{selected=button.dataset.tab;index=0;render()});
+document.getElementById('previous').onclick=()=>{index--;render()};
+document.getElementById('next').onclick=()=>{index++;render()};render();
+</script></html>

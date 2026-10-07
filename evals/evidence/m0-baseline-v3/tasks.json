@@ -1,0 +1,184 @@
+[
+  {
+    "depth": 3,
+    "expanded_paths": [
+      [
+        "backend_interview_fundamentals",
+        "prerequisite_foundations"
+      ],
+      [
+        "backend_interview_fundamentals",
+        "prerequisite_foundations",
+        "network_layering_basics"
+      ]
+    ],
+    "latency_seconds": 22.071208417008165,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 1,
+    "scenario_id": "backend-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline",
+      "expansion",
+      "expansion"
+    ],
+    "success": true,
+    "task_id": "backend-1-r1"
+  },
+  {
+    "depth": 3,
+    "expanded_paths": [
+      [
+        "backend_interview_fundamentals",
+        "http_core"
+      ],
+      [
+        "backend_interview_fundamentals",
+        "http_core",
+        "http_request_response_model"
+      ]
+    ],
+    "latency_seconds": 21.501216500008013,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 2,
+    "scenario_id": "backend-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline",
+      "expansion",
+      "expansion"
+    ],
+    "success": true,
+    "task_id": "backend-1-r2"
+  },
+  {
+    "depth": 3,
+    "expanded_paths": [
+      [
+        "backend_interview_fundamentals",
+        "http_principles"
+      ],
+      [
+        "backend_interview_fundamentals",
+        "database_principles"
+      ],
+      [
+        "backend_interview_fundamentals",
+        "concurrency_principles"
+      ],
+      [
+        "backend_interview_fundamentals",
+        "concurrency_principles",
+        "concurrency_execution_model"
+      ]
+    ],
+    "latency_seconds": 33.04333191702608,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 3,
+    "scenario_id": "backend-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline",
+      "expansion",
+      "expansion",
+      "expansion",
+      "expansion"
+    ],
+    "success": true,
+    "task_id": "backend-1-r3"
+  },
+  {
+    "depth": 0,
+    "expanded_paths": [],
+    "latency_seconds": 5.946047250006814,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 1,
+    "scenario_id": "midpoint-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline"
+    ],
+    "success": true,
+    "task_id": "midpoint-1-r1"
+  },
+  {
+    "depth": 0,
+    "expanded_paths": [],
+    "latency_seconds": 4.751399583008606,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 2,
+    "scenario_id": "midpoint-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline"
+    ],
+    "success": true,
+    "task_id": "midpoint-1-r2"
+  },
+  {
+    "depth": 0,
+    "expanded_paths": [],
+    "latency_seconds": 6.120450374961365,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 3,
+    "scenario_id": "midpoint-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline"
+    ],
+    "success": true,
+    "task_id": "midpoint-1-r3"
+  },
+  {
+    "latency_seconds": 3.084905833005905,
+    "success": true,
+    "task_id": "probe-questionnaire"
+  },
+  {
+    "latency_seconds": 1.164338417002,
+    "success": true,
+    "task_id": "probe-profile"
+  },
+  {
+    "latency_seconds": 1.5562220840365626,
+    "success": true,
+    "task_id": "probe-outline"
+  },
+  {
+    "latency_seconds": 2.1877912909840234,
+    "success": true,
+    "task_id": "probe-expansion"
+  },
+  {
+    "latency_seconds": 0.986318375042174,
+    "success": true,
+    "task_id": "probe-reassessment"
+  },
+  {
+    "latency_seconds": 5.059191916952841,
+    "success": true,
+    "task_id": "probe-explanation"
+  },
+  {
+    "latency_seconds": 1.0780513330246322,
+    "success": true,
+    "task_id": "probe-exercises"
+  },
+  {
+    "latency_seconds": 0.9464114170405082,
+    "success": true,
+    "task_id": "probe-resource"
+  }
+]

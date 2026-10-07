@@ -1,0 +1,39 @@
+<html><head><style>
+body{font:16px system-ui;padding:24px;background:#f7f8ef;color:#264b3b}
+button,input{font:inherit;padding:10px;margin:6px}output{display:block;margin:15px}
+li{display:inline-block;margin:5px;padding:12px;border:1px solid #98b095}
+.selected{background:#d4e6c4}
+</style></head><body><h1>二分查找 · 一步步看区间</h1>
+<label>数组（升序，用逗号分隔）<input id="values"></label>
+<label>目标<input id="target" type="number"></label>
+<button id="apply">应用参数</button><button id="step">下一步</button><button id="reset">重置</button>
+<p>右方向键单步，R 重置。最多 32 个数；本组件不执行任意代码。</p>
+<ul id="array"></ul><output id="result">等待开始</output><output id="bounds"></output>
+<script>
+const initial = {"values": [1, 3, 5, 7, 9, 11], "target": 7};
+let values=[...initial.values], target=initial.target, left=0, right=values.length-1, done=false;
+const result=document.getElementById('result'), bounds=document.getElementById('bounds');
+function paint(mid=-1){
+ document.getElementById('array').replaceChildren(...values.map((value,index)=>{
+  const node=document.createElement('li');node.textContent=value;node.className=index===mid?'selected':'';return node;
+ }));bounds.textContent='区间 ['+left+', '+right+']';
+}
+function reset(){left=0;right=values.length-1;done=false;result.textContent='等待开始';paint();}
+function step(){
+ if(done)return;
+ if(left>right){done=true;result.textContent='未找到';paint();return;}
+ const mid=left+Math.floor((right-left)/2);paint(mid);
+ if(values[mid]===target){done=true;result.textContent='找到，下标 '+mid;}
+ else {result.textContent='比较下标 '+mid; if(values[mid]<target)left=mid+1;else right=mid-1;bounds.textContent='区间 ['+left+', '+right+']';}
+}
+document.getElementById('values').value=values.join(',');document.getElementById('target').value=target;
+document.getElementById('step').onclick=step;document.getElementById('reset').onclick=reset;
+document.getElementById('apply').onclick=()=>{
+ const text=document.getElementById('values').value.trim();const next=text?text.split(',').map(Number):[];
+ const sought=Number(document.getElementById('target').value);
+ if(next.length>32||next.some((v,i)=>!Number.isSafeInteger(v)||Math.abs(v)>1000000||(i&&next[i-1]>v))||!Number.isSafeInteger(sought)||Math.abs(sought)>1000000){result.textContent='参数不支持，请提供受限升序整数';return;}
+ values=next;target=sought;reset();
+};
+document.addEventListener('keydown',event=>{if(event.key==='ArrowRight')step();if(event.key.toLowerCase()==='r')reset();});
+reset();
+</script></body></html>

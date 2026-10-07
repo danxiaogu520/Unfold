@@ -1,0 +1,9 @@
+{
+  "evidence_kind": "retained_real_response_replay",
+  "new_live_model_calls": 0,
+  "cost_cny": "0",
+  "current_structure_preserved": true,
+  "original_failed_run": "run_e2629f84076a485480e56dea66fa5285",
+  "replay_run": "run_b4595d7ae4164051a35a706948f97337",
+  "semantic_human_review": null
+}

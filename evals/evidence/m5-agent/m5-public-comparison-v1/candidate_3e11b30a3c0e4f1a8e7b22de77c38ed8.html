@@ -1,0 +1,33 @@
+<html><head><style>
+body{font:16px system-ui;padding:24px;color:#264b3b;background:#f7f8ef}
+label{display:block;margin:10px}canvas{border:1px solid #ccd4c3}
+</style></head><body><h1>f(x)=k*x+b</h1>
+<label>斜率 k<input type="range" id="slope" min="-3" max="3" step="0.5" value="1"></label>
+<label>截距 b<input type="range" id="intercept" min="-3" max="3" step="0.5" value="0"></label>
+<label>x<input type="number" id="x" value="2"></label>
+<output id="value">0</output><button id="reset">重置</button>
+<canvas width="600" height="280" id="plot"></canvas>
+<script>
+const slope=document.getElementById('slope'), intercept=document.getElementById('intercept');
+const x=document.getElementById('x'), value=document.getElementById('value');
+const plot=document.getElementById('plot'), ctx=plot.getContext('2d');
+function draw(k,b){
+  ctx.clearRect(0,0,plot.width,plot.height);
+  const xmin=-6,xmax=6,ymin=-10,ymax=10;
+  const px=v=>(v-xmin)/(xmax-xmin)*plot.width;
+  const py=v=>plot.height-(v-ymin)/(ymax-ymin)*plot.height;
+  ctx.strokeStyle='#ccd4c3';ctx.beginPath();
+  ctx.moveTo(px(0),0);ctx.lineTo(px(0),plot.height);
+  ctx.moveTo(0,py(0));ctx.lineTo(plot.width,py(0));ctx.stroke();
+  ctx.strokeStyle='#2f6f4f';ctx.beginPath();
+  ctx.moveTo(px(xmin),py(k*xmin+b));ctx.lineTo(px(xmax),py(k*xmax+b));ctx.stroke();
+}
+function update(){
+  const k=Number(slope.value), b=Number(intercept.value), xv=Number(x.value);
+  value.textContent=k*xv+b;
+  draw(k,b);
+}
+[slope,intercept,x].forEach(node=>node.addEventListener('input',update));
+document.getElementById('reset').onclick=()=>{slope.value=1;intercept.value=0;x.value=2;update();};
+update();
+</script></body></html>

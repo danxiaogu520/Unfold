@@ -1,0 +1,287 @@
+from __future__ import annotations
+
+import json
+import time
+from dataclasses import asdict
+from decimal import Decimal
+from pathlib import Path
+from typing import Any, Protocol
+
+from pydantic import ValidationError
+from sqlalchemy import select
+
+from unfold.app.db import Database
+from unfold.app.models import BudgetLedger, ModelCall
+from unfold.app.security import sanitized
+from unfold.app.service import Claim, RunService, entity_id
+from unfold.contracts import OUTPUTS, validate_pair
+from unfold.evaluation import read_json
+from unfold.provider import (
+    ErrorCode,
+    GenerationError,
+    ResponsesProvider,
+    Settings,
+    json_bytes,
+    provider_schema,
+)
+
+
+class Generator(Protocol):
+    def generate(self, claim: Claim) -> dict[str, Any]: ...
+
+
+class FixtureGenerator:
+    """Deterministic development substitute; its provenance is always explicit."""
+
+    def __init__(self, database: Database, root: Path, *, failure: bool = False):
+        self.database = database
+        self.fixtures = {
+            row["operation"]: row for row in read_json(root / "evals/contracts/success.v1.json")
+        }
+        self.failure = failure
+
+    def generate(self, claim: Claim) -> dict[str, Any]:
+        if self.failure:
+            raw: dict[str, Any] = {"schema_version": "invalid.v0"}
+        else:
+            raw = dict(self.fixtures[claim.operation]["output"])
+            if claim.operation == "questionnaire":
+                # M1 checks transport/persistence, not education quality. Respect
+                # the caller's known dimensions while clearly labeling this fake.
+                raw["questions"] = [
+                    q for q in raw["questions"] if q["target"] not in claim.input["known_targets"]
+                ]
+                raw["rationale"] = "固定开发替身，尚未进行真实模型生成。"
+            elif claim.operation == "profile":
+
+                def fact(
+                    value: str, source: str = "assumption", evidence: str | None = None
+                ) -> dict[str, Any]:
+                    return {
+                        "value": value,
+                        "source": source,
+                        "evidence_keys": [evidence] if evidence else [],
+                    }
+
+                answers = {answer["question_key"]: answer for answer in claim.input["answers"]}
+                background = fact("尚未确定当前基础", "unknown")
+                for question in claim.input["questionnaire"]["questions"]:
+                    answer = answers[question["key"]]
+                    if question["target"] == "background" and not answer["unknown"]:
+                        values = [
+                            option["text"]
+                            for option in question["options"]
+                            if option["key"] in answer["selected_keys"]
+                        ]
+                        if answer["free_text"]:
+                            values.append(answer["free_text"])
+                        background = fact("；".join(values), "user", "answer:" + question["key"])
+                raw = {
+                    "schema_version": "profile.v1",
+                    "topic": fact(claim.input["domain"], "user", "brief"),
+                    "primary_purpose": fact(claim.input["user_brief"], "user", "brief"),
+                    "secondary_purposes": [],
+                    "background": background,
+                    "target_abilities": [fact("先理解核心概念，再结合用途练习")],
+                    "included_scope": [fact(claim.input["domain"])],
+                    "excluded_scope": [],
+                    "constraints": [],
+                }
+        error: ErrorCode | None = None
+        try:
+            validate_pair(claim.operation, claim.input, raw)
+        except (ValueError, ValidationError):
+            error = "schema_validation"
+        with self.database.transaction() as session:
+            session.add(
+                ModelCall(
+                    id=entity_id("call"),
+                    run_id=claim.run_id,
+                    attempt=claim.attempt,
+                    step=1,
+                    provider="deterministic_fake",
+                    model="fixture.v1",
+                    prompt_version="fixture.v1",
+                    schema_version=raw.get("schema_version", "unknown"),
+                    status="failed" if error else "completed",
+                    request=sanitized(claim.input),
+                    response=sanitized(raw),
+                    input_tokens=None,
+                    output_tokens=None,
+                    reserved_cost=Decimal(0),
+                    accounted_cost=Decimal(0),
+                    currency="CNY",
+                    latency_seconds=Decimal(0),
+                    error_code=error,
+                    outcome_unknown=False,
+                )
+            )
+        if error:
+            raise GenerationError(error, "development fixture did not validate")
+        return raw
+
+
+class DeepSeekGenerator:
+    def __init__(self, database: Database, service: RunService, settings: Settings, root: Path):
+        self.database = database
+        self.service = service
+        self.settings = settings
+        self.prompts = read_json(root / "evals/prompts/stages.v1.json")
+
+    def build_body(self, claim: Claim, repair: str | None = None) -> dict[str, Any]:
+        schema = provider_schema(claim.operation)
+        instruction = self.prompts["system"] + "\n" + self.prompts[claim.operation]
+        instruction += "\n完整JSON Schema：" + json.dumps(schema, ensure_ascii=False)
+        if claim.operation == "questionnaire":
+            allowed = sorted(
+                {"purpose", "background", "goal", "scope", "constraints"}
+                - set(claim.input["known_targets"])
+            )
+            instruction += "\n本次仅可提问target=" + json.dumps(allowed)
+            instruction += "；每种target最多一题，已知维度不重新细问，足够开始可以零题。"
+        if repair:
+            instruction += "\n上一候选失败，修复：" + repair
+        return {
+            "model": self.settings.model,
+            "instructions": instruction,
+            "input": json.dumps(
+                {"operation": claim.operation, "input": sanitized(claim.input)}, ensure_ascii=False
+            ),
+            "reasoning": {"effort": "none"},
+            "temperature": 0.2,
+            "max_output_tokens": self.settings.max_output_tokens,
+            "text": {
+                "format": {"type": "json_schema", "name": claim.operation + "_v1", "schema": schema}
+            },
+        }
+
+    def reserve_call(self, claim: Claim, step: int, body: dict[str, Any]) -> str:
+        size = len(json_bytes(body))
+        if size > self.settings.max_input_bytes:
+            raise GenerationError(
+                "budget_exceeded", "required generation context exceeds byte budget"
+            )
+        cost = (
+            Decimal(size + 4096) * self.settings.input_rate
+            + Decimal(self.settings.max_output_tokens) * self.settings.output_rate
+        ) / Decimal(1_000_000)
+        # Heartbeat also verifies the attempt is still eligible before paying.
+        if not self.service.heartbeat(claim):
+            raise GenerationError("cancelled", "attempt no longer eligible")
+        with self.database.transaction() as session:
+            # Fixed account-wide lock prevents simultaneous first-row creation.
+            from sqlalchemy import text
+
+            session.execute(text("SELECT pg_advisory_xact_lock(180002)"))
+            ledger = session.scalar(
+                select(BudgetLedger).where(BudgetLedger.id == "model").with_for_update()
+            )
+            if ledger is None:
+                ledger = BudgetLedger(
+                    id="model",
+                    currency=self.settings.currency,
+                    limit_cost=self.settings.max_cost,
+                    accounted_cost=Decimal(0),
+                )
+                session.add(ledger)
+            if ledger.currency != self.settings.currency:
+                raise GenerationError(
+                    "configuration", "configured currency differs from saved budget"
+                )
+            ledger.limit_cost = min(ledger.limit_cost, self.settings.max_cost)
+            if ledger.accounted_cost + cost > ledger.limit_cost:
+                raise GenerationError("budget_exceeded", "persistent model budget exhausted")
+            ledger.accounted_cost += cost
+            call_id = entity_id("call")
+            session.add(
+                ModelCall(
+                    id=call_id,
+                    run_id=claim.run_id,
+                    attempt=claim.attempt,
+                    step=step,
+                    provider="deepseek",
+                    model=self.settings.model,
+                    prompt_version=self.prompts["version"],
+                    schema_version=OUTPUTS[claim.operation].model_json_schema()["properties"][
+                        "schema_version"
+                    ]["const"],
+                    status="started",
+                    request=sanitized(body, (self.settings.api_key,)),
+                    response=None,
+                    input_tokens=None,
+                    output_tokens=None,
+                    reserved_cost=cost,
+                    accounted_cost=None,
+                    currency=self.settings.currency,
+                    latency_seconds=None,
+                    error_code=None,
+                    outcome_unknown=True,
+                )
+            )
+            return call_id
+
+    def generate(self, claim: Claim) -> dict[str, Any]:
+        repair = None
+        last_code: ErrorCode = "domain_validation"
+        provider = ResponsesProvider(self.settings)
+        try:
+            for step in range(1, self.settings.max_repairs + 2):
+                body = self.build_body(claim, repair)
+                call_id = self.reserve_call(claim, step, body)
+                started = time.monotonic()
+                result = provider.generate(body)
+                raw = None
+                code = result.error
+                if code is None:
+                    try:
+                        raw = json.loads(result.output_text or "")
+                    except ValueError:
+                        code = "invalid_json"
+                        repair = "输出必须是完整JSON对象，不含代码围栏。"
+                    else:
+                        try:
+                            validate_pair(claim.operation, claim.input, raw)
+                        except ValidationError as exc:
+                            code = "schema_validation"
+                            repair = json.dumps(
+                                exc.errors(
+                                    include_input=False, include_url=False, include_context=False
+                                ),
+                                ensure_ascii=False,
+                            )
+                        except ValueError as exc:
+                            code = "domain_validation"
+                            repair = str(exc)
+                with self.database.transaction() as session:
+                    ledger = session.scalar(
+                        select(BudgetLedger).where(BudgetLedger.id == "model").with_for_update()
+                    )
+                    call = session.get(ModelCall, call_id)
+                    assert ledger is not None and call is not None
+                    if result.input_tokens is not None and result.output_tokens is not None:
+                        cost = (
+                            Decimal(result.input_tokens) * self.settings.input_rate
+                            + Decimal(result.output_tokens) * self.settings.output_rate
+                        ) / Decimal(1_000_000)
+                        ledger.accounted_cost += cost - call.reserved_cost
+                        call.accounted_cost = cost
+                    call.status = "failed" if code else "completed"
+                    call.response = sanitized(asdict(result), (self.settings.api_key,))
+                    call.input_tokens, call.output_tokens = (
+                        result.input_tokens,
+                        result.output_tokens,
+                    )
+                    call.latency_seconds = Decimal(str(time.monotonic() - started))
+                    call.error_code = code
+                    call.outcome_unknown = result.outcome_unknown
+                if code is None:
+                    assert isinstance(raw, dict)
+                    return raw
+                last_code = code
+                if result.error is not None:
+                    raise GenerationError(
+                        code, result.detail or code, outcome_unknown=result.outcome_unknown
+                    )
+            raise GenerationError(last_code, "candidate invalid after bounded repair")
+        finally:
+            provider.close()

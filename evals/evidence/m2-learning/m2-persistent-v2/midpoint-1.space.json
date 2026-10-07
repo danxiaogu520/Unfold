@@ -1,0 +1,430 @@
+{
+  "id": "space_8d1388944dfe46b4abd2d07a71e2e5d7",
+  "domain": "二分查找的一次中点比较",
+  "user_brief": "只想看懂数组[1,3,5]中查找3时中点比较的结果；已理解数组和大小比较，不学完整算法。",
+  "profile_revision": 1,
+  "outline_revision": 1,
+  "root_id": "node_13fc0caa317c406c9f933e51559a0f6d",
+  "created_at": "2026-10-07T14:16:06.605006+08:00",
+  "intakes": [
+    {
+      "id": "intake_86a3ca09820443ab9e4839383a61bbdf",
+      "questionnaire": {
+        "questions": [
+          {
+            "key": "scope_single_step",
+            "mode": "single",
+            "prompt": "这次学习范围希望覆盖到哪一层？",
+            "target": "scope",
+            "options": [
+              {
+                "key": "only_first_mid",
+                "text": "只看第一次取中点并比较3的那一步结果"
+              },
+              {
+                "key": "all_steps_until_found",
+                "text": "看从开始到找到3的每一步中点比较"
+              },
+              {
+                "key": "compare_other_targets",
+                "text": "还看查找1或5时的中点比较结果"
+              }
+            ],
+            "allow_unknown": true,
+            "allow_free_text": true
+          },
+          {
+            "key": "constraints_style",
+            "mode": "multiple",
+            "prompt": "讲解时有什么限制或偏好需要遵守？",
+            "target": "constraints",
+            "options": [
+              {
+                "key": "no_code",
+                "text": "不要代码，只用文字和下标说明"
+              },
+              {
+                "key": "no_formula",
+                "text": "不要公式，只讲具体数字"
+              },
+              {
+                "key": "short_answer",
+                "text": "尽量简短，一次只讲一个结论"
+              },
+              {
+                "key": "with_visual",
+                "text": "希望用表格或图示辅助"
+              }
+            ],
+            "allow_unknown": true,
+            "allow_free_text": true
+          }
+        ],
+        "rationale": "purpose、background、goal 已明确，无需重复询问；仅剩 scope 与 constraints 两个维度未知且会影响教学组织，各问一题。",
+        "schema_version": "questionnaire.v1"
+      },
+      "answers": [
+        {
+          "unknown": false,
+          "free_text": "按原始目标限定，必要前置可补充",
+          "question_key": "scope_single_step",
+          "selected_keys": []
+        },
+        {
+          "unknown": true,
+          "free_text": null,
+          "question_key": "constraints_style",
+          "selected_keys": []
+        }
+      ],
+      "questions_asked": 2,
+      "round": 1
+    }
+  ],
+  "profile": {
+    "topic": {
+      "value": "二分查找的一次中点比较（数组[1,3,5]中查找3）",
+      "source": "user",
+      "evidence_keys": [
+        "brief"
+      ]
+    },
+    "background": {
+      "value": "已理解数组和大小比较，不学完整算法",
+      "source": "user",
+      "evidence_keys": [
+        "brief"
+      ]
+    },
+    "constraints": [],
+    "excluded_scope": [
+      {
+        "value": "完整二分查找算法的系统学习",
+        "source": "user",
+        "evidence_keys": [
+          "brief"
+        ]
+      },
+      {
+        "value": "查找1或5时的中点比较结果",
+        "source": "assumption",
+        "evidence_keys": []
+      }
+    ],
+    "included_scope": [
+      {
+        "value": "按原始目标限定，必要前置可补充",
+        "source": "user",
+        "evidence_keys": [
+          "answer:scope_single_step"
+        ]
+      },
+      {
+        "value": "数组[1,3,5]中查找3时取中点并比较的那一步结果",
+        "source": "assumption",
+        "evidence_keys": []
+      }
+    ],
+    "schema_version": "profile.v1",
+    "primary_purpose": {
+      "value": "看懂在数组[1,3,5]中查找3时中点比较的结果",
+      "source": "user",
+      "evidence_keys": [
+        "brief"
+      ]
+    },
+    "target_abilities": [
+      {
+        "value": "能说出在数组[1,3,5]中查找3时一次中点比较的结果",
+        "source": "user",
+        "evidence_keys": [
+          "brief"
+        ]
+      }
+    ],
+    "secondary_purposes": []
+  },
+  "runs": [
+    {
+      "schema_version": "run.v2",
+      "run_id": "run_cac596607ab24eed8e30faf708a913af",
+      "operation": "explanation",
+      "status": "succeeded",
+      "attempt": 1,
+      "last_event_seq": 3,
+      "result_ref": "content_9248b239f87b4600a349685464509440",
+      "error": null,
+      "result_kind": "knowledge"
+    },
+    {
+      "schema_version": "run.v2",
+      "run_id": "run_0e881e0715bf4ce99d17c61701f1f1f8",
+      "operation": "outline",
+      "status": "succeeded",
+      "attempt": 1,
+      "last_event_seq": 3,
+      "result_ref": "node_13fc0caa317c406c9f933e51559a0f6d",
+      "error": null,
+      "result_kind": "knowledge"
+    },
+    {
+      "schema_version": "run.v2",
+      "run_id": "run_bca4088cd9044156b963a397862e553c",
+      "operation": "profile",
+      "status": "succeeded",
+      "attempt": 1,
+      "last_event_seq": 3,
+      "result_ref": "profile_7a46e75f67e14914ab73cd50bf0b08c0",
+      "error": null,
+      "result_kind": "knowledge"
+    },
+    {
+      "schema_version": "run.v2",
+      "run_id": "run_d07c194ca2534371aecfdd03078dc926",
+      "operation": "questionnaire",
+      "status": "succeeded",
+      "attempt": 1,
+      "last_event_seq": 3,
+      "result_ref": "intake_86a3ca09820443ab9e4839383a61bbdf",
+      "error": null,
+      "result_kind": "knowledge"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "node_13fc0caa317c406c9f933e51559a0f6d",
+      "parent_id": null,
+      "concept_id": "concept_b50133903d2c4681b0dda9d8728b38d1",
+      "kind": "concept",
+      "active": true,
+      "revision": 2,
+      "title": "数组[1,3,5]中查找3的一次中点比较",
+      "scope": "仅限数组[1,3,5]、目标值3、一次取中点并比较这一步的结果；不涉及完整二分查找流程、循环或边界更新。",
+      "overview": "在数组 [1, 3, 5] 中查找目标值 3 时，先确定当前查找区间的中点位置，取出该位置的值，再与目标值 3 比较。这一步的比较结果是「相等」，因此可以确认目标值已经找到。下面按「定区间 → 取中点 → 取值 → 比较」的顺序说明，并给出一个简单例子。",
+      "decision": {
+        "state": "leaf",
+        "reason": "用户目标只是看懂单一情境中的一步比较结果，基础（数组与大小比较）已足够；一次讲解加一个例子即可完整承载，拆成索引、取值、比较等步骤只是讲解顺序，不构成新的必要知识缺口。",
+        "profile_revision": 1,
+        "status": "current"
+      },
+      "children": [],
+      "contents": [
+        {
+          "id": "content_9248b239f87b4600a349685464509440",
+          "revision": 2,
+          "profile_revision": 1,
+          "overview": "在数组 [1, 3, 5] 中查找目标值 3 时，先确定当前查找区间的中点位置，取出该位置的值，再与目标值 3 比较。这一步的比较结果是「相等」，因此可以确认目标值已经找到。下面按「定区间 → 取中点 → 取值 → 比较」的顺序说明，并给出一个简单例子。",
+          "blocks": [
+            {
+              "text": "## 这一步在做什么\n\n当前查找区间是整个数组，共 3 个元素：\n\n| 位置（下标） | 0 | 1 | 2 |\n| --- | --- | --- | --- |\n| 值 | 1 | 3 | 5 |\n\n目标值：`3`。\n\n这一步只做一件事：**取当前区间的中点，把中点上的值与目标值比较一次**。\n\n## 中点位置怎么定\n\n区间下标从 `0` 到 `2`，中点下标取\n\n$$\\text{mid} = \\left\\lfloor \\frac{0 + 2}{2} \\right\\rfloor = 1$$\n\n也就是下标 `1` 这个位置。\n\n## 取值并比较\n\n下标 `1` 上的值是 `3`，与目标值比较：\n\n$$3 = 3$$\n\n比较结果是**相等**，说明这一次就命中了目标，查找成功。",
+              "type": "markdown"
+            },
+            {
+              "text": "## 一个简单例子\n\n把这一步写成伪代码，只看一次比较：\n\n```text\n数组 a = [1, 3, 5]\n目标 target = 3\n\nlow = 0\nhigh = 2\nmid = (low + high) // 2   # = 1\n\nif a[mid] == target:      # 3 == 3 → 成立\n    结果 = 找到\n```\n\n运行到 `a[mid] == target` 这一行时：\n\n- `mid` 是 `1`\n- `a[mid]` 是 `3`\n- `target` 是 `3`\n- 比较结果：相等 → 找到\n\n## 容易混淆的点\n\n- 中点位置是**下标**（这里是 `1`），不是数组里的值。\n- 这一步只产生一个比较结果（相等 / 小于 / 大于），本例是**相等**。\n- 本例恰好一次命中，所以不需要再缩小范围；这与「完整二分查找流程」无关。",
+              "type": "markdown"
+            }
+          ],
+          "source": {
+            "input": {
+              "path": [
+                {
+                  "key": "node_13fc0caa317c406c9f933e51559a0f6d",
+                  "scope": "仅限数组[1,3,5]、目标值3、一次取中点并比较这一步的结果；不涉及完整二分查找流程、循环或边界更新。",
+                  "title": "数组[1,3,5]中查找3的一次中点比较",
+                  "decision": {
+                    "state": "leaf",
+                    "reason": "用户目标只是看懂单一情境中的一步比较结果，基础（数组与大小比较）已足够；一次讲解加一个例子即可完整承载，拆成索引、取值、比较等步骤只是讲解顺序，不构成新的必要知识缺口。"
+                  },
+                  "overview": "在数组[1,3,5]中查找3时，先确定当前查找区间的中点位置，取该位置的值与目标值3比较，得到这一次比较的结果（相等），从而确认已找到目标。",
+                  "content_revision": 1,
+                  "profile_revision": 1
+                }
+              ],
+              "target": {
+                "key": "node_13fc0caa317c406c9f933e51559a0f6d",
+                "scope": "仅限数组[1,3,5]、目标值3、一次取中点并比较这一步的结果；不涉及完整二分查找流程、循环或边界更新。",
+                "title": "数组[1,3,5]中查找3的一次中点比较",
+                "decision": {
+                  "state": "leaf",
+                  "reason": "用户目标只是看懂单一情境中的一步比较结果，基础（数组与大小比较）已足够；一次讲解加一个例子即可完整承载，拆成索引、取值、比较等步骤只是讲解顺序，不构成新的必要知识缺口。"
+                },
+                "overview": "在数组[1,3,5]中查找3时，先确定当前查找区间的中点位置，取该位置的值与目标值3比较，得到这一次比较的结果（相等），从而确认已找到目标。",
+                "content_revision": 1,
+                "profile_revision": 1
+              },
+              "profile": {
+                "profile": {
+                  "topic": {
+                    "value": "二分查找的一次中点比较（数组[1,3,5]中查找3）",
+                    "source": "user",
+                    "evidence_keys": [
+                      "brief"
+                    ]
+                  },
+                  "background": {
+                    "value": "已理解数组和大小比较，不学完整算法",
+                    "source": "user",
+                    "evidence_keys": [
+                      "brief"
+                    ]
+                  },
+                  "constraints": [],
+                  "excluded_scope": [
+                    {
+                      "value": "完整二分查找算法的系统学习",
+                      "source": "user",
+                      "evidence_keys": [
+                        "brief"
+                      ]
+                    },
+                    {
+                      "value": "查找1或5时的中点比较结果",
+                      "source": "assumption",
+                      "evidence_keys": []
+                    }
+                  ],
+                  "included_scope": [
+                    {
+                      "value": "按原始目标限定，必要前置可补充",
+                      "source": "user",
+                      "evidence_keys": [
+                        "answer:scope_single_step"
+                      ]
+                    },
+                    {
+                      "value": "数组[1,3,5]中查找3时取中点并比较的那一步结果",
+                      "source": "assumption",
+                      "evidence_keys": []
+                    }
+                  ],
+                  "schema_version": "profile.v1",
+                  "primary_purpose": {
+                    "value": "看懂在数组[1,3,5]中查找3时中点比较的结果",
+                    "source": "user",
+                    "evidence_keys": [
+                      "brief"
+                    ]
+                  },
+                  "target_abilities": [
+                    {
+                      "value": "能说出在数组[1,3,5]中查找3时一次中点比较的结果",
+                      "source": "user",
+                      "evidence_keys": [
+                        "brief"
+                      ]
+                    }
+                  ],
+                  "secondary_purposes": []
+                },
+                "revision": 1
+              },
+              "instruction": "结合原始用途解释，给出准确的简单例子；只使用当前支持的正文块，不申请网页或图片资源。",
+              "schema_version": "explanation-input.v1",
+              "sibling_scopes": [],
+              "existing_children": [],
+              "reusable_concept_refs": [
+                "concept_b50133903d2c4681b0dda9d8728b38d1"
+              ],
+              "allowed_resource_kinds": [],
+              "available_exercise_refs": []
+            },
+            "run_id": "run_cac596607ab24eed8e30faf708a913af",
+            "operation": "explanation",
+            "review_id": null,
+            "division_basis": null
+          }
+        },
+        {
+          "id": "content_84836955a2604d0ea608050befce60c1",
+          "revision": 1,
+          "profile_revision": 1,
+          "overview": "在数组[1,3,5]中查找3时，先确定当前查找区间的中点位置，取该位置的值与目标值3比较，得到这一次比较的结果（相等），从而确认已找到目标。",
+          "blocks": [
+            {
+              "text": "在数组[1,3,5]中查找3时，先确定当前查找区间的中点位置，取该位置的值与目标值3比较，得到这一次比较的结果（相等），从而确认已找到目标。",
+              "type": "markdown"
+            }
+          ],
+          "source": {
+            "input": {
+              "profile": {
+                "profile": {
+                  "topic": {
+                    "value": "二分查找的一次中点比较（数组[1,3,5]中查找3）",
+                    "source": "user",
+                    "evidence_keys": [
+                      "brief"
+                    ]
+                  },
+                  "background": {
+                    "value": "已理解数组和大小比较，不学完整算法",
+                    "source": "user",
+                    "evidence_keys": [
+                      "brief"
+                    ]
+                  },
+                  "constraints": [],
+                  "excluded_scope": [
+                    {
+                      "value": "完整二分查找算法的系统学习",
+                      "source": "user",
+                      "evidence_keys": [
+                        "brief"
+                      ]
+                    },
+                    {
+                      "value": "查找1或5时的中点比较结果",
+                      "source": "assumption",
+                      "evidence_keys": []
+                    }
+                  ],
+                  "included_scope": [
+                    {
+                      "value": "按原始目标限定，必要前置可补充",
+                      "source": "user",
+                      "evidence_keys": [
+                        "answer:scope_single_step"
+                      ]
+                    },
+                    {
+                      "value": "数组[1,3,5]中查找3时取中点并比较的那一步结果",
+                      "source": "assumption",
+                      "evidence_keys": []
+                    }
+                  ],
+                  "schema_version": "profile.v1",
+                  "primary_purpose": {
+                    "value": "看懂在数组[1,3,5]中查找3时中点比较的结果",
+                    "source": "user",
+                    "evidence_keys": [
+                      "brief"
+                    ]
+                  },
+                  "target_abilities": [
+                    {
+                      "value": "能说出在数组[1,3,5]中查找3时一次中点比较的结果",
+                      "source": "user",
+                      "evidence_keys": [
+                        "brief"
+                      ]
+                    }
+                  ],
+                  "secondary_purposes": []
+                },
+                "revision": 1
+              },
+              "schema_version": "outline-input.v1",
+              "reusable_concept_refs": []
+            },
+            "run_id": "run_0e881e0715bf4ce99d17c61701f1f1f8",
+            "operation": "outline",
+            "review_id": null,
+            "division_basis": "按用户限定的单一情境（数组[1,3,5]、目标3、一次中点比较）整体作为一个叶子节点，不再细分。"
+          }
+        }
+      ],
+      "suggestions": []
+    }
+  ],
+  "relations": []
+}

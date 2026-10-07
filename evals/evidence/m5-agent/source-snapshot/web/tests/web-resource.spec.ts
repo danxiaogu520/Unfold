@@ -1,0 +1,32 @@
+import { expect, test } from '@playwright/test';
+
+test('managed web resource starts, receives keyboard, resets, stops and refreshes without generation', async ({ page }) => {
+  await page.goto('/');
+  await page.getByLabel('你想学习什么？').fill('受管网页 · M5 资源验收');
+  await page.getByLabel('你希望用它做什么？').fill('看清二分查找步骤。');
+  await page.getByRole('button', { name: '开始探索' }).click();
+  await page.getByRole('checkbox', { name: '暂不确定', exact: true }).check();
+  await page.getByRole('button', { name: '整理学习设定' }).click();
+  await page.getByRole('button', { name: '生成第一层大纲 →' }).click();
+  await page.getByLabel('补充要求或反馈（选填）').fill('M5 资源验收');
+  await page.getByRole('button', { name: '阅读详细讲解' }).click();
+  await expect(page.getByRole('button', { name: '启动演示' })).toBeVisible();
+  await page.getByRole('button', { name: '启动演示' }).click();
+  const surface = page.getByLabel('网页演示画面');
+  await expect(surface).toBeVisible();
+  await expect(page.getByRole('img', { name: '二分查找演示运行画面' })).toBeVisible();
+  await surface.focus();
+  await surface.press('ArrowRight');
+  await expect(page.getByRole('button', { name: '重置演示' })).toBeEnabled();
+  await page.getByRole('button', { name: '重置演示' }).click();
+  await expect(page.getByRole('button', { name: '停止演示' })).toBeEnabled();
+  await page.screenshot({ path: '../.data/qa/m5-runtime-ui.png', fullPage: true });
+  expect(await page.locator('.web-resource script').count()).toBe(0);
+  await page.getByRole('button', { name: '停止演示' }).click();
+  await expect(surface).toHaveCount(0);
+  let posts = 0;
+  page.on('request', request => { if (request.method() === 'POST') posts++; });
+  await page.reload();
+  await expect(page.getByRole('button', { name: '启动演示' })).toBeVisible();
+  expect(posts).toBe(0);
+});

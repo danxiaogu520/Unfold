@@ -1,0 +1,343 @@
+{
+  "snapshot": {
+    "schema_version": "run.v3",
+    "run_id": "run_a88628c3a2e84148b1211b95186590c2",
+    "operation": "resource",
+    "status": "succeeded",
+    "attempt": 1,
+    "last_event_seq": 3,
+    "result_ref": "resource_c4db887e987845b091cf4b134bda03cc",
+    "error": null,
+    "result_kind": "resource"
+  },
+  "input": {
+    "content": {
+      "text": "## 这一步在做什么\n\n当前查找区间是整个数组，左边界 $l = 0$，右边界 $r = 2$（下标从 0 开始）。\n\n- 定区间：$[l, r] = [0, 2]$\n- 取中点：$m = l + (r - l) // 2 = 0 + (2 - 0) // 2 = 1$\n- 取值：$a[1] = 3$\n- 比较：$a[1] = 3$ 与目标值 $3$ 相等\n\n比较结果是**相等**，所以这一步就判定「找到了」，不需要再看下标 0 或 2 的元素。\n\n> 注意：这里只描述一次比较的结果，不涉及循环、边界更新或完整二分查找流程。\n\n## 中点公式为什么写成 l + (r - l) // 2\n\n常见的两种写法：\n\n$$m = \\frac{l + r}{2} \\qquad\\text{与}\\qquad m = l + \\frac{r - l}{2}$$\n\n在数学上两者相等，但在计算机的整数运算里，差别在于**中间量的大小**。\n\n- 直接写 $(l + r) // 2$：先算 $l + r$。如果 $l$ 和 $r$ 都接近该整数类型能表示的最大值，$l + r$ 会先溢出。\n- 写 $l + (r - l) // 2$：先算 $r - l$。在 $l \\le r$ 的正常区间里，$r - l$ 不会超过 $r$ 本身，因此不会因为求和而溢出。\n\n### 溢出条件\n\n溢出只在**定长整数**（如 C、Java 的 `int`）下发生，条件是：\n\n$$l + r > \\text{INT\\_MAX}$$\n\n例如 32 位有符号整数 $\\text{INT\\_MAX} = 2^{31} - 1 = 2147483647$。若 $l = 2000000000$、$r = 2000000000$，则 $l + r = 4000000000 > \\text{INT\\_MAX}$，$(l + r)$ 会溢出为负数，再除以 2 得到错误的中点。而 $l + (r - l) // 2 = 2000000000 + 0 = 2000000000$，结果正确。\n\n### Python 的区别\n\nPython 的 `int` 是**任意精度整数**，不会溢出，所以 `(l + r) // 2` 在 Python 里也能得到正确结果。写成 `l + (r - l) // 2` 在 Python 中主要是为了：\n\n1. 与 C / Java 等定长整数语言的写法保持一致，便于迁移；\n2. 表达「先取区间长度的一半，再加到左边界」这一语义，可读性更好。\n\n```python\n# 本节点情境：数组 [1, 3, 5] 中查找 3 的一次中点比较\na = [1, 3, 5]\ntarget = 3\n\nl, r = 0, 2\nm = l + (r - l) // 2   # 1\nvalue = a[m]           # 3\n\nprint(m, value, value == target)  # 1 3 True\n```\n\n> 说明：以上代码只演示一次取中点与比较，不构成完整二分查找实现。\n\n流程：定区间 l=0, r=2 → 取中点 m=1 → 取值 a[1]=3 → 与目标值 3 比较 → 相等，确认找到目标。小于或大于的分支属于完整二分查找流程，本节点不展开。\n\n图片展示普通二分查找中查找区间如何随每次比较逐步缩小。本节点只用到其中「取中点并比较」这一步；溢出与公式解释以正文为准，不依赖此图。\n\n## 小结\n\n- 本节点情境下，一次中点比较的结果是**相等**，目标值 3 已找到。\n- 中点公式 $l + (r - l) // 2$ 相比 $(l + r) // 2$，在定长整数语言中避免了 $l + r$ 的溢出。\n- Python 的整数不会溢出，两种写法结果相同；采用前者主要是为了跨语言一致与语义清晰。",
+      "revision_ref": "content_896a47165402437aaf24ff75a9beb8e0"
+    },
+    "profile": {
+      "profile": {
+        "topic": {
+          "value": "二分查找的一次中点比较（数组[1,3,5]中查找3）",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "background": {
+          "value": "已理解数组和大小比较，不学完整算法",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "constraints": [],
+        "excluded_scope": [
+          {
+            "value": "完整二分查找算法的系统学习",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          {
+            "value": "查找1或5时的中点比较结果",
+            "source": "assumption",
+            "evidence_keys": []
+          }
+        ],
+        "included_scope": [
+          {
+            "value": "按原始目标限定，必要前置可补充",
+            "source": "user",
+            "evidence_keys": [
+              "answer:scope_single_step"
+            ]
+          },
+          {
+            "value": "数组[1,3,5]中查找3时取中点并比较的那一步结果",
+            "source": "assumption",
+            "evidence_keys": []
+          }
+        ],
+        "schema_version": "profile.v1",
+        "primary_purpose": {
+          "value": "看懂在数组[1,3,5]中查找3时中点比较的结果",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "target_abilities": [
+          {
+            "value": "能说出在数组[1,3,5]中查找3时一次中点比较的结果",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          }
+        ],
+        "secondary_purposes": []
+      },
+      "revision": 1
+    },
+    "request": {
+      "key": "img_binary_search_interval",
+      "kind": "image",
+      "purpose": "辅助理解普通二分查找中查找区间如何随比较逐步缩小，帮助学生把本节点的一次中点比较放到整体流程中定位。",
+      "runtime": null,
+      "controls": [],
+      "fallback_text": "图片展示普通二分查找中查找区间逐步缩小的过程。本节点只涉及其中一次取中点并比较；溢出条件与公式解释以正文为准，不依赖此图。",
+      "specification": "binary search"
+    },
+    "schema_version": "resource-input.v1",
+    "supported_kinds": [
+      "image"
+    ],
+    "offered_candidate_refs": []
+  },
+  "request": {
+    "schema_version": "api.v1",
+    "space_id": "space_8d1388944dfe46b4abd2d07a71e2e5d7",
+    "operation": "resource",
+    "profile_revision": 1,
+    "base_revision": 3,
+    "input": {
+      "content": {
+        "text": "## 这一步在做什么\n\n当前查找区间是整个数组，左边界 $l = 0$，右边界 $r = 2$（下标从 0 开始）。\n\n- 定区间：$[l, r] = [0, 2]$\n- 取中点：$m = l + (r - l) // 2 = 0 + (2 - 0) // 2 = 1$\n- 取值：$a[1] = 3$\n- 比较：$a[1] = 3$ 与目标值 $3$ 相等\n\n比较结果是**相等**，所以这一步就判定「找到了」，不需要再看下标 0 或 2 的元素。\n\n> 注意：这里只描述一次比较的结果，不涉及循环、边界更新或完整二分查找流程。\n\n## 中点公式为什么写成 l + (r - l) // 2\n\n常见的两种写法：\n\n$$m = \\frac{l + r}{2} \\qquad\\text{与}\\qquad m = l + \\frac{r - l}{2}$$\n\n在数学上两者相等，但在计算机的整数运算里，差别在于**中间量的大小**。\n\n- 直接写 $(l + r) // 2$：先算 $l + r$。如果 $l$ 和 $r$ 都接近该整数类型能表示的最大值，$l + r$ 会先溢出。\n- 写 $l + (r - l) // 2$：先算 $r - l$。在 $l \\le r$ 的正常区间里，$r - l$ 不会超过 $r$ 本身，因此不会因为求和而溢出。\n\n### 溢出条件\n\n溢出只在**定长整数**（如 C、Java 的 `int`）下发生，条件是：\n\n$$l + r > \\text{INT\\_MAX}$$\n\n例如 32 位有符号整数 $\\text{INT\\_MAX} = 2^{31} - 1 = 2147483647$。若 $l = 2000000000$、$r = 2000000000$，则 $l + r = 4000000000 > \\text{INT\\_MAX}$，$(l + r)$ 会溢出为负数，再除以 2 得到错误的中点。而 $l + (r - l) // 2 = 2000000000 + 0 = 2000000000$，结果正确。\n\n### Python 的区别\n\nPython 的 `int` 是**任意精度整数**，不会溢出，所以 `(l + r) // 2` 在 Python 里也能得到正确结果。写成 `l + (r - l) // 2` 在 Python 中主要是为了：\n\n1. 与 C / Java 等定长整数语言的写法保持一致，便于迁移；\n2. 表达「先取区间长度的一半，再加到左边界」这一语义，可读性更好。\n\n```python\n# 本节点情境：数组 [1, 3, 5] 中查找 3 的一次中点比较\na = [1, 3, 5]\ntarget = 3\n\nl, r = 0, 2\nm = l + (r - l) // 2   # 1\nvalue = a[m]           # 3\n\nprint(m, value, value == target)  # 1 3 True\n```\n\n> 说明：以上代码只演示一次取中点与比较，不构成完整二分查找实现。\n\n流程：定区间 l=0, r=2 → 取中点 m=1 → 取值 a[1]=3 → 与目标值 3 比较 → 相等，确认找到目标。小于或大于的分支属于完整二分查找流程，本节点不展开。\n\n图片展示普通二分查找中查找区间如何随每次比较逐步缩小。本节点只用到其中「取中点并比较」这一步；溢出与公式解释以正文为准，不依赖此图。\n\n## 小结\n\n- 本节点情境下，一次中点比较的结果是**相等**，目标值 3 已找到。\n- 中点公式 $l + (r - l) // 2$ 相比 $(l + r) // 2$，在定长整数语言中避免了 $l + r$ 的溢出。\n- Python 的整数不会溢出，两种写法结果相同；采用前者主要是为了跨语言一致与语义清晰。",
+        "revision_ref": "content_896a47165402437aaf24ff75a9beb8e0"
+      },
+      "profile": {
+        "profile": {
+          "topic": {
+            "value": "二分查找的一次中点比较（数组[1,3,5]中查找3）",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "background": {
+            "value": "已理解数组和大小比较，不学完整算法",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "value": "完整二分查找算法的系统学习",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            {
+              "value": "查找1或5时的中点比较结果",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "included_scope": [
+            {
+              "value": "按原始目标限定，必要前置可补充",
+              "source": "user",
+              "evidence_keys": [
+                "answer:scope_single_step"
+              ]
+            },
+            {
+              "value": "数组[1,3,5]中查找3时取中点并比较的那一步结果",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "schema_version": "profile.v1",
+          "primary_purpose": {
+            "value": "看懂在数组[1,3,5]中查找3时中点比较的结果",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "target_abilities": [
+            {
+              "value": "能说出在数组[1,3,5]中查找3时一次中点比较的结果",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            }
+          ],
+          "secondary_purposes": []
+        },
+        "revision": 1
+      },
+      "request": {
+        "key": "img_binary_search_interval",
+        "kind": "image",
+        "purpose": "辅助理解普通二分查找中查找区间如何随比较逐步缩小，帮助学生把本节点的一次中点比较放到整体流程中定位。",
+        "runtime": null,
+        "controls": [],
+        "fallback_text": "图片展示普通二分查找中查找区间逐步缩小的过程。本节点只涉及其中一次取中点并比较；溢出条件与公式解释以正文为准，不依赖此图。",
+        "specification": "binary search"
+      },
+      "schema_version": "resource-input.v1",
+      "supported_kinds": [
+        "image"
+      ],
+      "offered_candidate_refs": []
+    }
+  },
+  "dependencies": {
+    "node_revisions": {
+      "node_13fc0caa317c406c9f933e51559a0f6d": 3
+    },
+    "context_strategy": "resource-content.v1",
+    "outline_revision": 1,
+    "profile_revision": 1,
+    "resource_task_id": "resource_task_f0b2eb0a8ac94fb385f8a80c0d3dc45e",
+    "selected_context": {},
+    "resource_dispatch_revision": 1
+  },
+  "proposal": {
+    "strategy": "retrieve",
+    "limitation": null,
+    "request_key": "img_binary_search_interval",
+    "candidate_ref": null,
+    "specification": "已获取具备来源记录的图片；教学适配尚待核对。",
+    "schema_version": "resource.v1"
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "succeeded",
+      "outcome_unknown": false
+    }
+  ],
+  "tools": [
+    {
+      "id": "tool_373d22a949db4bbf9a7aa3d55f966be7",
+      "attempt": 1,
+      "step": 1,
+      "tool": "commons_raster_pipeline.v1",
+      "status": "completed",
+      "input": {
+        "content": {
+          "text": "## 这一步在做什么\n\n当前查找区间是整个数组，左边界 $l = 0$，右边界 $r = 2$（下标从 0 开始）。\n\n- 定区间：$[l, r] = [0, 2]$\n- 取中点：$m = l + (r - l) // 2 = 0 + (2 - 0) // 2 = 1$\n- 取值：$a[1] = 3$\n- 比较：$a[1] = 3$ 与目标值 $3$ 相等\n\n比较结果是**相等**，所以这一步就判定「找到了」，不需要再看下标 0 或 2 的元素。\n\n> 注意：这里只描述一次比较的结果，不涉及循环、边界更新或完整二分查找流程。\n\n## 中点公式为什么写成 l + (r - l) // 2\n\n常见的两种写法：\n\n$$m = \\frac{l + r}{2} \\qquad\\text{与}\\qquad m = l + \\frac{r - l}{2}$$\n\n在数学上两者相等，但在计算机的整数运算里，差别在于**中间量的大小**。\n\n- 直接写 $(l + r) // 2$：先算 $l + r$。如果 $l$ 和 $r$ 都接近该整数类型能表示的最大值，$l + r$ 会先溢出。\n- 写 $l + (r - l) // 2$：先算 $r - l$。在 $l \\le r$ 的正常区间里，$r - l$ 不会超过 $r$ 本身，因此不会因为求和而溢出。\n\n### 溢出条件\n\n溢出只在**定长整数**（如 C、Java 的 `int`）下发生，条件是：\n\n$$l + r > \\text{INT\\_MAX}$$\n\n例如 32 位有符号整数 $\\text{INT\\_MAX} = 2^{31} - 1 = 2147483647$。若 $l = 2000000000$、$r = 2000000000$，则 $l + r = 4000000000 > \\text{INT\\_MAX}$，$(l + r)$ 会溢出为负数，再除以 2 得到错误的中点。而 $l + (r - l) // 2 = 2000000000 + 0 = 2000000000$，结果正确。\n\n### Python 的区别\n\nPython 的 `int` 是**任意精度整数**，不会溢出，所以 `(l + r) // 2` 在 Python 里也能得到正确结果。写成 `l + (r - l) // 2` 在 Python 中主要是为了：\n\n1. 与 C / Java 等定长整数语言的写法保持一致，便于迁移；\n2. 表达「先取区间长度的一半，再加到左边界」这一语义，可读性更好。\n\n```python\n# 本节点情境：数组 [1, 3, 5] 中查找 3 的一次中点比较\na = [1, 3, 5]\ntarget = 3\n\nl, r = 0, 2\nm = l + (r - l) // 2   # 1\nvalue = a[m]           # 3\n\nprint(m, value, value == target)  # 1 3 True\n```\n\n> 说明：以上代码只演示一次取中点与比较，不构成完整二分查找实现。\n\n流程：定区间 l=0, r=2 → 取中点 m=1 → 取值 a[1]=3 → 与目标值 3 比较 → 相等，确认找到目标。小于或大于的分支属于完整二分查找流程，本节点不展开。\n\n图片展示普通二分查找中查找区间如何随每次比较逐步缩小。本节点只用到其中「取中点并比较」这一步；溢出与公式解释以正文为准，不依赖此图。\n\n## 小结\n\n- 本节点情境下，一次中点比较的结果是**相等**，目标值 3 已找到。\n- 中点公式 $l + (r - l) // 2$ 相比 $(l + r) // 2$，在定长整数语言中避免了 $l + r$ 的溢出。\n- Python 的整数不会溢出，两种写法结果相同；采用前者主要是为了跨语言一致与语义清晰。",
+          "revision_ref": "content_896a47165402437aaf24ff75a9beb8e0"
+        },
+        "profile": {
+          "profile": {
+            "topic": {
+              "value": "二分查找的一次中点比较（数组[1,3,5]中查找3）",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            "background": {
+              "value": "已理解数组和大小比较，不学完整算法",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            "constraints": [],
+            "excluded_scope": [
+              {
+                "value": "完整二分查找算法的系统学习",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              {
+                "value": "查找1或5时的中点比较结果",
+                "source": "assumption",
+                "evidence_keys": []
+              }
+            ],
+            "included_scope": [
+              {
+                "value": "按原始目标限定，必要前置可补充",
+                "source": "user",
+                "evidence_keys": [
+                  "answer:scope_single_step"
+                ]
+              },
+              {
+                "value": "数组[1,3,5]中查找3时取中点并比较的那一步结果",
+                "source": "assumption",
+                "evidence_keys": []
+              }
+            ],
+            "schema_version": "profile.v1",
+            "primary_purpose": {
+              "value": "看懂在数组[1,3,5]中查找3时中点比较的结果",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            "target_abilities": [
+              {
+                "value": "能说出在数组[1,3,5]中查找3时一次中点比较的结果",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              }
+            ],
+            "secondary_purposes": []
+          },
+          "revision": 1
+        },
+        "request": {
+          "key": "img_binary_search_interval",
+          "kind": "image",
+          "purpose": "辅助理解普通二分查找中查找区间如何随比较逐步缩小，帮助学生把本节点的一次中点比较放到整体流程中定位。",
+          "runtime": null,
+          "controls": [],
+          "fallback_text": "图片展示普通二分查找中查找区间逐步缩小的过程。本节点只涉及其中一次取中点并比较；溢出条件与公式解释以正文为准，不依赖此图。",
+          "specification": "binary search"
+        },
+        "schema_version": "resource-input.v1",
+        "supported_kinds": [
+          "image"
+        ],
+        "offered_candidate_refs": []
+      },
+      "output": {
+        "file": {
+          "mime": "image/png",
+          "size": 106799,
+          "width": 960,
+          "digest": "582637c6c34fbe7d68378c869beeee8fc89c38db906324f8aada44dbab91dbe0",
+          "height": 540,
+          "relative_path": "files/582637c6c34fbe7d68378c869beeee8fc89c38db906324f8aada44dbab91dbe0.png"
+        },
+        "source": {
+          "title": "File:Binary Search Example.png",
+          "artist": "Kurt Kaiser",
+          "credit": "Own work",
+          "license": "CC0",
+          "provider": "wikimedia_commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Binary_Search_Example.png",
+          "description": "Graphic demonstrating a binary search",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "usage_terms": "Creative Commons Zero, Public Domain Dedication",
+          "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Binary_Search_Example.png/960px-Binary_Search_Example.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "modification": "provider thumbnail; bytes stored unchanged",
+          "search_query": "binary search",
+          "teaching_suitability": "unverified"
+        },
+        "source_mode": "live_retrieval",
+        "candidate_id": "candidate_0e6685c3bd594a2889114371e1fb753a"
+      },
+      "outcome_unknown": false,
+      "latency_seconds": "11.9903"
+    }
+  ],
+  "calls": []
+}

@@ -1,0 +1,26 @@
+{
+  "source": {
+    "provider": "wikimedia_commons",
+    "title": "File:Binary Search Example.png",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Binary_Search_Example.png",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Binary_Search_Example.png/960px-Binary_Search_Example.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "artist": "Kurt Kaiser",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "usage_terms": "Creative Commons Zero, Public Domain Dedication",
+    "credit": "Own work",
+    "description": "Graphic demonstrating a binary search",
+    "search_query": "binary search",
+    "modification": "provider thumbnail; bytes stored unchanged",
+    "teaching_suitability": "unverified"
+  },
+  "file": {
+    "digest": "582637c6c34fbe7d68378c869beeee8fc89c38db906324f8aada44dbab91dbe0",
+    "relative_path": "files/582637c6c34fbe7d68378c869beeee8fc89c38db906324f8aada44dbab91dbe0.png",
+    "mime": "image/png",
+    "size": 106799,
+    "width": 960,
+    "height": 540
+  },
+  "original_live_retrieval": true
+}

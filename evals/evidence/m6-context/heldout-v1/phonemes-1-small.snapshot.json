@@ -1,0 +1,383 @@
+{
+  "case": {
+    "answers_by_target": {
+      "constraints": null,
+      "scope": "按原始目标限定，必要前置可补充"
+    },
+    "domain": "语言学音位",
+    "expected_behavior": "flexible",
+    "family": "phonemes",
+    "id": "phonemes-1",
+    "known_targets": [
+      "purpose",
+      "background",
+      "goal"
+    ],
+    "max_exploration_depth": 3,
+    "review_targets": [
+      "用途改变组织与例子",
+      "不误称官方或已核验",
+      "分支职责与概述明确",
+      "增量有用且不重复",
+      "停止位置与当前目标相符"
+    ],
+    "split": "holdout",
+    "user_brief": "兴趣入门，想区分语音和音位，能解释最小对立体，不要求跨语言全面覆盖。"
+  },
+  "space_id": "space_d7ce103b2ea94a6ea5fe78cb67b446b5",
+  "request": {
+    "path": [
+      {
+        "key": "node_b3061a335515423a9b3a33590acee9cc",
+        "scope": "语言学音位",
+        "title": "语言学音位",
+        "decision": {
+          "state": "expandable",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      }
+    ],
+    "target": {
+      "key": "node_b3061a335515423a9b3a33590acee9cc",
+      "scope": "语言学音位",
+      "title": "语言学音位",
+      "decision": {
+        "state": "expandable",
+        "reason": "固定开发判定，仅用于流程验证。"
+      },
+      "overview": "固定开发概述，不是实际模型生成。",
+      "content_revision": 1,
+      "profile_revision": 1
+    },
+    "profile": {
+      "profile": {
+        "topic": {
+          "value": "语言学音位",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "background": {
+          "value": "尚未确定当前基础",
+          "source": "unknown",
+          "evidence_keys": []
+        },
+        "constraints": [],
+        "excluded_scope": [],
+        "included_scope": [
+          {
+            "value": "语言学音位",
+            "source": "assumption",
+            "evidence_keys": []
+          }
+        ],
+        "schema_version": "profile.v1",
+        "primary_purpose": {
+          "value": "兴趣入门，想区分语音和音位，能解释最小对立体，不要求跨语言全面覆盖。",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "target_abilities": [
+          {
+            "value": "先理解核心概念，再结合用途练习",
+            "source": "assumption",
+            "evidence_keys": []
+          }
+        ],
+        "secondary_purposes": []
+      },
+      "revision": 1
+    },
+    "instruction": "兴趣入门，想区分语音和音位，能解释最小对立体，不要求跨语言全面覆盖。；只用文字讲解，不制作资源。",
+    "schema_version": "explanation-input.v1",
+    "sibling_scopes": [],
+    "existing_children": [
+      {
+        "key": "node_b65568ff216d4023b584fcbe35b5aba1",
+        "scope": "核心概念",
+        "title": "核心概念",
+        "decision": {
+          "state": "expandable",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      },
+      {
+        "key": "node_12ce8b9d943e418ca80240dc54fcd11e",
+        "scope": "应用与边界",
+        "title": "应用与边界",
+        "decision": {
+          "state": "leaf",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      }
+    ],
+    "reusable_concept_refs": [
+      "concept_126c0de16e77447ea35f8f5aaea8232b",
+      "concept_6912870ed87244e2b91d8f17a3fe8794",
+      "concept_a264f9995c644698a6cb551976d48628"
+    ],
+    "allowed_resource_kinds": [
+      "image",
+      "interactive",
+      "playground"
+    ],
+    "available_exercise_refs": []
+  },
+  "base": {
+    "concepts": [
+      {
+        "id": "concept_126c0de16e77447ea35f8f5aaea8232b",
+        "scope": "语言学音位",
+        "title": "语言学音位",
+        "aliases": []
+      },
+      {
+        "id": "concept_a264f9995c644698a6cb551976d48628",
+        "scope": "核心概念",
+        "title": "核心概念",
+        "aliases": []
+      },
+      {
+        "id": "concept_6912870ed87244e2b91d8f17a3fe8794",
+        "scope": "应用与边界",
+        "title": "应用与边界",
+        "aliases": []
+      }
+    ],
+    "feedback": [],
+    "content_origins": [
+      {
+        "node_id": "node_b3061a335515423a9b3a33590acee9cc",
+        "content_ref": "content_48f423a2740a440881c3768d02a1e8d0",
+        "carried_from": null,
+        "profile_revision": 1
+      },
+      {
+        "node_id": "node_b65568ff216d4023b584fcbe35b5aba1",
+        "content_ref": "content_869a329bd00c47a8ae45e26e06a1efee",
+        "carried_from": null,
+        "profile_revision": 1
+      },
+      {
+        "node_id": "node_12ce8b9d943e418ca80240dc54fcd11e",
+        "content_ref": "content_d22b9363e96b4500a3a73fca8987d032",
+        "carried_from": null,
+        "profile_revision": 1
+      }
+    ]
+  },
+  "snapshot": {
+    "version": "context-evaluation-snapshot.v1",
+    "data_classification": "public_synthetic_evaluation.v1",
+    "nodes": 10,
+    "content_versions": 10,
+    "body_characters": 1850,
+    "pages": [
+      {
+        "id": "content_node_b3061a335515423a9b3a33590acee9cc",
+        "node_id": "node_b3061a335515423a9b3a33590acee9cc",
+        "parent_id": null,
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "语言学音位",
+        "scope": "语言学音位",
+        "text": "公开合成上下文记录。当前用途：兴趣入门，想区分语音和音位，能解释最小对立体，不要求跨语言全面覆盖。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_node_b65568ff216d4023b584fcbe35b5aba1",
+        "node_id": "node_b65568ff216d4023b584fcbe35b5aba1",
+        "parent_id": "node_b3061a335515423a9b3a33590acee9cc",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "核心概念",
+        "scope": "核心概念",
+        "text": "公开合成上下文记录。当前用途：兴趣入门，想区分语音和音位，能解释最小对立体，不要求跨语言全面覆盖。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_node_12ce8b9d943e418ca80240dc54fcd11e",
+        "node_id": "node_12ce8b9d943e418ca80240dc54fcd11e",
+        "parent_id": "node_b3061a335515423a9b3a33590acee9cc",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "应用与边界",
+        "scope": "应用与边界",
+        "text": "公开合成上下文记录。当前用途：兴趣入门，想区分语音和音位，能解释最小对立体，不要求跨语言全面覆盖。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_branch",
+        "node_id": "synthetic_branch",
+        "parent_id": "node_b3061a335515423a9b3a33590acee9cc",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支资料",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_related",
+        "node_id": "synthetic_related",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "语言学音位",
+        "scope": "另一分支：用途提示",
+        "text": "公开合成上下文记录。当前用途：兴趣入门，想区分语音和音位，能解释最小对立体，不要求跨语言全面覆盖。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0005",
+        "node_id": "synthetic_0005",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 5",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0006",
+        "node_id": "synthetic_0006",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 6",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0007",
+        "node_id": "synthetic_0007",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 7",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0008",
+        "node_id": "synthetic_0008",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 8",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0009",
+        "node_id": "synthetic_0009",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 9",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      }
+    ],
+    "relations": [
+      {
+        "id": "synthetic_relation",
+        "source_id": "node_b3061a335515423a9b3a33590acee9cc",
+        "target_id": "synthetic_related",
+        "kind": "related",
+        "explanation": "公开合成关系：同主题的另一用途；保留节点范围，不合并。"
+      }
+    ],
+    "profile_history": [
+      {
+        "profile": {
+          "topic": {
+            "value": "语言学音位",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "background": {
+            "value": "尚未确定当前基础",
+            "source": "unknown",
+            "evidence_keys": []
+          },
+          "constraints": [],
+          "excluded_scope": [],
+          "included_scope": [
+            {
+              "value": "语言学音位",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "schema_version": "profile.v1",
+          "primary_purpose": {
+            "value": "兴趣入门，想区分语音和音位，能解释最小对立体，不要求跨语言全面覆盖。",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "target_abilities": [
+            {
+              "value": "先理解核心概念，再结合用途练习",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "secondary_purposes": []
+        },
+        "revision": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "evidence_kind": "real_deepseek_synthetic_goal_change_and_issue_fix",
+  "plan_frozen_before_calls": [
+    "correct HTTP/1.1 scope/framing/field-combination and JSON lengths",
+    "change same backend topic from recruitment to building a small service",
+    "generate replacement outline as preview; do not adopt automatically"
+  ],
+  "maximum_runs": 2,
+  "maximum_provider_calls": 4,
+  "runs": [
+    "run_8d8a750ca12f49c1ad678a2ae0752d92",
+    "run_e2629f84076a485480e56dea66fa5285"
+  ],
+  "independent_human_review": null,
+  "model": "deepseek-flash",
+  "prompt_version": "app-prompt.v2",
+  "source_sha256": {
+    "src/unfold/api_contract.py": "d7e439e82cf60ddb2dd4bc95f0948dfecd8c375bacabc5c08dce1942672792d9",
+    "src/unfold/provider.py": "063404d3a2bc6e5b88682260dab1b01036055b9945f6cf1842423b3366a0bfd9",
+    "src/unfold/evaluation.py": "7bf49fd6cce2f31470842fdb403d8d82979a389acfc8ccec482b01715124dfa7",
+    "src/unfold/materials.py": "ea00f039c2abaa949a6f17719c0da6949c0ab9d0fa9b558171434947f26fd57e",
+    "src/unfold/__init__.py": "e58a2524aaaa7c8b561bd6074744973061d3fa86361b3b1d6534f505758a50c6",
+    "src/unfold/cli.py": "e673d43896b0b5c834c22236642402febb72cc9909401c1d0298f806ce618ed4",
+    "src/unfold/contracts.py": "39602d779644c0c4aa183a5cc8d64807b9685783537ba38ad5bd915529b4da7d",
+    "src/unfold/app/worker.py": "dcc61717bba008be69d36518e8c706cb67b7c0e54e183173b0d78c6b4b485202",
+    "src/unfold/app/service.py": "a791c532e38a3328ff4e9393f4a6a70854186723e77096095204ea9f29dd26e4",
+    "src/unfold/app/db.py": "7c87f796f91a3c0e7384cae6b98b638661b78d76b4314df495cc9bb166c11787",
+    "src/unfold/app/config.py": "bc84eb63d90612f17abbf5fcdc8deb9252ff8eb98ebcdf8d3efbd7db8c130325",
+    "src/unfold/app/generation.py": "f9c42d491e2d639fcc70cf7caf32e11dc89602816ad7af75f948c7dedf5079d3",
+    "src/unfold/app/models.py": "dfc9d4a3cccd818ccdd75080cc6b287507ae2ff66888a248d0bf599beb5441c4",
+    "src/unfold/app/security.py": "ff483356c9014bbe05e2f09a8b3efd9dfb9823a0863a43f2d9bc7687f71f8411",
+    "src/unfold/app/__init__.py": "09a1e92f00ea0f8e6eec616b5fc48bbfff20795db990a9466125ea95012aef96",
+    "src/unfold/app/api.py": "b35a420749ed3457c7a53ece37540c9ef9250e5bdef9d679764cddd93f2fd676",
+    "src/unfold/app/examples.py": "f14b78ceeb55834a66dcbaa4074ee1bf762ef840889a3174b90254f4db0e812b",
+    "src/unfold/app/learning.py": "76a7ffcd2be8a3f46f72c4aa8f98f5060e66c105a882d0f86f0627209fa5a13a",
+    "src/unfold/app/migrate.py": "bc1fc13696d8e18f8a35b700de3cf968daf1d9e2de790772525580dd95de5d38",
+    "src/unfold/app/migrations/env.py": "14c1d76200d4cfce0460baeb1aee33dec17dca312ebeb34badd819a5dac4b99f",
+    "src/unfold/app/migrations/versions/0002_learning.py": "cd2c0f6998fbef5c1f17460fa770275259197bee8846cc63c13e20f29474bb50",
+    "src/unfold/app/migrations/versions/0004_content_issues.py": "68059b4ad78744c645af13adba50a05b10bb10c52adccd4968406da834bec5dc",
+    "src/unfold/app/migrations/versions/0003_structure_preview.py": "f2f9d6472c99af6cced76bf51f815fb3c5fda17fdcaa511c3465e8f6a0ca59e7",
+    "src/unfold/app/migrations/versions/0001_initial.py": "003a375b47f02570c8225c5cf2ed614049a1f052e9bb552b8ade074f156b12f9",
+    "src/unfold/app/migrations/versions/0001_schema.sql": "2c29fc3cdb674cd9abe669714ce32f94258ed38f0eb201fbd31c124ac6b975b6",
+    "src/unfold/app/migrations/versions/0002_schema.sql": "ac7ccc1b1f22800cc6889789be3c118f32fa333054ecd3784b9a5a58f4d42b26",
+    "evals/prompts/stages.v1.json": "94542fb5c1d2bc1ad104009f01d10b03d86c82668d9395fbfbffb361a9a7f26e",
+    "evals/prompts/app.v2.json": "5e6d26111f7af0b8d83f2ec10e7384af25ac16165a2ed90e7b933dd2a9ee0de4",
+    "evals/prompts/app.v1.json": "c50aac96593e06d70500b2ab9f476a6587f9df89b1dc019bd124b423240f8767",
+    "uv.lock": "c07938891d241ee50eace449bf11aea795ed6a3d2a506ff6f7a265788c343673",
+    "pyproject.toml": "fbae17755947447fc6adf8663e1e973e4b944b640ae515a4066b994e8fb4f34b",
+    "scripts/m2_review.py": "8c83b992c07e9d0f1767fdf8c24bb72eb87e9a6eb83560ec10a4afe0091e0a2b"
+  },
+  "failure": {
+    "schema_version": "error.v1",
+    "code": "domain_validation",
+    "message": "candidate invalid after bounded repair",
+    "retryable": false,
+    "outcome_unknown": false,
+    "run_id": "run_e2629f84076a485480e56dea66fa5285"
+  },
+  "real_calls": 4,
+  "unknown_usage_calls": 0,
+  "conservative_cost_cny": "0.09072400",
+  "persistent_reserved_and_settled_cny": "0.32463000"
+}

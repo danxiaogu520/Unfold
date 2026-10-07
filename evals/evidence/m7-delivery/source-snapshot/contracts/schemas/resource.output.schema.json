@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "candidate_ref": {
+      "anyOf": [
+        {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Candidate Ref"
+    },
+    "limitation": {
+      "anyOf": [
+        {
+          "maxLength": 6000,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Limitation"
+    },
+    "request_key": {
+      "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+      "title": "Request Key",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "resource.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "specification": {
+      "maxLength": 6000,
+      "minLength": 1,
+      "title": "Specification",
+      "type": "string"
+    },
+    "strategy": {
+      "enum": [
+        "reuse",
+        "retrieve",
+        "draw",
+        "build",
+        "unsupported"
+      ],
+      "title": "Strategy",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_key",
+    "strategy",
+    "candidate_ref",
+    "specification",
+    "limitation"
+  ],
+  "title": "ResourceProposal",
+  "type": "object"
+}

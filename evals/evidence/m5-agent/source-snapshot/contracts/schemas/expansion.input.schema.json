@@ -1,0 +1,275 @@
+{
+  "$defs": {
+    "Decision": {
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "expandable",
+            "leaf"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "state",
+        "reason"
+      ],
+      "title": "Decision",
+      "type": "object"
+    },
+    "Fact": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_keys": {
+          "items": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "type": "string"
+          },
+          "title": "Evidence Keys",
+          "type": "array"
+        },
+        "source": {
+          "enum": [
+            "user",
+            "assumption",
+            "unknown"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "source",
+        "evidence_keys"
+      ],
+      "title": "Fact",
+      "type": "object"
+    },
+    "LearningProfileProposal": {
+      "additionalProperties": false,
+      "properties": {
+        "background": {
+          "$ref": "#/$defs/Fact"
+        },
+        "constraints": {
+          "items": {
+            "$ref": "#/$defs/Fact"
+          },
+          "maxItems": 8,
+          "title": "Constraints",
+          "type": "array"
+        },
+        "excluded_scope": {
+          "items": {
+            "$ref": "#/$defs/Fact"
+          },
+          "maxItems": 12,
+          "title": "Excluded Scope",
+          "type": "array"
+        },
+        "included_scope": {
+          "items": {
+            "$ref": "#/$defs/Fact"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Included Scope",
+          "type": "array"
+        },
+        "primary_purpose": {
+          "$ref": "#/$defs/Fact"
+        },
+        "schema_version": {
+          "const": "profile.v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "secondary_purposes": {
+          "items": {
+            "$ref": "#/$defs/Fact"
+          },
+          "title": "Secondary Purposes",
+          "type": "array"
+        },
+        "target_abilities": {
+          "items": {
+            "$ref": "#/$defs/Fact"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Target Abilities",
+          "type": "array"
+        },
+        "topic": {
+          "$ref": "#/$defs/Fact"
+        }
+      },
+      "required": [
+        "schema_version",
+        "topic",
+        "primary_purpose",
+        "secondary_purposes",
+        "background",
+        "target_abilities",
+        "included_scope",
+        "excluded_scope",
+        "constraints"
+      ],
+      "title": "LearningProfileProposal",
+      "type": "object"
+    },
+    "NodeSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "content_revision": {
+          "minimum": 1,
+          "title": "Content Revision",
+          "type": "integer"
+        },
+        "decision": {
+          "$ref": "#/$defs/Decision"
+        },
+        "key": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Key",
+          "type": "string"
+        },
+        "overview": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Overview",
+          "type": "string"
+        },
+        "profile_revision": {
+          "minimum": 1,
+          "title": "Profile Revision",
+          "type": "integer"
+        },
+        "scope": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Scope",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "title",
+        "scope",
+        "overview",
+        "decision",
+        "profile_revision",
+        "content_revision"
+      ],
+      "title": "NodeSnapshot",
+      "type": "object"
+    },
+    "ProfileSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "$ref": "#/$defs/LearningProfileProposal"
+        },
+        "revision": {
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "revision",
+        "profile"
+      ],
+      "title": "ProfileSnapshot",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "existing_children": {
+      "items": {
+        "$ref": "#/$defs/NodeSnapshot"
+      },
+      "title": "Existing Children",
+      "type": "array"
+    },
+    "operation": {
+      "enum": [
+        "expand",
+        "regenerate_expansion"
+      ],
+      "title": "Operation",
+      "type": "string"
+    },
+    "path": {
+      "items": {
+        "$ref": "#/$defs/NodeSnapshot"
+      },
+      "minItems": 1,
+      "title": "Path",
+      "type": "array"
+    },
+    "profile": {
+      "$ref": "#/$defs/ProfileSnapshot"
+    },
+    "reusable_concept_refs": {
+      "items": {
+        "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+        "type": "string"
+      },
+      "title": "Reusable Concept Refs",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "expansion-input.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sibling_scopes": {
+      "items": {
+        "maxLength": 6000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Sibling Scopes",
+      "type": "array"
+    },
+    "target": {
+      "$ref": "#/$defs/NodeSnapshot"
+    }
+  },
+  "required": [
+    "profile",
+    "target",
+    "path",
+    "existing_children",
+    "sibling_scopes",
+    "reusable_concept_refs",
+    "schema_version",
+    "operation"
+  ],
+  "title": "ExpansionInput",
+  "type": "object"
+}

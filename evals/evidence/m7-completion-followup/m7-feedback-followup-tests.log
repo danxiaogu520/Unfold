@@ -1,0 +1,40 @@
+.......F..........                                                       [100%]
+=================================== FAILURES ===================================
+____________ test_feedback_has_versions_and_never_changes_decision _____________
+
+database = <unfold.app.db.Database object at 0x10a660050>
+
+    def test_feedback_has_versions_and_never_changes_decision(database: Database) -> None:
+        service, space_id = seed(database)
+        leaf = next(
+            node for node in service.get_space(space_id)["nodes"] if node["decision"]["state"] == "leaf"
+        )
+        feedback = service.feedback(
+            space_id,
+            leaf["id"],
+            FeedbackInput(
+                expected_profile_revision=1,
+                expected_base_revision=1,
+                kind="need_example",
+                text="需要一个更具体的例子",
+            ),
+        )
+        assert feedback["id"]
+>       assert service.get_node(space_id, leaf["id"]) == leaf
+E       AssertionError: assert {'active': Tr...1, ...}], ...} == {'active': Tr...1, ...}], ...}
+E         
+E         Omitting 14 identical items, use -vv to show
+E         Differing items:
+E         {'feedback': [{'content_revision': 1, 'created_at': '2026-10-07T21:07:25.356808+08:00', 'id': 'feedback_f2ee8a08a8934754ab0376d203c75de0', 'kind': 'need_example', ...}]} != {'feedback': []}
+E         Use -v to get more diff
+
+tests/test_learning.py:310: AssertionError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  <workspace>/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_learning.py::test_feedback_has_versions_and_never_changes_decision
+1 failed, 17 passed, 1 warning in 3.99s

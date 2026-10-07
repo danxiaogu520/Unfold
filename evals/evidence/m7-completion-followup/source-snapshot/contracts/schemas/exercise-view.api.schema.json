@@ -1,0 +1,93 @@
+{
+  "$defs": {
+    "Option": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Key",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "text"
+      ],
+      "title": "Option",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Public question projection, deliberately excluding answer and explanation.",
+  "properties": {
+    "content_refs": {
+      "items": {
+        "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+        "type": "string"
+      },
+      "title": "Content Refs",
+      "type": "array"
+    },
+    "exercise_revision_ref": {
+      "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+      "title": "Exercise Revision Ref",
+      "type": "string"
+    },
+    "key": {
+      "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+      "title": "Key",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "single",
+        "multiple"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "options": {
+      "items": {
+        "$ref": "#/$defs/Option"
+      },
+      "title": "Options",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "exercise-view.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "stem": {
+      "maxLength": 6000,
+      "minLength": 1,
+      "title": "Stem",
+      "type": "string"
+    },
+    "testing_point": {
+      "maxLength": 6000,
+      "minLength": 1,
+      "title": "Testing Point",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "exercise_revision_ref",
+    "key",
+    "mode",
+    "stem",
+    "testing_point",
+    "content_refs",
+    "options"
+  ],
+  "title": "ExerciseView",
+  "type": "object"
+}

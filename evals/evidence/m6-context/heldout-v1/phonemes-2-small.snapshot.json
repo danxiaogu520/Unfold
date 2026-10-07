@@ -1,0 +1,383 @@
+{
+  "case": {
+    "answers_by_target": {
+      "constraints": null,
+      "scope": "按原始目标限定，必要前置可补充"
+    },
+    "domain": "语言学音位",
+    "expected_behavior": "flexible",
+    "family": "phonemes",
+    "id": "phonemes-2",
+    "known_targets": [
+      "purpose",
+      "background",
+      "goal"
+    ],
+    "max_exploration_depth": 3,
+    "review_targets": [
+      "用途改变组织与例子",
+      "不误称官方或已核验",
+      "分支职责与概述明确",
+      "增量有用且不重复",
+      "停止位置与当前目标相符"
+    ],
+    "split": "holdout",
+    "user_brief": "已有音标基础，想分析不同方言的音位差异，避免将口音视作错误。"
+  },
+  "space_id": "space_88634f1087844f15837c94111a2c17c7",
+  "request": {
+    "path": [
+      {
+        "key": "node_cbff89e43962473da1c07bf805a97c2e",
+        "scope": "语言学音位",
+        "title": "语言学音位",
+        "decision": {
+          "state": "expandable",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      }
+    ],
+    "target": {
+      "key": "node_cbff89e43962473da1c07bf805a97c2e",
+      "scope": "语言学音位",
+      "title": "语言学音位",
+      "decision": {
+        "state": "expandable",
+        "reason": "固定开发判定，仅用于流程验证。"
+      },
+      "overview": "固定开发概述，不是实际模型生成。",
+      "content_revision": 1,
+      "profile_revision": 1
+    },
+    "profile": {
+      "profile": {
+        "topic": {
+          "value": "语言学音位",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "background": {
+          "value": "尚未确定当前基础",
+          "source": "unknown",
+          "evidence_keys": []
+        },
+        "constraints": [],
+        "excluded_scope": [],
+        "included_scope": [
+          {
+            "value": "语言学音位",
+            "source": "assumption",
+            "evidence_keys": []
+          }
+        ],
+        "schema_version": "profile.v1",
+        "primary_purpose": {
+          "value": "已有音标基础，想分析不同方言的音位差异，避免将口音视作错误。",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "target_abilities": [
+          {
+            "value": "先理解核心概念，再结合用途练习",
+            "source": "assumption",
+            "evidence_keys": []
+          }
+        ],
+        "secondary_purposes": []
+      },
+      "revision": 1
+    },
+    "instruction": "已有音标基础，想分析不同方言的音位差异，避免将口音视作错误。；只用文字讲解，不制作资源。",
+    "schema_version": "explanation-input.v1",
+    "sibling_scopes": [],
+    "existing_children": [
+      {
+        "key": "node_aff75c0106cf4a429f3316c144684271",
+        "scope": "核心概念",
+        "title": "核心概念",
+        "decision": {
+          "state": "expandable",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      },
+      {
+        "key": "node_b28f993ff9d34f53a22006b694d2d9ff",
+        "scope": "应用与边界",
+        "title": "应用与边界",
+        "decision": {
+          "state": "leaf",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      }
+    ],
+    "reusable_concept_refs": [
+      "concept_494732ba175f4cc3878ca90cbefbeae3",
+      "concept_57ff551a48a9463cba02d69c426a1a6e",
+      "concept_e3fb8782d2ad42b2aa58671f758da8b0"
+    ],
+    "allowed_resource_kinds": [
+      "image",
+      "interactive",
+      "playground"
+    ],
+    "available_exercise_refs": []
+  },
+  "base": {
+    "concepts": [
+      {
+        "id": "concept_57ff551a48a9463cba02d69c426a1a6e",
+        "scope": "语言学音位",
+        "title": "语言学音位",
+        "aliases": []
+      },
+      {
+        "id": "concept_494732ba175f4cc3878ca90cbefbeae3",
+        "scope": "核心概念",
+        "title": "核心概念",
+        "aliases": []
+      },
+      {
+        "id": "concept_e3fb8782d2ad42b2aa58671f758da8b0",
+        "scope": "应用与边界",
+        "title": "应用与边界",
+        "aliases": []
+      }
+    ],
+    "feedback": [],
+    "content_origins": [
+      {
+        "node_id": "node_cbff89e43962473da1c07bf805a97c2e",
+        "content_ref": "content_33155eeb860341998633174816ef4388",
+        "carried_from": null,
+        "profile_revision": 1
+      },
+      {
+        "node_id": "node_aff75c0106cf4a429f3316c144684271",
+        "content_ref": "content_2deafc4fc17946e38164b0d6cdfe5b04",
+        "carried_from": null,
+        "profile_revision": 1
+      },
+      {
+        "node_id": "node_b28f993ff9d34f53a22006b694d2d9ff",
+        "content_ref": "content_781d691bb0e6408e80b25bd46dbdc7c3",
+        "carried_from": null,
+        "profile_revision": 1
+      }
+    ]
+  },
+  "snapshot": {
+    "version": "context-evaluation-snapshot.v1",
+    "data_classification": "public_synthetic_evaluation.v1",
+    "nodes": 10,
+    "content_versions": 10,
+    "body_characters": 1834,
+    "pages": [
+      {
+        "id": "content_node_cbff89e43962473da1c07bf805a97c2e",
+        "node_id": "node_cbff89e43962473da1c07bf805a97c2e",
+        "parent_id": null,
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "语言学音位",
+        "scope": "语言学音位",
+        "text": "公开合成上下文记录。当前用途：已有音标基础，想分析不同方言的音位差异，避免将口音视作错误。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_node_aff75c0106cf4a429f3316c144684271",
+        "node_id": "node_aff75c0106cf4a429f3316c144684271",
+        "parent_id": "node_cbff89e43962473da1c07bf805a97c2e",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "核心概念",
+        "scope": "核心概念",
+        "text": "公开合成上下文记录。当前用途：已有音标基础，想分析不同方言的音位差异，避免将口音视作错误。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_node_b28f993ff9d34f53a22006b694d2d9ff",
+        "node_id": "node_b28f993ff9d34f53a22006b694d2d9ff",
+        "parent_id": "node_cbff89e43962473da1c07bf805a97c2e",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "应用与边界",
+        "scope": "应用与边界",
+        "text": "公开合成上下文记录。当前用途：已有音标基础，想分析不同方言的音位差异，避免将口音视作错误。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_branch",
+        "node_id": "synthetic_branch",
+        "parent_id": "node_cbff89e43962473da1c07bf805a97c2e",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支资料",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_related",
+        "node_id": "synthetic_related",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "语言学音位",
+        "scope": "另一分支：用途提示",
+        "text": "公开合成上下文记录。当前用途：已有音标基础，想分析不同方言的音位差异，避免将口音视作错误。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0005",
+        "node_id": "synthetic_0005",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 5",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0006",
+        "node_id": "synthetic_0006",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 6",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0007",
+        "node_id": "synthetic_0007",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 7",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0008",
+        "node_id": "synthetic_0008",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 8",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0009",
+        "node_id": "synthetic_0009",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 9",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      }
+    ],
+    "relations": [
+      {
+        "id": "synthetic_relation",
+        "source_id": "node_cbff89e43962473da1c07bf805a97c2e",
+        "target_id": "synthetic_related",
+        "kind": "related",
+        "explanation": "公开合成关系：同主题的另一用途；保留节点范围，不合并。"
+      }
+    ],
+    "profile_history": [
+      {
+        "profile": {
+          "topic": {
+            "value": "语言学音位",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "background": {
+            "value": "尚未确定当前基础",
+            "source": "unknown",
+            "evidence_keys": []
+          },
+          "constraints": [],
+          "excluded_scope": [],
+          "included_scope": [
+            {
+              "value": "语言学音位",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "schema_version": "profile.v1",
+          "primary_purpose": {
+            "value": "已有音标基础，想分析不同方言的音位差异，避免将口音视作错误。",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "target_abilities": [
+            {
+              "value": "先理解核心概念，再结合用途练习",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "secondary_purposes": []
+        },
+        "revision": 1
+      }
+    ]
+  }
+}

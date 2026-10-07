@@ -1,0 +1,83 @@
+[
+  {
+    "depth": 3,
+    "expanded_paths": [
+      [
+        "order_service_reliability",
+        "order_write_path_failure_model"
+      ],
+      [
+        "order_service_reliability",
+        "order_write_path_failure_model",
+        "order_write_request_flow"
+      ]
+    ],
+    "latency_seconds": 25.512494791008066,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 1,
+    "scenario_id": "backend-2",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline",
+      "expansion",
+      "expansion"
+    ],
+    "success": true,
+    "task_id": "backend-2-r1"
+  },
+  {
+    "depth": 1,
+    "expanded_paths": [],
+    "latency_seconds": 12.893351499980781,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 1,
+    "scenario_id": "cell-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline"
+    ],
+    "success": true,
+    "task_id": "cell-1-r1"
+  },
+  {
+    "depth": 2,
+    "expanded_paths": [
+      [
+        "triads_foundation",
+        "intervals_basics"
+      ],
+      [
+        "triads_foundation",
+        "scale_and_notes"
+      ],
+      [
+        "triads_foundation",
+        "triad_definition"
+      ],
+      [
+        "triads_foundation",
+        "build_triads"
+      ]
+    ],
+    "latency_seconds": 38.19010554201668,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 1,
+    "scenario_id": "triads-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline",
+      "expansion",
+      "expansion",
+      "expansion",
+      "expansion"
+    ],
+    "success": true,
+    "task_id": "triads-1-r1"
+  }
+]

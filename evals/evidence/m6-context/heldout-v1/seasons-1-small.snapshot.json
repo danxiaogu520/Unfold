@@ -1,0 +1,383 @@
+{
+  "case": {
+    "answers_by_target": {
+      "constraints": null,
+      "scope": "按原始目标限定，必要前置可补充"
+    },
+    "domain": "天文学季节变化",
+    "expected_behavior": "flexible",
+    "family": "seasons",
+    "id": "seasons-1",
+    "known_targets": [
+      "purpose",
+      "background",
+      "goal"
+    ],
+    "max_exploration_depth": 3,
+    "review_targets": [
+      "用途改变组织与例子",
+      "不误称官方或已核验",
+      "分支职责与概述明确",
+      "增量有用且不重复",
+      "停止位置与当前目标相符"
+    ],
+    "split": "holdout",
+    "user_brief": "给儿童解释季节，已理解地球公转，要区分地轴倾斜和日地距离的影响。"
+  },
+  "space_id": "space_7c7d474443624f1695a082f3ed3582cb",
+  "request": {
+    "path": [
+      {
+        "key": "node_c4ff6b62039e4c5cb3ce5fc009b0109d",
+        "scope": "天文学季节变化",
+        "title": "天文学季节变化",
+        "decision": {
+          "state": "expandable",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      }
+    ],
+    "target": {
+      "key": "node_c4ff6b62039e4c5cb3ce5fc009b0109d",
+      "scope": "天文学季节变化",
+      "title": "天文学季节变化",
+      "decision": {
+        "state": "expandable",
+        "reason": "固定开发判定，仅用于流程验证。"
+      },
+      "overview": "固定开发概述，不是实际模型生成。",
+      "content_revision": 1,
+      "profile_revision": 1
+    },
+    "profile": {
+      "profile": {
+        "topic": {
+          "value": "天文学季节变化",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "background": {
+          "value": "尚未确定当前基础",
+          "source": "unknown",
+          "evidence_keys": []
+        },
+        "constraints": [],
+        "excluded_scope": [],
+        "included_scope": [
+          {
+            "value": "天文学季节变化",
+            "source": "assumption",
+            "evidence_keys": []
+          }
+        ],
+        "schema_version": "profile.v1",
+        "primary_purpose": {
+          "value": "给儿童解释季节，已理解地球公转，要区分地轴倾斜和日地距离的影响。",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "target_abilities": [
+          {
+            "value": "先理解核心概念，再结合用途练习",
+            "source": "assumption",
+            "evidence_keys": []
+          }
+        ],
+        "secondary_purposes": []
+      },
+      "revision": 1
+    },
+    "instruction": "给儿童解释季节，已理解地球公转，要区分地轴倾斜和日地距离的影响。；只用文字讲解，不制作资源。",
+    "schema_version": "explanation-input.v1",
+    "sibling_scopes": [],
+    "existing_children": [
+      {
+        "key": "node_6e872cadb29143ffb0206780f264bffa",
+        "scope": "核心概念",
+        "title": "核心概念",
+        "decision": {
+          "state": "expandable",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      },
+      {
+        "key": "node_8f33c0a76ead488bb31c39c0a0edb6a4",
+        "scope": "应用与边界",
+        "title": "应用与边界",
+        "decision": {
+          "state": "leaf",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      }
+    ],
+    "reusable_concept_refs": [
+      "concept_0bfdc6fc07e5496bb85afc8871a2061f",
+      "concept_1598875aea5f41a08bb4d496e4c2196d",
+      "concept_d9d198841a0f409eb8928bed26afe221"
+    ],
+    "allowed_resource_kinds": [
+      "image",
+      "interactive",
+      "playground"
+    ],
+    "available_exercise_refs": []
+  },
+  "base": {
+    "concepts": [
+      {
+        "id": "concept_d9d198841a0f409eb8928bed26afe221",
+        "scope": "天文学季节变化",
+        "title": "天文学季节变化",
+        "aliases": []
+      },
+      {
+        "id": "concept_0bfdc6fc07e5496bb85afc8871a2061f",
+        "scope": "核心概念",
+        "title": "核心概念",
+        "aliases": []
+      },
+      {
+        "id": "concept_1598875aea5f41a08bb4d496e4c2196d",
+        "scope": "应用与边界",
+        "title": "应用与边界",
+        "aliases": []
+      }
+    ],
+    "feedback": [],
+    "content_origins": [
+      {
+        "node_id": "node_c4ff6b62039e4c5cb3ce5fc009b0109d",
+        "content_ref": "content_83640ba999914214b4f03b7d3fe349c6",
+        "carried_from": null,
+        "profile_revision": 1
+      },
+      {
+        "node_id": "node_6e872cadb29143ffb0206780f264bffa",
+        "content_ref": "content_da3de0f61608432ab5cfc7dca5492f4f",
+        "carried_from": null,
+        "profile_revision": 1
+      },
+      {
+        "node_id": "node_8f33c0a76ead488bb31c39c0a0edb6a4",
+        "content_ref": "content_1148bfd9443f430fafba5e3b073a856f",
+        "carried_from": null,
+        "profile_revision": 1
+      }
+    ]
+  },
+  "snapshot": {
+    "version": "context-evaluation-snapshot.v1",
+    "data_classification": "public_synthetic_evaluation.v1",
+    "nodes": 10,
+    "content_versions": 10,
+    "body_characters": 1842,
+    "pages": [
+      {
+        "id": "content_node_c4ff6b62039e4c5cb3ce5fc009b0109d",
+        "node_id": "node_c4ff6b62039e4c5cb3ce5fc009b0109d",
+        "parent_id": null,
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "天文学季节变化",
+        "scope": "天文学季节变化",
+        "text": "公开合成上下文记录。当前用途：给儿童解释季节，已理解地球公转，要区分地轴倾斜和日地距离的影响。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_node_6e872cadb29143ffb0206780f264bffa",
+        "node_id": "node_6e872cadb29143ffb0206780f264bffa",
+        "parent_id": "node_c4ff6b62039e4c5cb3ce5fc009b0109d",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "核心概念",
+        "scope": "核心概念",
+        "text": "公开合成上下文记录。当前用途：给儿童解释季节，已理解地球公转，要区分地轴倾斜和日地距离的影响。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_node_8f33c0a76ead488bb31c39c0a0edb6a4",
+        "node_id": "node_8f33c0a76ead488bb31c39c0a0edb6a4",
+        "parent_id": "node_c4ff6b62039e4c5cb3ce5fc009b0109d",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "应用与边界",
+        "scope": "应用与边界",
+        "text": "公开合成上下文记录。当前用途：给儿童解释季节，已理解地球公转，要区分地轴倾斜和日地距离的影响。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_branch",
+        "node_id": "synthetic_branch",
+        "parent_id": "node_c4ff6b62039e4c5cb3ce5fc009b0109d",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支资料",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_related",
+        "node_id": "synthetic_related",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "天文学季节变化",
+        "scope": "另一分支：用途提示",
+        "text": "公开合成上下文记录。当前用途：给儿童解释季节，已理解地球公转，要区分地轴倾斜和日地距离的影响。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0005",
+        "node_id": "synthetic_0005",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 5",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0006",
+        "node_id": "synthetic_0006",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 6",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0007",
+        "node_id": "synthetic_0007",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 7",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0008",
+        "node_id": "synthetic_0008",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 8",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0009",
+        "node_id": "synthetic_0009",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 9",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      }
+    ],
+    "relations": [
+      {
+        "id": "synthetic_relation",
+        "source_id": "node_c4ff6b62039e4c5cb3ce5fc009b0109d",
+        "target_id": "synthetic_related",
+        "kind": "related",
+        "explanation": "公开合成关系：同主题的另一用途；保留节点范围，不合并。"
+      }
+    ],
+    "profile_history": [
+      {
+        "profile": {
+          "topic": {
+            "value": "天文学季节变化",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "background": {
+            "value": "尚未确定当前基础",
+            "source": "unknown",
+            "evidence_keys": []
+          },
+          "constraints": [],
+          "excluded_scope": [],
+          "included_scope": [
+            {
+              "value": "天文学季节变化",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "schema_version": "profile.v1",
+          "primary_purpose": {
+            "value": "给儿童解释季节，已理解地球公转，要区分地轴倾斜和日地距离的影响。",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "target_abilities": [
+            {
+              "value": "先理解核心概念，再结合用途练习",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "secondary_purposes": []
+        },
+        "revision": 1
+      }
+    ]
+  }
+}

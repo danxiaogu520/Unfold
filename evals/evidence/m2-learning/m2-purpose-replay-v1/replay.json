@@ -1,0 +1,762 @@
+{
+  "snapshot": {
+    "schema_version": "run.v2",
+    "run_id": "run_b4595d7ae4164051a35a706948f97337",
+    "operation": "outline",
+    "status": "succeeded",
+    "attempt": 1,
+    "last_event_seq": 3,
+    "result_ref": "suggestion_82c956f3e7cb419aa9b48473b94de71e",
+    "error": null,
+    "result_kind": "structure_preview"
+  },
+  "input": {
+    "profile": {
+      "profile": {
+        "topic": {
+          "value": "后端开发",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "background": {
+          "value": "能写简单 Python，具备基础编程能力",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "constraints": [
+          {
+            "value": "时间、学习节奏或资源限制未知",
+            "source": "unknown",
+            "evidence_keys": []
+          }
+        ],
+        "excluded_scope": [
+          {
+            "value": "面试题背诵与无关的系统化扩展",
+            "source": "user",
+            "evidence_keys": [
+              "edit_a30a0641e1a141afa14a5783c3f7dc67"
+            ]
+          }
+        ],
+        "included_scope": [
+          {
+            "value": "围绕一个小服务的实际开发路径，必要原理随项目引入",
+            "source": "user",
+            "evidence_keys": [
+              "edit_a30a0641e1a141afa14a5783c3f7dc67"
+            ]
+          }
+        ],
+        "schema_version": "profile.v1",
+        "primary_purpose": {
+          "value": "为实践构建一个可以使用的小后端服务，不准备面试。",
+          "source": "user",
+          "evidence_keys": [
+            "edit_a30a0641e1a141afa14a5783c3f7dc67"
+          ]
+        },
+        "target_abilities": [
+          {
+            "value": "实现一个小服务的接口、数据库持久化、错误处理与基础测试",
+            "source": "user",
+            "evidence_keys": [
+              "edit_a30a0641e1a141afa14a5783c3f7dc67"
+            ]
+          }
+        ],
+        "secondary_purposes": [
+          {
+            "value": "理解 HTTP 协议与请求响应机制的原理",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          {
+            "value": "理解数据库原理及常见使用问题",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          {
+            "value": "理解并发模型与并发问题",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          {
+            "value": "能够分析常见线上故障",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          }
+        ]
+      },
+      "revision": 2
+    },
+    "schema_version": "outline-input.v1",
+    "reusable_concept_refs": [
+      "concept_0422d14082924833b09aed0575610d81",
+      "concept_073ddf06a3ce44f8b2ae7b889674e94d",
+      "concept_3fddce0533254b669702ae5061c435eb",
+      "concept_80720fac461b451f8b1f789550276005",
+      "concept_a5f95f3eb53b494db4efe2b0051ccb18",
+      "concept_c93a5bd6efa94612b35801d45a975eee",
+      "concept_de9a20cdd2e2495ea73cdf1111082d2a",
+      "concept_eea209536ac34322935ff3268045740e",
+      "concept_f647b63798b948e0b060a1867f591035"
+    ]
+  },
+  "request": {
+    "schema_version": "api.v1",
+    "space_id": "space_8364059f7ae84d74b193174b16b6a69f",
+    "operation": "outline",
+    "profile_revision": 2,
+    "base_revision": 2,
+    "input": {
+      "profile": {
+        "profile": {
+          "topic": {
+            "value": "后端开发",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "background": {
+            "value": "能写简单 Python，具备基础编程能力",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "constraints": [
+            {
+              "value": "时间、学习节奏或资源限制未知",
+              "source": "unknown",
+              "evidence_keys": []
+            }
+          ],
+          "excluded_scope": [
+            {
+              "value": "面试题背诵与无关的系统化扩展",
+              "source": "user",
+              "evidence_keys": [
+                "edit_a30a0641e1a141afa14a5783c3f7dc67"
+              ]
+            }
+          ],
+          "included_scope": [
+            {
+              "value": "围绕一个小服务的实际开发路径，必要原理随项目引入",
+              "source": "user",
+              "evidence_keys": [
+                "edit_a30a0641e1a141afa14a5783c3f7dc67"
+              ]
+            }
+          ],
+          "schema_version": "profile.v1",
+          "primary_purpose": {
+            "value": "为实践构建一个可以使用的小后端服务，不准备面试。",
+            "source": "user",
+            "evidence_keys": [
+              "edit_a30a0641e1a141afa14a5783c3f7dc67"
+            ]
+          },
+          "target_abilities": [
+            {
+              "value": "实现一个小服务的接口、数据库持久化、错误处理与基础测试",
+              "source": "user",
+              "evidence_keys": [
+                "edit_a30a0641e1a141afa14a5783c3f7dc67"
+              ]
+            }
+          ],
+          "secondary_purposes": [
+            {
+              "value": "理解 HTTP 协议与请求响应机制的原理",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            {
+              "value": "理解数据库原理及常见使用问题",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            {
+              "value": "理解并发模型与并发问题",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            {
+              "value": "能够分析常见线上故障",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            }
+          ]
+        },
+        "revision": 2
+      },
+      "schema_version": "outline-input.v1",
+      "reusable_concept_refs": [
+        "concept_0422d14082924833b09aed0575610d81",
+        "concept_073ddf06a3ce44f8b2ae7b889674e94d",
+        "concept_3fddce0533254b669702ae5061c435eb",
+        "concept_80720fac461b451f8b1f789550276005",
+        "concept_a5f95f3eb53b494db4efe2b0051ccb18",
+        "concept_c93a5bd6efa94612b35801d45a975eee",
+        "concept_de9a20cdd2e2495ea73cdf1111082d2a",
+        "concept_eea209536ac34322935ff3268045740e",
+        "concept_f647b63798b948e0b060a1867f591035"
+      ]
+    }
+  },
+  "dependencies": {
+    "context_bytes": 4988,
+    "node_revisions": {
+      "node_1832e12275154a46a4c751c5a7a81b41": 1,
+      "node_1bcf5db53f1d4947833671e64839ae72": 1,
+      "node_2c187b0104ff4851a01090e40e0a2e65": 3,
+      "node_3005106e01344cfc8b461831121294bb": 1,
+      "node_815f8bf04c094c4f85c7be683a0754a6": 2,
+      "node_89708278b6084667a815ad25e8fea2c3": 1,
+      "node_975a94dfc79b4c93966c719b876e889a": 1,
+      "node_d8a050352bd54bbbb97d6e62c2baf1d8": 1,
+      "node_e1ee6cca40c545729af38ab9a43391eb": 1,
+      "node_efd35e2a956b493c9879e0ba4486a260": 1
+    },
+    "context_strategy": "minimal.v1",
+    "outline_revision": 2,
+    "profile_revision": 2,
+    "selected_context": {
+      "concepts": [
+        {
+          "id": "concept_80720fac461b451f8b1f789550276005",
+          "scope": "HTTP 请求与响应的结构、方法、状态码、头部字段、连接管理（短连接/长连接）、无状态与 Cookie/Session 的关系，以及一次请求从客户端到服务端的完整流转过程。",
+          "title": "HTTP 协议与请求响应机制",
+          "aliases": []
+        },
+        {
+          "id": "concept_0422d14082924833b09aed0575610d81",
+          "scope": "关系型数据库的核心机制：索引结构与失效场景、事务与 ACID、隔离级别与并发异常（脏读/不可重复读/幻读）、锁机制、慢查询与常见使用问题（如 N+1、索引误用）。",
+          "title": "数据库原理与常见使用问题",
+          "aliases": []
+        },
+        {
+          "id": "concept_de9a20cdd2e2495ea73cdf1111082d2a",
+          "scope": "并发的本质与常见模型（多线程、多进程、IO 多路复用、协程/异步）、共享资源竞争、锁与同步原语、死锁的成因与条件、竞态条件与线程安全，以及并发量与吞吐/延迟的关系。",
+          "title": "并发模型与并发问题",
+          "aliases": []
+        },
+        {
+          "id": "concept_3fddce0533254b669702ae5061c435eb",
+          "scope": "线上故障的通用排查思路与常见类型：CPU/内存/磁盘/网络类问题的表现与定位手段，超时与雪崩、连接池耗尽、慢查询引发的连锁反应，以及日志、监控、链路追踪在排查中的作用。",
+          "title": "常见线上故障分析与排查",
+          "aliases": []
+        },
+        {
+          "id": "concept_f647b63798b948e0b060a1867f591035",
+          "scope": "请求行/状态行、请求头与响应头、空行、请求体与响应体的组成与格式，以及报文如何被解析出边界（Content-Length 与分块传输）。",
+          "title": "HTTP 报文结构与请求响应组成",
+          "aliases": []
+        },
+        {
+          "id": "concept_a5f95f3eb53b494db4efe2b0051ccb18",
+          "scope": "常见方法（GET/POST/PUT/DELETE/PATCH/HEAD/OPTIONS）的语义与幂等性、安全方法约定，以及 1xx-5xx 状态码分类与高频状态码（200/301/302/304/400/401/403/404/405/500/502/503/504）的含义与典型触发场景。",
+          "title": "HTTP 方法与状态码语义",
+          "aliases": []
+        },
+        {
+          "id": "concept_c93a5bd6efa94612b35801d45a975eee",
+          "scope": "常见请求头与响应头（Host、Content-Type、Content-Length、Accept、User-Agent、Cache-Control、Set-Cookie 等）的作用，内容协商机制，以及缓存相关头部对请求行为的影响。",
+          "title": "HTTP 头部字段与内容协商",
+          "aliases": []
+        },
+        {
+          "id": "concept_eea209536ac34322935ff3268045740e",
+          "scope": "短连接与长连接（keep-alive）的差异、Connection 头部的作用、持久连接下的请求排队与队头阻塞、连接超时与空闲回收，以及连接复用对延迟与资源占用的影响。",
+          "title": "HTTP 连接管理与复用",
+          "aliases": []
+        },
+        {
+          "id": "concept_073ddf06a3ce44f8b2ae7b889674e94d",
+          "scope": "HTTP 无状态的含义及其带来的问题，Cookie 的写入、携带与作用域（Domain/Path/过期），Session 的服务端存储与标识传递，以及二者配合实现登录态的基本流程。",
+          "title": "HTTP 无状态特性与 Cookie/Session 会话管理",
+          "aliases": []
+        }
+      ],
+      "feedback": [],
+      "content_origins": []
+    },
+    "output_tokens_reserved": 4000
+  },
+  "proposal": {
+    "root": {
+      "key": "backend_service_practice",
+      "kind": "group",
+      "scope": "以能写简单 Python 为基础，围绕一个真实小服务的开发路径组织知识：接口设计与实现、数据库持久化、错误处理、基础测试，以及随项目引入的 HTTP、数据库、并发与线上故障原理。不覆盖面试题背诵与无关的系统化扩展。",
+      "title": "从零构建一个可用的小后端服务",
+      "decision": {
+        "state": "expandable",
+        "reason": "用户目标包含接口、持久化、错误处理、测试四项明确能力，且要求随项目理解 HTTP、数据库、并发与故障原理，单一节点无法同时承载实现路径与对应原理，需要按开发环节分层。"
+      },
+      "overview": "目标不是学完后端知识体系，而是把一个小服务真正做出来并跑起来。路径按开发顺序推进：先让服务能接收并返回请求，再让数据能存下来，再让异常可控、行为可验证，最后理解支撑这些环节的原理与常见故障，使服务在真实使用中不至于一崩就无从下手。",
+      "concept_ref": null
+    },
+    "children": [
+      {
+        "key": "http_service_basics",
+        "kind": "concept",
+        "scope": "HTTP 请求与响应的结构、方法、状态码、头部字段、连接管理（短连接/长连接）、无状态与 Cookie/Session 的关系，以及一次请求从客户端到服务端的完整流转过程。",
+        "title": "HTTP 接口与请求响应处理",
+        "decision": {
+          "state": "expandable",
+          "reason": "该概念包含报文结构、方法与状态码、头部、连接管理、无状态会话等多个可独立学习的机制，且用户明确要求理解请求响应原理，细分后能对应到接口实现中的具体决策。"
+        },
+        "overview": "让服务能正确接收请求并返回响应：理解请求由什么组成、用什么方法和状态码表达语义、头部如何影响行为，以及连接与无状态特性对接口设计的影响。这是小服务能被调用的第一步。",
+        "concept_ref": "concept_80720fac461b451f8b1f789550276005"
+      },
+      {
+        "key": "api_design_and_implementation",
+        "kind": "concept",
+        "scope": "用 Python 搭建一个可运行的服务端程序：路由与请求分发、参数解析与校验、响应构造与序列化、接口的职责划分与命名，以及把业务逻辑与传输层分离的基本组织方式。",
+        "title": "接口设计与服务端实现",
+        "decision": {
+          "state": "expandable",
+          "reason": "接口设计涉及路由、参数校验、响应构造、代码组织等相互独立又都影响后续开发的决策点，且是用户目标中实现接口能力的直接承载，细分有助于按步骤落地。"
+        },
+        "overview": "把 HTTP 原理落到代码上：定义有哪些接口、每个接口接收什么、返回什么，如何把请求映射到处理函数，以及如何组织代码使后续加数据库和错误处理时不至于推倒重来。",
+        "concept_ref": null
+      },
+      {
+        "key": "database_persistence",
+        "kind": "concept",
+        "scope": "关系型数据库的核心机制：索引结构与失效场景、事务与 ACID、隔离级别与并发异常（脏读/不可重复读/幻读）、锁机制、慢查询与常见使用问题（如 N+1、索引误用）。",
+        "title": "数据库持久化与数据访问",
+        "decision": {
+          "state": "expandable",
+          "reason": "持久化既包含上手可用的增删改查，也包含索引、事务、隔离级别、锁与慢查询等独立机制，用户明确要求理解数据库原理及常见使用问题，需要分层承载。"
+        },
+        "overview": "让服务的数据能存下来、查得出来：从建表和写第一条读写语句开始，逐步理解索引为什么有时不生效、事务在什么情况下保护数据、以及哪些写法会在数据量增长后变成慢查询。",
+        "concept_ref": "concept_0422d14082924833b09aed0575610d81"
+      },
+      {
+        "key": "error_handling_and_robustness",
+        "kind": "concept",
+        "scope": "服务端错误的分类与表达：参数错误、业务错误、系统错误的区分，异常捕获与统一错误响应，错误码与状态码的对应，日志记录关键上下文，以及超时、重试与降级的基本处理思路。",
+        "title": "错误处理与异常设计",
+        "decision": {
+          "state": "expandable",
+          "reason": "错误处理包含错误分类、异常捕获、响应格式、日志与超时重试等不同关注点，且直接关系用户目标中的错误处理能力与后续故障分析，细分有实际价值。"
+        },
+        "overview": "让服务出错时行为可预期：区分哪些错误该告诉调用方、哪些该自己兜住，统一错误返回格式，把关键信息写进日志，避免一个异常导致整个请求链路无声失败。",
+        "concept_ref": null
+      },
+      {
+        "key": "testing_basics",
+        "kind": "concept",
+        "scope": "为小服务编写基础测试：接口级测试的构造与断言、测试数据与数据库状态的准备和清理、正常路径与错误路径的覆盖、测试的可重复运行，以及测试在改动后快速发现回归的作用。",
+        "title": "基础测试与验证",
+        "decision": {
+          "state": "expandable",
+          "reason": "测试涉及用例构造、数据准备清理、路径覆盖与可重复运行等独立要点，是用户目标中基础测试能力的直接承载，细分后便于逐步建立。"
+        },
+        "overview": "让服务的行为可被验证：用测试固定住接口的输入输出，覆盖成功与失败两种情况，使后续加功能或改数据库时能快速知道有没有弄坏已有行为。",
+        "concept_ref": null
+      },
+      {
+        "key": "concurrency_in_service",
+        "kind": "concept",
+        "scope": "并发的本质与常见模型（多线程、多进程、IO 多路复用、协程/异步）、共享资源竞争、锁与同步原语、死锁的成因与条件、竞态条件与线程安全，以及并发量与吞吐/延迟的关系。",
+        "title": "服务中的并发与并发问题",
+        "decision": {
+          "state": "expandable",
+          "reason": "并发包含模型选择、共享资源竞争、锁与死锁、竞态条件、并发量与性能关系等多个独立机制，用户明确要求理解并发模型与并发问题，需要分层承载。"
+        },
+        "overview": "理解服务同时处理多个请求时会发生什么：为什么共享状态会出问题、锁在保护什么、死锁怎么形成，以及并发量上去后吞吐和延迟为什么不再线性改善。",
+        "concept_ref": "concept_de9a20cdd2e2495ea73cdf1111082d2a"
+      },
+      {
+        "key": "production_failure_analysis",
+        "kind": "concept",
+        "scope": "线上故障的通用排查思路与常见类型：CPU/内存/磁盘/网络类问题的表现与定位手段，超时与雪崩、连接池耗尽、慢查询引发的连锁反应，以及日志、监控、链路追踪在排查中的作用。",
+        "title": "线上故障分析与排查",
+        "decision": {
+          "state": "expandable",
+          "reason": "故障排查包含资源类问题、连接与超时、慢查询连锁反应、可观测手段等多个独立方向，用户明确要求能分析常见线上故障，细分后能对应到具体排查场景。"
+        },
+        "overview": "当服务真的跑起来后出问题怎么办：从现象出发定位是资源、连接、数据库还是依赖的问题，理解超时和慢查询如何引发连锁故障，以及日志和监控在其中的作用。",
+        "concept_ref": "concept_3fddce0533254b669702ae5061c435eb"
+      }
+    ],
+    "relations": [
+      {
+        "kind": "prerequisite_of",
+        "source_key": "http_service_basics",
+        "target_key": "api_design_and_implementation",
+        "explanation": "理解请求与响应的组成、方法和状态码语义，是设计接口路由与响应格式的前提。"
+      },
+      {
+        "kind": "prerequisite_of",
+        "source_key": "api_design_and_implementation",
+        "target_key": "database_persistence",
+        "explanation": "先有可运行的接口处理流程，才能把数据读写接入到具体的处理逻辑中。"
+      },
+      {
+        "kind": "prerequisite_of",
+        "source_key": "api_design_and_implementation",
+        "target_key": "error_handling_and_robustness",
+        "explanation": "错误处理依附于已有的请求处理流程，需要先有接口实现才能统一异常与错误响应。"
+      },
+      {
+        "kind": "prerequisite_of",
+        "source_key": "api_design_and_implementation",
+        "target_key": "testing_basics",
+        "explanation": "测试针对已实现的接口行为，接口存在后测试才有可断言的对象。"
+      },
+      {
+        "kind": "related_to",
+        "source_key": "database_persistence",
+        "target_key": "testing_basics",
+        "explanation": "测试需要准备和清理数据库状态，持久化方式直接影响测试的构造与可重复性。"
+      },
+      {
+        "kind": "related_to",
+        "source_key": "concurrency_in_service",
+        "target_key": "database_persistence",
+        "explanation": "并发请求下的数据竞争与事务隔离级别相互关联，理解并发有助于解释数据库层的异常现象。"
+      },
+      {
+        "kind": "prerequisite_of",
+        "source_key": "concurrency_in_service",
+        "target_key": "production_failure_analysis",
+        "explanation": "连接池耗尽、超时雪崩等故障的成因依赖并发模型与资源竞争的理解。"
+      },
+      {
+        "kind": "prerequisite_of",
+        "source_key": "database_persistence",
+        "target_key": "production_failure_analysis",
+        "explanation": "慢查询引发的连锁反应需要先理解索引、事务与查询执行的基本机制。"
+      },
+      {
+        "kind": "related_to",
+        "source_key": "error_handling_and_robustness",
+        "target_key": "production_failure_analysis",
+        "explanation": "错误处理中的超时、重试与日志策略，是线上故障定位与止损手段的基础。"
+      }
+    ],
+    "division_basis": "按小服务的实际开发环节划分：从请求进入服务、数据落地、异常与验证，到支撑这些环节的运行原理与故障定位，每个子节点对应一个可独立推进的实践阶段。",
+    "schema_version": "outline.v1"
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "succeeded",
+      "outcome_unknown": false
+    }
+  ],
+  "calls": [
+    {
+      "id": "call_69ac14975a984c9084b49e4a4ec066fc",
+      "attempt": 1,
+      "step": 1,
+      "provider": "recorded_replay",
+      "model": "deepseek-flash",
+      "prompt_version": "app-prompt.v2",
+      "schema_version": "outline.v1",
+      "status": "completed",
+      "request": {
+        "profile": {
+          "profile": {
+            "topic": {
+              "value": "后端开发",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            "background": {
+              "value": "能写简单 Python，具备基础编程能力",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            "constraints": [
+              {
+                "value": "时间、学习节奏或资源限制未知",
+                "source": "unknown",
+                "evidence_keys": []
+              }
+            ],
+            "excluded_scope": [
+              {
+                "value": "面试题背诵与无关的系统化扩展",
+                "source": "user",
+                "evidence_keys": [
+                  "edit_a30a0641e1a141afa14a5783c3f7dc67"
+                ]
+              }
+            ],
+            "included_scope": [
+              {
+                "value": "围绕一个小服务的实际开发路径，必要原理随项目引入",
+                "source": "user",
+                "evidence_keys": [
+                  "edit_a30a0641e1a141afa14a5783c3f7dc67"
+                ]
+              }
+            ],
+            "schema_version": "profile.v1",
+            "primary_purpose": {
+              "value": "为实践构建一个可以使用的小后端服务，不准备面试。",
+              "source": "user",
+              "evidence_keys": [
+                "edit_a30a0641e1a141afa14a5783c3f7dc67"
+              ]
+            },
+            "target_abilities": [
+              {
+                "value": "实现一个小服务的接口、数据库持久化、错误处理与基础测试",
+                "source": "user",
+                "evidence_keys": [
+                  "edit_a30a0641e1a141afa14a5783c3f7dc67"
+                ]
+              }
+            ],
+            "secondary_purposes": [
+              {
+                "value": "理解 HTTP 协议与请求响应机制的原理",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              {
+                "value": "理解数据库原理及常见使用问题",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              {
+                "value": "理解并发模型与并发问题",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              {
+                "value": "能够分析常见线上故障",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              }
+            ]
+          },
+          "revision": 2
+        },
+        "schema_version": "outline-input.v1",
+        "reusable_concept_refs": [
+          "concept_0422d14082924833b09aed0575610d81",
+          "concept_073ddf06a3ce44f8b2ae7b889674e94d",
+          "concept_3fddce0533254b669702ae5061c435eb",
+          "concept_80720fac461b451f8b1f789550276005",
+          "concept_a5f95f3eb53b494db4efe2b0051ccb18",
+          "concept_c93a5bd6efa94612b35801d45a975eee",
+          "concept_de9a20cdd2e2495ea73cdf1111082d2a",
+          "concept_eea209536ac34322935ff3268045740e",
+          "concept_f647b63798b948e0b060a1867f591035"
+        ]
+      },
+      "response": {
+        "candidate": {
+          "root": {
+            "key": "backend_service_practice",
+            "kind": "group",
+            "scope": "以能写简单 Python 为基础，围绕一个真实小服务的开发路径组织知识：接口设计与实现、数据库持久化、错误处理、基础测试，以及随项目引入的 HTTP、数据库、并发与线上故障原理。不覆盖面试题背诵与无关的系统化扩展。",
+            "title": "从零构建一个可用的小后端服务",
+            "decision": {
+              "state": "expandable",
+              "reason": "用户目标包含接口、持久化、错误处理、测试四项明确能力，且要求随项目理解 HTTP、数据库、并发与故障原理，单一节点无法同时承载实现路径与对应原理，需要按开发环节分层。"
+            },
+            "overview": "目标不是学完后端知识体系，而是把一个小服务真正做出来并跑起来。路径按开发顺序推进：先让服务能接收并返回请求，再让数据能存下来，再让异常可控、行为可验证，最后理解支撑这些环节的原理与常见故障，使服务在真实使用中不至于一崩就无从下手。",
+            "concept_ref": null
+          },
+          "children": [
+            {
+              "key": "http_service_basics",
+              "kind": "concept",
+              "scope": "HTTP 请求与响应的结构、方法、状态码、头部字段、连接管理（短连接/长连接）、无状态与 Cookie/Session 的关系，以及一次请求从客户端到服务端的完整流转过程。",
+              "title": "HTTP 接口与请求响应处理",
+              "decision": {
+                "state": "expandable",
+                "reason": "该概念包含报文结构、方法与状态码、头部、连接管理、无状态会话等多个可独立学习的机制，且用户明确要求理解请求响应原理，细分后能对应到接口实现中的具体决策。"
+              },
+              "overview": "让服务能正确接收请求并返回响应：理解请求由什么组成、用什么方法和状态码表达语义、头部如何影响行为，以及连接与无状态特性对接口设计的影响。这是小服务能被调用的第一步。",
+              "concept_ref": "concept_80720fac461b451f8b1f789550276005"
+            },
+            {
+              "key": "api_design_and_implementation",
+              "kind": "concept",
+              "scope": "用 Python 搭建一个可运行的服务端程序：路由与请求分发、参数解析与校验、响应构造与序列化、接口的职责划分与命名，以及把业务逻辑与传输层分离的基本组织方式。",
+              "title": "接口设计与服务端实现",
+              "decision": {
+                "state": "expandable",
+                "reason": "接口设计涉及路由、参数校验、响应构造、代码组织等相互独立又都影响后续开发的决策点，且是用户目标中实现接口能力的直接承载，细分有助于按步骤落地。"
+              },
+              "overview": "把 HTTP 原理落到代码上：定义有哪些接口、每个接口接收什么、返回什么，如何把请求映射到处理函数，以及如何组织代码使后续加数据库和错误处理时不至于推倒重来。",
+              "concept_ref": null
+            },
+            {
+              "key": "database_persistence",
+              "kind": "concept",
+              "scope": "关系型数据库的核心机制：索引结构与失效场景、事务与 ACID、隔离级别与并发异常（脏读/不可重复读/幻读）、锁机制、慢查询与常见使用问题（如 N+1、索引误用）。",
+              "title": "数据库持久化与数据访问",
+              "decision": {
+                "state": "expandable",
+                "reason": "持久化既包含上手可用的增删改查，也包含索引、事务、隔离级别、锁与慢查询等独立机制，用户明确要求理解数据库原理及常见使用问题，需要分层承载。"
+              },
+              "overview": "让服务的数据能存下来、查得出来：从建表和写第一条读写语句开始，逐步理解索引为什么有时不生效、事务在什么情况下保护数据、以及哪些写法会在数据量增长后变成慢查询。",
+              "concept_ref": "concept_0422d14082924833b09aed0575610d81"
+            },
+            {
+              "key": "error_handling_and_robustness",
+              "kind": "concept",
+              "scope": "服务端错误的分类与表达：参数错误、业务错误、系统错误的区分，异常捕获与统一错误响应，错误码与状态码的对应，日志记录关键上下文，以及超时、重试与降级的基本处理思路。",
+              "title": "错误处理与异常设计",
+              "decision": {
+                "state": "expandable",
+                "reason": "错误处理包含错误分类、异常捕获、响应格式、日志与超时重试等不同关注点，且直接关系用户目标中的错误处理能力与后续故障分析，细分有实际价值。"
+              },
+              "overview": "让服务出错时行为可预期：区分哪些错误该告诉调用方、哪些该自己兜住，统一错误返回格式，把关键信息写进日志，避免一个异常导致整个请求链路无声失败。",
+              "concept_ref": null
+            },
+            {
+              "key": "testing_basics",
+              "kind": "concept",
+              "scope": "为小服务编写基础测试：接口级测试的构造与断言、测试数据与数据库状态的准备和清理、正常路径与错误路径的覆盖、测试的可重复运行，以及测试在改动后快速发现回归的作用。",
+              "title": "基础测试与验证",
+              "decision": {
+                "state": "expandable",
+                "reason": "测试涉及用例构造、数据准备清理、路径覆盖与可重复运行等独立要点，是用户目标中基础测试能力的直接承载，细分后便于逐步建立。"
+              },
+              "overview": "让服务的行为可被验证：用测试固定住接口的输入输出，覆盖成功与失败两种情况，使后续加功能或改数据库时能快速知道有没有弄坏已有行为。",
+              "concept_ref": null
+            },
+            {
+              "key": "concurrency_in_service",
+              "kind": "concept",
+              "scope": "并发的本质与常见模型（多线程、多进程、IO 多路复用、协程/异步）、共享资源竞争、锁与同步原语、死锁的成因与条件、竞态条件与线程安全，以及并发量与吞吐/延迟的关系。",
+              "title": "服务中的并发与并发问题",
+              "decision": {
+                "state": "expandable",
+                "reason": "并发包含模型选择、共享资源竞争、锁与死锁、竞态条件、并发量与性能关系等多个独立机制，用户明确要求理解并发模型与并发问题，需要分层承载。"
+              },
+              "overview": "理解服务同时处理多个请求时会发生什么：为什么共享状态会出问题、锁在保护什么、死锁怎么形成，以及并发量上去后吞吐和延迟为什么不再线性改善。",
+              "concept_ref": "concept_de9a20cdd2e2495ea73cdf1111082d2a"
+            },
+            {
+              "key": "production_failure_analysis",
+              "kind": "concept",
+              "scope": "线上故障的通用排查思路与常见类型：CPU/内存/磁盘/网络类问题的表现与定位手段，超时与雪崩、连接池耗尽、慢查询引发的连锁反应，以及日志、监控、链路追踪在排查中的作用。",
+              "title": "线上故障分析与排查",
+              "decision": {
+                "state": "expandable",
+                "reason": "故障排查包含资源类问题、连接与超时、慢查询连锁反应、可观测手段等多个独立方向，用户明确要求能分析常见线上故障，细分后能对应到具体排查场景。"
+              },
+              "overview": "当服务真的跑起来后出问题怎么办：从现象出发定位是资源、连接、数据库还是依赖的问题，理解超时和慢查询如何引发连锁故障，以及日志和监控在其中的作用。",
+              "concept_ref": "concept_3fddce0533254b669702ae5061c435eb"
+            }
+          ],
+          "relations": [
+            {
+              "kind": "prerequisite_of",
+              "source_key": "http_service_basics",
+              "target_key": "api_design_and_implementation",
+              "explanation": "理解请求与响应的组成、方法和状态码语义，是设计接口路由与响应格式的前提。"
+            },
+            {
+              "kind": "prerequisite_of",
+              "source_key": "api_design_and_implementation",
+              "target_key": "database_persistence",
+              "explanation": "先有可运行的接口处理流程，才能把数据读写接入到具体的处理逻辑中。"
+            },
+            {
+              "kind": "prerequisite_of",
+              "source_key": "api_design_and_implementation",
+              "target_key": "error_handling_and_robustness",
+              "explanation": "错误处理依附于已有的请求处理流程，需要先有接口实现才能统一异常与错误响应。"
+            },
+            {
+              "kind": "prerequisite_of",
+              "source_key": "api_design_and_implementation",
+              "target_key": "testing_basics",
+              "explanation": "测试针对已实现的接口行为，接口存在后测试才有可断言的对象。"
+            },
+            {
+              "kind": "related_to",
+              "source_key": "database_persistence",
+              "target_key": "testing_basics",
+              "explanation": "测试需要准备和清理数据库状态，持久化方式直接影响测试的构造与可重复性。"
+            },
+            {
+              "kind": "related_to",
+              "source_key": "concurrency_in_service",
+              "target_key": "database_persistence",
+              "explanation": "并发请求下的数据竞争与事务隔离级别相互关联，理解并发有助于解释数据库层的异常现象。"
+            },
+            {
+              "kind": "prerequisite_of",
+              "source_key": "concurrency_in_service",
+              "target_key": "production_failure_analysis",
+              "explanation": "连接池耗尽、超时雪崩等故障的成因依赖并发模型与资源竞争的理解。"
+            },
+            {
+              "kind": "prerequisite_of",
+              "source_key": "database_persistence",
+              "target_key": "production_failure_analysis",
+              "explanation": "慢查询引发的连锁反应需要先理解索引、事务与查询执行的基本机制。"
+            },
+            {
+              "kind": "related_to",
+              "source_key": "error_handling_and_robustness",
+              "target_key": "production_failure_analysis",
+              "explanation": "错误处理中的超时、重试与日志策略，是线上故障定位与止损手段的基础。"
+            }
+          ],
+          "division_basis": "按小服务的实际开发环节划分：从请求进入服务、数据落地、异常与验证，到支撑这些环节的运行原理与故障定位，每个子节点对应一个可独立推进的实践阶段。",
+          "schema_version": "outline.v1"
+        },
+        "live_inference": false,
+        "recorded_run_id": "run_e2629f84076a485480e56dea66fa5285",
+        "recorded_call_id": "call_7268ae716f1a4961ac8eacff29b40ec4"
+      },
+      "error_code": null,
+      "outcome_unknown": false,
+      "reserved_cost": "0E-8",
+      "currency": "CNY",
+      "latency_seconds": "0.0000",
+      "input_tokens": null,
+      "output_tokens": null,
+      "accounted_cost": "0E-8"
+    }
+  ]
+}

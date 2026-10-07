@@ -1,0 +1,136 @@
+{
+  "$defs": {
+    "Decision": {
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "expandable",
+            "leaf"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "state",
+        "reason"
+      ],
+      "type": "object"
+    },
+    "NodeCandidate": {
+      "additionalProperties": false,
+      "properties": {
+        "concept_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "decision": {
+          "$ref": "#/$defs/Decision"
+        },
+        "key": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "concept",
+            "group"
+          ],
+          "type": "string"
+        },
+        "overview": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "title",
+        "kind",
+        "concept_ref",
+        "scope",
+        "overview",
+        "decision"
+      ],
+      "type": "object"
+    },
+    "Relation": {
+      "additionalProperties": false,
+      "properties": {
+        "explanation": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "related_to",
+            "prerequisite_of",
+            "contrasted_with"
+          ],
+          "type": "string"
+        },
+        "source_key": {
+          "type": "string"
+        },
+        "target_key": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_key",
+        "target_key",
+        "kind",
+        "explanation"
+      ],
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "children": {
+      "items": {
+        "$ref": "#/$defs/NodeCandidate"
+      },
+      "type": "array"
+    },
+    "decision": {
+      "$ref": "#/$defs/Decision"
+    },
+    "division_basis": {
+      "type": "string"
+    },
+    "relations": {
+      "items": {
+        "$ref": "#/$defs/Relation"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "enum": [
+        "expansion.v1"
+      ],
+      "type": "string"
+    },
+    "target_key": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "target_key",
+    "decision",
+    "division_basis",
+    "children",
+    "relations"
+  ],
+  "type": "object"
+}

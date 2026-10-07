@@ -1,0 +1,9 @@
+{
+  "probes": true,
+  "repetitions": 3,
+  "scenario_ids": [
+    "backend-1",
+    "midpoint-1"
+  ],
+  "selection_frozen_before_calls": true
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "error": null,
+    "name": "schema_positive",
+    "response_id": "66f7d735-6aa3-45bc-9d32-21fe7d10e5eb",
+    "schema_valid": true
+  },
+  {
+    "error": null,
+    "name": "schema_conflicting_prompt",
+    "response_id": "2fd610dd-f997-4670-904e-2685ae63e774",
+    "schema_valid": false
+  },
+  {
+    "error": "truncated",
+    "name": "truncation",
+    "response_id": "6777afe4-e1d0-4d5b-9bdd-6ae5bc013e65",
+    "schema_valid": false
+  }
+]

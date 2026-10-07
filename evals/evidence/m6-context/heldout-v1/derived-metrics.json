@@ -1,0 +1,61 @@
+{
+  "model": "deepseek-flash",
+  "total": {
+    "real_calls": 59,
+    "conservative_cost_cny": "1.13453000",
+    "input_tokens": 254129,
+    "output_tokens": 78284,
+    "unknown_usage_calls": 0,
+    "ledger_after_cny": "1.94537000"
+  },
+  "strategies": {
+    "all_history": {
+      "cells": 24,
+      "evaluated": 8,
+      "candidate_valid": 8,
+      "first_valid": 6,
+      "pre_call_overflow": 16,
+      "real_calls": 10,
+      "mean_input_tokens_including_repairs": 7212.5,
+      "mean_selected_input_bytes": 11427.25,
+      "median_full_seconds": 8.9185,
+      "p95_full_seconds_nearest_rank": 12.571,
+      "cost_cny": "0.22571200",
+      "mean_lexical_coverage_proxy": 0.6667,
+      "duplicate_blocks": 0,
+      "unexpected_resources": 0
+    },
+    "current_path": {
+      "cells": 24,
+      "evaluated": 24,
+      "candidate_valid": 24,
+      "first_valid": 24,
+      "pre_call_overflow": 0,
+      "real_calls": 24,
+      "mean_input_tokens_including_repairs": 3653.25,
+      "mean_selected_input_bytes": 5613.75,
+      "median_full_seconds": 7.364,
+      "p95_full_seconds_nearest_rank": 9.591,
+      "cost_cny": "0.43187600",
+      "mean_lexical_coverage_proxy": 0.7535,
+      "duplicate_blocks": 0,
+      "unexpected_resources": 0
+    },
+    "structural_relevance": {
+      "cells": 24,
+      "evaluated": 24,
+      "candidate_valid": 24,
+      "first_valid": 23,
+      "pre_call_overflow": 0,
+      "real_calls": 25,
+      "mean_input_tokens_including_repairs": 4531.29,
+      "mean_selected_input_bytes": 7650.5,
+      "median_full_seconds": 7.231,
+      "p95_full_seconds_nearest_rank": 9.373,
+      "cost_cny": "0.47694200",
+      "mean_lexical_coverage_proxy": 0.7292,
+      "duplicate_blocks": 0,
+      "unexpected_resources": 0
+    }
+  }
+}

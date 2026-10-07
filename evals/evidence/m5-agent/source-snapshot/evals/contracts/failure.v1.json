@@ -1,0 +1,3071 @@
+[
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "duplicate_question_keys",
+    "input": {
+      "domain": "二分查找",
+      "known_targets": [
+        "goal"
+      ],
+      "previous_question_keys": [],
+      "questions_asked": 0,
+      "round": 1,
+      "schema_version": "questionnaire-input.v1",
+      "user_brief": "只想理解一次中点比较"
+    },
+    "operation": "questionnaire",
+    "output": {
+      "questions": [
+        {
+          "allow_free_text": true,
+          "allow_unknown": true,
+          "key": "background",
+          "mode": "single",
+          "options": [
+            {
+              "key": "yes",
+              "text": "了解"
+            },
+            {
+              "key": "no",
+              "text": "不了解"
+            }
+          ],
+          "prompt": "你了解有序数组吗？",
+          "target": "background"
+        },
+        {
+          "allow_free_text": true,
+          "allow_unknown": true,
+          "key": "background",
+          "mode": "single",
+          "options": [
+            {
+              "key": "yes",
+              "text": "了解"
+            },
+            {
+              "key": "no",
+              "text": "不了解"
+            }
+          ],
+          "prompt": "你了解有序数组吗？",
+          "target": "background"
+        }
+      ],
+      "rationale": "需了解用户已有基础。",
+      "schema_version": "questionnaire.v1"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "repeat_known_target",
+    "input": {
+      "domain": "二分查找",
+      "known_targets": [
+        "background"
+      ],
+      "previous_question_keys": [],
+      "questions_asked": 0,
+      "round": 1,
+      "schema_version": "questionnaire-input.v1",
+      "user_brief": "只想理解一次中点比较"
+    },
+    "operation": "questionnaire",
+    "output": {
+      "questions": [
+        {
+          "allow_free_text": true,
+          "allow_unknown": true,
+          "key": "background",
+          "mode": "single",
+          "options": [
+            {
+              "key": "yes",
+              "text": "了解"
+            },
+            {
+              "key": "no",
+              "text": "不了解"
+            }
+          ],
+          "prompt": "你了解有序数组吗？",
+          "target": "background"
+        }
+      ],
+      "rationale": "需了解用户已有基础。",
+      "schema_version": "questionnaire.v1"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "over_total_question_budget",
+    "input": {
+      "domain": "二分查找",
+      "known_targets": [
+        "goal"
+      ],
+      "previous_question_keys": [],
+      "questions_asked": 5,
+      "round": 1,
+      "schema_version": "questionnaire-input.v1",
+      "user_brief": "只想理解一次中点比较"
+    },
+    "operation": "questionnaire",
+    "output": {
+      "questions": [
+        {
+          "allow_free_text": true,
+          "allow_unknown": true,
+          "key": "background",
+          "mode": "single",
+          "options": [
+            {
+              "key": "yes",
+              "text": "了解"
+            },
+            {
+              "key": "no",
+              "text": "不了解"
+            }
+          ],
+          "prompt": "你了解有序数组吗？",
+          "target": "background"
+        }
+      ],
+      "rationale": "需了解用户已有基础。",
+      "schema_version": "questionnaire.v1"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "assumption_claims_user_evidence",
+    "input": {
+      "answers": [
+        {
+          "free_text": null,
+          "question_key": "background",
+          "selected_keys": [
+            "yes"
+          ],
+          "unknown": false
+        }
+      ],
+      "domain": "二分查找",
+      "questionnaire": {
+        "questions": [
+          {
+            "allow_free_text": true,
+            "allow_unknown": true,
+            "key": "background",
+            "mode": "single",
+            "options": [
+              {
+                "key": "yes",
+                "text": "了解"
+              },
+              {
+                "key": "no",
+                "text": "不了解"
+              }
+            ],
+            "prompt": "你了解有序数组吗？",
+            "target": "background"
+          }
+        ],
+        "rationale": "需了解用户已有基础。",
+        "schema_version": "questionnaire.v1"
+      },
+      "schema_version": "profile-input.v1",
+      "user_brief": "我了解有序数组，只想理解一次中点比较"
+    },
+    "operation": "profile",
+    "output": {
+      "background": {
+        "evidence_keys": [
+          "brief"
+        ],
+        "source": "user",
+        "value": "了解有序数组"
+      },
+      "constraints": [],
+      "excluded_scope": [
+        {
+          "evidence_keys": [],
+          "source": "assumption",
+          "value": "完整算法实现"
+        }
+      ],
+      "included_scope": [
+        {
+          "evidence_keys": [],
+          "source": "assumption",
+          "value": "中点与目标的比较"
+        }
+      ],
+      "primary_purpose": {
+        "evidence_keys": [
+          "brief"
+        ],
+        "source": "assumption",
+        "value": "理解一次中点比较"
+      },
+      "schema_version": "profile.v1",
+      "secondary_purposes": [],
+      "target_abilities": [
+        {
+          "evidence_keys": [
+            "brief"
+          ],
+          "source": "user",
+          "value": "能判断下一步保留区间"
+        }
+      ],
+      "topic": {
+        "evidence_keys": [
+          "brief"
+        ],
+        "source": "user",
+        "value": "二分查找"
+      }
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "invented_evidence",
+    "input": {
+      "answers": [
+        {
+          "free_text": null,
+          "question_key": "background",
+          "selected_keys": [
+            "yes"
+          ],
+          "unknown": false
+        }
+      ],
+      "domain": "二分查找",
+      "questionnaire": {
+        "questions": [
+          {
+            "allow_free_text": true,
+            "allow_unknown": true,
+            "key": "background",
+            "mode": "single",
+            "options": [
+              {
+                "key": "yes",
+                "text": "了解"
+              },
+              {
+                "key": "no",
+                "text": "不了解"
+              }
+            ],
+            "prompt": "你了解有序数组吗？",
+            "target": "background"
+          }
+        ],
+        "rationale": "需了解用户已有基础。",
+        "schema_version": "questionnaire.v1"
+      },
+      "schema_version": "profile-input.v1",
+      "user_brief": "我了解有序数组，只想理解一次中点比较"
+    },
+    "operation": "profile",
+    "output": {
+      "background": {
+        "evidence_keys": [
+          "answer:missing"
+        ],
+        "source": "user",
+        "value": "了解有序数组"
+      },
+      "constraints": [],
+      "excluded_scope": [
+        {
+          "evidence_keys": [],
+          "source": "assumption",
+          "value": "完整算法实现"
+        }
+      ],
+      "included_scope": [
+        {
+          "evidence_keys": [],
+          "source": "assumption",
+          "value": "中点与目标的比较"
+        }
+      ],
+      "primary_purpose": {
+        "evidence_keys": [
+          "brief"
+        ],
+        "source": "user",
+        "value": "理解一次中点比较"
+      },
+      "schema_version": "profile.v1",
+      "secondary_purposes": [],
+      "target_abilities": [
+        {
+          "evidence_keys": [
+            "brief"
+          ],
+          "source": "user",
+          "value": "能判断下一步保留区间"
+        }
+      ],
+      "topic": {
+        "evidence_keys": [
+          "brief"
+        ],
+        "source": "user",
+        "value": "二分查找"
+      }
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "unknown_answer_claimed_as_user",
+    "input": {
+      "answers": [
+        {
+          "free_text": null,
+          "question_key": "background",
+          "selected_keys": [],
+          "unknown": true
+        }
+      ],
+      "domain": "二分查找",
+      "questionnaire": {
+        "questions": [
+          {
+            "allow_free_text": true,
+            "allow_unknown": true,
+            "key": "background",
+            "mode": "single",
+            "options": [
+              {
+                "key": "yes",
+                "text": "了解"
+              },
+              {
+                "key": "no",
+                "text": "不了解"
+              }
+            ],
+            "prompt": "你了解有序数组吗？",
+            "target": "background"
+          }
+        ],
+        "rationale": "需了解用户已有基础。",
+        "schema_version": "questionnaire.v1"
+      },
+      "schema_version": "profile-input.v1",
+      "user_brief": "我了解有序数组，只想理解一次中点比较"
+    },
+    "operation": "profile",
+    "output": {
+      "background": {
+        "evidence_keys": [
+          "answer:background"
+        ],
+        "source": "user",
+        "value": "了解有序数组"
+      },
+      "constraints": [],
+      "excluded_scope": [
+        {
+          "evidence_keys": [],
+          "source": "assumption",
+          "value": "完整算法实现"
+        }
+      ],
+      "included_scope": [
+        {
+          "evidence_keys": [],
+          "source": "assumption",
+          "value": "中点与目标的比较"
+        }
+      ],
+      "primary_purpose": {
+        "evidence_keys": [
+          "brief"
+        ],
+        "source": "user",
+        "value": "理解一次中点比较"
+      },
+      "schema_version": "profile.v1",
+      "secondary_purposes": [],
+      "target_abilities": [
+        {
+          "evidence_keys": [
+            "brief"
+          ],
+          "source": "user",
+          "value": "能判断下一步保留区间"
+        }
+      ],
+      "topic": {
+        "evidence_keys": [
+          "brief"
+        ],
+        "source": "user",
+        "value": "二分查找"
+      }
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "leaf_with_children",
+    "input": {
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "outline-input.v1"
+    },
+    "operation": "outline",
+    "output": {
+      "children": [
+        {
+          "concept_ref": null,
+          "decision": {
+            "reason": "当前目标只要求理解这一步比较，无需进一步拆分。",
+            "state": "leaf"
+          },
+          "key": "equal",
+          "kind": "concept",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "命中"
+        },
+        {
+          "concept_ref": null,
+          "decision": {
+            "reason": "当前目标只要求理解这一步比较，无需进一步拆分。",
+            "state": "leaf"
+          },
+          "key": "less",
+          "kind": "concept",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "小于目标"
+        }
+      ],
+      "division_basis": "比较结果分类",
+      "relations": [],
+      "root": {
+        "concept_ref": null,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "leaf"
+        },
+        "key": "root",
+        "kind": "concept",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "一次中点比较"
+      },
+      "schema_version": "outline.v1"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "forbidden_grandchildren",
+    "input": {
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "outline-input.v1"
+    },
+    "operation": "outline",
+    "output": {
+      "children": [
+        {
+          "children": [],
+          "concept_ref": null,
+          "decision": {
+            "reason": "当前目标只要求理解这一步比较，无需进一步拆分。",
+            "state": "leaf"
+          },
+          "key": "equal",
+          "kind": "concept",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "命中"
+        },
+        {
+          "concept_ref": null,
+          "decision": {
+            "reason": "当前目标只要求理解这一步比较，无需进一步拆分。",
+            "state": "leaf"
+          },
+          "key": "less",
+          "kind": "concept",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "小于目标"
+        }
+      ],
+      "division_basis": "比较结果分类",
+      "relations": [],
+      "root": {
+        "concept_ref": null,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "root",
+        "kind": "concept",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "一次中点比较"
+      },
+      "schema_version": "outline.v1"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "invalid_relation_reference",
+    "input": {
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "outline-input.v1"
+    },
+    "operation": "outline",
+    "output": {
+      "children": [
+        {
+          "concept_ref": null,
+          "decision": {
+            "reason": "当前目标只要求理解这一步比较，无需进一步拆分。",
+            "state": "leaf"
+          },
+          "key": "equal",
+          "kind": "concept",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "命中"
+        },
+        {
+          "concept_ref": null,
+          "decision": {
+            "reason": "当前目标只要求理解这一步比较，无需进一步拆分。",
+            "state": "leaf"
+          },
+          "key": "less",
+          "kind": "concept",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "小于目标"
+        }
+      ],
+      "division_basis": "比较结果分类",
+      "relations": [
+        {
+          "explanation": "测试",
+          "kind": "related_to",
+          "source_key": "root",
+          "target_key": "missing"
+        }
+      ],
+      "root": {
+        "concept_ref": null,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "root",
+        "kind": "concept",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "一次中点比较"
+      },
+      "schema_version": "outline.v1"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "prerequisite_cycle",
+    "input": {
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "outline-input.v1"
+    },
+    "operation": "outline",
+    "output": {
+      "children": [
+        {
+          "concept_ref": null,
+          "decision": {
+            "reason": "当前目标只要求理解这一步比较，无需进一步拆分。",
+            "state": "leaf"
+          },
+          "key": "equal",
+          "kind": "concept",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "命中"
+        },
+        {
+          "concept_ref": null,
+          "decision": {
+            "reason": "当前目标只要求理解这一步比较，无需进一步拆分。",
+            "state": "leaf"
+          },
+          "key": "less",
+          "kind": "concept",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "小于目标"
+        }
+      ],
+      "division_basis": "比较结果分类",
+      "relations": [
+        {
+          "explanation": "测试",
+          "kind": "prerequisite_of",
+          "source_key": "equal",
+          "target_key": "less"
+        },
+        {
+          "explanation": "测试",
+          "kind": "prerequisite_of",
+          "source_key": "less",
+          "target_key": "equal"
+        }
+      ],
+      "root": {
+        "concept_ref": null,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "root",
+        "kind": "concept",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "一次中点比较"
+      },
+      "schema_version": "outline.v1"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "wrong_target",
+    "input": {
+      "existing_children": [],
+      "operation": "expand",
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "expansion-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "expansion",
+    "output": {
+      "children": [],
+      "decision": {
+        "reason": "这一步已足够小",
+        "state": "leaf"
+      },
+      "division_basis": "当前目标无需细分",
+      "relations": [],
+      "schema_version": "expansion.v1",
+      "target_key": "other"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "leaf_cannot_be_expanded",
+    "input": {
+      "existing_children": [],
+      "operation": "expand",
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "leaf"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "expansion-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "leaf"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "expansion",
+    "output": {
+      "children": [],
+      "decision": {
+        "reason": "这一步已足够小",
+        "state": "leaf"
+      },
+      "division_basis": "当前目标无需细分",
+      "relations": [],
+      "schema_version": "expansion.v1",
+      "target_key": "compare"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "empty_expandable_result",
+    "input": {
+      "existing_children": [],
+      "operation": "expand",
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "expansion-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "expansion",
+    "output": {
+      "children": [],
+      "decision": {
+        "reason": "这一步已足够小",
+        "state": "expandable"
+      },
+      "division_basis": "当前目标无需细分",
+      "relations": [],
+      "schema_version": "expansion.v1",
+      "target_key": "compare"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "wrong_reassessment_target",
+    "input": {
+      "existing_children": [],
+      "feedback": "这个范围是否已经足够？",
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "reassessment-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "reassessment",
+    "output": {
+      "decision": {
+        "reason": "只需理解单次比较",
+        "state": "leaf"
+      },
+      "restructuring_note": null,
+      "schema_version": "reassessment.v1",
+      "target_key": "other"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "unknown_resource_reference",
+    "input": {
+      "allowed_resource_kinds": [
+        "interactive"
+      ],
+      "available_exercise_refs": [],
+      "existing_children": [],
+      "instruction": "举一个比较例子",
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "explanation-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "explanation",
+    "output": {
+      "blocks": [
+        {
+          "text": "数组 $[1,3,5]$ 的中点值为3。",
+          "type": "markdown"
+        },
+        {
+          "caption": "命中演示",
+          "fallback_text": "中点恰好等于目标，因此本次查找结束。",
+          "resource_key": "missing",
+          "type": "interactive"
+        }
+      ],
+      "overview": "有序数组中点比较",
+      "resource_requests": [
+        {
+          "controls": [
+            "step",
+            "reset"
+          ],
+          "fallback_text": "中点恰好等于目标，因此本次查找结束。",
+          "key": "compare-demo",
+          "kind": "interactive",
+          "purpose": "观察区间如何改变",
+          "runtime": "web",
+          "specification": "有序数组[1,3,5]中查找3，显示中点比较。"
+        }
+      ],
+      "schema_version": "explanation.v1",
+      "target_key": "compare"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "explanation_modifies_tree",
+    "input": {
+      "allowed_resource_kinds": [
+        "interactive"
+      ],
+      "available_exercise_refs": [],
+      "existing_children": [],
+      "instruction": "举一个比较例子",
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "explanation-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "explanation",
+    "output": {
+      "blocks": [
+        {
+          "text": "数组 $[1,3,5]$ 的中点值为3。",
+          "type": "markdown"
+        },
+        {
+          "caption": "命中演示",
+          "fallback_text": "中点恰好等于目标，因此本次查找结束。",
+          "resource_key": "compare-demo",
+          "type": "interactive"
+        }
+      ],
+      "children": [],
+      "overview": "有序数组中点比较",
+      "resource_requests": [
+        {
+          "controls": [
+            "step",
+            "reset"
+          ],
+          "fallback_text": "中点恰好等于目标，因此本次查找结束。",
+          "key": "compare-demo",
+          "kind": "interactive",
+          "purpose": "观察区间如何改变",
+          "runtime": "web",
+          "specification": "有序数组[1,3,5]中查找3，显示中点比较。"
+        }
+      ],
+      "schema_version": "explanation.v1",
+      "target_key": "compare"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "unsupported_resource",
+    "input": {
+      "allowed_resource_kinds": [],
+      "available_exercise_refs": [],
+      "existing_children": [],
+      "instruction": "举一个比较例子",
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "explanation-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "explanation",
+    "output": {
+      "blocks": [
+        {
+          "text": "数组 $[1,3,5]$ 的中点值为3。",
+          "type": "markdown"
+        },
+        {
+          "caption": "命中演示",
+          "fallback_text": "中点恰好等于目标，因此本次查找结束。",
+          "resource_key": "compare-demo",
+          "type": "interactive"
+        }
+      ],
+      "overview": "有序数组中点比较",
+      "resource_requests": [
+        {
+          "controls": [
+            "step",
+            "reset"
+          ],
+          "fallback_text": "中点恰好等于目标，因此本次查找结束。",
+          "key": "compare-demo",
+          "kind": "interactive",
+          "purpose": "观察区间如何改变",
+          "runtime": "web",
+          "specification": "有序数组[1,3,5]中查找3，显示中点比较。"
+        }
+      ],
+      "schema_version": "explanation.v1",
+      "target_key": "compare"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "invalid_answer_reference",
+    "input": {
+      "allowed_modes": [
+        "single",
+        "multiple"
+      ],
+      "count": 1,
+      "existing_children": [],
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "provided_content": [
+        {
+          "revision_ref": "content-1",
+          "text": "中点值等于目标值时返回命中。"
+        }
+      ],
+      "reusable_concept_refs": [],
+      "schema_version": "exercises-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "exercises",
+    "output": {
+      "exercises": [
+        {
+          "content_refs": [
+            "content-1"
+          ],
+          "correct_keys": [
+            "other"
+          ],
+          "explanation": "命中时当前查找已经找到目标。",
+          "key": "q1",
+          "mode": "single",
+          "options": [
+            {
+              "key": "found",
+              "text": "返回命中"
+            },
+            {
+              "key": "left",
+              "text": "继续向左查找"
+            }
+          ],
+          "stem": "中点值等于目标值时该怎么做？",
+          "testing_point": "命中判断"
+        }
+      ],
+      "schema_version": "exercises.v1",
+      "target_key": "compare"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "single_choice_has_two_answers",
+    "input": {
+      "allowed_modes": [
+        "single",
+        "multiple"
+      ],
+      "count": 1,
+      "existing_children": [],
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "provided_content": [
+        {
+          "revision_ref": "content-1",
+          "text": "中点值等于目标值时返回命中。"
+        }
+      ],
+      "reusable_concept_refs": [],
+      "schema_version": "exercises-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "exercises",
+    "output": {
+      "exercises": [
+        {
+          "content_refs": [
+            "content-1"
+          ],
+          "correct_keys": [
+            "found",
+            "left"
+          ],
+          "explanation": "命中时当前查找已经找到目标。",
+          "key": "q1",
+          "mode": "single",
+          "options": [
+            {
+              "key": "found",
+              "text": "返回命中"
+            },
+            {
+              "key": "left",
+              "text": "继续向左查找"
+            }
+          ],
+          "stem": "中点值等于目标值时该怎么做？",
+          "testing_point": "命中判断"
+        }
+      ],
+      "schema_version": "exercises.v1",
+      "target_key": "compare"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "unprovided_content_reference",
+    "input": {
+      "allowed_modes": [
+        "single",
+        "multiple"
+      ],
+      "count": 1,
+      "existing_children": [],
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "provided_content": [
+        {
+          "revision_ref": "content-1",
+          "text": "中点值等于目标值时返回命中。"
+        }
+      ],
+      "reusable_concept_refs": [],
+      "schema_version": "exercises-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "exercises",
+    "output": {
+      "exercises": [
+        {
+          "content_refs": [
+            "other"
+          ],
+          "correct_keys": [
+            "found"
+          ],
+          "explanation": "命中时当前查找已经找到目标。",
+          "key": "q1",
+          "mode": "single",
+          "options": [
+            {
+              "key": "found",
+              "text": "返回命中"
+            },
+            {
+              "key": "left",
+              "text": "继续向左查找"
+            }
+          ],
+          "stem": "中点值等于目标值时该怎么做？",
+          "testing_point": "命中判断"
+        }
+      ],
+      "schema_version": "exercises.v1",
+      "target_key": "compare"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "invented_resource_candidate",
+    "input": {
+      "content": {
+        "revision_ref": "content-1",
+        "text": "中点值等于目标时返回命中。"
+      },
+      "offered_candidate_refs": [
+        "binary-search-v1"
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "request": {
+        "controls": [
+          "step",
+          "reset"
+        ],
+        "fallback_text": "中点恰好等于目标，因此本次查找结束。",
+        "key": "compare-demo",
+        "kind": "interactive",
+        "purpose": "观察区间如何改变",
+        "runtime": "web",
+        "specification": "有序数组[1,3,5]中查找3，显示中点比较。"
+      },
+      "schema_version": "resource-input.v1",
+      "supported_kinds": [
+        "interactive"
+      ]
+    },
+    "operation": "resource",
+    "output": {
+      "candidate_ref": "invented",
+      "limitation": null,
+      "request_key": "compare-demo",
+      "schema_version": "resource.v1",
+      "specification": "使用给定数组和目标配置已有组件",
+      "strategy": "reuse"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "invented_download_url",
+    "input": {
+      "content": {
+        "revision_ref": "content-1",
+        "text": "中点值等于目标时返回命中。"
+      },
+      "offered_candidate_refs": [
+        "binary-search-v1"
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "request": {
+        "controls": [
+          "step",
+          "reset"
+        ],
+        "fallback_text": "中点恰好等于目标，因此本次查找结束。",
+        "key": "compare-demo",
+        "kind": "interactive",
+        "purpose": "观察区间如何改变",
+        "runtime": "web",
+        "specification": "有序数组[1,3,5]中查找3，显示中点比较。"
+      },
+      "schema_version": "resource-input.v1",
+      "supported_kinds": [
+        "interactive"
+      ]
+    },
+    "operation": "resource",
+    "output": {
+      "candidate_ref": "binary-search-v1",
+      "limitation": null,
+      "request_key": "compare-demo",
+      "schema_version": "resource.v1",
+      "specification": "使用给定数组和目标配置已有组件",
+      "strategy": "reuse",
+      "url": "https://example.org/invented.png"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "resource_claims_ready",
+    "input": {
+      "content": {
+        "revision_ref": "content-1",
+        "text": "中点值等于目标时返回命中。"
+      },
+      "offered_candidate_refs": [
+        "binary-search-v1"
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "request": {
+        "controls": [
+          "step",
+          "reset"
+        ],
+        "fallback_text": "中点恰好等于目标，因此本次查找结束。",
+        "key": "compare-demo",
+        "kind": "interactive",
+        "purpose": "观察区间如何改变",
+        "runtime": "web",
+        "specification": "有序数组[1,3,5]中查找3，显示中点比较。"
+      },
+      "schema_version": "resource-input.v1",
+      "supported_kinds": [
+        "interactive"
+      ]
+    },
+    "operation": "resource",
+    "output": {
+      "candidate_ref": "binary-search-v1",
+      "limitation": null,
+      "request_key": "compare-demo",
+      "schema_version": "resource.v1",
+      "specification": "使用给定数组和目标配置已有组件",
+      "status": "ready",
+      "strategy": "reuse"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "unsupported_schema_version",
+    "input": {
+      "domain": "二分查找",
+      "known_targets": [
+        "goal"
+      ],
+      "previous_question_keys": [],
+      "questions_asked": 0,
+      "round": 1,
+      "schema_version": "questionnaire-input.v1",
+      "user_brief": "只想理解一次中点比较"
+    },
+    "operation": "questionnaire",
+    "output": {
+      "questions": [
+        {
+          "allow_free_text": true,
+          "allow_unknown": true,
+          "key": "background",
+          "mode": "single",
+          "options": [
+            {
+              "key": "yes",
+              "text": "了解"
+            },
+            {
+              "key": "no",
+              "text": "不了解"
+            }
+          ],
+          "prompt": "你了解有序数组吗？",
+          "target": "background"
+        }
+      ],
+      "rationale": "需了解用户已有基础。",
+      "schema_version": "future.v9"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "unsupported_schema_version",
+    "input": {
+      "answers": [
+        {
+          "free_text": null,
+          "question_key": "background",
+          "selected_keys": [
+            "yes"
+          ],
+          "unknown": false
+        }
+      ],
+      "domain": "二分查找",
+      "questionnaire": {
+        "questions": [
+          {
+            "allow_free_text": true,
+            "allow_unknown": true,
+            "key": "background",
+            "mode": "single",
+            "options": [
+              {
+                "key": "yes",
+                "text": "了解"
+              },
+              {
+                "key": "no",
+                "text": "不了解"
+              }
+            ],
+            "prompt": "你了解有序数组吗？",
+            "target": "background"
+          }
+        ],
+        "rationale": "需了解用户已有基础。",
+        "schema_version": "questionnaire.v1"
+      },
+      "schema_version": "profile-input.v1",
+      "user_brief": "我了解有序数组，只想理解一次中点比较"
+    },
+    "operation": "profile",
+    "output": {
+      "background": {
+        "evidence_keys": [
+          "brief"
+        ],
+        "source": "user",
+        "value": "了解有序数组"
+      },
+      "constraints": [],
+      "excluded_scope": [
+        {
+          "evidence_keys": [],
+          "source": "assumption",
+          "value": "完整算法实现"
+        }
+      ],
+      "included_scope": [
+        {
+          "evidence_keys": [],
+          "source": "assumption",
+          "value": "中点与目标的比较"
+        }
+      ],
+      "primary_purpose": {
+        "evidence_keys": [
+          "brief"
+        ],
+        "source": "user",
+        "value": "理解一次中点比较"
+      },
+      "schema_version": "future.v9",
+      "secondary_purposes": [],
+      "target_abilities": [
+        {
+          "evidence_keys": [
+            "brief"
+          ],
+          "source": "user",
+          "value": "能判断下一步保留区间"
+        }
+      ],
+      "topic": {
+        "evidence_keys": [
+          "brief"
+        ],
+        "source": "user",
+        "value": "二分查找"
+      }
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "unsupported_schema_version",
+    "input": {
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "outline-input.v1"
+    },
+    "operation": "outline",
+    "output": {
+      "children": [
+        {
+          "concept_ref": null,
+          "decision": {
+            "reason": "当前目标只要求理解这一步比较，无需进一步拆分。",
+            "state": "leaf"
+          },
+          "key": "equal",
+          "kind": "concept",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "命中"
+        },
+        {
+          "concept_ref": null,
+          "decision": {
+            "reason": "当前目标只要求理解这一步比较，无需进一步拆分。",
+            "state": "leaf"
+          },
+          "key": "less",
+          "kind": "concept",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "小于目标"
+        }
+      ],
+      "division_basis": "比较结果分类",
+      "relations": [],
+      "root": {
+        "concept_ref": null,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "root",
+        "kind": "concept",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "一次中点比较"
+      },
+      "schema_version": "future.v9"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "unsupported_schema_version",
+    "input": {
+      "existing_children": [],
+      "operation": "expand",
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "expansion-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "expansion",
+    "output": {
+      "children": [],
+      "decision": {
+        "reason": "这一步已足够小",
+        "state": "leaf"
+      },
+      "division_basis": "当前目标无需细分",
+      "relations": [],
+      "schema_version": "future.v9",
+      "target_key": "compare"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "unsupported_schema_version",
+    "input": {
+      "existing_children": [],
+      "feedback": "这个范围是否已经足够？",
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "reassessment-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "reassessment",
+    "output": {
+      "decision": {
+        "reason": "只需理解单次比较",
+        "state": "leaf"
+      },
+      "restructuring_note": null,
+      "schema_version": "future.v9",
+      "target_key": "compare"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "unsupported_schema_version",
+    "input": {
+      "allowed_resource_kinds": [
+        "interactive"
+      ],
+      "available_exercise_refs": [],
+      "existing_children": [],
+      "instruction": "举一个比较例子",
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "reusable_concept_refs": [],
+      "schema_version": "explanation-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "explanation",
+    "output": {
+      "blocks": [
+        {
+          "text": "数组 $[1,3,5]$ 的中点值为3。",
+          "type": "markdown"
+        },
+        {
+          "caption": "命中演示",
+          "fallback_text": "中点恰好等于目标，因此本次查找结束。",
+          "resource_key": "compare-demo",
+          "type": "interactive"
+        }
+      ],
+      "overview": "有序数组中点比较",
+      "resource_requests": [
+        {
+          "controls": [
+            "step",
+            "reset"
+          ],
+          "fallback_text": "中点恰好等于目标，因此本次查找结束。",
+          "key": "compare-demo",
+          "kind": "interactive",
+          "purpose": "观察区间如何改变",
+          "runtime": "web",
+          "specification": "有序数组[1,3,5]中查找3，显示中点比较。"
+        }
+      ],
+      "schema_version": "future.v9",
+      "target_key": "compare"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "unsupported_schema_version",
+    "input": {
+      "allowed_modes": [
+        "single",
+        "multiple"
+      ],
+      "count": 1,
+      "existing_children": [],
+      "path": [
+        {
+          "content_revision": 1,
+          "decision": {
+            "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+            "state": "expandable"
+          },
+          "key": "compare",
+          "overview": "比较中点值和目标值，判断保留的区间。",
+          "profile_revision": 1,
+          "scope": "有序数组内二分查找的一次中点比较",
+          "title": "中点比较"
+        }
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "provided_content": [
+        {
+          "revision_ref": "content-1",
+          "text": "中点值等于目标值时返回命中。"
+        }
+      ],
+      "reusable_concept_refs": [],
+      "schema_version": "exercises-input.v1",
+      "sibling_scopes": [],
+      "target": {
+        "content_revision": 1,
+        "decision": {
+          "reason": "比较和区间更新可分别解释，提供有用的下一层。",
+          "state": "expandable"
+        },
+        "key": "compare",
+        "overview": "比较中点值和目标值，判断保留的区间。",
+        "profile_revision": 1,
+        "scope": "有序数组内二分查找的一次中点比较",
+        "title": "中点比较"
+      }
+    },
+    "operation": "exercises",
+    "output": {
+      "exercises": [
+        {
+          "content_refs": [
+            "content-1"
+          ],
+          "correct_keys": [
+            "found"
+          ],
+          "explanation": "命中时当前查找已经找到目标。",
+          "key": "q1",
+          "mode": "single",
+          "options": [
+            {
+              "key": "found",
+              "text": "返回命中"
+            },
+            {
+              "key": "left",
+              "text": "继续向左查找"
+            }
+          ],
+          "stem": "中点值等于目标值时该怎么做？",
+          "testing_point": "命中判断"
+        }
+      ],
+      "schema_version": "future.v9",
+      "target_key": "compare"
+    }
+  },
+  {
+    "evidence_kind": "hand_authored_contract_example",
+    "failure": "unsupported_schema_version",
+    "input": {
+      "content": {
+        "revision_ref": "content-1",
+        "text": "中点值等于目标时返回命中。"
+      },
+      "offered_candidate_refs": [
+        "binary-search-v1"
+      ],
+      "profile": {
+        "profile": {
+          "background": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "了解有序数组"
+          },
+          "constraints": [],
+          "excluded_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "完整算法实现"
+            }
+          ],
+          "included_scope": [
+            {
+              "evidence_keys": [],
+              "source": "assumption",
+              "value": "中点与目标的比较"
+            }
+          ],
+          "primary_purpose": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "理解一次中点比较"
+          },
+          "schema_version": "profile.v1",
+          "secondary_purposes": [],
+          "target_abilities": [
+            {
+              "evidence_keys": [
+                "brief"
+              ],
+              "source": "user",
+              "value": "能判断下一步保留区间"
+            }
+          ],
+          "topic": {
+            "evidence_keys": [
+              "brief"
+            ],
+            "source": "user",
+            "value": "二分查找"
+          }
+        },
+        "revision": 1
+      },
+      "request": {
+        "controls": [
+          "step",
+          "reset"
+        ],
+        "fallback_text": "中点恰好等于目标，因此本次查找结束。",
+        "key": "compare-demo",
+        "kind": "interactive",
+        "purpose": "观察区间如何改变",
+        "runtime": "web",
+        "specification": "有序数组[1,3,5]中查找3，显示中点比较。"
+      },
+      "schema_version": "resource-input.v1",
+      "supported_kinds": [
+        "interactive"
+      ]
+    },
+    "operation": "resource",
+    "output": {
+      "candidate_ref": "binary-search-v1",
+      "limitation": null,
+      "request_key": "compare-demo",
+      "schema_version": "future.v9",
+      "specification": "使用给定数组和目标配置已有组件",
+      "strategy": "reuse"
+    }
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "version": "toolchain.v1",
+  "recorded_at": "2026-10-07",
+  "python": "3.12.14",
+  "uv": "0.12.23",
+  "node": "26.10.0",
+  "frontend": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.3",
+    "status": "integrated; npm package-lock.json; TypeScript/build and Chromium acceptance verified locally",
+    "npm": "12.1.0",
+    "playwright": "1.63.0"
+  },
+  "backend": {
+    "fastapi": "0.142.2",
+    "sqlalchemy": "2.0.54",
+    "alembic": "1.20.0",
+    "psycopg": "3.3.6",
+    "status": "app extra installed and locked; HTTP, worker, PostgreSQL integration verified locally",
+    "uvicorn": "0.54.0"
+  },
+  "database": {
+    "postgresql_major": "18",
+    "postgresql_patch": "18.6",
+    "source_sha256": "555610c24d53e4316da5b7d3fc25c279d96856d5e0e23ee308c328c5fa881d9f",
+    "ci_image": "postgres:18.6@sha256:fc973eb97c9fd04bfa1840e0f510719a584ccb3be8debfe6a4144637a9dfe8cf",
+    "status": "project-local source build and empty schema migration verified; CI configured, remote run pending"
+  },
+  "model": {
+    "provider": "deepseek",
+    "display_name": "DeepSeek-V4.1-Flash",
+    "api_id": "deepseek-flash",
+    "api_format": "responses",
+    "reasoning_effort": "none",
+    "temperature": 0.2,
+    "snapshot_locked": false
+  }
+}

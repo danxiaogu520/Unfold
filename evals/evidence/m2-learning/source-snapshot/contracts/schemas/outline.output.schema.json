@@ -1,0 +1,172 @@
+{
+  "$defs": {
+    "Decision": {
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "expandable",
+            "leaf"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "state",
+        "reason"
+      ],
+      "title": "Decision",
+      "type": "object"
+    },
+    "NodeCandidate": {
+      "additionalProperties": false,
+      "properties": {
+        "concept_ref": {
+          "anyOf": [
+            {
+              "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Concept Ref"
+        },
+        "decision": {
+          "$ref": "#/$defs/Decision"
+        },
+        "key": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Key",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "concept",
+            "group"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "overview": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Overview",
+          "type": "string"
+        },
+        "scope": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Scope",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "title",
+        "kind",
+        "concept_ref",
+        "scope",
+        "overview",
+        "decision"
+      ],
+      "title": "NodeCandidate",
+      "type": "object"
+    },
+    "Relation": {
+      "additionalProperties": false,
+      "properties": {
+        "explanation": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "related_to",
+            "prerequisite_of",
+            "contrasted_with"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "source_key": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Source Key",
+          "type": "string"
+        },
+        "target_key": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Target Key",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_key",
+        "target_key",
+        "kind",
+        "explanation"
+      ],
+      "title": "Relation",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "children": {
+      "items": {
+        "$ref": "#/$defs/NodeCandidate"
+      },
+      "maxItems": 8,
+      "title": "Children",
+      "type": "array"
+    },
+    "division_basis": {
+      "maxLength": 6000,
+      "minLength": 1,
+      "title": "Division Basis",
+      "type": "string"
+    },
+    "relations": {
+      "items": {
+        "$ref": "#/$defs/Relation"
+      },
+      "maxItems": 24,
+      "title": "Relations",
+      "type": "array"
+    },
+    "root": {
+      "$ref": "#/$defs/NodeCandidate"
+    },
+    "schema_version": {
+      "const": "outline.v1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "root",
+    "division_basis",
+    "children",
+    "relations"
+  ],
+  "title": "OutlineProposal",
+  "type": "object"
+}

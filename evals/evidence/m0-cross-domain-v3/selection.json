@@ -1,0 +1,10 @@
+{
+  "probes": false,
+  "repetitions": 1,
+  "scenario_ids": [
+    "backend-2",
+    "cell-1",
+    "triads-1"
+  ],
+  "selection_frozen_before_calls": true
+}

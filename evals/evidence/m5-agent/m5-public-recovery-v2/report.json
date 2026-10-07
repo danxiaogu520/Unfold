@@ -1,0 +1,18 @@
+{
+  "version": "m5-real-recovery.v1",
+  "public_synthetic_data_only": true,
+  "run_id": "run_696c20e2c4ac4de3ad03f5575ceb8acd",
+  "child_sigkill": true,
+  "completed_steps_not_replayed": [
+    1
+  ],
+  "before_calls": 1,
+  "after_calls": 3,
+  "real_calls": 3,
+  "unknown_usage_calls": 0,
+  "conservative_cost_cny": "0.01696200",
+  "final_status": "succeeded",
+  "source_space_id": "space_0591bc784e37448db3175a52366aff9d",
+  "assertions_passed": true,
+  "restoration_integrity_passed": true
+}

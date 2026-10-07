@@ -1,0 +1,8 @@
+{
+  "iterations": 20,
+  "outcomes": {
+    "succeeded": 1,
+    "cancelled": 19
+  },
+  "one_terminal_state_per_run": true
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "domain": {
+      "maxLength": 6000,
+      "minLength": 1,
+      "title": "Domain",
+      "type": "string"
+    },
+    "known_targets": {
+      "items": {
+        "enum": [
+          "purpose",
+          "background",
+          "goal",
+          "scope",
+          "constraints"
+        ],
+        "type": "string"
+      },
+      "title": "Known Targets",
+      "type": "array"
+    },
+    "previous_question_keys": {
+      "items": {
+        "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+        "type": "string"
+      },
+      "title": "Previous Question Keys",
+      "type": "array"
+    },
+    "questions_asked": {
+      "maximum": 5,
+      "minimum": 0,
+      "title": "Questions Asked",
+      "type": "integer"
+    },
+    "round": {
+      "maximum": 2,
+      "minimum": 1,
+      "title": "Round",
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "questionnaire-input.v2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "user_brief": {
+      "maxLength": 6000,
+      "title": "User Brief",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "domain",
+    "user_brief",
+    "known_targets",
+    "previous_question_keys",
+    "questions_asked",
+    "round"
+  ],
+  "title": "DomainQuestionnaireInput",
+  "type": "object"
+}

@@ -1,0 +1,472 @@
+{
+  "trace": {
+    "snapshot": {
+      "schema_version": "run.v2",
+      "run_id": "run_14808302512245cda273e12b72b07887",
+      "operation": "explanation",
+      "status": "succeeded",
+      "attempt": 1,
+      "last_event_seq": 3,
+      "result_ref": "content_7ac985f486a9489ea43bf1b21774542c",
+      "error": null,
+      "result_kind": "knowledge"
+    },
+    "input": {
+      "path": [
+        {
+          "key": "node_b016af6e2c854b20814bfa15a6db0b1e",
+          "scope": "二分查找",
+          "title": "二分查找",
+          "decision": {
+            "state": "expandable",
+            "reason": "固定开发判定，仅用于流程验证。"
+          },
+          "overview": "固定开发概述，不是实际模型生成。",
+          "content_revision": 1,
+          "profile_revision": 1
+        }
+      ],
+      "target": {
+        "key": "node_b016af6e2c854b20814bfa15a6db0b1e",
+        "scope": "二分查找",
+        "title": "二分查找",
+        "decision": {
+          "state": "expandable",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      },
+      "profile": {
+        "profile": {
+          "topic": {
+            "value": "二分查找",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "background": {
+            "value": "尚未确定当前基础",
+            "source": "unknown",
+            "evidence_keys": []
+          },
+          "constraints": [],
+          "excluded_scope": [],
+          "included_scope": [
+            {
+              "value": "二分查找",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "schema_version": "profile.v1",
+          "primary_purpose": {
+            "value": "只想理解一次中点比较",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "target_abilities": [
+            {
+              "value": "先理解核心概念，再结合用途练习",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "secondary_purposes": []
+        },
+        "revision": 1
+      },
+      "instruction": "结合当前用途说明这个节点，并给出一个例子。",
+      "schema_version": "explanation-input.v1",
+      "sibling_scopes": [],
+      "existing_children": [
+        {
+          "key": "node_cb9de2d646f2457fae682e3198d76af7",
+          "scope": "核心概念",
+          "title": "核心概念",
+          "decision": {
+            "state": "expandable",
+            "reason": "固定开发判定，仅用于流程验证。"
+          },
+          "overview": "固定开发概述，不是实际模型生成。",
+          "content_revision": 1,
+          "profile_revision": 1
+        },
+        {
+          "key": "node_a33c2199dab84af3859ced3a08c3d7f7",
+          "scope": "应用与边界",
+          "title": "应用与边界",
+          "decision": {
+            "state": "leaf",
+            "reason": "固定开发判定，仅用于流程验证。"
+          },
+          "overview": "固定开发概述，不是实际模型生成。",
+          "content_revision": 1,
+          "profile_revision": 1
+        }
+      ],
+      "reusable_concept_refs": [
+        "concept_9033da003a994a44b1a080c4955cbd66",
+        "concept_a82eea0df17a4049ae412cc4ac95ce56",
+        "concept_a9cbb7e9d2ca45b196e233a07279c91f"
+      ],
+      "allowed_resource_kinds": [
+        "image"
+      ],
+      "available_exercise_refs": []
+    },
+    "request": {
+      "schema_version": "api.v1",
+      "space_id": "space_5b4244df42124d9e9f4149f4c0079700",
+      "operation": "explanation",
+      "profile_revision": 1,
+      "base_revision": 1,
+      "input": {
+        "path": [
+          {
+            "key": "node_b016af6e2c854b20814bfa15a6db0b1e",
+            "scope": "二分查找",
+            "title": "二分查找",
+            "decision": {
+              "state": "expandable",
+              "reason": "固定开发判定，仅用于流程验证。"
+            },
+            "overview": "固定开发概述，不是实际模型生成。",
+            "content_revision": 1,
+            "profile_revision": 1
+          }
+        ],
+        "target": {
+          "key": "node_b016af6e2c854b20814bfa15a6db0b1e",
+          "scope": "二分查找",
+          "title": "二分查找",
+          "decision": {
+            "state": "expandable",
+            "reason": "固定开发判定，仅用于流程验证。"
+          },
+          "overview": "固定开发概述，不是实际模型生成。",
+          "content_revision": 1,
+          "profile_revision": 1
+        },
+        "profile": {
+          "profile": {
+            "topic": {
+              "value": "二分查找",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            "background": {
+              "value": "尚未确定当前基础",
+              "source": "unknown",
+              "evidence_keys": []
+            },
+            "constraints": [],
+            "excluded_scope": [],
+            "included_scope": [
+              {
+                "value": "二分查找",
+                "source": "assumption",
+                "evidence_keys": []
+              }
+            ],
+            "schema_version": "profile.v1",
+            "primary_purpose": {
+              "value": "只想理解一次中点比较",
+              "source": "user",
+              "evidence_keys": [
+                "brief"
+              ]
+            },
+            "target_abilities": [
+              {
+                "value": "先理解核心概念，再结合用途练习",
+                "source": "assumption",
+                "evidence_keys": []
+              }
+            ],
+            "secondary_purposes": []
+          },
+          "revision": 1
+        },
+        "instruction": "结合当前用途说明这个节点，并给出一个例子。",
+        "schema_version": "explanation-input.v1",
+        "sibling_scopes": [],
+        "existing_children": [
+          {
+            "key": "node_cb9de2d646f2457fae682e3198d76af7",
+            "scope": "核心概念",
+            "title": "核心概念",
+            "decision": {
+              "state": "expandable",
+              "reason": "固定开发判定，仅用于流程验证。"
+            },
+            "overview": "固定开发概述，不是实际模型生成。",
+            "content_revision": 1,
+            "profile_revision": 1
+          },
+          {
+            "key": "node_a33c2199dab84af3859ced3a08c3d7f7",
+            "scope": "应用与边界",
+            "title": "应用与边界",
+            "decision": {
+              "state": "leaf",
+              "reason": "固定开发判定，仅用于流程验证。"
+            },
+            "overview": "固定开发概述，不是实际模型生成。",
+            "content_revision": 1,
+            "profile_revision": 1
+          }
+        ],
+        "reusable_concept_refs": [
+          "concept_9033da003a994a44b1a080c4955cbd66",
+          "concept_a82eea0df17a4049ae412cc4ac95ce56",
+          "concept_a9cbb7e9d2ca45b196e233a07279c91f"
+        ],
+        "allowed_resource_kinds": [
+          "image"
+        ],
+        "available_exercise_refs": []
+      }
+    },
+    "dependencies": {
+      "context_bytes": 3007,
+      "node_revisions": {
+        "node_a33c2199dab84af3859ced3a08c3d7f7": 1,
+        "node_b016af6e2c854b20814bfa15a6db0b1e": 1,
+        "node_cb9de2d646f2457fae682e3198d76af7": 1
+      },
+      "context_strategy": "minimal.v1",
+      "outline_revision": 1,
+      "profile_revision": 1,
+      "selected_context": {
+        "concepts": [
+          {
+            "id": "concept_a9cbb7e9d2ca45b196e233a07279c91f",
+            "scope": "二分查找",
+            "title": "二分查找",
+            "aliases": []
+          },
+          {
+            "id": "concept_9033da003a994a44b1a080c4955cbd66",
+            "scope": "核心概念",
+            "title": "核心概念",
+            "aliases": []
+          },
+          {
+            "id": "concept_a82eea0df17a4049ae412cc4ac95ce56",
+            "scope": "应用与边界",
+            "title": "应用与边界",
+            "aliases": []
+          }
+        ],
+        "feedback": [],
+        "content_origins": [
+          {
+            "node_id": "node_b016af6e2c854b20814bfa15a6db0b1e",
+            "content_ref": "content_e3ef0100a2c54733952ac94ad487fa51",
+            "carried_from": null,
+            "profile_revision": 1
+          },
+          {
+            "node_id": "node_cb9de2d646f2457fae682e3198d76af7",
+            "content_ref": "content_faca4311eb3440c5ae4d808d7fc527e1",
+            "carried_from": null,
+            "profile_revision": 1
+          },
+          {
+            "node_id": "node_a33c2199dab84af3859ced3a08c3d7f7",
+            "content_ref": "content_88ef29953242451a90344a41b3c0f5c4",
+            "carried_from": null,
+            "profile_revision": 1
+          }
+        ]
+      },
+      "output_tokens_reserved": 4000
+    },
+    "proposal": {
+      "blocks": [
+        {
+          "text": "## 二分查找\n\n固定开发讲解，不是实际模型生成。\n\n当前范围：二分查找",
+          "type": "markdown"
+        },
+        {
+          "type": "image",
+          "caption": "示意图",
+          "resource_key": "illustration",
+          "fallback_text": "图片尚未就绪，请阅读正文。"
+        }
+      ],
+      "overview": "固定开发概述，不是实际模型生成。",
+      "target_key": "node_b016af6e2c854b20814bfa15a6db0b1e",
+      "schema_version": "explanation.v1",
+      "resource_requests": [
+        {
+          "key": "illustration",
+          "kind": "image",
+          "purpose": "配合讲解",
+          "runtime": null,
+          "controls": [],
+          "fallback_text": "图片制作失败时阅读正文。",
+          "specification": "具有来源记录的示意图"
+        }
+      ]
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": "succeeded",
+        "outcome_unknown": false
+      }
+    ],
+    "calls": [
+      {
+        "id": "call_2a9d9f9d96cb4f289e2c51c314114e1a",
+        "attempt": 1,
+        "step": 1,
+        "provider": "deterministic_fake",
+        "model": "fixture.v2",
+        "prompt_version": "fixture.v2",
+        "schema_version": "explanation.v1",
+        "status": "completed",
+        "request": {
+          "path": [
+            {
+              "key": "node_b016af6e2c854b20814bfa15a6db0b1e",
+              "scope": "二分查找",
+              "title": "二分查找",
+              "decision": {
+                "state": "expandable",
+                "reason": "固定开发判定，仅用于流程验证。"
+              },
+              "overview": "固定开发概述，不是实际模型生成。",
+              "content_revision": 1,
+              "profile_revision": 1
+            }
+          ],
+          "target": {
+            "key": "node_b016af6e2c854b20814bfa15a6db0b1e",
+            "scope": "二分查找",
+            "title": "二分查找",
+            "decision": {
+              "state": "expandable",
+              "reason": "固定开发判定，仅用于流程验证。"
+            },
+            "overview": "固定开发概述，不是实际模型生成。",
+            "content_revision": 1,
+            "profile_revision": 1
+          },
+          "profile": {
+            "profile": {
+              "topic": {
+                "value": "二分查找",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "background": {
+                "value": "尚未确定当前基础",
+                "source": "unknown",
+                "evidence_keys": []
+              },
+              "constraints": [],
+              "excluded_scope": [],
+              "included_scope": [
+                {
+                  "value": "二分查找",
+                  "source": "assumption",
+                  "evidence_keys": []
+                }
+              ],
+              "schema_version": "profile.v1",
+              "primary_purpose": {
+                "value": "只想理解一次中点比较",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "target_abilities": [
+                {
+                  "value": "先理解核心概念，再结合用途练习",
+                  "source": "assumption",
+                  "evidence_keys": []
+                }
+              ],
+              "secondary_purposes": []
+            },
+            "revision": 1
+          },
+          "instruction": "结合当前用途说明这个节点，并给出一个例子。",
+          "schema_version": "explanation-input.v1",
+          "sibling_scopes": [],
+          "existing_children": [
+            {
+              "key": "node_cb9de2d646f2457fae682e3198d76af7",
+              "scope": "核心概念",
+              "title": "核心概念",
+              "decision": {
+                "state": "expandable",
+                "reason": "固定开发判定，仅用于流程验证。"
+              },
+              "overview": "固定开发概述，不是实际模型生成。",
+              "content_revision": 1,
+              "profile_revision": 1
+            },
+            {
+              "key": "node_a33c2199dab84af3859ced3a08c3d7f7",
+              "scope": "应用与边界",
+              "title": "应用与边界",
+              "decision": {
+                "state": "leaf",
+                "reason": "固定开发判定，仅用于流程验证。"
+              },
+              "overview": "固定开发概述，不是实际模型生成。",
+              "content_revision": 1,
+              "profile_revision": 1
+            }
+          ],
+          "reusable_concept_refs": [
+            "concept_9033da003a994a44b1a080c4955cbd66",
+            "concept_a82eea0df17a4049ae412cc4ac95ce56",
+            "concept_a9cbb7e9d2ca45b196e233a07279c91f"
+          ],
+          "allowed_resource_kinds": [
+            "image"
+          ],
+          "available_exercise_refs": []
+        },
+        "response": {
+          "blocks": [
+            {
+              "text": "## 二分查找\n\n固定开发讲解，不是实际模型生成。\n\n当前范围：二分查找",
+              "type": "markdown"
+            }
+          ],
+          "overview": "固定开发概述，不是实际模型生成。",
+          "target_key": "node_b016af6e2c854b20814bfa15a6db0b1e",
+          "schema_version": "explanation.v1",
+          "resource_requests": []
+        },
+        "error_code": null,
+        "outcome_unknown": false,
+        "reserved_cost": "0E-8",
+        "currency": "CNY",
+        "latency_seconds": "0.0000",
+        "input_tokens": null,
+        "output_tokens": null,
+        "accounted_cost": "0E-8"
+      }
+    ]
+  },
+  "resource_task_count": 1,
+  "content_count_before_success": 3,
+  "rollback_observed": true,
+  "pending_resources_are_not_ready_files": true
+}

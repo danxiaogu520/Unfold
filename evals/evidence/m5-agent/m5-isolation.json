@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "origin": "null",
+    "viewport": {
+      "width": 800,
+      "height": 540
+    },
+    "browser_sandbox": true,
+    "model_key_in_driver": false,
+    "network_policy": "deny-proxy-and-routing.v1"
+  },
+  "probe": {
+    "storage": "unavailable",
+    "network": "blocked",
+    "parentIsSelf": true,
+    "nodeProcess": "undefined",
+    "logs": [
+      "Connecting to 'http://127.0.0.1:8000/api/v1/spaces' violates the following Content Security Policy directive: \"connect-src 'none'\". The action has been blocked.",
+      "Fetch API cannot load http://127.0.0.1:8000/api/v1/spaces. Refused to connect because it violates the document's Content Security Policy."
+    ],
+    "blocked": []
+  },
+  "interaction_reset_passed": true,
+  "closed": true,
+  "strict_memory_quota": false,
+  "claims": "finite browser probes, not universal containment"
+}

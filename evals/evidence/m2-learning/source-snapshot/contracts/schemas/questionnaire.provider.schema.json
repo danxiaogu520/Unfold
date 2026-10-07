@@ -1,0 +1,100 @@
+{
+  "$defs": {
+    "Option": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "text"
+      ],
+      "type": "object"
+    },
+    "Question": {
+      "additionalProperties": false,
+      "properties": {
+        "allow_free_text": {
+          "enum": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "allow_unknown": {
+          "enum": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "key": {
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "single",
+            "multiple"
+          ],
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/$defs/Option"
+          },
+          "type": "array"
+        },
+        "prompt": {
+          "type": "string"
+        },
+        "target": {
+          "enum": [
+            "purpose",
+            "background",
+            "goal",
+            "scope",
+            "constraints"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "target",
+        "prompt",
+        "mode",
+        "options",
+        "allow_free_text",
+        "allow_unknown"
+      ],
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "questions": {
+      "items": {
+        "$ref": "#/$defs/Question"
+      },
+      "type": "array"
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "schema_version": {
+      "enum": [
+        "questionnaire.v1"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "questions",
+    "rationale"
+  ],
+  "type": "object"
+}

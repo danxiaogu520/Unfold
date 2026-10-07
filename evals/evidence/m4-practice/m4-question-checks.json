@@ -1,0 +1,55 @@
+{
+  "questions": [
+    {
+      "key": "http_message_body_boundary_single",
+      "content_refs": [
+        "content_d3d8887615f14e6eb39b115af2c240e7"
+      ],
+      "correct_selection_passed": true,
+      "wrong_selection_rejected": true
+    },
+    {
+      "key": "http_message_body_boundary_multiple",
+      "content_refs": [
+        "content_d3d8887615f14e6eb39b115af2c240e7"
+      ],
+      "correct_selection_passed": true,
+      "wrong_selection_rejected": true
+    },
+    {
+      "key": "http_header_merge_set_cookie_single",
+      "content_refs": [
+        "content_d3d8887615f14e6eb39b115af2c240e7"
+      ],
+      "correct_selection_passed": true,
+      "wrong_selection_rejected": true
+    },
+    {
+      "key": "ex_midpoint_compare_result",
+      "content_refs": [
+        "content_5afea4f90fdd41939b407f9d19e969e4"
+      ],
+      "correct_selection_passed": true,
+      "wrong_selection_rejected": true
+    },
+    {
+      "key": "ex_midpoint_formula_overflow",
+      "content_refs": [
+        "content_5afea4f90fdd41939b407f9d19e969e4"
+      ],
+      "correct_selection_passed": true,
+      "wrong_selection_rejected": true
+    },
+    {
+      "key": "ex_boundary_scope_and_value",
+      "content_refs": [
+        "content_5afea4f90fdd41939b407f9d19e969e4"
+      ],
+      "correct_selection_passed": true,
+      "wrong_selection_rejected": true
+    }
+  ],
+  "deterministic_cases": 12,
+  "agent_review": "targeted source comparison",
+  "independent_human_review": null
+}

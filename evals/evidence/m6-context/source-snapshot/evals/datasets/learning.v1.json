@@ -1,0 +1,605 @@
+{
+  "scenarios": [
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "后端开发",
+      "expected_behavior": "useful_depth",
+      "family": "backend",
+      "id": "backend-1",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "准备校招，能写简单Python，希望解释HTTP、数据库和并发原理并分析常见故障。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "后端开发",
+      "expected_behavior": "useful_depth",
+      "family": "backend",
+      "id": "backend-2",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "维护已有订单服务，熟悉CRUD，希望解决重复请求、事务一致性和超时故障。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "二分查找的一次中点比较",
+      "expected_behavior": "root_leaf",
+      "family": "midpoint",
+      "id": "midpoint-1",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "只想看懂数组[1,3,5]中查找3时中点比较的结果；已理解数组和大小比较，不学完整算法。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "二分查找的一次中点比较",
+      "expected_behavior": "root_leaf",
+      "family": "midpoint",
+      "id": "midpoint-2",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "辅导同学理解中点值小于目标时为什么保留右半区；只解释这一步，不涉及实现或复杂度。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "高中生物细胞结构",
+      "expected_behavior": "flexible",
+      "family": "cell",
+      "id": "cell-1",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "跟进课堂，希望能区分细胞器的功能和相互关系；目前只知道细胞是基本单位。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "高中生物细胞结构",
+      "expected_behavior": "flexible",
+      "family": "cell",
+      "id": "cell-2",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "兴趣学习，已学基础细胞结构，想解释蛋白质合成与运输过程；不要求考试范围对齐。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "音乐理论三和弦",
+      "expected_behavior": "flexible",
+      "family": "triads",
+      "id": "triads-1",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "钢琴伴奏入门，会识谱但不了解和声，希望能构建并听辨基本三和弦。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "音乐理论三和弦",
+      "expected_behavior": "flexible",
+      "family": "triads",
+      "id": "triads-2",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "编曲使用，会构建三和弦，希望理解转位与声部连接；暂不学习爵士扩展。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "唐代历史",
+      "expected_behavior": "flexible",
+      "family": "tang",
+      "id": "tang-1",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "兴趣阅读，对年代不熟，希望建立阶段与制度变化的脉络，避免只背人物。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "唐代历史",
+      "expected_behavior": "flexible",
+      "family": "tang",
+      "id": "tang-2",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "准备写文化交流短文，已有唐代时序基础，想理解丝路贸易与文化互动。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "摄影曝光",
+      "expected_behavior": "flexible",
+      "family": "exposure",
+      "id": "exposure-1",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "新手拍运动照片，希望理解快门、光圈与ISO如何配合，不考虑后期。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "摄影曝光",
+      "expected_behavior": "flexible",
+      "family": "exposure",
+      "id": "exposure-2",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "已会手动曝光，拍夜景时想控制噪声与运动模糊，需要具体取舍。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "烹饪传热",
+      "expected_behavior": "flexible",
+      "family": "cooking",
+      "id": "cooking-1",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "会做家常菜，想理解煎与炖为何有不同结果，不需要复杂物理推导。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "烹饪传热",
+      "expected_behavior": "flexible",
+      "family": "cooking",
+      "id": "cooking-2",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "研究烘焙失败，掌握基础温度概念，想理解热传导和水分变化。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "统计均值与中位数",
+      "expected_behavior": "flexible",
+      "family": "statistics",
+      "id": "statistics-1",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "处理工资数据，只需解释极端值如何影响均值与中位数，不学推断统计。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "统计均值与中位数",
+      "expected_behavior": "flexible",
+      "family": "statistics",
+      "id": "statistics-2",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "dev",
+      "user_brief": "初学数据分析，想选择合适的中心位置指标，并能说明选择理由。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "直流电路",
+      "expected_behavior": "flexible",
+      "family": "circuits",
+      "id": "circuits-1",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "holdout",
+      "user_brief": "维修爱好入门，已理解电压和电流，想解释串并联分压分流，不做危险带电操作。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "直流电路",
+      "expected_behavior": "flexible",
+      "family": "circuits",
+      "id": "circuits-2",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "holdout",
+      "user_brief": "准备基础物理课程，能代数运算，希望理解欧姆定律条件并解简单电路。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "绘画透视",
+      "expected_behavior": "flexible",
+      "family": "perspective",
+      "id": "perspective-1",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "holdout",
+      "user_brief": "素描入门，想画房间结构，只学一点透视和常见错误。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "绘画透视",
+      "expected_behavior": "flexible",
+      "family": "perspective",
+      "id": "perspective-2",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "holdout",
+      "user_brief": "有素描经验，希望理解两点透视并绘制建筑街角，不学复杂投影几何。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "语言学音位",
+      "expected_behavior": "flexible",
+      "family": "phonemes",
+      "id": "phonemes-1",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "holdout",
+      "user_brief": "兴趣入门，想区分语音和音位，能解释最小对立体，不要求跨语言全面覆盖。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "语言学音位",
+      "expected_behavior": "flexible",
+      "family": "phonemes",
+      "id": "phonemes-2",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "holdout",
+      "user_brief": "已有音标基础，想分析不同方言的音位差异，避免将口音视作错误。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "天文学季节变化",
+      "expected_behavior": "flexible",
+      "family": "seasons",
+      "id": "seasons-1",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "holdout",
+      "user_brief": "给儿童解释季节，已理解地球公转，要区分地轴倾斜和日地距离的影响。"
+    },
+    {
+      "answers_by_target": {
+        "constraints": null,
+        "scope": "按原始目标限定，必要前置可补充"
+      },
+      "domain": "天文学季节变化",
+      "expected_behavior": "flexible",
+      "family": "seasons",
+      "id": "seasons-2",
+      "known_targets": [
+        "purpose",
+        "background",
+        "goal"
+      ],
+      "max_exploration_depth": 3,
+      "review_targets": [
+        "用途改变组织与例子",
+        "不误称官方或已核验",
+        "分支职责与概述明确",
+        "增量有用且不重复",
+        "停止位置与当前目标相符"
+      ],
+      "split": "holdout",
+      "user_brief": "兴趣拓展，懂基础轨道运动，希望解释南北半球季节相反与纬度差异。"
+    }
+  ],
+  "version": "learning.v1"
+}

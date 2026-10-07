@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>函数参数演示 f(x)=k*x+b</title>
+<style>
+  body{font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;padding:24px;color:#264b3b;background:#f7f8ef}
+  h1{font-size:20px;margin:0 0 4px}
+  p.note{margin:0 0 16px;color:#5b6b5f;font-size:13px}
+  .panel{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+  .controls{min-width:260px}
+  label{display:block;margin:12px 0}
+  label span{display:inline-block;min-width:96px}
+  input[type=range]{width:180px;vertical-align:middle}
+  input[type=number]{width:90px;padding:4px 6px;font:inherit}
+  output{display:inline-block;font-weight:700;font-size:18px;color:#1d6b45}
+  button{margin-top:8px;padding:8px 16px;font:inherit;border:1px solid #9fb39f;border-radius:6px;background:#e8f0e2;cursor:pointer}
+  button:focus,input:focus{outline:2px solid #1d6b45;outline-offset:2px}
+  canvas{border:1px solid #ccd4c3;background:#fff;max-width:100%}
+  .fallback{margin-top:20px;padding:10px 12px;border-left:4px solid #9fb39f;background:#eef2e6;font-size:13px;color:#4a5a4e}
+</style>
+</head>
+<body>
+<h1>函数参数演示：f(x) = k·x + b</h1>
+<p class="note">调整 k、b 或编辑 x，曲线与数值会同步更新。键盘可用 Tab 聚焦控件，方向键调整滑块。</p>
+<div class="panel">
+  <div class="controls">
+    <label><span>斜率 k</span><input type="range" id="slope" min="-3" max="3" step="0.5" value="1" aria-label="斜率 k"></label>
+    <label><span>截距 b</span><input type="range" id="intercept" min="-3" max="3" step="0.5" value="0" aria-label="截距 b"></label>
+    <label><span>x</span><input type="number" id="x" value="2" step="0.5" aria-label="自变量 x"></label>
+    <label><span>f(x)</span><output id="value" for="slope intercept x">2</output></label>
+    <button id="reset" type="button">重置 (k=1, b=0, x=2)</button>
+  </div>
+  <canvas id="plot" width="600" height="300" role="img" aria-label="函数曲线图"></canvas>
+</div>
+<p class="fallback">本任务用于公开合成资源流程评测，不代表真实学习者数据。</p>
+<script>
+(function(){
+  var slopeEl = document.getElementById('slope');
+  var interceptEl = document.getElementById('intercept');
+  var xEl = document.getElementById('x');
+  var valueEl = document.getElementById('value');
+  var canvas = document.getElementById('plot');
+  var ctx = canvas.getContext('2d');
+
+  function num(el, fallback){
+    var v = Number(el.value);
+    return isFinite(v) ? v : fallback;
+  }
+
+  function draw(k, b, xv){
+    var W = canvas.width, H = canvas.height;
+    var pad = 24;
+    var xMin = -6, xMax = 6;
+    var yMin = -10, yMax = 10;
+    function sx(x){ return pad + (x - xMin) / (xMax - xMin) * (W - 2 * pad); }
+    function sy(y){ return H - pad - (y - yMin) / (yMax - yMin) * (H - 2 * pad); }
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.strokeStyle = '#e2e8dc';
+    ctx.lineWidth = 1;
+    var gx, gy;
+    for (gx = Math.ceil(xMin); gx <= xMax; gx++){
+      ctx.beginPath(); ctx.moveTo(sx(gx), sy(yMin)); ctx.lineTo(sx(gx), sy(yMax)); ctx.stroke();
+    }
+    for (gy = Math.ceil(yMin); gy <= yMax; gy++){
+      ctx.beginPath(); ctx.moveTo(sx(xMin), sy(gy)); ctx.lineTo(sx(xMax), sy(gy)); ctx.stroke();
+    }
+
+    ctx.strokeStyle = '#9fb39f';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(sx(xMin), sy(0)); ctx.lineTo(sx(xMax), sy(0)); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(sx(0), sy(yMin)); ctx.lineTo(sx(0), sy(yMax)); ctx.stroke();
+
+    ctx.strokeStyle = '#1d6b45';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(sx(xMin), sy(k * xMin + b));
+    ctx.lineTo(sx(xMax), sy(k * xMax + b));
+    ctx.stroke();
+
+    var yv = k * xv + b;
+    var px = sx(xv), py = sy(yv);
+    if (px >= pad && px <= W - pad && py >= pad && py <= H - pad){
+      ctx.fillStyle = '#c0392b';
+      ctx.beginPath();
+      ctx.arc(px, py, 5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function update(){
+    var k = num(slopeEl, 1);
+    var b = num(interceptEl, 0);
+    var xv = num(xEl, 0);
+    var yv = k * xv + b;
+    valueEl.textContent = String(Math.round(yv * 1000) / 1000);
+    draw(k, b, xv);
+  }
+
+  slopeEl.addEventListener('input', update);
+  interceptEl.addEventListener('input', update);
+  xEl.addEventListener('input', update);
+  xEl.addEventListener('change', update);
+
+  document.getElementById('reset').addEventListener('click', function(){
+    slopeEl.value = '1';
+    interceptEl.value = '0';
+    xEl.value = '2';
+    update();
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>

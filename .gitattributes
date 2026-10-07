@@ -1,0 +1,12 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.webm binary
+
+# Historical hashes bind exact exported bytes, including whitespace.
+evals/evidence/** -text -whitespace
+
+# ORM-generated DDL uses trailing spaces in its canonical table rendering.
+src/unfold/app/migrations/versions/*_schema.sql whitespace=-blank-at-eol

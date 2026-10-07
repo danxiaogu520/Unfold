@@ -1,0 +1,221 @@
+{
+  "$defs": {
+    "DiagramBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "caption": {
+          "type": "string"
+        },
+        "fallback_text": {
+          "type": "string"
+        },
+        "language": {
+          "enum": [
+            "mermaid"
+          ],
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "diagram"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "language",
+        "source",
+        "caption",
+        "fallback_text"
+      ],
+      "type": "object"
+    },
+    "ExerciseBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "exercise_revision_ref": {
+          "type": "string"
+        },
+        "fallback_text": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "exercise"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "exercise_revision_ref",
+        "fallback_text"
+      ],
+      "type": "object"
+    },
+    "MarkdownBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "markdown"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "text"
+      ],
+      "type": "object"
+    },
+    "ResourceBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "caption": {
+          "type": "string"
+        },
+        "fallback_text": {
+          "type": "string"
+        },
+        "resource_key": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "image",
+            "playground",
+            "interactive"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "resource_key",
+        "caption",
+        "fallback_text"
+      ],
+      "type": "object"
+    },
+    "ResourceRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "controls": {
+          "items": {
+            "enum": [
+              "play",
+              "pause",
+              "step",
+              "reset",
+              "parameters",
+              "run",
+              "stop"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "fallback_text": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "image",
+            "diagram",
+            "playground",
+            "interactive"
+          ],
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "runtime": {
+          "anyOf": [
+            {
+              "enum": [
+                "web"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "specification": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "kind",
+        "purpose",
+        "specification",
+        "runtime",
+        "controls",
+        "fallback_text"
+      ],
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "blocks": {
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/MarkdownBlock"
+          },
+          {
+            "$ref": "#/$defs/DiagramBlock"
+          },
+          {
+            "$ref": "#/$defs/ResourceBlock"
+          },
+          {
+            "$ref": "#/$defs/ExerciseBlock"
+          }
+        ]
+      },
+      "type": "array"
+    },
+    "overview": {
+      "type": "string"
+    },
+    "resource_requests": {
+      "items": {
+        "$ref": "#/$defs/ResourceRequest"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "enum": [
+        "explanation.v1"
+      ],
+      "type": "string"
+    },
+    "target_key": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "target_key",
+    "overview",
+    "blocks",
+    "resource_requests"
+  ],
+  "type": "object"
+}

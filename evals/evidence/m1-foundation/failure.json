@@ -1,0 +1,200 @@
+{
+  "evidence_kind": "deterministic_fake_real_postgres_http",
+  "request": {
+    "schema_version": "api.v1",
+    "space_id": "space_15ff1c89658844a4be520ce03bdefdc1",
+    "operation": "questionnaire",
+    "profile_revision": null,
+    "base_revision": null,
+    "input": {
+      "domain": "二分查找",
+      "known_targets": [
+        "goal"
+      ],
+      "previous_question_keys": [],
+      "questions_asked": 0,
+      "round": 1,
+      "schema_version": "questionnaire-input.v1",
+      "user_brief": "只想理解一次中点比较"
+    }
+  },
+  "queued": {
+    "schema_version": "run.v1",
+    "run_id": "run_9a4c40e824f84deab4781495abb5117c",
+    "operation": "questionnaire",
+    "status": "queued",
+    "attempt": 0,
+    "last_event_seq": 1,
+    "result_ref": null,
+    "error": null
+  },
+  "final": {
+    "schema_version": "run.v1",
+    "run_id": "run_9a4c40e824f84deab4781495abb5117c",
+    "operation": "questionnaire",
+    "status": "failed",
+    "attempt": 1,
+    "last_event_seq": 3,
+    "result_ref": null,
+    "error": {
+      "schema_version": "error.v1",
+      "code": "schema_validation",
+      "message": "development fixture did not validate",
+      "retryable": false,
+      "outcome_unknown": false,
+      "run_id": "run_9a4c40e824f84deab4781495abb5117c"
+    }
+  },
+  "trace": {
+    "snapshot": {
+      "schema_version": "run.v1",
+      "run_id": "run_9a4c40e824f84deab4781495abb5117c",
+      "operation": "questionnaire",
+      "status": "failed",
+      "attempt": 1,
+      "last_event_seq": 3,
+      "result_ref": null,
+      "error": {
+        "schema_version": "error.v1",
+        "code": "schema_validation",
+        "message": "development fixture did not validate",
+        "retryable": false,
+        "outcome_unknown": false,
+        "run_id": "run_9a4c40e824f84deab4781495abb5117c"
+      }
+    },
+    "input": {
+      "round": 1,
+      "domain": "二分查找",
+      "user_brief": "只想理解一次中点比较",
+      "known_targets": [
+        "goal"
+      ],
+      "schema_version": "questionnaire-input.v1",
+      "questions_asked": 0,
+      "previous_question_keys": []
+    },
+    "request": {
+      "schema_version": "api.v1",
+      "space_id": "space_15ff1c89658844a4be520ce03bdefdc1",
+      "operation": "questionnaire",
+      "profile_revision": null,
+      "base_revision": null,
+      "input": {
+        "round": 1,
+        "domain": "二分查找",
+        "user_brief": "只想理解一次中点比较",
+        "known_targets": [
+          "goal"
+        ],
+        "schema_version": "questionnaire-input.v1",
+        "questions_asked": 0,
+        "previous_question_keys": []
+      }
+    },
+    "dependencies": {
+      "outline_revision": 0,
+      "profile_revision": 0
+    },
+    "proposal": null,
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": "failed",
+        "outcome_unknown": false
+      }
+    ],
+    "calls": [
+      {
+        "id": "call_374e019bbe1642468381fdf65ab597f9",
+        "attempt": 1,
+        "step": 1,
+        "provider": "deterministic_fake",
+        "model": "fixture.v1",
+        "prompt_version": "fixture.v1",
+        "schema_version": "invalid.v0",
+        "status": "failed",
+        "request": {
+          "round": 1,
+          "domain": "二分查找",
+          "user_brief": "只想理解一次中点比较",
+          "known_targets": [
+            "goal"
+          ],
+          "schema_version": "questionnaire-input.v1",
+          "questions_asked": 0,
+          "previous_question_keys": []
+        },
+        "response": {
+          "schema_version": "invalid.v0"
+        },
+        "error_code": "schema_validation",
+        "outcome_unknown": false,
+        "reserved_cost": "0E-8",
+        "currency": "CNY",
+        "latency_seconds": "0.0000",
+        "input_tokens": null,
+        "output_tokens": null,
+        "accounted_cost": "0E-8"
+      }
+    ]
+  },
+  "events": [
+    {
+      "kind": "queued",
+      "run_id": "run_9a4c40e824f84deab4781495abb5117c",
+      "sequence": 1,
+      "snapshot": {
+        "error": null,
+        "run_id": "run_9a4c40e824f84deab4781495abb5117c",
+        "status": "queued",
+        "attempt": 0,
+        "operation": "questionnaire",
+        "result_ref": null,
+        "last_event_seq": 1,
+        "schema_version": "run.v1"
+      },
+      "schema_version": "event.v1"
+    },
+    {
+      "kind": "started",
+      "run_id": "run_9a4c40e824f84deab4781495abb5117c",
+      "sequence": 2,
+      "snapshot": {
+        "error": null,
+        "run_id": "run_9a4c40e824f84deab4781495abb5117c",
+        "status": "running",
+        "attempt": 1,
+        "operation": "questionnaire",
+        "result_ref": null,
+        "last_event_seq": 2,
+        "schema_version": "run.v1"
+      },
+      "schema_version": "event.v1"
+    },
+    {
+      "kind": "failed",
+      "run_id": "run_9a4c40e824f84deab4781495abb5117c",
+      "sequence": 3,
+      "snapshot": {
+        "error": {
+          "code": "schema_validation",
+          "run_id": "run_9a4c40e824f84deab4781495abb5117c",
+          "message": "development fixture did not validate",
+          "retryable": false,
+          "schema_version": "error.v1",
+          "outcome_unknown": false
+        },
+        "run_id": "run_9a4c40e824f84deab4781495abb5117c",
+        "status": "failed",
+        "attempt": 1,
+        "operation": "questionnaire",
+        "result_ref": null,
+        "last_event_seq": 3,
+        "schema_version": "run.v1"
+      },
+      "schema_version": "event.v1"
+    }
+  ],
+  "official_intakes": []
+}

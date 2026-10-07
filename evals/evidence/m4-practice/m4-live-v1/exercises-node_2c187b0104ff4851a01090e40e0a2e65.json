@@ -1,0 +1,816 @@
+{
+  "id": "node_2c187b0104ff4851a01090e40e0a2e65",
+  "parent_id": "node_815f8bf04c094c4f85c7be683a0754a6",
+  "concept_id": "concept_f647b63798b948e0b060a1867f591035",
+  "kind": "concept",
+  "active": true,
+  "revision": 3,
+  "title": "HTTP 报文结构与请求响应组成",
+  "scope": "请求行/状态行、请求头与响应头、空行、请求体与响应体的组成与格式，以及报文如何被解析出边界（Content-Length 与分块传输）。",
+  "overview": "本节点只讲 HTTP/1.1 文本报文的骨架与消息体边界判定。一次请求与一次响应都由「起始行 + 头部字段 + 空行 + 可选消息体」组成；边界判定必须区分请求与响应，并区分有无长度/传输编码。",
+  "decision": {
+    "state": "expandable",
+    "reason": "报文结构下还可细分起始行语义、头部字段组织、消息体边界判定等更窄机制，且各自有独立的常见错误场景，具备进一步展开价值。",
+    "profile_revision": 1,
+    "status": "stale"
+  },
+  "children": [],
+  "exercise_sets": [
+    {
+      "id": "exercise_set_02dca4bfa6804569a508d0dde71498b2",
+      "revision": 1,
+      "content_id": "content_d3d8887615f14e6eb39b115af2c240e7",
+      "profile_revision": 2,
+      "questions": [
+        {
+          "schema_version": "exercise-view.v1",
+          "exercise_revision_ref": "question_65b79244286b46f8b3a390dcf20aad93",
+          "key": "http_message_body_boundary_single",
+          "mode": "single",
+          "stem": "在 HTTP/1.1 中，一个请求报文既没有 Content-Length 也没有 Transfer-Encoding，服务端应如何判定该请求的消息体？",
+          "testing_point": "请求消息体边界判定：无长度且无传输编码时请求体长度为零",
+          "content_refs": [
+            "content_d3d8887615f14e6eb39b115af2c240e7"
+          ],
+          "options": [
+            {
+              "key": "opt_zero_body",
+              "text": "消息体长度为零，不应再读取字节"
+            },
+            {
+              "key": "opt_read_until_close",
+              "text": "一直读取直到连接关闭为止"
+            },
+            {
+              "key": "opt_wait_chunked",
+              "text": "按分块传输方式解析后续字节"
+            },
+            {
+              "key": "opt_reject_request",
+              "text": "视为报文非法，直接拒绝该请求"
+            }
+          ],
+          "status": "active",
+          "attempts": []
+        },
+        {
+          "schema_version": "exercise-view.v1",
+          "exercise_revision_ref": "question_343fb7b4c68d44d6abda57e581bc8b30",
+          "key": "http_message_body_boundary_multiple",
+          "mode": "multiple",
+          "stem": "关于 HTTP/1.1 报文的消息体边界判定，下列哪些说法符合正文内容？",
+          "testing_point": "请求与响应边界规则不同，以及无体响应的判定条件",
+          "content_refs": [
+            "content_d3d8887615f14e6eb39b115af2c240e7"
+          ],
+          "options": [
+            {
+              "key": "opt_resp_no_body_status",
+              "text": "1xx、204、304 以及 HEAD 的响应无消息体"
+            },
+            {
+              "key": "opt_resp_order",
+              "text": "响应允许有体时，依次考虑 Transfer-Encoding、Content-Length，都没有则由关闭连接定界"
+            },
+            {
+              "key": "opt_req_no_length_zero",
+              "text": "请求既无 Content-Length 也无 Transfer-Encoding 时，消息体长度为零"
+            },
+            {
+              "key": "opt_connect_tunnel",
+              "text": "CONNECT 的 2xx 响应后连接转为隧道，不按普通消息体处理"
+            },
+            {
+              "key": "opt_same_rule",
+              "text": "请求与响应在无长度时的判定规则完全相同"
+            }
+          ],
+          "status": "active",
+          "attempts": []
+        },
+        {
+          "schema_version": "exercise-view.v1",
+          "exercise_revision_ref": "question_490da7c9f93146c8802fc878a00ba20a",
+          "key": "http_header_merge_set_cookie_single",
+          "mode": "single",
+          "stem": "关于 HTTP/1.1 头部字段的合并，下列哪项符合正文的说明？",
+          "testing_point": "同名字段合并的列表语法要求与 Set-Cookie 例外",
+          "content_refs": [
+            "content_d3d8887615f14e6eb39b115af2c240e7"
+          ],
+          "options": [
+            {
+              "key": "opt_setcookie_no_merge",
+              "text": "Set-Cookie 不适用逗号合并，多个 Set-Cookie 必须各占一行"
+            },
+            {
+              "key": "opt_all_merge",
+              "text": "所有同名字段都可以用逗号合并成一行，包括 Set-Cookie"
+            },
+            {
+              "key": "opt_merge_breaks_list",
+              "text": "同名字段合并后语义一定改变，因此任何字段都不应合并"
+            },
+            {
+              "key": "opt_setcookie_semicolon",
+              "text": "多个 Set-Cookie 可以用分号合并成一行"
+            }
+          ],
+          "status": "active",
+          "attempts": []
+        }
+      ]
+    }
+  ],
+  "contents": [
+    {
+      "id": "content_d3d8887615f14e6eb39b115af2c240e7",
+      "revision": 3,
+      "profile_revision": 1,
+      "overview": "本节点只讲 HTTP/1.1 文本报文的骨架与消息体边界判定。一次请求与一次响应都由「起始行 + 头部字段 + 空行 + 可选消息体」组成；边界判定必须区分请求与响应，并区分有无长度/传输编码。",
+      "blocks": [
+        {
+          "text": "## 一、报文骨架（限定 HTTP/1.1）\n\n以下结构只适用于 HTTP/1.1 的文本报文；HTTP/2、HTTP/3 使用二进制帧，不适用本节的文本格式与边界规则。\n\n- 请求：`请求行`（方法 + 目标 + 版本）→ 头部字段 → 空行 → 可选消息体。\n- 响应：`状态行`（版本 + 状态码 + 原因短语）→ 头部字段 → 空行 → 可选消息体。\n\n空行（CRLF）是头部与消息体的分界，没有它就无法确定头部何时结束。\n\n## 二、消息体边界：请求与响应规则不同\n\n**请求**：若既无 `Content-Length` 也无 `Transfer-Encoding`，则消息体长度为零，服务端不应再读取字节。\n\n**响应**：先判断是否允许有消息体——1xx、204、304 以及 HEAD 的响应无消息体；CONNECT 的 2xx 响应后连接转为隧道，不按普通消息体处理。只有允许有体时，才依次考虑：`Transfer-Encoding`（分块传输）→ `Content-Length` → 以上都没有则由关闭连接定界。\n\n因此「无长度即无体」只对请求成立，对响应必须结合状态码与方法判断。",
+          "type": "markdown"
+        },
+        {
+          "text": "## 三、头部字段合并与 Set-Cookie 例外\n\n同名字段可合并为一行，但必须符合列表语法：`A: 1, 2` 等价于两行 `A: 1` 与 `A: 2`。\n\n`Set-Cookie` 是例外：它不适用逗号合并，因为 Cookie 值本身可能含逗号（如 `Expires=Wed, 21 Oct 2025 07:28:00 GMT`），合并会破坏语义。多个 `Set-Cookie` 必须各占一行。\n\n## 四、一个完整 JSON 报文示例（HTTP/1.1）\n\n请求（无长度与传输编码，故消息体为零）：\n\n```http\nPOST /api/login HTTP/1.1\nHost: example.com\nContent-Type: application/json\n\n```\n\n响应（200，正文为展示内容）：\n\n```http\nHTTP/1.1 200 OK\nContent-Type: application/json\nContent-Length: 25\n\n{\"token\":\"abc\",\"ok\":true}\n```\n\n正文 `{\"token\":\"abc\",\"ok\":true}` 的 UTF-8 字节数为 25，与 `Content-Length` 一致。该长度只计算展示正文，不含 Markdown 围栏的收尾换行；若无法确定字节数，应省略具体数字，交由 HTTP 库计算。",
+          "type": "markdown"
+        },
+        {
+          "text": "## 五、常见误判\n\n- 把请求的「无长度即无体」套到响应上，导致把关闭连接定界的响应误判为无体。\n- 忽略 204/304/HEAD 的无体规则，按 `Content-Length` 去读不存在的体。\n- 把多个 `Set-Cookie` 合并成一行，导致 Cookie 解析错乱。\n- 把 HTTP/1.1 文本报文格式推广到 HTTP/2 或 HTTP/3。",
+          "type": "markdown"
+        }
+      ],
+      "source": {
+        "input": {
+          "path": [
+            {
+              "key": "node_1832e12275154a46a4c751c5a7a81b41",
+              "scope": "面向校招的后端开发核心知识：HTTP 协议与请求响应机制、数据库原理与常见使用问题、并发模型与并发问题、常见线上故障分析与排查；以能解释原理、能分析故障为目标，不覆盖具体 Python 框架与部署实践。",
+              "title": "后端开发核心基础（校招准备）",
+              "decision": {
+                "state": "expandable",
+                "reason": "目标包含四个职责不同、机制各异的知识方向，每个方向都有独立的原理与典型问题，需要分别展开才能支撑校招面试与故障分析能力。"
+              },
+              "overview": "本规划围绕四个校招高频考察方向组织：网络层的 HTTP 请求响应机制、数据层的数据库原理与使用问题、执行层的并发模型与并发问题、运维层的线上故障分析与排查。四者相互支撑：HTTP 决定请求如何进入服务，数据库决定状态如何持久化，并发决定多请求下资源如何被争用，故障排查则把前三者的原理用于定位真实问题。",
+              "content_revision": 1,
+              "profile_revision": 1
+            },
+            {
+              "key": "node_815f8bf04c094c4f85c7be683a0754a6",
+              "scope": "HTTP 请求与响应的结构、方法、状态码、头部字段、连接管理（短连接/长连接）、无状态与 Cookie/Session 的关系，以及一次请求从客户端到服务端的完整流转过程。",
+              "title": "HTTP 协议与请求响应机制",
+              "decision": {
+                "state": "expandable",
+                "reason": "HTTP 目标下存在报文结构、语义约定、连接管理、会话状态四个机制独立、校招考察点各不相同的方向，分别展开才能支撑接口异常与超时的分析能力。"
+              },
+              "overview": "理解 HTTP 作为应用层文本协议如何承载一次请求-响应：请求行/请求头/请求体的组成，常见方法与状态码的语义，头部字段（Content-Type、Connection、Cookie 等）的作用，连接复用与无状态特性带来的会话管理问题。这是分析接口异常、超时、跨域等问题的前提。",
+              "content_revision": 2,
+              "profile_revision": 1
+            },
+            {
+              "key": "node_2c187b0104ff4851a01090e40e0a2e65",
+              "scope": "请求行/状态行、请求头与响应头、空行、请求体与响应体的组成与格式，以及报文如何被解析出边界（Content-Length 与分块传输）。",
+              "title": "HTTP 报文结构与请求响应组成",
+              "decision": {
+                "state": "expandable",
+                "reason": "报文结构下还可细分起始行语义、头部字段组织、消息体边界判定等更窄机制，且各自有独立的常见错误场景，具备进一步展开价值。"
+              },
+              "overview": "HTTP 报文是应用层上的纯文本结构，一次请求与一次响应都由「起始行 + 头部字段 + 空行 + 可选消息体」四段组成。理解这个骨架，就能读懂抓包结果、判断请求是否被正确解析、定位「服务端收不到参数」「响应被截断」「连接卡住不返回」这类问题。本节点只讲报文本身的组成与边界判定，不展开方法语义、状态码含义、头部字段的具体作用与连接管理。",
+              "content_revision": 2,
+              "profile_revision": 1
+            }
+          ],
+          "target": {
+            "key": "node_2c187b0104ff4851a01090e40e0a2e65",
+            "scope": "请求行/状态行、请求头与响应头、空行、请求体与响应体的组成与格式，以及报文如何被解析出边界（Content-Length 与分块传输）。",
+            "title": "HTTP 报文结构与请求响应组成",
+            "decision": {
+              "state": "expandable",
+              "reason": "报文结构下还可细分起始行语义、头部字段组织、消息体边界判定等更窄机制，且各自有独立的常见错误场景，具备进一步展开价值。"
+            },
+            "overview": "HTTP 报文是应用层上的纯文本结构，一次请求与一次响应都由「起始行 + 头部字段 + 空行 + 可选消息体」四段组成。理解这个骨架，就能读懂抓包结果、判断请求是否被正确解析、定位「服务端收不到参数」「响应被截断」「连接卡住不返回」这类问题。本节点只讲报文本身的组成与边界判定，不展开方法语义、状态码含义、头部字段的具体作用与连接管理。",
+            "content_revision": 2,
+            "profile_revision": 1
+          },
+          "profile": {
+            "profile": {
+              "topic": {
+                "value": "后端开发",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "background": {
+                "value": "能写简单 Python，具备基础编程能力",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "constraints": [
+                {
+                  "value": "时间、学习节奏或资源限制未知",
+                  "source": "unknown",
+                  "evidence_keys": []
+                }
+              ],
+              "excluded_scope": [
+                {
+                  "value": "Python 后端开发实践（框架、部署等）等超出原始目标限定的内容，除必要前置外不纳入",
+                  "source": "assumption",
+                  "evidence_keys": []
+                }
+              ],
+              "included_scope": [
+                {
+                  "value": "按原始目标限定，必要前置可补充",
+                  "source": "user",
+                  "evidence_keys": [
+                    "answer:scope_topics"
+                  ]
+                },
+                {
+                  "value": "HTTP 协议与请求响应机制",
+                  "source": "assumption",
+                  "evidence_keys": []
+                },
+                {
+                  "value": "数据库原理与常见使用问题",
+                  "source": "assumption",
+                  "evidence_keys": []
+                },
+                {
+                  "value": "并发模型与并发问题",
+                  "source": "assumption",
+                  "evidence_keys": []
+                },
+                {
+                  "value": "常见线上故障分析与排查",
+                  "source": "assumption",
+                  "evidence_keys": []
+                }
+              ],
+              "schema_version": "profile.v1",
+              "primary_purpose": {
+                "value": "准备校招，系统学习后端开发相关知识",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "target_abilities": [
+                {
+                  "value": "能解释 HTTP 协议与请求响应机制",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "能解释数据库原理与常见使用问题",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "能解释并发模型与并发问题",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "能分析常见线上故障",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                }
+              ],
+              "secondary_purposes": [
+                {
+                  "value": "理解 HTTP 协议与请求响应机制的原理",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "理解数据库原理及常见使用问题",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "理解并发模型与并发问题",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "能够分析常见线上故障",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                }
+              ]
+            },
+            "revision": 1
+          },
+          "instruction": "Codex 开发审阅：本版本把无 Content-Length/Transfer-Encoding 的请求与响应混为一谈，且遗漏 Set-Cookie 不能任意逗号合并的例外；HTTP 文本格式需限定 HTTP/1.1。参考 RFC 9112 §6.3、RFC 9110 §5.2。示例 JSON 显示正文的 UTF-8 字节数为 25、40、28。请用最多1000汉字、最多4个正文块生成精简修订，纠正上述问题并明确适用条件。只保留一个完整JSON报文例子，请求在没有长度与传输编码时消息体为零；响应需先考虑无体状态、HEAD/CONNECT 等规则，适用情况下才由关闭连接定界。同名字段合并必须符合列表语法，Set-Cookie 单独处理。JSON 示例只计算展示正文、不含 Markdown 收尾换行；不能确定字节数就不要填具体 Content-Length。",
+          "schema_version": "explanation-input.v1",
+          "sibling_scopes": [
+            "常见方法（GET/POST/PUT/DELETE/PATCH/HEAD/OPTIONS）的语义与幂等性、安全方法约定，以及 1xx-5xx 状态码分类与高频状态码（200/301/302/304/400/401/403/404/405/500/502/503/504）的含义与典型触发场景。",
+            "常见请求头与响应头（Host、Content-Type、Content-Length、Accept、User-Agent、Cache-Control、Set-Cookie 等）的作用，内容协商机制，以及缓存相关头部对请求行为的影响。",
+            "短连接与长连接（keep-alive）的差异、Connection 头部的作用、持久连接下的请求排队与队头阻塞、连接超时与空闲回收，以及连接复用对延迟与资源占用的影响。",
+            "HTTP 无状态的含义及其带来的问题，Cookie 的写入、携带与作用域（Domain/Path/过期），Session 的服务端存储与标识传递，以及二者配合实现登录态的基本流程。"
+          ],
+          "existing_children": [],
+          "reusable_concept_refs": [
+            "concept_0422d14082924833b09aed0575610d81",
+            "concept_073ddf06a3ce44f8b2ae7b889674e94d",
+            "concept_3fddce0533254b669702ae5061c435eb",
+            "concept_80720fac461b451f8b1f789550276005",
+            "concept_a5f95f3eb53b494db4efe2b0051ccb18",
+            "concept_c93a5bd6efa94612b35801d45a975eee",
+            "concept_de9a20cdd2e2495ea73cdf1111082d2a",
+            "concept_eea209536ac34322935ff3268045740e",
+            "concept_f647b63798b948e0b060a1867f591035"
+          ],
+          "allowed_resource_kinds": [],
+          "available_exercise_refs": []
+        },
+        "run_id": "run_8d8a750ca12f49c1ad678a2ae0752d92",
+        "operation": "explanation",
+        "review_id": null,
+        "division_basis": null
+      },
+      "review_status": "unverified",
+      "resources": []
+    },
+    {
+      "id": "content_fffa4f2c85764cbabffaec144894d654",
+      "revision": 2,
+      "profile_revision": 1,
+      "overview": "HTTP 报文是应用层上的纯文本结构，一次请求与一次响应都由「起始行 + 头部字段 + 空行 + 可选消息体」四段组成。理解这个骨架，就能读懂抓包结果、判断请求是否被正确解析、定位「服务端收不到参数」「响应被截断」「连接卡住不返回」这类问题。本节点只讲报文本身的组成与边界判定，不展开方法语义、状态码含义、头部字段的具体作用与连接管理。",
+      "blocks": [
+        {
+          "text": "## 为什么先看报文结构\n\n校招面试里问「HTTP 请求长什么样」，本质是在考你是否知道**协议是文本的、有明确边界的**。后端排查接口问题时，最常见的动作就是抓包或看日志里的原始报文，如果不知道四段结构，就看不出「请求体没发出去」「响应头少了 Content-Length」这类问题。\n\n一次完整的交互由两个报文组成：\n\n- **请求报文**：客户端 → 服务端\n- **响应报文**：服务端 → 客户端\n\n两者结构对称，只是起始行的内容不同。",
+          "type": "markdown"
+        },
+        {
+          "type": "diagram",
+          "source": "flowchart TB\n    subgraph REQ[\"请求报文\"]\n        R1[\"请求行：方法 路径 版本\"] --> R2[\"请求头：字段名: 值\"]\n        R2 --> R3[\"空行 CRLF\"]\n        R3 --> R4[\"请求体（可选）\"]\n    end\n    subgraph RES[\"响应报文\"]\n        S1[\"状态行：版本 状态码 原因短语\"] --> S2[\"响应头：字段名: 值\"]\n        S2 --> S3[\"空行 CRLF\"]\n        S3 --> S4[\"响应体（可选）\"]\n    end",
+          "caption": "请求报文与响应报文的四段式结构对照",
+          "language": "mermaid",
+          "fallback_text": "请求报文与响应报文都由四段组成：起始行（请求行或状态行）、头部字段、空行、可选消息体。请求行格式为「方法 路径 版本」，状态行格式为「版本 状态码 原因短语」。"
+        },
+        {
+          "text": "## 第一段：起始行\n\n### 请求行\n\n格式为 `方法 SP 请求目标 SP HTTP版本 CRLF`，例如：\n\n```\nGET /api/users/42?fields=name HTTP/1.1\n```\n\n三个部分分别是：\n\n- **方法**：GET、POST 等（本节点只关心它占一个位置，语义见方法/状态码节点）\n- **请求目标**：通常是路径加查询串，如 `/api/users/42?fields=name`\n- **版本**：`HTTP/1.1` 或 `HTTP/1.0`\n\n### 状态行\n\n格式为 `HTTP版本 SP 状态码 SP 原因短语 CRLF`，例如：\n\n```\nHTTP/1.1 404 Not Found\n```\n\n注意两点容易混淆的地方：\n\n1. **请求行以方法开头，状态行以版本开头**，方向相反。\n2. **原因短语（`Not Found`）只是给人看的**，程序判断只看状态码数字。所以服务端返回 `404 Whatever` 在协议上也是合法的。\n\n> 面试常问：`HTTP/1.1` 和 `HTTP/1.0` 在报文层面最直观的差别是什么？一个可回答的点是 1.1 默认持久连接，因此报文里通常不再显式写 `Connection: close`（连接管理细节见对应节点）。",
+          "type": "markdown"
+        },
+        {
+          "text": "## 第二段：头部字段\n\n头部字段是若干行 `字段名: 值`，每行以 CRLF 结束，**字段名不区分大小写**，值前后的空白会被忽略。\n\n```\nHost: example.com\nContent-Type: application/json\nContent-Length: 27\n```\n\n几个结构性要点：\n\n- **字段名与冒号之间不允许有空格**，冒号后的空格是惯例但可省略。\n- **同名头部可以出现多次**，语义上等价于用逗号合并，例如多个 `Accept-Encoding`。\n- **头部顺序在语义上不重要**，但抓包时通常按发送顺序显示。\n- 头部字段的总量有实现上的上限（各服务器/客户端不同），头部过大可能被直接拒绝，这是「请求莫名 400/431」的一个来源。\n\n头部字段**具体有哪些、各自什么作用**属于另一个节点，这里只需要建立「头部是一组键值对、以空行结束」的结构认知。",
+          "type": "markdown"
+        },
+        {
+          "text": "## 第三段：空行\n\n空行（严格说是 CRLF）是**头部与消息体的分界**，也是整个报文解析的关键锚点。\n\n解析器的基本流程是：\n\n1. 读第一行 → 解析起始行\n2. 逐行读头部，直到读到**空行**\n3. 空行之后的内容按规则当作消息体\n\n所以空行不是「格式好看」，而是**语法必需**。如果空行丢失或位置错误，解析器会把本该是消息体的内容当成头部继续读，导致解析失败或行为异常。",
+          "type": "markdown"
+        },
+        {
+          "text": "## 第四段：消息体与边界判定\n\n消息体是可选的一段字节流，可以是 JSON、表单、文件等任意内容。**协议本身不解释消息体的格式**，格式由 `Content-Type` 声明（内容协商细节见头部字段节点）。\n\n关键问题是：**接收方怎么知道消息体到哪里结束？** 主要有两种机制。\n\n### 机制一：Content-Length\n\n用头部显式声明消息体的**字节数**：\n\n```\nPOST /api/users HTTP/1.1\nHost: example.com\nContent-Type: application/json\nContent-Length: 27\n\n{\"name\":\"alice\",\"age\":18}\n```\n\n接收方读满 27 字节就认为消息体结束。注意是**字节数不是字符数**，中文等多字节字符会占多个字节，算错长度会导致请求被截断或挂起。\n\n### 机制二：分块传输（chunked）\n\n当消息体长度在发送前无法确定（例如边生成边发送）时，用 `Transfer-Encoding: chunked`，把消息体切成若干块，每块前面写该块的十六进制长度，最后以一个长度为 0 的块结束：\n\n```\nHTTP/1.1 200 OK\nContent-Type: text/plain\nTransfer-Encoding: chunked\n\n7\\r\\n\nMozilla\\r\\n\n9\\r\\n\nDeveloper\\r\\n\n0\\r\\n\n\\r\\n\n```\n\n（上面 `\\r\\n` 表示 CRLF，实际报文中是真实换行。）\n\n### 两种机制的关系\n\n- `Content-Length` 与 `Transfer-Encoding: chunked` **不应同时出现**，同时出现时按规范 `Transfer-Encoding` 优先，且这种组合是历史上请求走私（request smuggling）类问题的常见诱因。\n- 两者都没有时，接收方只能靠**连接关闭**来判断消息体结束，这要求连接不能复用，代价较大。\n\n> 面试常问：为什么需要 chunked？答：因为有些响应是动态生成的，生成完才知道总长度，如果必须先用 Content-Length 就得把整个响应缓存在内存里，chunked 允许流式发送。",
+          "type": "markdown"
+        },
+        {
+          "text": "## 一个完整的例子\n\n请求：\n\n```\nPOST /api/login HTTP/1.1\nHost: example.com\nContent-Type: application/json\nContent-Length: 40\n\n{\"username\":\"alice\",\"password\":\"secret\"}\n```\n\n响应：\n\n```\nHTTP/1.1 200 OK\nContent-Type: application/json\nContent-Length: 29\n\n{\"token\":\"abc123\",\"ok\":true}\n```\n\n对照四段结构：\n\n| 段 | 请求 | 响应 |\n| --- | --- | --- |\n| 起始行 | `POST /api/login HTTP/1.1` | `HTTP/1.1 200 OK` |\n| 头部 | Host / Content-Type / Content-Length | Content-Type / Content-Length |\n| 空行 | 有 | 有 |\n| 消息体 | JSON 登录信息 | JSON 令牌 |\n\n## 与故障排查的联系\n\n报文结构的知识直接对应几类线上现象：\n\n- **服务端读不到请求体**：常见原因是 `Content-Length` 与实际字节数不一致，或客户端用了 chunked 而中间层不支持。\n- **响应被截断**：`Content-Length` 声明得比实际内容大，接收方一直等剩余字节，表现为「请求卡住直到超时」。\n- **请求被拒绝**：头部过大或格式非法（如字段名带空格），被解析器直接拒绝。\n- **抓包看不懂**：不知道空行是分界，就会把消息体误读成头部。\n\n这些现象的具体定位手段属于故障排查节点，这里只需要建立「结构决定解析行为」的因果认知。",
+          "type": "markdown"
+        }
+      ],
+      "source": {
+        "input": {
+          "path": [
+            {
+              "key": "node_1832e12275154a46a4c751c5a7a81b41",
+              "scope": "面向校招的后端开发核心知识：HTTP 协议与请求响应机制、数据库原理与常见使用问题、并发模型与并发问题、常见线上故障分析与排查；以能解释原理、能分析故障为目标，不覆盖具体 Python 框架与部署实践。",
+              "title": "后端开发核心基础（校招准备）",
+              "decision": {
+                "state": "expandable",
+                "reason": "目标包含四个职责不同、机制各异的知识方向，每个方向都有独立的原理与典型问题，需要分别展开才能支撑校招面试与故障分析能力。"
+              },
+              "overview": "本规划围绕四个校招高频考察方向组织：网络层的 HTTP 请求响应机制、数据层的数据库原理与使用问题、执行层的并发模型与并发问题、运维层的线上故障分析与排查。四者相互支撑：HTTP 决定请求如何进入服务，数据库决定状态如何持久化，并发决定多请求下资源如何被争用，故障排查则把前三者的原理用于定位真实问题。",
+              "content_revision": 1,
+              "profile_revision": 1
+            },
+            {
+              "key": "node_815f8bf04c094c4f85c7be683a0754a6",
+              "scope": "HTTP 请求与响应的结构、方法、状态码、头部字段、连接管理（短连接/长连接）、无状态与 Cookie/Session 的关系，以及一次请求从客户端到服务端的完整流转过程。",
+              "title": "HTTP 协议与请求响应机制",
+              "decision": {
+                "state": "expandable",
+                "reason": "HTTP 目标下存在报文结构、语义约定、连接管理、会话状态四个机制独立、校招考察点各不相同的方向，分别展开才能支撑接口异常与超时的分析能力。"
+              },
+              "overview": "理解 HTTP 作为应用层文本协议如何承载一次请求-响应：请求行/请求头/请求体的组成，常见方法与状态码的语义，头部字段（Content-Type、Connection、Cookie 等）的作用，连接复用与无状态特性带来的会话管理问题。这是分析接口异常、超时、跨域等问题的前提。",
+              "content_revision": 2,
+              "profile_revision": 1
+            },
+            {
+              "key": "node_2c187b0104ff4851a01090e40e0a2e65",
+              "scope": "请求行/状态行、请求头与响应头、空行、请求体与响应体的组成与格式，以及报文如何被解析出边界（Content-Length 与分块传输）。",
+              "title": "HTTP 报文结构与请求响应组成",
+              "decision": {
+                "state": "expandable",
+                "reason": "报文结构下还可细分起始行语义、头部字段组织、消息体边界判定等更窄机制，且各自有独立的常见错误场景，具备进一步展开价值。"
+              },
+              "overview": "HTTP 报文是纯文本的起始行 + 头部字段 + 空行 + 可选消息体结构。理解请求行（方法、路径、版本）与状态行（版本、状态码、原因短语）的区别、头部字段的键值格式、消息体边界如何确定，是读懂抓包结果、判断请求是否被正确解析的前提。",
+              "content_revision": 1,
+              "profile_revision": 1
+            }
+          ],
+          "target": {
+            "key": "node_2c187b0104ff4851a01090e40e0a2e65",
+            "scope": "请求行/状态行、请求头与响应头、空行、请求体与响应体的组成与格式，以及报文如何被解析出边界（Content-Length 与分块传输）。",
+            "title": "HTTP 报文结构与请求响应组成",
+            "decision": {
+              "state": "expandable",
+              "reason": "报文结构下还可细分起始行语义、头部字段组织、消息体边界判定等更窄机制，且各自有独立的常见错误场景，具备进一步展开价值。"
+            },
+            "overview": "HTTP 报文是纯文本的起始行 + 头部字段 + 空行 + 可选消息体结构。理解请求行（方法、路径、版本）与状态行（版本、状态码、原因短语）的区别、头部字段的键值格式、消息体边界如何确定，是读懂抓包结果、判断请求是否被正确解析的前提。",
+            "content_revision": 1,
+            "profile_revision": 1
+          },
+          "profile": {
+            "profile": {
+              "topic": {
+                "value": "后端开发",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "background": {
+                "value": "能写简单 Python，具备基础编程能力",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "constraints": [
+                {
+                  "value": "时间、学习节奏或资源限制未知",
+                  "source": "unknown",
+                  "evidence_keys": []
+                }
+              ],
+              "excluded_scope": [
+                {
+                  "value": "Python 后端开发实践（框架、部署等）等超出原始目标限定的内容，除必要前置外不纳入",
+                  "source": "assumption",
+                  "evidence_keys": []
+                }
+              ],
+              "included_scope": [
+                {
+                  "value": "按原始目标限定，必要前置可补充",
+                  "source": "user",
+                  "evidence_keys": [
+                    "answer:scope_topics"
+                  ]
+                },
+                {
+                  "value": "HTTP 协议与请求响应机制",
+                  "source": "assumption",
+                  "evidence_keys": []
+                },
+                {
+                  "value": "数据库原理与常见使用问题",
+                  "source": "assumption",
+                  "evidence_keys": []
+                },
+                {
+                  "value": "并发模型与并发问题",
+                  "source": "assumption",
+                  "evidence_keys": []
+                },
+                {
+                  "value": "常见线上故障分析与排查",
+                  "source": "assumption",
+                  "evidence_keys": []
+                }
+              ],
+              "schema_version": "profile.v1",
+              "primary_purpose": {
+                "value": "准备校招，系统学习后端开发相关知识",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "target_abilities": [
+                {
+                  "value": "能解释 HTTP 协议与请求响应机制",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "能解释数据库原理与常见使用问题",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "能解释并发模型与并发问题",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "能分析常见线上故障",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                }
+              ],
+              "secondary_purposes": [
+                {
+                  "value": "理解 HTTP 协议与请求响应机制的原理",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "理解数据库原理及常见使用问题",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "理解并发模型与并发问题",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "能够分析常见线上故障",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                }
+              ]
+            },
+            "revision": 1
+          },
+          "instruction": "结合原始用途解释，给出准确的简单例子；只使用当前支持的正文块，不申请网页或图片资源。",
+          "schema_version": "explanation-input.v1",
+          "sibling_scopes": [
+            "常见方法（GET/POST/PUT/DELETE/PATCH/HEAD/OPTIONS）的语义与幂等性、安全方法约定，以及 1xx-5xx 状态码分类与高频状态码（200/301/302/304/400/401/403/404/405/500/502/503/504）的含义与典型触发场景。",
+            "常见请求头与响应头（Host、Content-Type、Content-Length、Accept、User-Agent、Cache-Control、Set-Cookie 等）的作用，内容协商机制，以及缓存相关头部对请求行为的影响。",
+            "短连接与长连接（keep-alive）的差异、Connection 头部的作用、持久连接下的请求排队与队头阻塞、连接超时与空闲回收，以及连接复用对延迟与资源占用的影响。",
+            "HTTP 无状态的含义及其带来的问题，Cookie 的写入、携带与作用域（Domain/Path/过期），Session 的服务端存储与标识传递，以及二者配合实现登录态的基本流程。"
+          ],
+          "existing_children": [],
+          "reusable_concept_refs": [
+            "concept_0422d14082924833b09aed0575610d81",
+            "concept_073ddf06a3ce44f8b2ae7b889674e94d",
+            "concept_3fddce0533254b669702ae5061c435eb",
+            "concept_80720fac461b451f8b1f789550276005",
+            "concept_a5f95f3eb53b494db4efe2b0051ccb18",
+            "concept_c93a5bd6efa94612b35801d45a975eee",
+            "concept_de9a20cdd2e2495ea73cdf1111082d2a",
+            "concept_eea209536ac34322935ff3268045740e",
+            "concept_f647b63798b948e0b060a1867f591035"
+          ],
+          "allowed_resource_kinds": [],
+          "available_exercise_refs": []
+        },
+        "run_id": "run_1d3b3b114e4f4131bb03871e94a0f621",
+        "operation": "explanation",
+        "review_id": null,
+        "division_basis": null
+      },
+      "review_status": "reported",
+      "resources": []
+    },
+    {
+      "id": "content_878fa51bd6e94adf91ddaf2afd3ff4f3",
+      "revision": 1,
+      "profile_revision": 1,
+      "overview": "HTTP 报文是纯文本的起始行 + 头部字段 + 空行 + 可选消息体结构。理解请求行（方法、路径、版本）与状态行（版本、状态码、原因短语）的区别、头部字段的键值格式、消息体边界如何确定，是读懂抓包结果、判断请求是否被正确解析的前提。",
+      "blocks": [
+        {
+          "text": "HTTP 报文是纯文本的起始行 + 头部字段 + 空行 + 可选消息体结构。理解请求行（方法、路径、版本）与状态行（版本、状态码、原因短语）的区别、头部字段的键值格式、消息体边界如何确定，是读懂抓包结果、判断请求是否被正确解析的前提。",
+          "type": "markdown"
+        }
+      ],
+      "source": {
+        "input": {
+          "path": [
+            {
+              "key": "node_1832e12275154a46a4c751c5a7a81b41",
+              "scope": "面向校招的后端开发核心知识：HTTP 协议与请求响应机制、数据库原理与常见使用问题、并发模型与并发问题、常见线上故障分析与排查；以能解释原理、能分析故障为目标，不覆盖具体 Python 框架与部署实践。",
+              "title": "后端开发核心基础（校招准备）",
+              "decision": {
+                "state": "expandable",
+                "reason": "目标包含四个职责不同、机制各异的知识方向，每个方向都有独立的原理与典型问题，需要分别展开才能支撑校招面试与故障分析能力。"
+              },
+              "overview": "本规划围绕四个校招高频考察方向组织：网络层的 HTTP 请求响应机制、数据层的数据库原理与使用问题、执行层的并发模型与并发问题、运维层的线上故障分析与排查。四者相互支撑：HTTP 决定请求如何进入服务，数据库决定状态如何持久化，并发决定多请求下资源如何被争用，故障排查则把前三者的原理用于定位真实问题。",
+              "content_revision": 1,
+              "profile_revision": 1
+            },
+            {
+              "key": "node_815f8bf04c094c4f85c7be683a0754a6",
+              "scope": "HTTP 请求与响应的结构、方法、状态码、头部字段、连接管理（短连接/长连接）、无状态与 Cookie/Session 的关系，以及一次请求从客户端到服务端的完整流转过程。",
+              "title": "HTTP 协议与请求响应机制",
+              "decision": {
+                "state": "expandable",
+                "reason": "HTTP 内部包含报文结构、语义约定、连接与会话管理等多个独立机制，每个机制都有校招常考的细节与常见误解，需要分别展开。"
+              },
+              "overview": "理解 HTTP 作为应用层文本协议如何承载一次请求-响应：请求行/请求头/请求体的组成，常见方法与状态码的语义，头部字段（Content-Type、Connection、Cookie 等）的作用，连接复用与无状态特性带来的会话管理问题。这是分析接口异常、超时、跨域等问题的前提。",
+              "content_revision": 1,
+              "profile_revision": 1
+            }
+          ],
+          "target": {
+            "key": "node_815f8bf04c094c4f85c7be683a0754a6",
+            "scope": "HTTP 请求与响应的结构、方法、状态码、头部字段、连接管理（短连接/长连接）、无状态与 Cookie/Session 的关系，以及一次请求从客户端到服务端的完整流转过程。",
+            "title": "HTTP 协议与请求响应机制",
+            "decision": {
+              "state": "expandable",
+              "reason": "HTTP 内部包含报文结构、语义约定、连接与会话管理等多个独立机制，每个机制都有校招常考的细节与常见误解，需要分别展开。"
+            },
+            "overview": "理解 HTTP 作为应用层文本协议如何承载一次请求-响应：请求行/请求头/请求体的组成，常见方法与状态码的语义，头部字段（Content-Type、Connection、Cookie 等）的作用，连接复用与无状态特性带来的会话管理问题。这是分析接口异常、超时、跨域等问题的前提。",
+            "content_revision": 1,
+            "profile_revision": 1
+          },
+          "profile": {
+            "profile": {
+              "topic": {
+                "value": "后端开发",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "background": {
+                "value": "能写简单 Python，具备基础编程能力",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "constraints": [
+                {
+                  "value": "时间、学习节奏或资源限制未知",
+                  "source": "unknown",
+                  "evidence_keys": []
+                }
+              ],
+              "excluded_scope": [
+                {
+                  "value": "Python 后端开发实践（框架、部署等）等超出原始目标限定的内容，除必要前置外不纳入",
+                  "source": "assumption",
+                  "evidence_keys": []
+                }
+              ],
+              "included_scope": [
+                {
+                  "value": "按原始目标限定，必要前置可补充",
+                  "source": "user",
+                  "evidence_keys": [
+                    "answer:scope_topics"
+                  ]
+                },
+                {
+                  "value": "HTTP 协议与请求响应机制",
+                  "source": "assumption",
+                  "evidence_keys": []
+                },
+                {
+                  "value": "数据库原理与常见使用问题",
+                  "source": "assumption",
+                  "evidence_keys": []
+                },
+                {
+                  "value": "并发模型与并发问题",
+                  "source": "assumption",
+                  "evidence_keys": []
+                },
+                {
+                  "value": "常见线上故障分析与排查",
+                  "source": "assumption",
+                  "evidence_keys": []
+                }
+              ],
+              "schema_version": "profile.v1",
+              "primary_purpose": {
+                "value": "准备校招，系统学习后端开发相关知识",
+                "source": "user",
+                "evidence_keys": [
+                  "brief"
+                ]
+              },
+              "target_abilities": [
+                {
+                  "value": "能解释 HTTP 协议与请求响应机制",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "能解释数据库原理与常见使用问题",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "能解释并发模型与并发问题",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "能分析常见线上故障",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                }
+              ],
+              "secondary_purposes": [
+                {
+                  "value": "理解 HTTP 协议与请求响应机制的原理",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "理解数据库原理及常见使用问题",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "理解并发模型与并发问题",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                },
+                {
+                  "value": "能够分析常见线上故障",
+                  "source": "user",
+                  "evidence_keys": [
+                    "brief"
+                  ]
+                }
+              ]
+            },
+            "revision": 1
+          },
+          "operation": "expand",
+          "schema_version": "expansion-input.v1",
+          "sibling_scopes": [
+            "关系型数据库的核心机制：索引结构与失效场景、事务与 ACID、隔离级别与并发异常（脏读/不可重复读/幻读）、锁机制、慢查询与常见使用问题（如 N+1、索引误用）。",
+            "并发的本质与常见模型（多线程、多进程、IO 多路复用、协程/异步）、共享资源竞争、锁与同步原语、死锁的成因与条件、竞态条件与线程安全，以及并发量与吞吐/延迟的关系。",
+            "线上故障的通用排查思路与常见类型：CPU/内存/磁盘/网络类问题的表现与定位手段，超时与雪崩、连接池耗尽、慢查询引发的连锁反应，以及日志、监控、链路追踪在排查中的作用。"
+          ],
+          "existing_children": [],
+          "reusable_concept_refs": [
+            "concept_0422d14082924833b09aed0575610d81",
+            "concept_3fddce0533254b669702ae5061c435eb",
+            "concept_80720fac461b451f8b1f789550276005",
+            "concept_de9a20cdd2e2495ea73cdf1111082d2a"
+          ]
+        },
+        "run_id": "run_433285bd5faf47729118209e86145343",
+        "operation": "expansion",
+        "review_id": null,
+        "division_basis": "按 HTTP 一次请求-响应生命周期中的不同机制切分：报文如何组织（结构）、报文表达什么含义（方法与状态码语义）、头部字段承担哪些控制职责（头部与内容协商）、连接如何被复用（连接管理）、无状态如何被弥补（会话状态）。各子项机制独立、考察点不重叠。",
+        "content_carried_from": "content_991b32e9e1e545a8b22258bc9864fb99"
+      },
+      "review_status": "unverified",
+      "resources": []
+    }
+  ],
+  "suggestions": []
+}

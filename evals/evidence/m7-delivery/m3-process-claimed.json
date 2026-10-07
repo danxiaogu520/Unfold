@@ -1,0 +1,150 @@
+{
+  "checkpoint": "claimed",
+  "child_killed_with_sigkill": true,
+  "trace": {
+    "snapshot": {
+      "schema_version": "run.v3",
+      "run_id": "run_a5d35fb91b9c45d79cdf51775b0333b4",
+      "operation": "questionnaire",
+      "status": "succeeded",
+      "attempt": 2,
+      "last_event_seq": 5,
+      "result_ref": "intake_b1cefc993c144c369b6c984ee0979d16",
+      "error": null,
+      "result_kind": "knowledge"
+    },
+    "input": {
+      "round": 1,
+      "domain": "二分查找",
+      "user_brief": "只想理解一次中点比较",
+      "known_targets": [
+        "goal"
+      ],
+      "schema_version": "questionnaire-input.v1",
+      "questions_asked": 0,
+      "previous_question_keys": []
+    },
+    "request": {
+      "schema_version": "api.v1",
+      "space_id": "space_f00e96a8175346ea8190fa66f10836bd",
+      "operation": "questionnaire",
+      "profile_revision": null,
+      "base_revision": null,
+      "input": {
+        "round": 1,
+        "domain": "二分查找",
+        "user_brief": "只想理解一次中点比较",
+        "known_targets": [
+          "goal"
+        ],
+        "schema_version": "questionnaire-input.v1",
+        "questions_asked": 0,
+        "previous_question_keys": []
+      }
+    },
+    "dependencies": {
+      "intake_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "outline_revision": 0,
+      "profile_revision": 0,
+      "selected_context": {
+        "previous_intakes": []
+      }
+    },
+    "agent_steps": [],
+    "proposal": {
+      "questions": [
+        {
+          "key": "background",
+          "mode": "single",
+          "prompt": "你了解有序数组吗？",
+          "target": "background",
+          "options": [
+            {
+              "key": "yes",
+              "text": "了解"
+            },
+            {
+              "key": "no",
+              "text": "不了解"
+            }
+          ],
+          "allow_unknown": true,
+          "allow_free_text": true
+        }
+      ],
+      "rationale": "固定开发替身，尚未进行真实模型生成。",
+      "schema_version": "questionnaire.v1"
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "status": "retry_wait",
+        "outcome_unknown": false
+      },
+      {
+        "attempt": 2,
+        "status": "succeeded",
+        "outcome_unknown": false
+      }
+    ],
+    "tools": [],
+    "calls": [
+      {
+        "id": "call_954e9f8bd6e84333bacbbbfe58883600",
+        "attempt": 2,
+        "step": 1,
+        "provider": "deterministic_fake",
+        "model": "fixture.v2",
+        "prompt_version": "fixture.v2",
+        "schema_version": "questionnaire.v1",
+        "status": "completed",
+        "request": {
+          "round": 1,
+          "domain": "二分查找",
+          "user_brief": "只想理解一次中点比较",
+          "known_targets": [
+            "goal"
+          ],
+          "schema_version": "questionnaire-input.v1",
+          "questions_asked": 0,
+          "previous_question_keys": []
+        },
+        "response": {
+          "questions": [
+            {
+              "key": "background",
+              "mode": "single",
+              "prompt": "你了解有序数组吗？",
+              "target": "background",
+              "options": [
+                {
+                  "key": "yes",
+                  "text": "了解"
+                },
+                {
+                  "key": "no",
+                  "text": "不了解"
+                }
+              ],
+              "allow_unknown": true,
+              "allow_free_text": true
+            }
+          ],
+          "rationale": "固定开发替身，尚未进行真实模型生成。",
+          "schema_version": "questionnaire.v1"
+        },
+        "error_code": null,
+        "outcome_unknown": false,
+        "reserved_cost": "0E-8",
+        "currency": "CNY",
+        "latency_seconds": "0.0000",
+        "input_tokens": null,
+        "output_tokens": null,
+        "accounted_cost": "0E-8"
+      }
+    ]
+  },
+  "saved_intakes": 1,
+  "request_replay_reused": true,
+  "assertions_passed": true
+}

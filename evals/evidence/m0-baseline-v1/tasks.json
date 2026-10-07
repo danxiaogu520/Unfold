@@ -1,0 +1,90 @@
+[
+  {
+    "error": {
+      "code": "domain_validation",
+      "message": "candidate invalid after bounded repair",
+      "outcome_unknown": false
+    },
+    "latency_seconds": 5.408755124954041,
+    "repetition": 1,
+    "scenario_id": "backend-1",
+    "steps": [],
+    "success": false,
+    "task_id": "backend-1-r1"
+  },
+  {
+    "error": {
+      "code": "domain_validation",
+      "message": "candidate invalid after bounded repair",
+      "outcome_unknown": false
+    },
+    "latency_seconds": 5.588875749963336,
+    "repetition": 2,
+    "scenario_id": "backend-1",
+    "steps": [],
+    "success": false,
+    "task_id": "backend-1-r2"
+  },
+  {
+    "error": {
+      "code": "domain_validation",
+      "message": "candidate invalid after bounded repair",
+      "outcome_unknown": false
+    },
+    "latency_seconds": 5.983117833966389,
+    "repetition": 3,
+    "scenario_id": "backend-1",
+    "steps": [],
+    "success": false,
+    "task_id": "backend-1-r3"
+  },
+  {
+    "depth": 2,
+    "error": "narrow scenario unnecessarily split at root",
+    "latency_seconds": 12.54543079197174,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 1,
+    "scenario_id": "midpoint-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline",
+      "expansion"
+    ],
+    "success": false,
+    "task_id": "midpoint-1-r1"
+  },
+  {
+    "depth": 1,
+    "error": "narrow scenario unnecessarily split at root",
+    "latency_seconds": 8.425249499967322,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 2,
+    "scenario_id": "midpoint-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline"
+    ],
+    "success": false,
+    "task_id": "midpoint-1-r2"
+  },
+  {
+    "depth": 1,
+    "error": "narrow scenario unnecessarily split at root",
+    "latency_seconds": 8.211381833010819,
+    "leaf_seen": true,
+    "protocol_complete": true,
+    "repetition": 3,
+    "scenario_id": "midpoint-1",
+    "steps": [
+      "questionnaire",
+      "profile",
+      "outline"
+    ],
+    "success": false,
+    "task_id": "midpoint-1-r3"
+  }
+]

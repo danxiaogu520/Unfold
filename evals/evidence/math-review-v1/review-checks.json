@@ -1,0 +1,109 @@
+{
+  "version": "math-review-materials.v1",
+  "questions": [
+    {
+      "label": "函数-1",
+      "run_id": "run_786632d3e3bb456e8404e0714a821aa7",
+      "question_key": "ex_quadratic_domain_single",
+      "content_refs": [
+        "content_9f1eef9fea6c46dea661c765499eb2fe"
+      ],
+      "letters_to_keys": {
+        "A": "opt_all_real",
+        "B": "opt_nonneg",
+        "C": "opt_ge_minus1",
+        "D": "opt_exclude2"
+      },
+      "saved_answer_grade_replays": true
+    },
+    {
+      "label": "函数-2",
+      "run_id": "run_786632d3e3bb456e8404e0714a821aa7",
+      "question_key": "ex_quadratic_vertex_form_single",
+      "content_refs": [
+        "content_9f1eef9fea6c46dea661c765499eb2fe"
+      ],
+      "letters_to_keys": {
+        "A": "opt_form_a",
+        "B": "opt_form_b",
+        "C": "opt_form_c",
+        "D": "opt_form_d"
+      },
+      "saved_answer_grade_replays": true
+    },
+    {
+      "label": "函数-3",
+      "run_id": "run_786632d3e3bb456e8404e0714a821aa7",
+      "question_key": "ex_quadratic_features_multiple",
+      "content_refs": [
+        "content_9f1eef9fea6c46dea661c765499eb2fe"
+      ],
+      "letters_to_keys": {
+        "A": "opt_axis",
+        "B": "opt_vertex",
+        "C": "opt_zeros",
+        "D": "opt_min",
+        "E": "opt_max"
+      },
+      "saved_answer_grade_replays": true
+    },
+    {
+      "label": "概率-1",
+      "run_id": "run_ad5cb7986de2489a90559654504ab1ff",
+      "question_key": "ex_simple_prob_dice_even",
+      "content_refs": [
+        "content_3d74b03b47714fdc874e56531d0f8145"
+      ],
+      "letters_to_keys": {
+        "A": "opt_one_sixth",
+        "B": "opt_one_third",
+        "C": "opt_one_half",
+        "D": "opt_two_thirds"
+      },
+      "saved_answer_grade_replays": true
+    },
+    {
+      "label": "概率-2",
+      "run_id": "run_ad5cb7986de2489a90559654504ab1ff",
+      "question_key": "ex_simple_prob_coin_at_least_one_head",
+      "content_refs": [
+        "content_3d74b03b47714fdc874e56531d0f8145"
+      ],
+      "letters_to_keys": {
+        "A": "opt_one_quarter",
+        "B": "opt_one_half",
+        "C": "opt_three_quarters",
+        "D": "opt_one"
+      },
+      "saved_answer_grade_replays": true
+    },
+    {
+      "label": "概率-3",
+      "run_id": "run_ad5cb7986de2489a90559654504ab1ff",
+      "question_key": "ex_simple_prob_conditions",
+      "content_refs": [
+        "content_3d74b03b47714fdc874e56531d0f8145"
+      ],
+      "letters_to_keys": {
+        "A": "opt_finite",
+        "B": "opt_equal_likely",
+        "C": "opt_any_space",
+        "D": "opt_subset"
+      },
+      "saved_answer_grade_replays": true
+    }
+  ],
+  "numeric_reference_checks": {
+    "f_2": -1,
+    "f_1": 0,
+    "f_3": 0,
+    "dice_even": "1/2",
+    "coin_at_least_one_head": "3/4"
+  },
+  "agent_review": "targeted elementary calculation and source comparison",
+  "independent_human_review": null,
+  "real_calls": 4,
+  "conservative_cost_cny": "0.07215800",
+  "project_total_cny": "2.937820",
+  "remaining_authorized_cny": "7.062180"
+}

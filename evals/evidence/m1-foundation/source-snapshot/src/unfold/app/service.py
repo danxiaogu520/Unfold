@@ -1,0 +1,589 @@
+from __future__ import annotations
+
+import hashlib
+from dataclasses import dataclass
+from datetime import datetime, timedelta
+from typing import Any
+from uuid import uuid4
+
+from sqlalchemy import func, select, text
+from sqlalchemy.orm import Session
+
+from unfold.api_contract import ApiError, CreateRun, RunEvent, RunSnapshot
+from unfold.app.config import AppSettings
+from unfold.app.db import Database
+from unfold.app.models import (
+    GenerationRun,
+    IntakeSession,
+    ModelCall,
+    ProfileRevision,
+    RequestIdentity,
+    RunAttempt,
+    RunEventRecord,
+    Space,
+)
+from unfold.app.security import sanitized
+from unfold.contracts import (
+    Contract,
+    LearningProfileProposal,
+    QuestionnaireProposal,
+    validate_pair,
+)
+from unfold.provider import ErrorCode, GenerationError, json_bytes
+
+
+def entity_id(prefix: str) -> str:
+    return prefix + "_" + uuid4().hex
+
+
+def database_clock(session: Session) -> datetime:
+    now = session.scalar(select(func.clock_timestamp()))
+    assert isinstance(now, datetime)
+    return now
+
+
+class ServiceError(GenerationError):
+    def __init__(self, code: ErrorCode, message: str, http_status: int = 422):
+        super().__init__(code, message)
+        self.http_status = http_status
+
+
+@dataclass(frozen=True)
+class Claim:
+    run_id: str
+    attempt: int
+    token: str
+    operation: str
+    input: dict[str, Any]
+
+
+class RunService:
+    def __init__(self, database: Database, settings: AppSettings):
+        self.database = database
+        self.settings = settings
+
+    @staticmethod
+    def snapshot(run: GenerationRun) -> RunSnapshot:
+        return RunSnapshot.model_validate(
+            {
+                "schema_version": "run.v1",
+                "run_id": run.id,
+                "operation": run.operation,
+                "status": run.status,
+                "attempt": run.attempt,
+                "last_event_seq": run.last_event_seq,
+                "result_ref": run.result_ref,
+                "error": run.error,
+            }
+        )
+
+    def emit(self, session: Session, run: GenerationRun, kind: str) -> None:
+        run.last_event_seq += 1
+        run.updated_at = database_clock(session)
+        snapshot = self.snapshot(run)
+        event = RunEvent.model_validate(
+            {
+                "schema_version": "event.v1",
+                "run_id": run.id,
+                "sequence": run.last_event_seq,
+                "kind": kind,
+                "snapshot": snapshot.model_dump(mode="json"),
+            }
+        )
+        session.add(
+            RunEventRecord(
+                run_id=run.id, sequence=run.last_event_seq, payload=event.model_dump(mode="json")
+            )
+        )
+
+    @staticmethod
+    def require_space(session: Session, space_id: str, *, lock: bool = False) -> Space:
+        query = select(Space).where(Space.id == space_id, Space.owner == "local")
+        if lock:
+            query = query.with_for_update()
+        space = session.scalar(query)
+        if space is None:
+            raise ServiceError("invalid_input", "knowledge space not found", 404)
+        return space
+
+    @staticmethod
+    def space_view(space: Space) -> dict[str, Any]:
+        return {
+            "id": space.id,
+            "domain": space.domain,
+            "user_brief": space.user_brief,
+            "profile_revision": space.profile_revision,
+            "outline_revision": space.outline_revision,
+            "root_id": space.root_id,
+            "created_at": space.created_at.isoformat(),
+        }
+
+    def create_space(self, domain: str, brief: str) -> dict[str, Any]:
+        with self.database.transaction() as session:
+            space = Space(
+                id=entity_id("space"),
+                owner="local",
+                domain=domain,
+                user_brief=brief,
+                profile_revision=0,
+                outline_revision=0,
+            )
+            session.add(space)
+            session.flush()
+            return self.space_view(space)
+
+    def list_spaces(self) -> list[dict[str, Any]]:
+        with self.database.transaction() as session:
+            return [
+                self.space_view(space)
+                for space in session.scalars(
+                    select(Space).where(Space.owner == "local").order_by(Space.created_at.desc())
+                )
+            ]
+
+    def get_space(self, space_id: str) -> dict[str, Any]:
+        with self.database.transaction() as session:
+            space = self.require_space(session, space_id)
+            intakes = list(
+                session.scalars(
+                    select(IntakeSession)
+                    .where(
+                        IntakeSession.space_id == space.id,
+                    )
+                    .order_by(IntakeSession.created_at)
+                )
+            )
+            profile = session.scalar(
+                select(ProfileRevision).where(
+                    ProfileRevision.space_id == space.id,
+                    ProfileRevision.revision == space.profile_revision,
+                )
+            )
+            runs = list(
+                session.scalars(
+                    select(GenerationRun)
+                    .where(
+                        GenerationRun.space_id == space.id,
+                    )
+                    .order_by(GenerationRun.created_at.desc())
+                    .limit(30)
+                )
+            )
+            return {
+                **self.space_view(space),
+                "intakes": [
+                    {
+                        "id": i.id,
+                        "questionnaire": i.questionnaire,
+                        "answers": i.answers,
+                        "questions_asked": i.questions_asked,
+                        "round": i.round,
+                    }
+                    for i in intakes
+                ],
+                "profile": profile.proposal if profile else None,
+                "runs": [self.snapshot(run).model_dump(mode="json") for run in runs],
+            }
+
+    def check_input(self, session: Session, space: Space, request: CreateRun) -> dict[str, Any]:
+        raw = request.input
+        if request.operation in ("questionnaire", "profile"):
+            if raw["domain"] != space.domain or raw["user_brief"] != space.user_brief:
+                raise ServiceError(
+                    "version_conflict", "intake source does not match saved space", 409
+                )
+            if space.profile_revision:
+                raise ServiceError("version_conflict", "learning profile already exists", 409)
+            if request.operation == "questionnaire":
+                sessions = list(
+                    session.scalars(
+                        select(IntakeSession)
+                        .where(IntakeSession.space_id == space.id)
+                        .order_by(IntakeSession.created_at)
+                    )
+                )
+                asked = sum(len(item.questionnaire["questions"]) for item in sessions)
+                keys = [q["key"] for item in sessions for q in item.questionnaire["questions"]]
+                if raw["questions_asked"] != asked or raw["round"] != len(sessions) + 1:
+                    raise ServiceError(
+                        "version_conflict", "questionnaire budget snapshot changed", 409
+                    )
+                if set(raw["previous_question_keys"]) != set(keys):
+                    raise ServiceError("invalid_input", "previous question references mismatch")
+            else:
+                existing = session.scalar(
+                    select(IntakeSession)
+                    .where(IntakeSession.space_id == space.id)
+                    .order_by(IntakeSession.created_at.desc())
+                )
+                if existing is None or raw["questionnaire"] != existing.questionnaire:
+                    raise ServiceError(
+                        "version_conflict", "profile must use saved questionnaire", 409
+                    )
+        else:
+            if request.profile_revision != space.profile_revision:
+                raise ServiceError("version_conflict", "learning profile revision changed", 409)
+            profile = session.scalar(
+                select(ProfileRevision).where(
+                    ProfileRevision.space_id == space.id,
+                    ProfileRevision.revision == space.profile_revision,
+                )
+            )
+            if profile is None or raw["profile"]["profile"] != profile.proposal:
+                raise ServiceError(
+                    "version_conflict", "profile snapshot does not match saved revision", 409
+                )
+        return {
+            "profile_revision": space.profile_revision,
+            "outline_revision": space.outline_revision,
+        }
+
+    def create_run(self, request: CreateRun, idempotency_key: str) -> RunSnapshot:
+        if not 1 <= len(idempotency_key) <= 128:
+            raise ServiceError("invalid_input", "Idempotency-Key length must be 1..128")
+        request_dump = sanitized(request.model_dump(mode="json"))
+        digest = hashlib.sha256(json_bytes(request.model_dump(mode="json"))).hexdigest()
+        with self.database.transaction() as session:
+            # Shared with claim: bounds queue capacity across spaces and processes.
+            session.execute(text("SELECT pg_advisory_xact_lock(180001)"))
+            space = self.require_space(session, request.space_id, lock=True)
+            identity = session.get(RequestIdentity, (space.id, idempotency_key))
+            if identity:
+                if identity.request_digest != digest:
+                    raise ServiceError(
+                        "version_conflict", "same idempotency key has different input", 409
+                    )
+                existing = session.get(GenerationRun, identity.run_id)
+                assert existing is not None
+                return self.snapshot(existing)
+            dependencies = self.check_input(session, space, request)
+            active_key = hashlib.sha256(
+                json_bytes(
+                    {
+                        "operation": request.operation,
+                        "profile": request.profile_revision,
+                        "base": request.base_revision,
+                        "target": request.input.get("target", {}).get("key"),
+                    }
+                )
+            ).hexdigest()
+            active = session.scalar(
+                select(GenerationRun).where(
+                    GenerationRun.space_id == space.id,
+                    GenerationRun.active_key == active_key,
+                    GenerationRun.status.in_(["queued", "running"]),
+                )
+            )
+            if active:
+                if active.request_digest == digest:
+                    session.add(
+                        RequestIdentity(
+                            space_id=space.id,
+                            key=idempotency_key,
+                            run_id=active.id,
+                            request_digest=digest,
+                        )
+                    )
+                    return self.snapshot(active)
+                raise ServiceError(
+                    "version_conflict", "another operation is active at this revision", 409
+                )
+            if (
+                session.scalar(
+                    select(func.count())
+                    .select_from(GenerationRun)
+                    .where(GenerationRun.status.in_(["queued", "running"]))
+                )
+                or 0
+            ) >= self.settings.queue_capacity:
+                raise ServiceError("budget_exceeded", "generation queue is full", 429)
+            run = GenerationRun(
+                id=entity_id("run"),
+                space_id=space.id,
+                operation=request.operation,
+                target_id=request.input.get("target", {}).get("key"),
+                profile_revision=request.profile_revision,
+                base_revision=request.base_revision,
+                idempotency_key=idempotency_key,
+                request_digest=digest,
+                active_key=active_key,
+                input_payload=request_dump["input"],
+                context_dependencies=dependencies,
+                status="queued",
+                attempt=0,
+                last_event_seq=0,
+            )
+            session.add(run)
+            session.flush()
+            session.add(
+                RequestIdentity(
+                    space_id=space.id,
+                    key=idempotency_key,
+                    run_id=run.id,
+                    request_digest=digest,
+                )
+            )
+            self.emit(session, run, "queued")
+            return self.snapshot(run)
+
+    def get_run(self, run_id: str) -> RunSnapshot:
+        with self.database.transaction() as session:
+            run = session.get(GenerationRun, run_id)
+            if run is None:
+                raise ServiceError("invalid_input", "run not found", 404)
+            return self.snapshot(run)
+
+    def events(self, run_id: str, after: int = 0) -> list[dict[str, Any]]:
+        with self.database.transaction() as session:
+            if session.get(GenerationRun, run_id) is None:
+                raise ServiceError("invalid_input", "run not found", 404)
+            return [
+                event.payload
+                for event in session.scalars(
+                    select(RunEventRecord)
+                    .where(RunEventRecord.run_id == run_id, RunEventRecord.sequence > after)
+                    .order_by(RunEventRecord.sequence)
+                )
+            ]
+
+    def claim(self) -> Claim | None:
+        with self.database.transaction() as session:
+            session.execute(text("SELECT pg_advisory_xact_lock(180001)"))
+            now = database_clock(session)
+            active_count = (
+                session.scalar(
+                    select(func.count())
+                    .select_from(GenerationRun)
+                    .where(
+                        GenerationRun.status == "running",
+                        GenerationRun.lease_until > now,
+                    )
+                )
+                or 0
+            )
+            if active_count >= self.settings.worker_concurrency:
+                return None
+            run = session.scalar(
+                select(GenerationRun)
+                .where(
+                    GenerationRun.status == "queued",
+                    GenerationRun.not_before <= now,
+                )
+                .order_by(GenerationRun.created_at)
+                .limit(1)
+                .with_for_update(skip_locked=True)
+            )
+            if run is None:
+                return None
+            run.attempt += 1
+            run.lease_token = entity_id("lease")
+            run.lease_until = now + timedelta(seconds=self.settings.lease_seconds)
+            run.status = "running"
+            session.add(
+                RunAttempt(
+                    run_id=run.id,
+                    attempt=run.attempt,
+                    lease_token=run.lease_token,
+                    status="running",
+                    outcome_unknown=False,
+                )
+            )
+            self.emit(session, run, "started")
+            return Claim(run.id, run.attempt, run.lease_token, run.operation, run.input_payload)
+
+    def heartbeat(self, claim: Claim) -> bool:
+        with self.database.transaction() as session:
+            run = session.scalar(
+                select(GenerationRun).where(GenerationRun.id == claim.run_id).with_for_update()
+            )
+            now = database_clock(session)
+            if not self.eligible(run, claim, now):
+                return False
+            assert run is not None
+            run.lease_until = now + timedelta(seconds=self.settings.lease_seconds)
+            return True
+
+    @staticmethod
+    def eligible(run: GenerationRun | None, claim: Claim, now: datetime) -> bool:
+        return bool(
+            run
+            and run.status == "running"
+            and run.attempt == claim.attempt
+            and run.lease_token == claim.token
+            and run.lease_until is not None
+            and run.lease_until > now
+        )
+
+    def cancel(self, run_id: str) -> RunSnapshot:
+        with self.database.transaction() as session:
+            run = session.scalar(
+                select(GenerationRun).where(GenerationRun.id == run_id).with_for_update()
+            )
+            if run is None:
+                raise ServiceError("invalid_input", "run not found", 404)
+            if run.status in ("queued", "running"):
+                run.status = "cancelled"
+                run.lease_until = None
+                attempt = session.get(RunAttempt, (run.id, run.attempt)) if run.attempt else None
+                if attempt:
+                    attempt.status = "cancelled"
+                self.emit(session, run, "cancelled")
+            return self.snapshot(run)
+
+    def finish_failure(self, claim: Claim, error: GenerationError) -> bool:
+        with self.database.transaction() as session:
+            run = session.scalar(
+                select(GenerationRun).where(GenerationRun.id == claim.run_id).with_for_update()
+            )
+            now = database_clock(session)
+            if not self.eligible(run, claim, now):
+                return False
+            assert run is not None
+            run.status = "failed"
+            run.error = ApiError(
+                schema_version="error.v1",
+                code=error.code,
+                message=str(sanitized(str(error))),
+                retryable=False,
+                outcome_unknown=error.outcome_unknown,
+                run_id=run.id,
+            ).model_dump(mode="json")
+            attempt = session.get(RunAttempt, (run.id, run.attempt))
+            assert attempt is not None
+            attempt.status = "failed"
+            attempt.outcome_unknown = error.outcome_unknown
+            attempt.finished_at = now
+            self.emit(session, run, "failed")
+            return True
+
+    def publish(
+        self, session: Session, run: GenerationRun, proposal: Contract, space: Space
+    ) -> str:
+        if isinstance(proposal, QuestionnaireProposal):
+            intake = IntakeSession(
+                id=entity_id("intake"),
+                space_id=space.id,
+                questionnaire=proposal.model_dump(mode="json"),
+                questions_asked=run.input_payload["questions_asked"] + len(proposal.questions),
+                round=run.input_payload["round"],
+            )
+            session.add(intake)
+            return intake.id
+        if isinstance(proposal, LearningProfileProposal):
+            space.profile_revision += 1
+            profile = ProfileRevision(
+                id=entity_id("profile"),
+                space_id=space.id,
+                revision=space.profile_revision,
+                proposal=proposal.model_dump(mode="json"),
+                evidence=run.input_payload,
+            )
+            session.add(profile)
+            latest_intake = session.scalar(
+                select(IntakeSession)
+                .where(IntakeSession.space_id == space.id)
+                .order_by(IntakeSession.created_at.desc())
+            )
+            assert latest_intake is not None
+            latest_intake.answers = run.input_payload["answers"]
+            return profile.id
+        raise GenerationError("capability_limit", "operation publication is not implemented yet")
+
+    def finish_success(self, claim: Claim, raw_proposal: object) -> bool:
+        proposal = validate_pair(claim.operation, claim.input, raw_proposal)
+        with self.database.transaction() as session:
+            # Consistent lock order with enqueue: space, then run.
+            unlocked = session.get(GenerationRun, claim.run_id)
+            if unlocked is None:
+                return False
+            space = self.require_space(session, unlocked.space_id, lock=True)
+            run = session.scalar(
+                select(GenerationRun).where(GenerationRun.id == claim.run_id).with_for_update()
+            )
+            now = database_clock(session)
+            if not self.eligible(run, claim, now):
+                return False
+            assert run is not None
+            if space.profile_revision != run.context_dependencies["profile_revision"]:
+                run.status = "conflicted"
+                run.error = ApiError(
+                    schema_version="error.v1",
+                    code="version_conflict",
+                    message="learning profile changed during generation",
+                    retryable=False,
+                    outcome_unknown=False,
+                    run_id=run.id,
+                ).model_dump(mode="json")
+                attempt = session.get(RunAttempt, (run.id, run.attempt))
+                assert attempt is not None
+                attempt.status = "conflicted"
+                attempt.finished_at = now
+                self.emit(session, run, "conflicted")
+                return False
+            result_ref = self.publish(session, run, proposal, space)
+            run.proposal = proposal.model_dump(mode="json")
+            run.result_ref = result_ref
+            run.status = "succeeded"
+            attempt = session.get(RunAttempt, (run.id, run.attempt))
+            assert attempt is not None
+            attempt.status = "succeeded"
+            attempt.finished_at = now
+            self.emit(session, run, "completed")
+            return True
+
+    def trace(self, run_id: str) -> dict[str, Any]:
+        with self.database.transaction() as session:
+            run = session.get(GenerationRun, run_id)
+            if run is None:
+                raise ServiceError("invalid_input", "run not found", 404)
+            return {
+                "snapshot": self.snapshot(run).model_dump(mode="json"),
+                "input": run.input_payload,
+                "request": {
+                    "schema_version": "api.v1",
+                    "space_id": run.space_id,
+                    "operation": run.operation,
+                    "profile_revision": run.profile_revision,
+                    "base_revision": run.base_revision,
+                    "input": run.input_payload,
+                },
+                "dependencies": run.context_dependencies,
+                "proposal": run.proposal,
+                "attempts": [
+                    {
+                        "attempt": item.attempt,
+                        "status": item.status,
+                        "outcome_unknown": item.outcome_unknown,
+                    }
+                    for item in session.scalars(
+                        select(RunAttempt).where(RunAttempt.run_id == run_id)
+                    )
+                ],
+                "calls": [
+                    {
+                        "id": item.id,
+                        "attempt": item.attempt,
+                        "step": item.step,
+                        "provider": item.provider,
+                        "model": item.model,
+                        "prompt_version": item.prompt_version,
+                        "schema_version": item.schema_version,
+                        "status": item.status,
+                        "request": item.request,
+                        "response": item.response,
+                        "error_code": item.error_code,
+                        "outcome_unknown": item.outcome_unknown,
+                        "reserved_cost": str(item.reserved_cost),
+                        "currency": item.currency,
+                        "latency_seconds": str(item.latency_seconds)
+                        if item.latency_seconds is not None
+                        else None,
+                        "input_tokens": item.input_tokens,
+                        "output_tokens": item.output_tokens,
+                        "accounted_cost": str(item.accounted_cost)
+                        if item.accounted_cost is not None
+                        else None,
+                    }
+                    for item in session.scalars(select(ModelCall).where(ModelCall.run_id == run_id))
+                ],
+            }

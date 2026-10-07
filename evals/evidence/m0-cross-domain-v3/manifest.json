@@ -1,0 +1,34 @@
+{
+  "dataset_version": "learning.v1",
+  "evidence_kind": "real_provider",
+  "git_revision": null,
+  "limits": {
+    "base_url": "https://api.deepseek.com",
+    "currency": "CNY",
+    "input_rate": "2",
+    "max_calls": 48,
+    "max_cost": "4.305712",
+    "max_input_bytes": 48000,
+    "max_output_tokens": 4000,
+    "max_repairs": 1,
+    "max_seconds": 1200.0,
+    "model": "deepseek-flash",
+    "output_rate": "8",
+    "timeout_seconds": 60.0
+  },
+  "parameters": {
+    "provider_strict_flag": false,
+    "reasoning": {
+      "effort": "none"
+    },
+    "schema_mode": "json_schema",
+    "temperature": 0.2
+  },
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "prompt_version": "prompt.v3",
+  "provider": "deepseek",
+  "python": "3.12.14",
+  "requested_model": "deepseek-flash",
+  "source_sha256": "ef91b74fefa69aacc594bd223f99be4300206ed7694bc399afe40c826c0f2555",
+  "timestamp": "2026-10-07T02:45:56.152938+08:00"
+}

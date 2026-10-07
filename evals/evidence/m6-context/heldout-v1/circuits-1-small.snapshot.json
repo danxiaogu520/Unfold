@@ -1,0 +1,383 @@
+{
+  "case": {
+    "answers_by_target": {
+      "constraints": null,
+      "scope": "按原始目标限定，必要前置可补充"
+    },
+    "domain": "直流电路",
+    "expected_behavior": "flexible",
+    "family": "circuits",
+    "id": "circuits-1",
+    "known_targets": [
+      "purpose",
+      "background",
+      "goal"
+    ],
+    "max_exploration_depth": 3,
+    "review_targets": [
+      "用途改变组织与例子",
+      "不误称官方或已核验",
+      "分支职责与概述明确",
+      "增量有用且不重复",
+      "停止位置与当前目标相符"
+    ],
+    "split": "holdout",
+    "user_brief": "维修爱好入门，已理解电压和电流，想解释串并联分压分流，不做危险带电操作。"
+  },
+  "space_id": "space_bb916492781344be8e4f7102fa2c5881",
+  "request": {
+    "path": [
+      {
+        "key": "node_8c858312a1694492a153100f718400f0",
+        "scope": "直流电路",
+        "title": "直流电路",
+        "decision": {
+          "state": "expandable",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      }
+    ],
+    "target": {
+      "key": "node_8c858312a1694492a153100f718400f0",
+      "scope": "直流电路",
+      "title": "直流电路",
+      "decision": {
+        "state": "expandable",
+        "reason": "固定开发判定，仅用于流程验证。"
+      },
+      "overview": "固定开发概述，不是实际模型生成。",
+      "content_revision": 1,
+      "profile_revision": 1
+    },
+    "profile": {
+      "profile": {
+        "topic": {
+          "value": "直流电路",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "background": {
+          "value": "尚未确定当前基础",
+          "source": "unknown",
+          "evidence_keys": []
+        },
+        "constraints": [],
+        "excluded_scope": [],
+        "included_scope": [
+          {
+            "value": "直流电路",
+            "source": "assumption",
+            "evidence_keys": []
+          }
+        ],
+        "schema_version": "profile.v1",
+        "primary_purpose": {
+          "value": "维修爱好入门，已理解电压和电流，想解释串并联分压分流，不做危险带电操作。",
+          "source": "user",
+          "evidence_keys": [
+            "brief"
+          ]
+        },
+        "target_abilities": [
+          {
+            "value": "先理解核心概念，再结合用途练习",
+            "source": "assumption",
+            "evidence_keys": []
+          }
+        ],
+        "secondary_purposes": []
+      },
+      "revision": 1
+    },
+    "instruction": "维修爱好入门，已理解电压和电流，想解释串并联分压分流，不做危险带电操作。；只用文字讲解，不制作资源。",
+    "schema_version": "explanation-input.v1",
+    "sibling_scopes": [],
+    "existing_children": [
+      {
+        "key": "node_7510e962547843b7b2ab519011b05464",
+        "scope": "核心概念",
+        "title": "核心概念",
+        "decision": {
+          "state": "expandable",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      },
+      {
+        "key": "node_1b253d899dca487d9c1ab9f67dcc9877",
+        "scope": "应用与边界",
+        "title": "应用与边界",
+        "decision": {
+          "state": "leaf",
+          "reason": "固定开发判定，仅用于流程验证。"
+        },
+        "overview": "固定开发概述，不是实际模型生成。",
+        "content_revision": 1,
+        "profile_revision": 1
+      }
+    ],
+    "reusable_concept_refs": [
+      "concept_175d97abcb3f46838ac0069cada6ef7f",
+      "concept_6f7a3158d47b4a6b82fa6b48590c9252",
+      "concept_f29a87c44eae4347a552723804a543a6"
+    ],
+    "allowed_resource_kinds": [
+      "image",
+      "interactive",
+      "playground"
+    ],
+    "available_exercise_refs": []
+  },
+  "base": {
+    "concepts": [
+      {
+        "id": "concept_6f7a3158d47b4a6b82fa6b48590c9252",
+        "scope": "直流电路",
+        "title": "直流电路",
+        "aliases": []
+      },
+      {
+        "id": "concept_175d97abcb3f46838ac0069cada6ef7f",
+        "scope": "核心概念",
+        "title": "核心概念",
+        "aliases": []
+      },
+      {
+        "id": "concept_f29a87c44eae4347a552723804a543a6",
+        "scope": "应用与边界",
+        "title": "应用与边界",
+        "aliases": []
+      }
+    ],
+    "feedback": [],
+    "content_origins": [
+      {
+        "node_id": "node_8c858312a1694492a153100f718400f0",
+        "content_ref": "content_9fb1e761d77b4d96a6aec321ac9aa850",
+        "carried_from": null,
+        "profile_revision": 1
+      },
+      {
+        "node_id": "node_7510e962547843b7b2ab519011b05464",
+        "content_ref": "content_5de68ca85b0e46f698f82fc1bae5cb0b",
+        "carried_from": null,
+        "profile_revision": 1
+      },
+      {
+        "node_id": "node_1b253d899dca487d9c1ab9f67dcc9877",
+        "content_ref": "content_b8efff31406c4d749db57a9423f9ce49",
+        "carried_from": null,
+        "profile_revision": 1
+      }
+    ]
+  },
+  "snapshot": {
+    "version": "context-evaluation-snapshot.v1",
+    "data_classification": "public_synthetic_evaluation.v1",
+    "nodes": 10,
+    "content_versions": 10,
+    "body_characters": 1858,
+    "pages": [
+      {
+        "id": "content_node_8c858312a1694492a153100f718400f0",
+        "node_id": "node_8c858312a1694492a153100f718400f0",
+        "parent_id": null,
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "直流电路",
+        "scope": "直流电路",
+        "text": "公开合成上下文记录。当前用途：维修爱好入门，已理解电压和电流，想解释串并联分压分流，不做危险带电操作。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_node_7510e962547843b7b2ab519011b05464",
+        "node_id": "node_7510e962547843b7b2ab519011b05464",
+        "parent_id": "node_8c858312a1694492a153100f718400f0",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "核心概念",
+        "scope": "核心概念",
+        "text": "公开合成上下文记录。当前用途：维修爱好入门，已理解电压和电流，想解释串并联分压分流，不做危险带电操作。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_node_1b253d899dca487d9c1ab9f67dcc9877",
+        "node_id": "node_1b253d899dca487d9c1ab9f67dcc9877",
+        "parent_id": "node_8c858312a1694492a153100f718400f0",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "应用与边界",
+        "scope": "应用与边界",
+        "text": "公开合成上下文记录。当前用途：维修爱好入门，已理解电压和电流，想解释串并联分压分流，不做危险带电操作。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_branch",
+        "node_id": "synthetic_branch",
+        "parent_id": "node_8c858312a1694492a153100f718400f0",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支资料",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_related",
+        "node_id": "synthetic_related",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "直流电路",
+        "scope": "另一分支：用途提示",
+        "text": "公开合成上下文记录。当前用途：维修爱好入门，已理解电压和电流，想解释串并联分压分流，不做危险带电操作。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0005",
+        "node_id": "synthetic_0005",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 5",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0006",
+        "node_id": "synthetic_0006",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 6",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0007",
+        "node_id": "synthetic_0007",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 7",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0008",
+        "node_id": "synthetic_0008",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 8",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      },
+      {
+        "id": "content_synthetic_0009",
+        "node_id": "synthetic_0009",
+        "parent_id": "synthetic_branch",
+        "node_revision": 1,
+        "content_revision": 1,
+        "profile_revision": 1,
+        "title": "旁支素材 9",
+        "scope": "独立音乐节奏资料",
+        "text": "公开合成负载：音乐节奏的独立资料，未作事实核验。\n合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 合成填充。 ",
+        "active": true,
+        "review_status": "unverified",
+        "provenance": "public_synthetic_evaluation.v1"
+      }
+    ],
+    "relations": [
+      {
+        "id": "synthetic_relation",
+        "source_id": "node_8c858312a1694492a153100f718400f0",
+        "target_id": "synthetic_related",
+        "kind": "related",
+        "explanation": "公开合成关系：同主题的另一用途；保留节点范围，不合并。"
+      }
+    ],
+    "profile_history": [
+      {
+        "profile": {
+          "topic": {
+            "value": "直流电路",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "background": {
+            "value": "尚未确定当前基础",
+            "source": "unknown",
+            "evidence_keys": []
+          },
+          "constraints": [],
+          "excluded_scope": [],
+          "included_scope": [
+            {
+              "value": "直流电路",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "schema_version": "profile.v1",
+          "primary_purpose": {
+            "value": "维修爱好入门，已理解电压和电流，想解释串并联分压分流，不做危险带电操作。",
+            "source": "user",
+            "evidence_keys": [
+              "brief"
+            ]
+          },
+          "target_abilities": [
+            {
+              "value": "先理解核心概念，再结合用途练习",
+              "source": "assumption",
+              "evidence_keys": []
+            }
+          ],
+          "secondary_purposes": []
+        },
+        "revision": 1
+      }
+    ]
+  }
+}

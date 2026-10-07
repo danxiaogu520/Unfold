@@ -1,0 +1,225 @@
+{
+  "$defs": {
+    "Answer": {
+      "additionalProperties": false,
+      "properties": {
+        "free_text": {
+          "anyOf": [
+            {
+              "maxLength": 6000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Free Text"
+        },
+        "question_key": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Question Key",
+          "type": "string"
+        },
+        "selected_keys": {
+          "items": {
+            "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+            "type": "string"
+          },
+          "title": "Selected Keys",
+          "type": "array"
+        },
+        "unknown": {
+          "title": "Unknown",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "question_key",
+        "selected_keys",
+        "free_text",
+        "unknown"
+      ],
+      "title": "Answer",
+      "type": "object"
+    },
+    "IntakeRound": {
+      "additionalProperties": false,
+      "properties": {
+        "answers": {
+          "items": {
+            "$ref": "#/$defs/Answer"
+          },
+          "title": "Answers",
+          "type": "array"
+        },
+        "questionnaire": {
+          "$ref": "#/$defs/QuestionnaireProposal"
+        }
+      },
+      "required": [
+        "questionnaire",
+        "answers"
+      ],
+      "title": "IntakeRound",
+      "type": "object"
+    },
+    "Option": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Key",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "text"
+      ],
+      "title": "Option",
+      "type": "object"
+    },
+    "Question": {
+      "additionalProperties": false,
+      "properties": {
+        "allow_free_text": {
+          "const": true,
+          "title": "Allow Free Text",
+          "type": "boolean"
+        },
+        "allow_unknown": {
+          "const": true,
+          "title": "Allow Unknown",
+          "type": "boolean"
+        },
+        "key": {
+          "pattern": "^[a-zA-Z0-9_.:-]{1,80}$",
+          "title": "Key",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "single",
+            "multiple"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/$defs/Option"
+          },
+          "maxItems": 6,
+          "minItems": 2,
+          "title": "Options",
+          "type": "array"
+        },
+        "prompt": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Prompt",
+          "type": "string"
+        },
+        "target": {
+          "enum": [
+            "purpose",
+            "background",
+            "goal",
+            "scope",
+            "constraints"
+          ],
+          "title": "Target",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "target",
+        "prompt",
+        "mode",
+        "options",
+        "allow_free_text",
+        "allow_unknown"
+      ],
+      "title": "Question",
+      "type": "object"
+    },
+    "QuestionnaireProposal": {
+      "additionalProperties": false,
+      "properties": {
+        "questions": {
+          "items": {
+            "$ref": "#/$defs/Question"
+          },
+          "maxItems": 5,
+          "title": "Questions",
+          "type": "array"
+        },
+        "rationale": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "questionnaire.v1",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "questions",
+        "rationale"
+      ],
+      "title": "QuestionnaireProposal",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "v2 retains distinct rounds; v1 continues to mean one questionnaire.",
+  "properties": {
+    "domain": {
+      "maxLength": 6000,
+      "minLength": 1,
+      "title": "Domain",
+      "type": "string"
+    },
+    "rounds": {
+      "items": {
+        "$ref": "#/$defs/IntakeRound"
+      },
+      "maxItems": 2,
+      "minItems": 1,
+      "title": "Rounds",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "profile-input.v2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "user_brief": {
+      "maxLength": 6000,
+      "minLength": 1,
+      "title": "User Brief",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "domain",
+    "user_brief",
+    "rounds"
+  ],
+  "title": "ProfileHistoryInput",
+  "type": "object"
+}

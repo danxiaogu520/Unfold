@@ -1,0 +1,27 @@
+{
+  "version": "m5-real-recovery.v1",
+  "public_synthetic_data_only": true,
+  "child_sigkill": true,
+  "run_id": "run_369f74dcd5ef4cd395b1106c4ab83bb3",
+  "completed_steps_not_replayed": [
+    1,
+    2
+  ],
+  "restoration_integrity_passed": true,
+  "before_calls": 2,
+  "after_calls": 8,
+  "real_calls": 8,
+  "conservative_cost_cny": "0.16201600",
+  "unknown_usage_calls": 0,
+  "final_status": "failed",
+  "terminal_error": {
+    "schema_version": "error.v1",
+    "code": "budget_exceeded",
+    "message": "resource tool step budget exhausted",
+    "retryable": false,
+    "outcome_unknown": false,
+    "run_id": "run_369f74dcd5ef4cd395b1106c4ab83bb3"
+  },
+  "success_assertion_passed": false,
+  "original_script_exit_code": 1
+}

@@ -1,0 +1,94 @@
+{
+  "evidence_kind": "real_deepseek_persistent_learning",
+  "started_at": "2026-10-07T05:47:42.763796+00:00",
+  "source_sha256": {
+    "evals/datasets/learning.v1.json": "073cf86f7155b024195c6fb375d8760af0c3e205c77a7da579f03b8ff4f9bbf7",
+    "evals/datasets/resources.v1.json": "6cf10320e985be6e0e5ce7f8dfbf8c39c0a13f8f8f8e23481dc06dd75902dab7",
+    "evals/prompts/stages.v1.json": "94542fb5c1d2bc1ad104009f01d10b03d86c82668d9395fbfbffb361a9a7f26e",
+    "pyproject.toml": "fbae17755947447fc6adf8663e1e973e4b944b640ae515a4066b994e8fb4f34b",
+    "scripts/m2_live.py": "f0a5af1a31f1f606c59ca17b07fb10f2fed7a45d0839c69109e753f1d312c530",
+    "src/unfold/__init__.py": "e58a2524aaaa7c8b561bd6074744973061d3fa86361b3b1d6534f505758a50c6",
+    "src/unfold/api_contract.py": "9e8b9730f8dae7b0aedf4d60bea606f7d088c4490d2c9f2f6f6cb7ea2aeb2221",
+    "src/unfold/app/__init__.py": "09a1e92f00ea0f8e6eec616b5fc48bbfff20795db990a9466125ea95012aef96",
+    "src/unfold/app/api.py": "58c854cb434af795f0c244b8368e6f98fd9d738fbd1d8c957cdfbd169b26c6b9",
+    "src/unfold/app/config.py": "bc84eb63d90612f17abbf5fcdc8deb9252ff8eb98ebcdf8d3efbd7db8c130325",
+    "src/unfold/app/db.py": "7c87f796f91a3c0e7384cae6b98b638661b78d76b4314df495cc9bb166c11787",
+    "src/unfold/app/generation.py": "713418884e5b42c425a601e6d6cb87a2901d8861988eddea7cbd80e046ce8534",
+    "src/unfold/app/learning.py": "45e2daa4744647ad9d65109bcb56c8c5970aec914a0d4fdf9754ee65cce3321e",
+    "src/unfold/app/migrate.py": "bc1fc13696d8e18f8a35b700de3cf968daf1d9e2de790772525580dd95de5d38",
+    "src/unfold/app/migrations/env.py": "14c1d76200d4cfce0460baeb1aee33dec17dca312ebeb34badd819a5dac4b99f",
+    "src/unfold/app/migrations/versions/0001_initial.py": "003a375b47f02570c8225c5cf2ed614049a1f052e9bb552b8ade074f156b12f9",
+    "src/unfold/app/migrations/versions/0001_schema.sql": "2c29fc3cdb674cd9abe669714ce32f94258ed38f0eb201fbd31c124ac6b975b6",
+    "src/unfold/app/migrations/versions/0002_learning.py": "cd2c0f6998fbef5c1f17460fa770275259197bee8846cc63c13e20f29474bb50",
+    "src/unfold/app/migrations/versions/0002_schema.sql": "ac7ccc1b1f22800cc6889789be3c118f32fa333054ecd3784b9a5a58f4d42b26",
+    "src/unfold/app/models.py": "7721bd56da25519d20730c6b0bb838cc7e6e85524070cde37fa271b8ec06d63b",
+    "src/unfold/app/security.py": "ff483356c9014bbe05e2f09a8b3efd9dfb9823a0863a43f2d9bc7687f71f8411",
+    "src/unfold/app/service.py": "aa0b584071cfc3468c3811b86b14edc12c481c65e4cc5d8a277ab69f078624a3",
+    "src/unfold/app/worker.py": "dcc61717bba008be69d36518e8c706cb67b7c0e54e183173b0d78c6b4b485202",
+    "src/unfold/cli.py": "e673d43896b0b5c834c22236642402febb72cc9909401c1d0298f806ce618ed4",
+    "src/unfold/contracts.py": "39602d779644c0c4aa183a5cc8d64807b9685783537ba38ad5bd915529b4da7d",
+    "src/unfold/evaluation.py": "7bf49fd6cce2f31470842fdb403d8d82979a389acfc8ccec482b01715124dfa7",
+    "src/unfold/materials.py": "ea00f039c2abaa949a6f17719c0da6949c0ab9d0fa9b558171434947f26fd57e",
+    "src/unfold/provider.py": "063404d3a2bc6e5b88682260dab1b01036055b9945f6cf1842423b3366a0bfd9",
+    "uv.lock": "c07938891d241ee50eace449bf11aea795ed6a3d2a506ff6f7a265788c343673"
+  },
+  "selection_frozen_before_calls": [
+    "backend-1",
+    "midpoint-1"
+  ],
+  "repetitions": 1,
+  "max_runs_per_case": 7,
+  "max_provider_calls_total": 28,
+  "max_repairs": 1,
+  "model": "deepseek-flash",
+  "prompt_version": "prompt.v3",
+  "fee_limit_persistent_remaining_cny": "4.119700",
+  "temperature": 0.2,
+  "reasoning_effort": "none",
+  "independent_human_review": null,
+  "fact_verification": "pending; structural success does not imply correct knowledge",
+  "model_snapshot_locked": false,
+  "max_output_tokens_per_call": 4000,
+  "cases": [
+    {
+      "scenario_id": "backend-1",
+      "success": false,
+      "runs": [
+        "run_821321c3c3884da7a384c2cd9f8d329e",
+        "run_4387e72aa56e4bd79b9bfdba629ab321",
+        "run_c7b205a751f1415aba1d3a3571fd9637",
+        "run_a360b9ad39444ee593211044b1387cb2"
+      ],
+      "space_id": "space_21c92fae86f24614bcc48e5cfc807ed2",
+      "error": {
+        "schema_version": "error.v1",
+        "code": "domain_validation",
+        "message": "concept reuse scope or identity mismatch",
+        "retryable": false,
+        "outcome_unknown": false,
+        "run_id": "run_a360b9ad39444ee593211044b1387cb2"
+      },
+      "failure_reason": "learning run did not succeed"
+    },
+    {
+      "scenario_id": "midpoint-1",
+      "success": true,
+      "runs": [
+        "run_0a0b2e25c0bc424db2e16a0aea1f7fdc",
+        "run_a63fd3dc139e449a93d0c5ebcad43036",
+        "run_5780594635b548238414b50178cdc9c2",
+        "run_24f1ee298b594c5da3ba0c28dcb17701"
+      ],
+      "space_id": "space_260e80b975e343b095a6b2de8b7392b3",
+      "leaf_api_rejected": true,
+      "saved_node_count": 1,
+      "restored_without_generation": true
+    }
+  ],
+  "real_calls": 8,
+  "input_tokens": 15233,
+  "output_tokens": 4573,
+  "unknown_usage_calls": 0,
+  "conservative_cost_cny": "0.06705000",
+  "persistent_reserved_and_settled_cny": "0.06705000"
+}

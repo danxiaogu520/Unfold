@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>f(x)=k*x+b 函数参数演示</title>
+<style>
+body{font:16px system-ui,sans-serif;padding:24px;color:#264b3b;background:#f7f8ef;margin:0}
+h1{font-size:20px}
+label{display:block;margin:10px 0}
+input[type=range]{width:260px;vertical-align:middle}
+input[type=number]{width:90px}
+output{display:inline-block;font-weight:700;margin-left:8px}
+canvas{border:1px solid #ccd4c3;background:#fff;display:block;margin-top:16px;max-width:100%}
+button{margin-top:12px;padding:6px 14px}
+.note{color:#5a6b60;font-size:14px}
+</style>
+</head>
+<body>
+<h1>f(x) = k·x + b</h1>
+<label>斜率 k <input type="range" id="slope" min="-3" max="3" step="0.5" value="1"> <span id="slopeVal">1</span></label>
+<label>截距 b <input type="range" id="intercept" min="-3" max="3" step="0.5" value="0"> <span id="interceptVal">0</span></label>
+<label>x <input type="number" id="x" value="2" step="0.5"></label>
+<p>f(x) = <output id="value">0</output></p>
+<button id="reset">重置</button>
+<canvas id="plot" width="600" height="280"></canvas>
+<p class="note">本任务用于公开合成资源流程评测，不代表真实学习者数据。</p>
+<script>
+(function(){
+  var slope=document.getElementById('slope');
+  var intercept=document.getElementById('intercept');
+  var xInput=document.getElementById('x');
+  var value=document.getElementById('value');
+  var slopeVal=document.getElementById('slopeVal');
+  var interceptVal=document.getElementById('interceptVal');
+  var canvas=document.getElementById('plot');
+  var ctx=canvas.getContext('2d');
+
+  function currentK(){ return Number(slope.value); }
+  function currentB(){ return Number(intercept.value); }
+  function currentX(){ var v=Number(xInput.value); return isFinite(v)?v:0; }
+
+  function drawPlot(k,b){
+    var w=canvas.width, h=canvas.height;
+    ctx.clearRect(0,0,w,h);
+    var xMin=-6, xMax=6, yMin=-10, yMax=10;
+    function px(x){ return (x-xMin)/(xMax-xMin)*w; }
+    function py(y){ return h-(y-yMin)/(yMax-yMin)*h; }
+    ctx.strokeStyle='#e2e6da';
+    ctx.lineWidth=1;
+    ctx.beginPath();
+    ctx.moveTo(px(0),0); ctx.lineTo(px(0),h);
+    ctx.moveTo(0,py(0)); ctx.lineTo(w,py(0));
+    ctx.stroke();
+    ctx.strokeStyle='#2f7d5b';
+    ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(px(xMin),py(k*xMin+b));
+    ctx.lineTo(px(xMax),py(k*xMax+b));
+    ctx.stroke();
+    var xv=currentX();
+    var yv=k*xv+b;
+    ctx.fillStyle='#c0392b';
+    ctx.beginPath();
+    ctx.arc(px(xv),py(yv),5,0,Math.PI*2);
+    ctx.fill();
+  }
+
+  function update(){
+    var k=currentK(), b=currentB(), xv=currentX();
+    var y=k*xv+b;
+    value.textContent=String(y);
+    slopeVal.textContent=String(k);
+    interceptVal.textContent=String(b);
+    drawPlot(k,b);
+  }
+
+  slope.addEventListener('input',update);
+  intercept.addEventListener('input',update);
+  xInput.addEventListener('input',update);
+  document.getElementById('reset').addEventListener('click',function(){
+    slope.value=1; intercept.value=0; xInput.value=2; update();
+  });
+  update();
+})();
+</script>
+</body>
+</html>

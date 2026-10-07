@@ -1,0 +1,13 @@
+{"backup": "<workspace>/.data/backups/m7-20261007", "files": 13}
+pg_restore: error: could not execute query: ERROR:  schema "public" already exists
+Command was: CREATE SCHEMA public;
+
+
+Traceback (most recent call last):
+  File "<workspace>/scripts/backup.py", line 169, in <module>
+    main()
+  File "<workspace>/scripts/backup.py", line 141, in main
+    subprocess.run(
+  File "<local-home>/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['<workspace>/.tools/postgres/bin/pg_restore', '--exit-on-error', '--no-owner', '--no-acl', '--dbname=unfold_restore_m7_20261007', '<workspace>/.data/backups/m7-20261007/database.dump']' returned non-zero exit status 1.
