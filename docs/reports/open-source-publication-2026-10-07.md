@@ -25,3 +25,9 @@
 扫描的对抗检查确认：公开正常暂存通过，模拟密钥被拦截且不回显，强行暂存的私密 .env 被拦截，暂存与工作区不一致被拦截，漏入 Git 的证据日志被拦截。本机路径脱敏涉及25份文件和6份清单，全部31份公开哈希复核一致。移除运行产生的测试/格式/类型缓存、Python 字节码和前端生成目录，保留本地数据库、配置、备份与已安装依赖。
 
 发布提交见 [GitHub 仓库](https://github.com/danxiaogu520/Unfold)，远程验收状态见 [GitHub Actions](https://github.com/danxiaogu520/Unfold/actions/workflows/ci.yml)。远程结果以对应提交的运行记录为准。历史里程碑报告的“没有 Git 提交/远程 CI”表示它们各自冻结时的事实。
+
+## 首次远程失败与收尾修订
+
+[首次远程运行](https://github.com/danxiaogu520/Unfold/actions/runs/37639880909) 在 Ubuntu 24.04 上有7项 Python 测试失败、206项通过，原因是受管 Chromium 沙箱无法启动。按 Ubuntu 官方的应用专用 profile 方式，为临时运行器的 Playwright Chromium 允许 userns；不关闭 Chromium 沙箱，也不关闭整台运行器的 AppArmor 用户命名空间限制。后续远程运行以 GitHub 对应提交结果为准，首次失败保持可查。
+
+Python 源码包初次本地复核发现，全局示例 .env 忽略例外会使构建后端误带本地生成目录中的示例配置。这些产物未上传。修订将示例文件例外限定为根目录与公开证据，并为 sdist 设置顶层文件白名单；源码包和 wheel 另行复核目录、实际密钥匹配与 MIT 许可文件。Git 推送始终只包含已通过暂存扫描的文件，实时配置、数据库和备份从未提交。

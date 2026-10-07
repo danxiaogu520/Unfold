@@ -52,6 +52,7 @@ def main() -> None:
             "uv.lock",
             ".python-version",
             ".gitignore",
+            ".gitattributes",
             ".env.example",
             ".env.app.example",
         )

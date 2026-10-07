@@ -61,6 +61,8 @@ M0 契约检查与公开模型证据回放仍可独立离线运行：`unfold che
 
 `UNFOLD_DATABASE_URL` 缺失、驱动错误或远程监听地址会明确失败。先运行 `scripts/dev_database.py status` 检查项目集群；服务日志在 `.data/postgres.log`。Codex 沙箱可能阻止本地数据库 socket、共享内存或浏览器启动，验证时需要获准的本地进程权限；不要因此更换为 SQLite。
 
+Ubuntu 24.04 的 AppArmor 可能阻止 Playwright 下载的 Chromium 创建内部沙箱。按 [Ubuntu 官方说明](https://documentation.ubuntu.com/release-notes/24.04/#unprivileged-user-namespace-restrictions)，为实际浏览器可执行文件配置允许 `userns` 的 AppArmor profile；CI 为当前运行器的两个 Playwright Chromium 路径配置专用 profile，见 `.github/workflows/ci.yml`。应用保留 `chromiumSandbox: true`，不能通过关闭沙箱掩盖宿主机配置问题。
+
 停止项目数据库：`.venv/bin/python scripts/dev_database.py stop`。`pg_ctl stop -m fast` 会完整关闭集群并保留数据；不要直接删除 `.data` 来处理迁移问题。
 
 ## 任务恢复与故障实验

@@ -30,6 +30,15 @@ unfold = "unfold.cli:main"
 requires = ["hatchling==1.27.0"]
 build-backend = "hatchling.build"
 
+[tool.hatch.build.targets.sdist]
+only-include = [
+    "src", "scripts", "tests", "web", "contracts", "evals", "docs", ".github",
+    "README.md", "PRODUCT.md", "DESIGN.md", "PLAN.md", "LICENSE",
+    "CONTRIBUTING.md", "SECURITY.md", "THIRD_PARTY_NOTICES.md",
+    "pyproject.toml", "uv.lock", ".python-version", ".gitignore", ".gitattributes",
+    ".env.example", ".env.app.example",
+]
+
 [dependency-groups]
 dev = ["pytest==8.4.2", "ruff==0.13.2", "mypy==1.18.2", "types-jsonschema==4.25.1.20251009"]
 

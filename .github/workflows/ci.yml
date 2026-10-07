@@ -47,6 +47,20 @@ jobs:
       - run: .venv/bin/python scripts/audit_publication.py --staged
       - run: npm ci --prefix web
       - run: npx --prefix web playwright install --with-deps chromium
+      - name: Allow Playwright Chromium to create its sandbox
+        run: |
+          # Scoped AppArmor exceptions on this disposable runner; Chromium keeps its sandbox.
+          cat > "$RUNNER_TEMP/unfold-chromium.apparmor" <<EOF
+          abi <abi/4.0>,
+          include <tunables/global>
+          profile unfold-playwright-shell "$HOME/.cache/ms-playwright/**/chrome-headless-shell" flags=(unconfined) {
+            userns,
+          }
+          profile unfold-playwright-chrome "$HOME/.cache/ms-playwright/**/chrome" flags=(unconfined) {
+            userns,
+          }
+          EOF
+          sudo apparmor_parser -r "$RUNNER_TEMP/unfold-chromium.apparmor"
       - run: .venv/bin/python scripts/check.py --browser
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
